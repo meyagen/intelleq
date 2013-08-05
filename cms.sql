@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Aug 04, 2013 at 12:57 PM
+-- Generation Time: Aug 05, 2013 at 03:27 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -54,6 +54,33 @@ INSERT INTO `articles` (`id`, `title`, `slug`, `pubdate`, `body`, `created`, `mo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ask`
+--
+
+CREATE TABLE IF NOT EXISTS `ask` (
+  `int` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ask` text NOT NULL,
+  `group` varchar(255) NOT NULL,
+  `difficulty` int(1) NOT NULL,
+  `correct_answer` text NOT NULL,
+  `choice1` text NOT NULL,
+  `choice2` text NOT NULL,
+  `choice3` text NOT NULL,
+  `choice4` text NOT NULL,
+  PRIMARY KEY (`int`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `ask`
+--
+
+INSERT INTO `ask` (`int`, `ask`, `group`, `difficulty`, `correct_answer`, `choice1`, `choice2`, `choice3`, `choice4`) VALUES
+(1, 'what is your name?', 'general', 1, 'earle', 'earl', 'randy', 'rol', 'earle'),
+(2, 'what is your age', 'general', 1, '18', '4', '9', '10', '18');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `ci_sessions`
 --
 
@@ -72,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('acad7681fede8ff1a4b34a243fba1784', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:22.0) Gecko/20100101 Firefox/22.0', 1375617082, 'a:7:{s:9:"user_data";s:0:"";s:8:"username";s:12:"gardevior411";s:12:"is_logged_in";b:1;s:4:"name";s:17:"Mireya Gen Andres";s:5:"email";s:14:"meya@yahoo.com";s:2:"id";s:1:"4";s:8:"loggedin";b:1;}');
+('f556dd313211d8ee114ad94aada42ef6', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/28.0.1500.95 Safari/537.36', 1375714536, '');
 
 -- --------------------------------------------------------
 
@@ -88,7 +115,7 @@ CREATE TABLE IF NOT EXISTS `membership` (
   `password` varchar(32) NOT NULL,
   `email_address` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `membership`
@@ -96,8 +123,7 @@ CREATE TABLE IF NOT EXISTS `membership` (
 
 INSERT INTO `membership` (`id`, `first_name`, `last_name`, `username`, `password`, `email_address`) VALUES
 (1, 'mireya', 'andres', 'meyaaa', 'password', 'mireya@yahoo.com'),
-(2, 'Rowel', 'Ventura', 'rdventura2', '32250170a0dca92d53ec9624f336ca24', 'rowel_26@yahoo.com'),
-(3, 'Earle', 'Bunao', 'gardevior411', '5f4dcc3b5aa765d61d8327deb882cf99', 'gardevior_erb411@yahoo.com');
+(2, 'Rowel', 'Ventura', 'rdventura2', 'b2d4c0c55c26569158fa38ff98aa60ab', 'rowel_26@yahoo.com');
 
 -- --------------------------------------------------------
 
@@ -162,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `name`) VALUES
-(1, 'earle.bunao@gmail.com', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', 'Earle Bunao'),
+(1, 'earle.bunao@gmail.com', '1a5c2855eb0797466fa3e5fba0bac33f335c1f1b9f14840bf295bf7fdf3f03192bb0b0c7f14f5292c21d99e8924095e8300e181936f658f7440d11638c389443', 'Earle Bunao'),
 (2, 'rowel_26@yahoo.com', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', 'Rowel'),
 (4, 'meya@yahoo.com', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', 'Mireya Gen Andres');
 
