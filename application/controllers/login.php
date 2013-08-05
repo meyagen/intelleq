@@ -7,7 +7,6 @@ class Login extends CI_Controller{
 		$this->load->view('includes/template', $data);
 	}
 	
-	
 	function validate_credentials() {
 		switch ($this->input->post('login_sign_up')) {
 		  // if Login
@@ -37,8 +36,8 @@ class Login extends CI_Controller{
 				redirect('login/reset');
 				break;
 	  }
-		
 	}
+
 	function signup() {
 		$data['main_content'] = 'signup_form';
 		$this->load->view('includes/template', $data);
@@ -76,23 +75,19 @@ class Login extends CI_Controller{
 			$this->signup();
 		}
 		else {
-			$data['main_content'] = 'email_confirmation';
-			$this->load->view('includes/template', $data);
-		
 			$this->load->model('membership_model');
-			$this->membership_model->create_member();
-			/*if($query = $this->membership_model->create_member()) {
-				$data['main_content'] = 'signup_successful';
+			
+			if($this->membership_model->is_unique()){
+				$data['main_content'] = 'email_confirmation';
 				$this->load->view('includes/template', $data);
+				$this->membership_model->create_member();
 			}
-			else {
-				$this->load->view('signup_form');
 
-			}*/
+			else {
+				$this->signup();
+			}
 		}
 	}
-
-
 
 	function confirm_email($email, $email_code){
 		$email_code = trim($email_code);

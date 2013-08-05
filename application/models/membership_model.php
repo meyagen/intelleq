@@ -11,6 +11,55 @@ class Membership_model extends CI_Model {
 		}
 	}
 
+	function is_unique(){
+		$username = $this->input->post('username');
+		$email = $this->input->post('email_address');
+		$password = $this->input->post('password');
+		$password2 = $this->input->post('password2');
+		$this->load->model('user_m');
+
+		//email must be unique
+		$this->db->where('email_address', $email);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) {
+			return false;
+		}
+
+		$this->db->where('email', $email);
+		$query = $this->db->get('users');
+
+		if($query->num_rows > 0) {
+			return false;
+		}
+
+		//username must be unique
+		$this->db->where('username', $username);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) {
+			return false;
+		}
+
+		$query = $this->db->get('users');
+
+		if($query->num_rows > 0) {
+			return false;
+		}
+
+		//password must be between 6-30 characters
+		if(strlen($password) < 6 || strlen($password) > 30) {
+			return false;
+		}
+
+		//password must be confirmed
+		if($password != $password2) {
+			return false;
+		}
+
+		return true;
+		}
+
 	function create_member() {
 		$new_member_insert_data = array(
 			'first_name' => $this->input->post('first_name'),
@@ -21,9 +70,8 @@ class Membership_model extends CI_Model {
 			//'activate' => false
 		);
 
-		//check unique email
 		$insert = $this->db->insert('membership', $new_member_insert_data);
-		$this->send_confirmation_email($this->input->post('email_address'));	
+		$this->send_confirmation_email($this->input->post('email_address'));
 	}
 
 	function send_confirmation_email($email){
@@ -135,7 +183,6 @@ class Membership_model extends CI_Model {
 		}
 
 		return $data;
-
 	}
 
 	function randLetter($random) {

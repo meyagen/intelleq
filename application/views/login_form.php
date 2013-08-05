@@ -7,7 +7,7 @@
 	<?php echo form_open('login/validate_credentials');?>
 <table class="table">
 	<tr>
-		<td>Email</td>
+		<td>Username</td>
 		<td><?php echo form_input('username'); ?></td>
 	</tr>
 	<tr>
@@ -18,8 +18,11 @@
 		<td></td>
 		<!--<td><?php echo form_submit('submit', 'Login', 'class="btn btn-primary"'); ?></td> -->
 		<td><INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Login"></td>
-		<td><INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Sign-up">
-		<INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Forgot Password?"></td>
+		<td><INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Sign-up"></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Forgot Password?"></td>
 	</tr>
 	
 </table>

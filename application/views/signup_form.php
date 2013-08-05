@@ -21,7 +21,9 @@
 		echo form_input('password', set_value('password', 'Password'));
 		echo form_input('password2', set_value('password2', 'Password Confirm'));
 
+		echo "<br/><br/><p>";
 		echo form_submit('submit', 'Create Account');
+		echo "</p>";
 
 	?>
 </fieldset>
