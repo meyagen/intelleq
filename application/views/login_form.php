@@ -24,7 +24,6 @@
 		<td></td>
 		<td><INPUT  type="submit" name="login_sign_up" class="btn btn-primary" value="Forgot Password?"></td>
 	</tr>
-	
 </table>
 <?php echo form_close();?>
 </div>
