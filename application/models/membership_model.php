@@ -26,22 +26,18 @@ class Membership_model extends CI_Model {
 			return false;
 		}
 
-		$this->db->where('email', $email);
-		$query = $this->db->get('users');
+		else{
+			$this->db->where('email', $email);
+			$query = $this->db->get('users');
 
-		if($query->num_rows > 0) {
-			return false;
+			if($query->num_rows > 0) {
+				return false;
+			}			
 		}
 
 		//username must be unique
 		$this->db->where('username', $username);
 		$query = $this->db->get('membership');
-
-		if($query->num_rows > 0) {
-			return false;
-		}
-
-		$query = $this->db->get('users');
 
 		if($query->num_rows > 0) {
 			return false;
@@ -58,7 +54,7 @@ class Membership_model extends CI_Model {
 		}
 
 		return true;
-		}
+	}
 
 	function create_member() {
 		$new_member_insert_data = array(
