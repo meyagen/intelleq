@@ -4,6 +4,7 @@ class Membership_model extends CI_Model {
 	function validate() {
 		$this->db->where('username', $this->input->post('username'));
 		$this->db->where('password', md5($this->input->post('password')));
+		$this->db->where('activate', 'true');
 		$query = $this->db->get('membership');
 
 		if($query->num_rows == 1) {
@@ -63,7 +64,7 @@ class Membership_model extends CI_Model {
 			'email_address' => $this->input->post('email_address'),
 			'username' =>$this->input->post('username'),
 			'password' => (md5($this->input->post('password'))),
-			//'activate' => false
+			'activate' => 'false'
 		);
 
 		$insert = $this->db->insert('membership', $new_member_insert_data);
@@ -103,15 +104,14 @@ class Membership_model extends CI_Model {
 		}
 	}
 
-	function activate_user($user_info){
-		if($user_info->id === "")
-			$user = $this->user_m->get_by(array('email' => $user_info->email), TRUE);
-		else
-			$user = $this->user_m->get_by(array('email' => $user_info->id), TRUE);
-		if (count($user)) {
-			$user->activate = true;
-			$this->user_m->save($user, $user->id);
+	function activate_user($email){
+		$this->db->where('email_address', $email);
+		$query = $this->db->get('membership');
+		if($query->num_rows == 1){
+			$user = $query->row();	
 		}
+
+		$this->db->update('membership', array('activate' => 'true'));
 	}
 
 	function edit_password(){

@@ -1,5 +1,5 @@
-<h1>Create an Account</h1>
-
+<h1 style = "text-align: center;">Create an Account</h1>
+<?php echo validation_errors(); ?>
 <fieldset>
 	<legend>Personal Information</legend>
 

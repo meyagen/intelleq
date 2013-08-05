@@ -93,9 +93,7 @@ class Login extends CI_Controller{
 		$email_code = trim($email_code);
 		$this->load->model('membership_model');
 		if($this->membership_model->validate_email($email, $email_code)) {
-			$user['id'] = "";
-			$user['email'] = $email;
-			//$this->membership_model->activate_user($user);
+			$this->membership_model->activate_user($email);
 			$data['main_content'] = 'signup_successful';
 		}
 

@@ -12,7 +12,7 @@ class Article extends Admin_Controller
 	{
 		// Fetch all articles
 		$this->data['articles'] = $this->article_m->get();
-		
+
 		// Load view
 		$this->data['subview'] = 'admin/article/index';
 		$this->load->view('admin/_layout_main', $this->data);
