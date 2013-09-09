@@ -10,11 +10,11 @@
 			</tr>
 		</thead>
 		<tbody>
-<?php if(count($users)): foreach($users as $user): ?>	
+<?php if(count($admins)): foreach($admins as $admin): ?>	
 		<tr>
-			<td><?php echo anchor('admin/user/edit/' . $user->id, $user->email); ?></td>
-			<td><?php echo btn_edit('admin/user/edit/' . $user->id); ?></td>
-			<td><?php echo btn_delete('admin/user/delete/' . $user->id); ?></td>
+			<td><?php echo anchor('admin/user/edit/' . $admin->id, $admin->email); ?></td>
+			<td><?php echo btn_edit('admin/user/edit/' . $admin->id); ?></td>
+			<td><?php echo btn_delete('admin/user/delete/' . $admin->id); ?></td>
 		</tr>
 <?php endforeach; ?>
 <?php else: ?>

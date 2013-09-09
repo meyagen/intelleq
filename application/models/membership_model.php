@@ -1,15 +1,84 @@
 <?php
 
-class Membership_model extends CI_Model {
-	function validate() {
-		$this->db->where('username', $this->input->post('username'));
-		$this->db->where('password', md5($this->input->post('password')));
+class Membership_model extends MY_Model {
+
+	protected $_table_name = 'membership';
+	protected $_order_by = 'last_name';
+	public $rules = array(
+		'username' => array(
+			'field' => 'username', 
+			'label' => 'Username', 
+			'rules' => 'trim|required|xss_clean'
+		), 
+		'password' => array(
+			'field' => 'password', 
+			'label' => 'Password', 
+			'rules' => 'trim|required'
+		)
+	);
+
+	public function login ()
+	{
+		/*$this->db->where('username', $this->input->post('username'));
+		$this->db->where('password', $this->hash($this->input->post('password')));
 		$this->db->where('activate', 'true');
 		$query = $this->db->get('membership');
+		$user = $query->row();
+		echo $user->username;*/
 
-		if($query->num_rows == 1) {
+		$user = $this->get_by(array(
+			'username' => $this->input->post('username'),
+			'password' => $this->hash($this->input->post('password')),
+			'activate' => 'true',
+		), TRUE);
+
+		if (count($user)) {
+			// Log in user
+			$data = array(
+				'fname' => $user->first_name,
+				'lname' => $user->last_name,
+				'username' => $user->username,
+				'email' => $user->email_address,
+				'id' => $user->id,
+				'loggedin' => TRUE,
+			);
+			$this->session->set_userdata($data);
 			return true;
 		}
+
+		else {
+			/*$this->db->where('username', $this->input->post('username'));
+			$this->db->where('temp_password', $this->hash($this->input->post('password')));
+			$this->db->where('activate', 'true');
+			$query = $this->db->get('membership');*/
+
+			$user = $this->get_by(array(
+				'username' => $this->input->post('username'),
+				'temp_password' => $this->hash($this->input->post('password')),
+				'activate' => 'true',
+			), TRUE);
+
+			if (count($user)) {
+				$data = array( 
+					'fname' => $user->first_name,
+					'lname' => $user->last_name,
+					'username' => $user->username,
+					'email' => $user->email_address,
+					'id' => $user->id,
+					'loggedin' => TRUE,
+				);
+
+				$this->session->set_userdata($data);
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public function hash ($string)
+	{
+		return hash('sha512', $string . config_item('encryption_key'));
 	}
 
 	function is_unique(){
@@ -63,7 +132,7 @@ class Membership_model extends CI_Model {
 			'last_name' => $this->input->post('last_name'),
 			'email_address' => $this->input->post('email_address'),
 			'username' =>$this->input->post('username'),
-			'password' => (md5($this->input->post('password'))),
+			'password' => $this->hash($this->input->post('password')),
 			'activate' => 'false'
 		);
 
@@ -88,7 +157,7 @@ class Membership_model extends CI_Model {
 		$message .= '<p>Thank you for registering to our site! ';
 		$message .= 'To complete the signup process, please click ';
 		$message .= '<strong><a href = "' .$url .'">here</a></strong>';
-		$message .= ' to activate your account.</p><p>Thank you!</p>';
+		$message .= ' to activate your account.</p>';
 		$message .= '<p><small>If this is not you, please ignore this email.</small></p>';
 		$message .= '</body></html>';
 
@@ -148,16 +217,16 @@ class Membership_model extends CI_Model {
 
 			//hash and save password				
 			if($table == 'users'){
-				$user->password = $this->user_m->hash($data['newPassword']);
+				$user->temp_password = $this->user_m->hash($data['newPassword']);
 				$this->db->where('email', $email);
 			}
 
 			elseif($table == 'membership'){
-				$user->password = md5($data['newPassword']);
+				$user->temp_password = $this->hash($data['newPassword']);
 				$this->db->where('email_address', $email);
 			}
 
-			$this->db->update($table, array('password' => $user->password));
+			$this->db->update($table, array('temp_password' => $user->temp_password));
 
 			//send email
 			$this->email->set_newline("\r\n");
@@ -168,7 +237,9 @@ class Membership_model extends CI_Model {
 			$this->email->to($email);	
 			$this->email->subject('Password Reset');
 			$this->email->message("Good day! You have recently asked for your password to be reset. Your new temporary password is "
-				.$data['newPassword'] .". Please remember to reset your password after logging in to prevent this from happening again. Thank you!");
+				.$data['newPassword']
+				.". Please remember to reset your password after logging in to prevent this from happening again."
+				." If you did not ask for your password to be reset, please ignore this email. Thank you!");
 
 			if(!$this->email->send())
 				echo $this->email->print_debugger();

@@ -45,11 +45,6 @@ class Question_m extends MY_Model
 			'label' => 'Choice 3', 
 			'rules' => 'trim|required'
 		),
-		'choice4' => array(
-			'field' => 'choice4', 
-			'label' => 'Choice 4', 
-			'rules' => 'trim|required'
-		)
 	);
 
 	public function get_new ()
@@ -63,7 +58,6 @@ class Question_m extends MY_Model
 		$question->choice1 = '';
 		$question->choice2 = '';
 		$question->choice3 = '';
-		$question->choice4 = '';
 
 		return $question;
 	}

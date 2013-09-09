@@ -4,12 +4,12 @@ class Page extends Frontend_Controller {
 
     public function __construct(){
         parent::__construct();
-        $this->load->model('page_m');
+        //$this->load->model('page_m');
     }
 
     public function index() {
     	// Fetch the page template
-    	$this->data['page'] = $this->page_m->get_by(array('slug' => (string) $this->uri->segment(1)), TRUE);
+    	/*$this->data['page'] = $this->page_m->get_by(array('slug' => (string) $this->uri->segment(1)), TRUE);
     	count($this->data['page']) || show_404(current_url());
     	
     	add_meta_title($this->data['page']->title);
@@ -25,11 +25,11 @@ class Page extends Frontend_Controller {
     	}
     	
     	// Load the view
-    	$this->data['subview'] = $this->data['page']->template;
+    	$this->data['subview'] = $this->data['page']->template;*/
     	$this->load->view('_main_layout', $this->data);
     }
     
-    private function _page(){
+    /*private function _page(){
     	$this->data['recent_news'] = $this->article_m->get_recent();
     }
     
@@ -69,5 +69,5 @@ class Page extends Frontend_Controller {
 		$this->article_m->set_published();
 		$this->db->limit($perpage, $offset);
 		$this->data['articles'] = $this->article_m->get();
-    }
+    }*/
 }

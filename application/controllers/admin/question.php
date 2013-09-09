@@ -43,8 +43,7 @@ class Question extends Admin_Controller
 				'correct_answer',
 				'choice1',
 				'choice2',
-				'choice3',
-				'choice4'
+				'choice3'
 			));
 			$this->question_m->save($data, $id);
 			redirect('admin/question');

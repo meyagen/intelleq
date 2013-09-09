@@ -4,15 +4,15 @@
 <table class="table">
 	<tr>
 		<td>Subject Area</td>
-		<td><?php 
-				echo form_dropdown('group', 
-				array(	'Subject Area' => 'Subject Area',
-						'English' => 'English',
-						'General Knowledge' => 'General Knowledge',
-						'Mathematics' => 'Mathematics',
-						'Reading Comprehention' => 'Reading Comprehention',
-						'Science' => 'Science'	),
-			 	$this->input->post('group') ? $this->input->post('group') : $question->group); 
+		<td><?php 	//echo form_dropdown('group', 
+					echo form_dropdown('group', 
+					array( 'Subject Area' => 'Subject Area',
+					'English' => 'English',
+					'General_Knowledge' => 'General Knowledge',
+					'Mathematics' => 'Mathematics',
+					'Reading_Comprehension' => 'Reading Comprehension',
+					'Science' => 'Science' ),
+					$this->input->post('group') ? $this->input->post('group') : $question->group); 
 		?></td>
 	</tr>
 	<tr>
@@ -21,7 +21,7 @@
 	</tr>
 	<tr>
 		<td>Question</td>
-		<td><?php echo form_input('ask', set_value('ask', $question->ask), 'class="tinymce"'); ?></td>
+		<td><?php echo form_textarea('ask', set_value('ask', $question->ask), 'class="tinymce"'); ?></td>
 	</tr>
 	<tr>
 		<td>Correct Answer</td>
@@ -40,12 +40,13 @@
 		<td><?php echo form_input('choice3', set_value('choice3', $question->choice3)); ?></td>
 	</tr>
 	<tr>
-		<td>4th Choice</td>
-		<td><?php echo form_input('choice4', set_value('choice4', $question->choice4)); ?></td>
-	</tr>
-	<tr>
 		<td>Difficulty</td>
-		<td><?php echo form_dropdown('difficulty', array('Difficulty' => 'Difficulty', 'Easy' => 'Easy', 'Normal' => 'Normal', 'Difficult' => 'Difficult' ), $this->input->post('group') ? $this->input->post('group') : $question->group); ?></td>
+		<td><?php echo form_dropdown('difficulty', 
+					array('Difficulty' => 'Difficulty', 
+						'Easy' => 'Easy',
+						'Normal' => 'Normal', 
+						'Difficult' => 'Difficult' ), 
+					$this->input->post('difficulty') ? $this->input->post('difficulty') : $question->difficulty); ?></td>
 	</tr>
 	<tr>
 		<td></td>

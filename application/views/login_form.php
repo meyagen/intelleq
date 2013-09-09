@@ -4,7 +4,7 @@
 </div>
 
 <div id="login_form">
-	<?php echo form_open('login/validate_credentials');?>
+	<?php echo form_open('login');?>
 <table class="table">
 	<tr>
 		<td>Username</td>

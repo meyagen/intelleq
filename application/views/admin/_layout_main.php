@@ -2,9 +2,9 @@
 <body>
     <div class="navbar navbar-static-top navbar-inverse">
 	    <div class="navbar-inner">
-		    <a class="brand" href="<?php echo site_url('admin/dashboard'); ?>"><?php echo $meta_title; ?></a>
+		    <a class="brand" href="<?php echo site_url('admin/dashboard2'); ?>"><?php echo $meta_title; ?></a>
 		    <ul class="nav">
-			    <li class="active"><a href="<?php echo site_url('admin/dashboard'); ?>">Dashboard</a></li>
+			    <li class="active"><a href="<?php echo site_url('admin/dashboard2'); ?>">Dashboard</a></li>
 			    <li><?php echo anchor('admin/page', 'pages'); ?></li>
 			    <li><?php echo anchor('admin/page/order', 'order pages'); ?></li>
 			    <li><?php echo anchor('admin/article', 'news articles'); ?></li>
@@ -23,7 +23,7 @@
 			<!-- Sidebar -->
 			<div class="span3">
 				<section>
-					<?php echo mailto('joost@codeigniter.tv', '<i class="icon-user"></i> joost@codeigniter.tv'); ?><br>
+					<?php echo mailto('merk.donotreply.com', '<i class="icon-user"></i> merk.donotreply.com'); ?><br>
 					<?php echo anchor('admin/user/logout', '<i class="icon-off"></i> logout'); ?>
 				</section>
 			</div>

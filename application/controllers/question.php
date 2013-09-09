@@ -1,5 +1,5 @@
 <?php
-class Question extends CI_Controller
+class Question extends User_Controller
 {
 
 	public function __construct ()
@@ -12,12 +12,13 @@ class Question extends CI_Controller
 		// Fetch all questions
 		$this->load->model('ask');
 		$result = $this->ask->get_questions();
-		$this->data['questions'] = $result;
+		$data['questions'] = $result;
 		
 		// Load view
-		$this->data['subview'] = 'admin/questions/questions';
-		$this->data['meta_title'] = 'title';
-		$this->load->view('admin/_layout_main', $this->data);
+		$data['firstname'] = $this->session->userdata('fname');
+		$data['lastname'] = $this->session->userdata('lname');
+		$data['main_content'] = 'questions';
+		$this->load->view('members_area', $data);
 	}
 
 

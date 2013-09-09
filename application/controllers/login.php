@@ -1,46 +1,58 @@
 <?php
-
 class Login extends CI_Controller{
 
 	function index(){
-		$data['main_content'] = 'login_form';
-		$this->load->view('includes/template', $data);
-	}
-	
-	function validate_credentials() {
-		switch ($this->input->post('login_sign_up')) {
-		  // if Login
-		  	case 'Login':
-				$this->load->model('membership_model');
-				$query = $this->membership_model->validate();
-				
-				if($query > 0) {
-					$data = array(
-						'username' => $this->input->post('username'),
-						'is_logged_in' => true
-					);
-					$this->session->set_userdata($data);
-					redirect('site/members_area');
-				}
-				else {
-					$this->index();
-				}
-				break;
-
-		  // if sign-up
-		 	case 'Sign-up':
-				redirect('login/signup');
-				break;
-
-			case 'Forgot Password?':
-				redirect('login/reset');
-				break;
-	  }
+		$data['main_content'] = 'home';
+		$this->load->view('_main_layout', $data);
+		$this->loggedin() == FALSE || redirect('site');
 	}
 
-	function signup() {
-		$data['main_content'] = 'signup_form';
-		$this->load->view('includes/template', $data);
+	function validate(){
+		$this->load->helper('form');//temp
+		$this->load->library('form_validation');
+		$this->load->library('session');//temp
+
+		$this->load->model('membership_model');
+		$rules = $this->membership_model->rules;
+		$this->form_validation->set_rules($rules);
+		
+		// Process form
+		if ($this->form_validation->run() == TRUE) {
+			// We can login and redirect
+			if ($this->membership_model->login() == TRUE) {
+				redirect('site');
+			}
+			else {
+				$this->session->set_flashdata('error', 'That email/password combination does not exist');
+				redirect('', 'refresh');
+			}
+		}
+
+		/*$this->load->model('membership_model');
+		$query = $this->membership_model->validate();
+		
+		if($query > 0) {
+			$data = array(
+				'username' => $this->input->post('username'),
+				'loggedin' => true
+			);
+			$this->session->set_userdata($data);
+			redirect('site/members_area');
+		}
+		else {
+			redirect('', 'refresh');
+		}*/
+	}
+
+	public function logout ()
+	{
+		$this->session->sess_destroy();
+		redirect('http://localhost/ci');
+	}
+
+	public function loggedin ()
+	{
+		return (bool) $this->session->userdata('loggedin');
 	}
 
 	function create_member() {
@@ -72,7 +84,7 @@ class Login extends CI_Controller{
 								'trim|required|matches[password]');
 
 		if($this->form_validation->run() == FALSE) {
-			$this->signup();
+			redirect('', 'refresh');
 		}
 		else {
 			$this->load->model('membership_model');
@@ -84,7 +96,7 @@ class Login extends CI_Controller{
 			}
 
 			else {
-				$this->signup();
+				redirect('', 'refresh');
 			}
 		}
 	}
