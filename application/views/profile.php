@@ -5,7 +5,7 @@
 <div class="fixed">
 <nav class="top-bar fixed">
   <ul class="title-area">
-    <li class="name"><h1><a href="#">intelleq</a></h1></li>
+    <li class="name"><h1><a href="">intelleq</a></h1></li>
     <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
   </ul>
   <section class="top-bar-section">
@@ -29,7 +29,7 @@
     <h4>Navigation</h4>
     <div class="docs section-container accordion" data-section="accordion">
         <section class="section active">
-    <p class="title"><a href="../faq.html">Feed</a></p>
+    <p class="title"><a href="">Feed</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="../support.html">Calendar</a></p>
@@ -123,25 +123,25 @@
       <div class="large-4 columns">
         <center><h3 class="white">ABOUT</h3>
         <ul class="white" style="list-style:none">
-          <li>Who We Are</li>
-          <li>Our Mission</li>
-          <li>Feedback</li>
+          <li><a href="about">Who We Are</a></li>
+          <li><a href="mission">Our Mission</a></li>
+          <li><a href="feedback">Feedback</a></li>
         </ul></center>
       </div>
       <div class="large-4 columns">
         <center><h3 class="white">HELP</h3>
         <ul class="white" style="list-style:none">
-          <li>FAQ</li>
-          <li>Contact Us</li>
-          <li>Report a Bug</li>
+          <li><a href="faq">FAQ</a></li>
+          <li><a href="contactus">Contact Us</a></li>
+          <li><a href="report">Report a Bug</a> </li>
         </ul></center>
       </div>
       <div class="large-4 columns">
         <center><h3 class="white">SOCIAL</h3>
         <ul class="white" style="list-style:none">
-          <li>Facebook</li>
-          <li>Twitter</li>
-          <li>Google+</li>
+          <li><a href="http://facebook.com">Facebook</a></li>
+          <li><a href="http://twitter.com">Twitter</a></li>
+          <li><a href="http://plus.googlecom">Google+</a></li>
         </ul></center>
       </div>
     </div>

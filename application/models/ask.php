@@ -29,13 +29,12 @@ class Ask extends CI_Model
     		$i++;
     		$id = $row['id'];
 			$ans = "answer".$i;
-			$answer = $input[$ans];
-
+			$answer = $input[$ans]."";
+			
 			$this->db->where('correct_answer', $answer);
 			$this->db->where('id', $id);
 			$query = $this->db->get('ask');
 			$correct = $query->row();
-
 			if(count($correct))
 				$score++;
     	}
