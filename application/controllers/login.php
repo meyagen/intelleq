@@ -23,8 +23,7 @@ class Login extends CI_Controller{
 				redirect('site');
 			}
 			else {
-				$this->session->set_flashdata('error', 'That email/password combination does not exist');
-				redirect('', 'refresh');
+				echo "invalid";
 			}
 		}
 

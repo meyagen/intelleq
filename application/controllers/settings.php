@@ -5,6 +5,8 @@ class Settings extends CI_Controller{
 		if($this->loggedin() == FALSE)
 			redirect('home');
 		else {
+			$data['firstname'] = $this->session->userdata('fname');
+			$data['lastname'] = $this->session->userdata('lname');
 			$data['main_content'] = 'edit_user';
 			$this->load->view('_main_layout', $data);			
 		}

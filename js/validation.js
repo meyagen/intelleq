@@ -1,12 +1,14 @@
 $(document).ready(function(){
-	$("#forgetSubmit").click(function(){
+	var earle = false;
+	$("#formForget").submit(function(evt){
+		evt.preventDefault();
 		//$("#forgetInfo").text("Yay.");
 		$.ajax({
 			type: "POST",
 			url: "login/forget",
-			data: "email="+$("#forgetEmail").val(),
+			data: $("#formForget").serialize(),
 			success: function(msg) {
-				$("#forgetInfo").text("start "+msg+" end");
+				//$("#forgetInfo").text("start "+msg+" end");
 				if(msg=="invalid") {
 					$("#forgetEmail").removeClass("success");
 					$("#forgetInfo").removeClass("success");
@@ -28,9 +30,33 @@ $(document).ready(function(){
 					$("#forgetInfo").addClass("success");
 					$("#forgetInfo").text("An e-mail has been sent with your new password.");
 				}
-				//else $("#forgetInfo").text("Yoy.");*/
 			}
 		});
-		//$("#forgetInfo").text("Yey.");
+	});
+
+	$("#formSignIn").submit(function(evt){
+		if (!earle)
+		evt.preventDefault();
+		//$("#forgetInfo").text("Yay.");
+		$.ajax({
+			type: "POST",
+			url: "login/validate",
+			data: $("#formSignIn").serialize(),
+			success: function(msg) {
+				//$("#forgetInfo").text("start "+msg+" end");
+				if(msg=="invalid") {
+					$("#signinUentry").addClass("error");
+					$("#signinPass").addClass("error");
+					$("#signinInfo").addClass("error");
+					$("#signinInfo").text("Invalid username and password combination! Please try again.");
+				}
+				else {
+					if (!earle) {
+						earle = true;
+						$("#formSignIn").submit();
+					}
+				}
+			}
+		});
 	});
 });

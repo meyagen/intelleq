@@ -25,15 +25,20 @@
 	<div class="row">
 		<div class="span9">
 		<div id="login_form">
-			<?php echo form_open('question');?>
+			<?php echo form_open('question/get_input');?>
 		<table class="table">
 		<?php
+
+		$item = 0;
+
 		foreach ($questions as $row)
 		{
+			$item++;
+			$name = "answer" .$item;
+	
 			echo '<table>';
 			echo '<tr>';
-				echo '<td>';
-				
+				echo '<td>';				
 				echo '</td>';
 			
 			echo '</tr>';
@@ -43,22 +48,24 @@
 					echo $row['ask'];
 				echo '</td>';
 
+			//'.$row['group'].'
+
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice1'].'">' . $row['choice1'];
+				echo '<input type="radio" name='.$name.'  value="'.$row['choice1'].'">' . $row['choice1'];
 				echo '</td>';
 
 			echo '</tr>';
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice2'].'">' . $row['choice2'];
+				echo '<input type="radio" name='.$name.' value="'.$row['choice2'].'">' . $row['choice2'];
 				echo '</td>';
 
 			echo '</tr>';
 
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice3'].'">' . $row['choice3'];
+				echo '<input type="radio" name='.$name.' value="'.$row['choice3'].'">' . $row['choice3'];
 				
 				echo '</td>';
 
@@ -66,7 +73,7 @@
 			
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['correct_answer'].'">' . $row['correct_answer'];
+				echo '<input type="radio" name='.$name.' value="'.$row['correct_answer'].'">' . $row['correct_answer'];
 				
 				echo '</td>';
 
@@ -77,10 +84,15 @@
 		}
 		?>
 
-			
-			
 		</table>
+		 <input type="submit" name="submit" class="button radius success">
 		<?php echo form_close();?>
+
+	  <?php echo form_open('questions/pause');?>
+	  <form>
+	  <input type="submit" name="pause" class="button radius success">
+	  <?php echo form_close();?>
+	  </form>
 		</div></div>
 	</div>
 </div>	

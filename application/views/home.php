@@ -166,39 +166,37 @@
 
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
-  <?php echo form_open('login/validate');?>
-  <form>
+  <form id="formSignIn">
     <h2>Welcome back, user!</h2>
     <fieldset>
       <legend>Sign In to intelleq</legend>
     <div class="row">
       <div class="large-12 columns">
       <label>Username</label>
-      <input type="text" id="username" name="username" required placeholder="Enter username or email">
+      <input type="text" id="signinUentry" required name="username" placeholder="Enter username or email">
     </div>
       <div class="large-12 columns">
       <label>Password</label>
-      <input type="password" id="password" name="password" required placeholder="Password">
+      <input type="password" id="signinPass" required name="password" placeholder="Password">
     </div>
     </fieldset>
 
-  <div class="row">
-    <div class="large-12 columns">
-      <ul class="button-group radius">
-        <input type="submit" name="Sign In" value="Sign In" class="small button">
-        <?php echo form_close();?>
-        </form>
-        <li><a class="small button alert" href="#" data-reveal-id="modalForgot">Forgot Password</a></li>
-        <!--li><a class="small button alert" href="login/reset">Forgot Password</a></li-->
-    </ul>
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="button-group radius">
+          <li><input type="submit" name="Sign In" value="Sign In" class="small button"></input></li>
+          <li><a class="small button alert" href="#" data-reveal-id="modalForgot">Forgot Password</a></li>
+          <!--li><a class="small button alert" href="login/reset">Forgot Password</a></li-->
+      </ul>
+      </div>
     </div>
-  </div>
+  </form>
+  <span id="signinInfo"></span>
   <a class="close-reveal-modal">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
 <div id="modalForgot" class="reveal-modal small">
-  <!--?php echo form_open('login/forget');?-->
   <form id="formForget">
     <h2>Oh no!</h2>
     <fieldset>
@@ -214,8 +212,7 @@
     <div class="large-12 columns">
       <ul class="button-group radius">
         <li><a class="small button" href="#" data-reveal-id="modalSignIn">&laquo; Back to Sign In</a></li>
-        <li><a class="small button" id="forgetSubmit">Submit</a></li>
-        <!--?php echo form_close();?-->
+        <li><input class="small button" type="submit" value="Reset Password"></input></li>
     </ul>
     </div>
   </div>
