@@ -198,15 +198,15 @@
 
 <!--Modal - Forgot Password-->
 <div id="modalForgot" class="reveal-modal small">
-  <?php echo form_open('login/forget');?>
-  <form>
+  <!--?php echo form_open('login/forget');?-->
+  <form id="formForget">
     <h2>Oh no!</h2>
     <fieldset>
       <legend>Password reset</legend>
     <div class="row">
       <div class="large-12 columns">
       <label>E-mail address</label>
-      <input type="email" id="email" name="email" required placeholder="Enter e-mail address here">
+      <input type="email" id="forgetEmail" name="email" required placeholder="Enter e-mail address here">
     </div>
     </fieldset>
 
@@ -214,12 +214,13 @@
     <div class="large-12 columns">
       <ul class="button-group radius">
         <li><a class="small button" href="#" data-reveal-id="modalSignIn">&laquo; Back to Sign In</a></li>
-        <input class="small button" type="submit" name="Submit">
-        <?php echo form_close();?>
+        <li><a class="small button" id="forgetSubmit">Submit</a></li>
+        <!--?php echo form_close();?-->
     </ul>
     </div>
   </div>
   </form>
+  <span id="forgetInfo"></span>
   <a class="close-reveal-modal">x</a>
 </div>
 

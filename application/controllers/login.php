@@ -120,27 +120,17 @@ class Login extends CI_Controller{
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		
-		if($this->form_validation->run() == FALSE) {
-			$this->reset();
-		}
-
-		else {
+		if($this->form_validation->run() == TRUE) {
 			$this->load->model('membership_model');
 			$data = $this->membership_model->edit_password();
 
 			if($data['query']) {
 				$data['main_content'] = 'reset_successful';
-				$this->load->view('includes/template', $data);
+				echo "valid";
+				//$this->load->view('includes/template', $data);
 			}
-
-			else {
-				$this->reset();
-			}
+			else echo "notfound";
 		}
-	}
-
-	function reset() {
-		$data['main_content'] = 'reset_form';
-		$this->load->view('includes/template', $data);
+		else echo "invalid";
 	}
 }

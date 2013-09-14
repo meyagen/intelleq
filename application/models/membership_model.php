@@ -24,13 +24,21 @@ class Membership_model extends MY_Model {
 		$this->db->where('activate', 'true');
 		$query = $this->db->get('membership');
 		$user = $query->row();
-		echo $user->username;*/
+		echo $user->username;
 
 		$user = $this->get_by(array(
 			'username' => $this->input->post('username'),
 			'password' => $this->hash($this->input->post('password')),
 			'activate' => 'true',
-		), TRUE);
+		), TRUE);*/
+	
+		$user_mail = $this->input->post('username');
+		$this->db->where("username = '$user_mail' or email_address = '$user_mail'"); 
+		$this->db->where('password', $this->hash($this->input->post('password')));
+		$this->db->where('activate', 'true');
+		$query = $this->db->get('membership');
+		$user = $query->row();
+
 
 		if (count($user)) {
 			// Log in user
@@ -50,13 +58,20 @@ class Membership_model extends MY_Model {
 			/*$this->db->where('username', $this->input->post('username'));
 			$this->db->where('temp_password', $this->hash($this->input->post('password')));
 			$this->db->where('activate', 'true');
-			$query = $this->db->get('membership');*/
+			$query = $this->db->get('membership');
 
 			$user = $this->get_by(array(
 				'username' => $this->input->post('username'),
 				'temp_password' => $this->hash($this->input->post('password')),
 				'activate' => 'true',
-			), TRUE);
+			), TRUE);*/
+
+			$user_mail = $this->input->post('username');
+			$this->db->where("username = '$user_mail' or email_address = '$user_mail'"); 
+			$this->db->where('temp_password', $this->hash($this->input->post('password')));
+			$this->db->where('activate', 'true');
+			$query = $this->db->get('membership');
+			$user = $query->row();
 
 			if (count($user)) {
 				$data = array( 
@@ -233,7 +248,7 @@ class Membership_model extends MY_Model {
 			$this->email->set_mailtype('text');
 			$this->email->clear();
 
-			$this->email->from($this->config->item('email_bot'), 'MERK Support');
+			$this->email->from($this->config->item('email_bot'), 'intelleq Support');
 			$this->email->to($email);	
 			$this->email->subject('Password Reset');
 			$this->email->message("Good day! You have recently asked for your password to be reset. Your new temporary password is "

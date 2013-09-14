@@ -12,4 +12,5 @@
   <script src="js/vendor/custom.jquery.js"></script>
   <script src="js/vendor/custom.zepto.js"></script>
   <script src="js/foundation.min.js"></script>
+  <script src="js/validation.js"></script>
 </head>

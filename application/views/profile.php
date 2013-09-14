@@ -35,19 +35,19 @@
     <p class="title"><a href="../support.html">Calendar</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="question">Modules</a></p>
-    <!-- <div class="content"> 
+    <p class="title"><a>Modules</a></p>
+    <div class="content"> 
       <ul class="side-nav">
-        <li><a href="../">English</a></li>
-        <li><a href="../javascript.html">Science</a></li>
-        <li><a href="../sass.html">Math</a></li>
+        <li><a href="question">English</a></li>
+        <li><a href="#">Science</a></li>
+        <li><a href="#">Math</a></li>
       </ul>
-    </div>-->
+    </div>
   </section>
   <h4>intelleq x You</h4>
     <div class="docs section-container accordion" data-section="accordion">
         <section class="section ">
-    <p class="title"><a href="../faq.html">Profile</a></p>
+    <p class="title"><a href="settings">Profile</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="../support.html">Records</a></p>
