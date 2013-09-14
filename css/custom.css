@@ -159,3 +159,7 @@ span#forgetInfo {
 span.success {
   background: #29ad61;
 }
+
+span.error {
+  text-align: center;
+}

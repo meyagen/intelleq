@@ -26,21 +26,6 @@ class Login extends CI_Controller{
 				echo "invalid";
 			}
 		}
-
-		/*$this->load->model('membership_model');
-		$query = $this->membership_model->validate();
-		
-		if($query > 0) {
-			$data = array(
-				'username' => $this->input->post('username'),
-				'loggedin' => true
-			);
-			$this->session->set_userdata($data);
-			redirect('site/members_area');
-		}
-		else {
-			redirect('', 'refresh');
-		}*/
 	}
 
 	public function logout ()
@@ -52,6 +37,68 @@ class Login extends CI_Controller{
 	public function loggedin ()
 	{
 		return (bool) $this->session->userdata('loggedin');
+	}
+
+	function find_email() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'email_address', 
+								'Email Address', 
+								'trim|required|valid_email');
+		if($this->form_validation->run() == FALSE) {
+			echo "invalid";
+		}
+		else {
+			$this->load->model('membership_model');
+			
+			if($this->membership_model->email_unique()){
+				echo "valid";
+			}
+			else {
+				echo "taken";
+			}
+		}
+	}
+
+	function find_uname() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'username', 
+								'Username', 
+								'trim|required|min_length[4]');
+		if($this->form_validation->run() == FALSE) {
+			echo "invalid";
+		}
+		else {
+			$this->load->model('membership_model');
+			
+			if($this->membership_model->uname_unique()){
+				echo "valid";
+			}
+			else {
+				echo "taken";
+			}
+		}
+	}
+
+	function check_pass() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'password',
+								'Password', 
+								'trim|required|min_length[4]|max_length[32]');
+		if($this->form_validation->run() == FALSE) echo "invalid";
+		else echo "valid";
+	}
+
+	function match_pass() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'password2', 
+								'Password Confirmation', 	
+								'trim|required|matches[password]');
+		if($this->form_validation->run() == FALSE) echo "invalid";
+		else echo "valid";
 	}
 
 	function create_member() {
@@ -83,20 +130,17 @@ class Login extends CI_Controller{
 								'trim|required|matches[password]');
 
 		if($this->form_validation->run() == FALSE) {
-			redirect('', 'refresh');
+			echo "invalid";
 		}
 		else {
 			$this->load->model('membership_model');
 			
 			if($this->membership_model->is_unique()){
 				$data['main_content'] = 'email_confirmation';
-				$this->load->view('includes/template', $data);
 				$this->membership_model->create_member();
+				echo "valid";
 			}
-
-			else {
-				redirect('', 'refresh');
-			}
+			else echo "taken";
 		}
 	}
 
