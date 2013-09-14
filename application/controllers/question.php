@@ -24,6 +24,9 @@ class Question extends User_Controller
 			$answer = "answer".$i;
 			$$answer = $this->input->post($answer);
 			$input[$answer] = $$answer;
+			/*echo "<pre>";
+			print_r($input);
+			echo "</pre>";*/
 		}
 		
 		$this->load->model('ask');
