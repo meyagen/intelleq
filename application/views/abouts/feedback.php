@@ -9,7 +9,7 @@
 	}
 ?>
 <div class="container">
-	dfjsdfhjksdh
+	Feel free to send us your feedbacks!
 </div>	
 
 <?php $this->load->view('includes/footer');?>

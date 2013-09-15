@@ -1,15 +1,10 @@
 <?php $this->load->view('components/page_head'); ?>
 <body class="off-canvas hide-extras">
-<?php
-	if($loggedin>0){
-		$this->load->view('includes/header');
-	}
-	else {
-		$this->load->view('includes/header2');
-	}
-?>
-<div class="container">
-	dfjsdfhjksdh
+
+<?php $this->load->view('includes/header');?>
+<?php $this->load->view('navigation');?>
+<div>
+	Imagine a calendar here.
 </div>	
 
 <?php $this->load->view('includes/footer');?>

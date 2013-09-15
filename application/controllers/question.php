@@ -2,18 +2,18 @@
 class Question extends User_Controller
 {
 
-	public function __construct ()
-	{
+	public function __construct () {
 		parent::__construct();
 	}
 
-	public function index ()
-	{
+	public function index(){
 		// Fetch all questions
 		$this->load->model('ask');
-		$result = $this->ask->get_questions();
-		$data['questions'] = $result;
-		
+		$this->ask->set_questions();
+		$data['questions'] = $this->session->userdata('questions');
+		$data['qrand'] = $this->random_question();
+		$data['crand'] = $this->random_choice();
+
 		// Load view
 		$data['firstname'] = $this->session->userdata('fname');
 		$data['lastname'] = $this->session->userdata('lname');
@@ -21,5 +21,75 @@ class Question extends User_Controller
 		$this->load->view('members_area', $data);
 	}
 
+	function random_question(){
+		$total = $this->ask->count_questions();
+		$q_array = array();
 
+		for($i = 0; $i < $total; $i++){
+			$randomize = rand(0,$total-1);
+		
+			while(in_array($randomize,$q_array)){
+				$randomize = rand(0,$total-1);
+			}
+
+			array_push($q_array,$randomize);
+					
+			
+			$q_array[$i] = $randomize;
+		}
+
+		return $q_array;
+	}
+
+	function random_choice(){
+		$total = 4;
+		$c_array = array();
+
+		for($i = 0; $i < $total; $i++){
+			$randomize = rand(0,$total-1);
+		
+			while(in_array($randomize,$c_array)){
+				$randomize = rand(0,$total-1);
+			}
+
+			array_push($c_array,$randomize);
+					
+			
+			$c_array[$i] = $randomize;
+		}
+
+		return $c_array;
+	}
+
+	function get_input($cid = null) {
+		for($i = 1; $i < 4; $i++) {
+			$answer = "answer".$i;
+			$$answer = $this->input->post($answer);
+			$input[$answer] = $$answer;
+			/*echo "<pre>";
+			print_r($input);
+			echo "</pre>";*/
+		}
+		
+		$this->load->model('ask');
+		$score = $this->ask->compute($input);
+		
+		echo "Score: ";
+		echo $score;
+		echo "/3";
+	}
+
+	function pause(){
+		for($i = 1; $i < 4; $i++) {
+			$answer = "answer".$i;
+			$$answer = $this->input->post($answer);
+			$input[$answer] = $$answer;
+		}
+
+		$data = array(
+			'answers' => $input,
+		);
+
+		$this->session->set_userdata($data);
+	}
 }

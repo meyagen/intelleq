@@ -1,8 +1,24 @@
 <?php
 	class Feedback extends CI_Controller {
+		function __construct ()
+		{
+			parent::__construct();
+		}
 		function index() {
-			$data['main_content'] = 'home';
-			$this->load->view('feedback', $data);
+			$this->load->library('../controllers/login');
+			$isLoggedIn = $this->login->loggedin();	
+			$data['loggedin'] = $isLoggedIn;
+			
+			if($isLoggedIn > 0) {
+				$data['firstname'] = $this->session->userdata('fname');
+				$data['lastname'] = $this->session->userdata('lname');
+				$data['main_content'] = 'abouts/feedback';
+				$this->load->view('members_area', $data);
+			}
+			else{
+				$data['main_content'] = 'main_layout';
+				$this->load->view('abouts/feedback'	, $data);
+			}
 		}
 	}
 

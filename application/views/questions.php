@@ -25,15 +25,21 @@
 	<div class="row">
 		<div class="span9">
 		<div id="login_form">
-			<?php echo form_open('question');?>
+			<?php echo form_open('question/get_input');?>
 		<table class="table">
 		<?php
-		foreach ($questions as $row)
+
+		$item = 0;
+		
+		for($i = 0; $i < count($questions); $i++)
 		{
+			$row = $questions[$qrand[$i]];
+			$item++;
+			$name = "answer" .$item;
+			echo $item;
 			echo '<table>';
 			echo '<tr>';
-				echo '<td>';
-				
+				echo '<td>';				
 				echo '</td>';
 			
 			echo '</tr>';
@@ -43,44 +49,29 @@
 					echo $row['ask'];
 				echo '</td>';
 
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice1'].'">' . $row['choice1'];
-				echo '</td>';
-
-			echo '</tr>';
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice2'].'">' . $row['choice2'];
-				echo '</td>';
-
-			echo '</tr>';
-
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice3'].'">' . $row['choice3'];
-				
-				echo '</td>';
-
-			echo '</tr>';
-			
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['correct_answer'].'">' . $row['correct_answer'];
-				
-				echo '</td>';
-
-			echo '</tr>';
-			
+			//'.$row['group'].'
+			$choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+			for($j = 0; $j < 4; $j++){
+				echo '<tr>';
+					echo '<td>';
+					echo '<input type="radio" name='.$name.'  value="'.$row[$choice[$crand[$j]]].'">' . $row[$choice[$crand[$j]]];
+					echo '</td>';
+				echo '</tr>';
+			}
 			echo '</table>';
 			echo '<br />'; 
 		}
 		?>
 
-			
-			
 		</table>
+		 <input type="submit" name="submit" class="button radius success">
 		<?php echo form_close();?>
+
+	  <?php echo form_open('questions/pause');?>
+	  <form>
+	  <input type="submit" name="pause" class="button radius success">
+	  <?php echo form_close();?>
+	  </form>
 		</div></div>
 	</div>
 </div>	

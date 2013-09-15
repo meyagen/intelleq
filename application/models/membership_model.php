@@ -26,11 +26,15 @@ class Membership_model extends MY_Model {
 		$user = $query->row();
 		echo $user->username;*/
 
-		$user = $this->get_by(array(
+		/*$user = $this->get_by(array(
 			'username' => $this->input->post('username'),
 			'password' => $this->hash($this->input->post('password')),
 			'activate' => 'true',
-		), TRUE);
+		), TRUE);*/
+
+		$sql = "SELECT * FROM membership WHERE (email_address = ? OR username = ?) AND password = ? AND activate = 'true' LIMIT 1";
+		$query = $this->db->query($sql, array($this->input->post('username'), $this->input->post('username'), $this->hash($this->input->post('password'))));
+		$user = $query->row();
 
 		if (count($user)) {
 			// Log in user
@@ -52,11 +56,15 @@ class Membership_model extends MY_Model {
 			$this->db->where('activate', 'true');
 			$query = $this->db->get('membership');*/
 
-			$user = $this->get_by(array(
+			/*$user = $this->get_by(array(
 				'username' => $this->input->post('username'),
 				'temp_password' => $this->hash($this->input->post('password')),
 				'activate' => 'true',
-			), TRUE);
+			), TRUE);*/
+
+			$sql = "SELECT * FROM membership WHERE (email_address = ? OR username = ?) AND temp_password = ? AND activate = 'true' LIMIT 1";
+			$query = $this->db->query($sql, array($this->input->post('username'), $this->input->post('username'), $this->hash($this->input->post('password'))));
+			$user = $query->row();
 
 			if (count($user)) {
 				$data = array( 
@@ -124,6 +132,26 @@ class Membership_model extends MY_Model {
 		}
 
 		return true;
+	}
+
+	function email_unique(){
+		$email = $this->input->post('email_address');
+		$this->db->where('email_address', $email);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) return false;
+
+		else return true;
+	}
+
+	function uname_unique(){
+		$username = $this->input->post('username');
+		$this->db->where('username', $username);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) return false;
+
+		else return true;
 	}
 
 	function create_member() {

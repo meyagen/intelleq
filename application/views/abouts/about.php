@@ -9,7 +9,7 @@
 	}
 ?>
 <div class="container">
-	dfjsdfhjksdh
+	insert who we are info here
 </div>	
 
 <?php $this->load->view('includes/footer');?>

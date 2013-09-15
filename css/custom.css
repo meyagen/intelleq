@@ -151,3 +151,15 @@ footer#universal {
     line-height: 45px;
     background: rgba(34, 34, 34, 0);
 }
+
+span#forgetInfo {
+    text-align: center;
+}
+
+span.success {
+  background: #29ad61;
+}
+
+span.error {
+  text-align: center;
+}

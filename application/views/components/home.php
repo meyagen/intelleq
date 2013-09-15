@@ -5,7 +5,7 @@
 <div class="fixed">
 <nav class="top-bar fixed">
   <ul class="title-area">
-    <li class="name"><h1><a href="">intelleq</a></h1></li>
+    <li class="name"><h1><a href="#">intelleq</a></h1></li>
     <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
   </ul>
   <section class="top-bar-section">
@@ -27,7 +27,7 @@
       <div class="large-6 columns">
         <h1 class="white" style="text-shadow: 0px 1px 5px #888888;">Knowledge made <br class="hide-for-small"/>accessible.</h1>
         <h4 class="white">Something about the site <br class="hide-for-small"/>must be placed here.</h4>
-        <a class="button radius success" href="#" data-reveal-id="modalSignUp">Let's get started!</a></li>
+        <a class="button large success radius">Let's get started!</a>
     </div>
   </header>
 </section>
@@ -111,7 +111,7 @@
       <div>
         <center><h1>Something encouraging the person to <br class="hide-for-small"/>proceed should be placed here.</h1>
         <p>It's probably because we're awesome and all. Go, click that button below. You know you want to.</p>
-        <a class="button radius success" href="#" data-reveal-id="modalSignUp">Let's get started!</a></li>
+        <a href="#" class="button large success radius">Let's get started!</a>
         </center>
       </div>
     </div>
@@ -129,25 +129,25 @@
       <div class="large-4 columns">
         <center><h3 class="white">ABOUT</h3>
         <ul class="white" style="list-style:none">
-          <li><a href="about">Who We Are</a></li>
-          <li><a href="mission">Our Mission</a></li>
-          <li><a href="feedback">Feedback</a></li>
+          <li>Who We Are</li>
+          <li>Our Mission</li>
+          <li>Feedback</li>
         </ul></center>
       </div>
       <div class="large-4 columns">
         <center><h3 class="white">HELP</h3>
         <ul class="white" style="list-style:none">
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="contactus">Contact Us</a></li>
-          <li><a href="report">Report a Bug</a> </li>
+          <li>FAQ</li>
+          <li>Contact Us</li>
+          <li>Report a Bug</li>
         </ul></center>
       </div>
       <div class="large-4 columns">
         <center><h3 class="white">SOCIAL</h3>
         <ul class="white" style="list-style:none">
-          <li><a href="http://facebook.com">Facebook</a></li>
-          <li><a href="http://twitter.com">Twitter</a></li>
-          <li><a href="http://plus.googlecom">Google+</a></li>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>Google+</li>
         </ul></center>
       </div>
     </div>
@@ -166,118 +166,79 @@
 
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
-  <form id="formSignIn">
+  <?php echo form_open('login/validate');?>
+  <form>
     <h2>Welcome back, user!</h2>
     <fieldset>
       <legend>Sign In to intelleq</legend>
     <div class="row">
       <div class="large-12 columns">
       <label>Username</label>
-      <input type="text" id="signinUentry" required name="username" placeholder="Enter username or email">
+      <input type="text" id="username" name="username" placeholder="Enter username or email">
     </div>
       <div class="large-12 columns">
       <label>Password</label>
-      <input type="password" id="signinPass" required name="password" placeholder="Password">
-    </div>
-    </fieldset>
-
-    <div class="row">
-      <div class="large-12 columns">
-        <ul class="button-group radius">
-          <li><input type="submit" name="Sign In" value="Sign In" class="small button"></input></li>
-          <li><a class="small button alert" href="#" data-reveal-id="modalForgot">Forgot Password</a></li>
-          <!--li><a class="small button alert" href="login/reset">Forgot Password</a></li-->
-      </ul>
-      </div>
-    </div>
-  </form>
-  <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
-</div>
-
-<!--Modal - Forgot Password-->
-<div id="modalForgot" class="reveal-modal small">
-  <form id="formForget">
-    <h2>Oh no!</h2>
-    <fieldset>
-      <legend>Password reset</legend>
-    <div class="row">
-      <div class="large-12 columns">
-      <label>E-mail address</label>
-      <input type="email" id="forgetEmail" name="email" required placeholder="Enter e-mail address here">
-      </div>
+      <input type="password" id="password" name="password" placeholder="Password">
     </div>
     </fieldset>
 
   <div class="row">
     <div class="large-12 columns">
       <ul class="button-group radius">
-        <li><a class="small button" href="#" data-reveal-id="modalSignIn">&laquo; Back to Sign In</a></li>
-        <li><input class="small button" type="submit" value="Reset Password"></input></li>
-      </ul>
+        <input type="submit" name="Sign In" class="small button">
+        <?php echo form_close();?>
+        </form>
+
+        <li><a class="small button alert" href="login/reset">Forgot Password</a></li>
+    </ul>
     </div>
   </div>
-  </form>
-  <span id="forgetInfo"></span>
   <a class="close-reveal-modal">x</a>
 </div>
 
 <!--Modal - Sign Up-->
 <div id="modalSignUp" class="reveal-modal small">
-  <form id="formSignUp">
+  <?php echo form_open('login/create_member');?>
+  <form>
     <h2>Start here!</h2>
     <fieldset>
       <legend>Personal Information</legend>
-      <div class="row">
-        <div class="large-6 columns">
-          <label>First Name</label>
-          <input type="text" id="first_name" name="first_name" required placeholder="Enter first name">
-        </div>
-        <div class="large-6 columns">
-          <label>Last Name</label>
-          <input type="text" id="last_name" name="last_name" required placeholder="Enter last name">
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <label class id="signupEmailLabel">E-mail Address</label>
-          <input type="text" id="signupEmail" class name="email_address" required placeholder="Enter e-mail address">
-        </div>
-      </div>
+    <div class="row">
+      <div class="large-12 columns">
+      <label>First Name</label>
+      <input type="text" id="first_name" name="first_name" placeholder="Enter first name">
+    </div>
+    <div class="large-12 columns">
+      <label>Last Name</label>
+      <input type="text" id="last_name" name="last_name" placeholder="Enter last name">
+    </div>
+    <div class="large-12 columns">
+      <label>E-mail Address</label>
+      <input type="text" id="email_address" name="email_address" placeholder="Enter e-mail address">
+    </div>
     </fieldset>
     <fieldset>
       <legend>Account Information</legend>
-      <div class="row">
-        <div class="large-12 columns">
-          <label id="signupUnameLabel">Username</label>
-          <input type="text" id="signupUname" name="username" required placeholder="Enter desired username">
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <label id="signupPass1Label">Password</label>
-          <input type="password" id="signupPass1" name="password" required placeholder="Password">
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-12 columns">
-          <label id="signupPass2Label">Retype Password</label>
-          <input type="password" id="signupPass2" name="password2" required placeholder="Retype password">
-        </div>
-      </div>
-    </fieldset>
     <div class="row">
-      <div class="push-8">
-        <input type="submit" name="Create Account" class="button radius success">
-      </div>
+      <div class="large-12 columns">
+      <label>Username</label>
+      <input type="text" id="username" name="username" placeholder="Enter desired username">
     </div>
+    <div class="large-12 columns">
+      <label>Password</label>
+      <input type="password" id="password" name="password" placeholder="Password">
+    </div>
+    <div class="large-12 columns">
+      <label>Retype Password</label>
+      <input type="password" id="password2" name="password2" placeholder="Retype password">
+    </div>
+    </fieldset>
+  <div class="row">
+    <div class="push-8">
+    <input type="submit" name="Create Account" class="button radius success">
+    <?php echo form_close();?>
     </form>  
-  <a class="close-reveal-modal">x</a>
-</div>
-
-<!--Modal - Confirmation-->
-<div id="modalConfirm" class="reveal-modal small">
-    <h2>Confirmation mail sent</h2>
-    <p>Check your something something.</p>
+  </div>
+  </div>
   <a class="close-reveal-modal">x</a>
 </div>

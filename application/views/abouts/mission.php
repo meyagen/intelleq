@@ -9,7 +9,7 @@
 	}
 ?>
 <div class="container">
-	dfjsdfhjksdh
+	Mission: 
 </div>	
 
 <?php $this->load->view('includes/footer');?>

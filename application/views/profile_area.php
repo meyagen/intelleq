@@ -1,15 +1,10 @@
 <?php $this->load->view('components/page_head'); ?>
 <body class="off-canvas hide-extras">
-<?php
-	if($loggedin>0){
-		$this->load->view('includes/header');
-	}
-	else {
-		$this->load->view('includes/header2');
-	}
-?>
+
+<?php $this->load->view('includes/header');?>
+<?php $this->load->view('navigation');?>
 <div class="container">
-	dfjsdfhjksdh
+	user's profile area
 </div>	
 
 <?php $this->load->view('includes/footer');?>
