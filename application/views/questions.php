@@ -30,12 +30,16 @@
 		<?php
 
 		$item = 0;
-
-		foreach ($questions as $row)
+		
+		//foreach ($questions as $row)
+		for($i = 0; $i < count($questions); $i++)
 		{
+			//$qrand = rand(0,count($questions)-1);
+			//echo $randomize;
+			$row = $questions[$qrand[$i]];
 			$item++;
 			$name = "answer" .$item;
-	
+			echo $item;
 			echo '<table>';
 			echo '<tr>';
 				echo '<td>';				
@@ -49,36 +53,15 @@
 				echo '</td>';
 
 			//'.$row['group'].'
-
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name='.$name.'  value="'.$row['choice1'].'">' . $row['choice1'];
-				echo '</td>';
-
-			echo '</tr>';
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name='.$name.' value="'.$row['choice2'].'">' . $row['choice2'];
-				echo '</td>';
-
-			echo '</tr>';
-
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name='.$name.' value="'.$row['choice3'].'">' . $row['choice3'];
-				
-				echo '</td>';
-
-			echo '</tr>';
-			
-			echo '<tr>';
-				echo '<td>';
-				echo '<input type="radio" name='.$name.' value="'.$row['correct_answer'].'">' . $row['correct_answer'];
-				
-				echo '</td>';
-
-			echo '</tr>';
-			
+			$choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+			for($j = 0; $j < 4; $j++){
+				$crand = rand(0,3);
+				echo '<tr>';
+					echo '<td>';
+					echo '<input type="radio" name='.$name.'  value="'.$row[$choice[$crand]].'">' . $row[$choice[$crand]];
+					echo '</td>';
+				echo '</tr>';
+			}
 			echo '</table>';
 			echo '<br />'; 
 		}

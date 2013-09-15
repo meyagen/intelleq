@@ -19,6 +19,11 @@ class Ask extends CI_Model
 			$this->session->set_userdata($data);
 	}
 
+	function count_questions(){
+		$query = $this->db->count_all('ask');
+		return $query;
+	}
+
     function compute($input) {
     	$score = 0;
     	$i = 0;

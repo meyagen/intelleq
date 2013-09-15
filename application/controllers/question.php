@@ -11,12 +11,33 @@ class Question extends User_Controller
 		$this->load->model('ask');
 		$this->ask->set_questions();
 		$data['questions'] = $this->session->userdata('questions');
-		
+		$data['qrand'] = $this->random_question();
+
 		// Load view
 		$data['firstname'] = $this->session->userdata('fname');
 		$data['lastname'] = $this->session->userdata('lname');
 		$data['main_content'] = 'questions';
 		$this->load->view('members_area', $data);
+	}
+
+	function random_question(){
+		$total = $this->ask->count_questions();
+		$q_array = array();
+
+		for($i = 0; $i < $total; $i++){
+			$randomize = rand(0,$total-1);
+		
+			while(in_array($randomize,$q_array)){
+				$randomize = rand(0,$total-1);
+			}
+
+			array_push($q_array,$randomize);
+					
+			
+			$q_array[$i] = $randomize;
+		}
+
+		return $q_array;
 	}
 
 	function get_input($cid = null) {
