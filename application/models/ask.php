@@ -8,6 +8,25 @@ class Ask extends CI_Model
 		parent::__construct();
 	}
 
+	function session_found(){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('gen_exam');
+
+		if($query->num_rows > 0) {
+			$row = $query->row();
+
+			$data = array(
+				'sequence' => unserialize($row->sequence),
+				'answers' => unserialize($row->answers)
+			);
+
+			$this->session->set_userdata($data);
+			return true;
+		}
+
+		return false;
+	}
+
 	function set_questions() {
         $query = $this->db->query("select * from ask");
         $questions = $query->result_array();
@@ -30,20 +49,12 @@ class Ask extends CI_Model
 
     	$questions = $this->session->userdata('questions');
     	$sequence = $this->session->userdata('sequence');
-    	/*echo "<pre>";
-		print_r($this->session->userdata);
-		echo "</pre>";*/
-    	//foreach($questions as $row){
+
 		for($counter = 0; $counter < $this->count_questions(); $counter++){
 			$row = $questions[$sequence[$counter]];
     		$i++;
     		$id = $row['id'];
-			$ans = "answer".$i;
-			$answer = $input[$ans]."";
-			
-			/*echo "<pre>";
-			print_r($answer);
-			echo "</pre>";*/
+			$answer = $input[$i]."";
 
 			$this->db->where('correct_answer', $answer);
 			$this->db->where('id', $id);
@@ -53,8 +64,40 @@ class Ask extends CI_Model
 				$score++;
     	}
 
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('gen_exam');
+		$row = $query->num_rows;
+
+		if($row > 0)
+			$this->db->delete('gen_exam', array("username" => $this->session->userdata('username')));
+
 		return $score;
     }
 	
+	function pause($input){
+    	//serialize arrays
+		$sequence = serialize($this->session->userdata('sequence'));
+		$answers = serialize($input);
+		
+		//store data in data[]
+		$data = array(
+			'username' => $this->session->userdata('username'),
+			'sequence' => $sequence,
+			'answers' => $answers,
+		);
+
+		//store in db gen_exam
+		$this->db->where('username', $data['username']);
+		$query = $this->db->get('gen_exam');
+		$row = $query->num_rows;
+
+		if($row > 0) {
+			$this->db->where('username', $data['username']);
+			$this->db->update('gen_exam', $data);
+		}
+	
+		else
+			$this->db->insert('gen_exam', $data);
+	}
 	
 }

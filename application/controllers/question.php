@@ -4,19 +4,25 @@ class Question extends User_Controller
 
 	public function __construct () {
 		parent::__construct();
-
-		$this->load->model('ask');
 	}
 
 	public function index(){
-		// Fetch all question
+		$this->load->model('ask');
 		$this->ask->set_questions();
-
-		$data['qrand'] = $this->random_question();
+		$data['questions'] = $this->session->userdata('questions');
 		$data['crand'] = $this->random_choice();
 
+		if($this->ask->session_found() == FALSE){
+			$data['qrand'] = $this->random_question();
+			$data['answers'] = null;
+		}
+
+		else {
+			$data['qrand'] = $this->session->userdata('sequence');
+			$data['answers'] = $this->session->userdata('answers');
+		}
+
 		// Load view
-		$data['questions'] = $this->session->userdata('questions');
 		$data['firstname'] = $this->session->userdata('fname');
 		$data['lastname'] = $this->session->userdata('lname');
 		$data['main_content'] = 'questions';
@@ -34,16 +40,15 @@ class Question extends User_Controller
 				$randomize = rand(0,$total-1);
 			}
 
-			array_push($q_array,$randomize);
-					
+			array_push($q_array,$randomize);			
 			$q_array[$i] = $randomize;
 		}
 
 		$data = array(
 			'sequence' => $q_array,
 		);
-		$this->session->set_userdata($data);
 
+		$this->session->set_userdata($data);
 		return $q_array;
 	}
 
@@ -58,8 +63,7 @@ class Question extends User_Controller
 				$randomize = rand(0,$total-1);
 			}
 
-			array_push($c_array,$randomize);
-								
+			array_push($c_array,$randomize);							
 			$c_array[$i] = $randomize;
 		}
 
@@ -67,35 +71,31 @@ class Question extends User_Controller
 	}
 
 	function get_input($cid = null) {
-		$total = $this->ask->count_questions();
-		for($i = 1; $i <= $total; $i++) {
-			$answer = "answer".$i;
-			$$answer = $this->input->post($answer);
-			$input[$answer] = $$answer;
-			/*echo "<pre>";
-			print_r($input);
-			echo "</pre>";*/
-		}
-		
 		$this->load->model('ask');
-		$score = $this->ask->compute($input);
-		
-		echo "Score: ";
-		echo $score;
-		echo "/".$total;
-	}
+		$finished = true;
 
-	function pause(){
-		for($i = 1; $i < 4; $i++) {
+		for($i = 1; $i <= $this->ask->count_questions(); $i++) {
 			$answer = "answer".$i;
 			$$answer = $this->input->post($answer);
-			$input[$answer] = $$answer;
+			$input[$i] = $$answer;
+
+			if($$answer == null)
+				$finished = false;
 		}
-
-		$data = array(
-			'answers' => $input,
-		);
-
-		$this->session->set_userdata($data);
+		
+		
+		if($finished) {
+			$score = $this->ask->compute($input);
+			echo "Score: ";
+			echo $score;
+			echo "/";
+			echo $this->ask->count_questions();
+		}
+	
+		else {
+			$this->ask->pause($input);
+			redirect('site');
+		}
+		
 	}
 }
