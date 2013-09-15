@@ -31,11 +31,8 @@
 
 		$item = 0;
 		
-		//foreach ($questions as $row)
 		for($i = 0; $i < count($questions); $i++)
 		{
-			//$qrand = rand(0,count($questions)-1);
-			//echo $randomize;
 			$row = $questions[$qrand[$i]];
 			$item++;
 			$name = "answer" .$item;
@@ -55,10 +52,9 @@
 			//'.$row['group'].'
 			$choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
 			for($j = 0; $j < 4; $j++){
-				$crand = rand(0,3);
 				echo '<tr>';
 					echo '<td>';
-					echo '<input type="radio" name='.$name.'  value="'.$row[$choice[$crand]].'">' . $row[$choice[$crand]];
+					echo '<input type="radio" name='.$name.'  value="'.$row[$choice[$crand[$j]]].'">' . $row[$choice[$crand[$j]]];
 					echo '</td>';
 				echo '</tr>';
 			}

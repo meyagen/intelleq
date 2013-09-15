@@ -12,6 +12,7 @@ class Question extends User_Controller
 		$this->ask->set_questions();
 		$data['questions'] = $this->session->userdata('questions');
 		$data['qrand'] = $this->random_question();
+		$data['crand'] = $this->random_choice();
 
 		// Load view
 		$data['firstname'] = $this->session->userdata('fname');
@@ -38,6 +39,26 @@ class Question extends User_Controller
 		}
 
 		return $q_array;
+	}
+
+	function random_choice(){
+		$total = 4;
+		$c_array = array();
+
+		for($i = 0; $i < $total; $i++){
+			$randomize = rand(0,$total-1);
+		
+			while(in_array($randomize,$c_array)){
+				$randomize = rand(0,$total-1);
+			}
+
+			array_push($c_array,$randomize);
+					
+			
+			$c_array[$i] = $randomize;
+		}
+
+		return $c_array;
 	}
 
 	function get_input($cid = null) {
