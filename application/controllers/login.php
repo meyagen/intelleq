@@ -106,6 +106,68 @@ class Login extends CI_Controller{
 		else echo "valid";
 	}
 
+	function find_email() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'email_address', 
+								'Email Address', 
+								'trim|required|valid_email');
+		if($this->form_validation->run() == FALSE) {
+			echo "invalid";
+		}
+		else {
+			$this->load->model('membership_model');
+			
+			if($this->membership_model->email_unique()){
+				echo "valid";
+			}
+			else {
+				echo "taken";
+			}
+		}
+	}
+
+	function find_uname() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'username', 
+								'Username', 
+								'trim|required|min_length[4]');
+		if($this->form_validation->run() == FALSE) {
+			echo "invalid";
+		}
+		else {
+			$this->load->model('membership_model');
+			
+			if($this->membership_model->uname_unique()){
+				echo "valid";
+			}
+			else {
+				echo "taken";
+			}
+		}
+	}
+
+	function check_pass() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'password',
+								'Password', 
+								'trim|required|min_length[4]|max_length[32]');
+		if($this->form_validation->run() == FALSE) echo "invalid";
+		else echo "valid";
+	}
+
+	function match_pass() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules(
+								'password2', 
+								'Password Confirmation', 	
+								'trim|required|matches[password]');
+		if($this->form_validation->run() == FALSE) echo "invalid";
+		else echo "valid";
+	}
+
 	function create_member() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules(

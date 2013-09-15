@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php $this->load->view('components/page_head'); ?>
 <body class="off-canvas hide-extras">
 <?php
@@ -14,3 +15,6 @@
 
 <?php $this->load->view('includes/footer');?>
 <?php $this->load->view('components/page_tail');?>
+=======
+Our mission yehey
+>>>>>>> 4d05d7186a060abd499382ac4f2feb7f8322a764
