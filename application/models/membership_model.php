@@ -134,6 +134,26 @@ class Membership_model extends MY_Model {
 		return true;
 	}
 
+	function email_unique(){
+		$email = $this->input->post('email_address');
+		$this->db->where('email_address', $email);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) return false;
+
+		else return true;
+	}
+
+	function uname_unique(){
+		$username = $this->input->post('username');
+		$this->db->where('username', $username);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) return false;
+
+		else return true;
+	}
+
 	function create_member() {
 		$new_member_insert_data = array(
 			'first_name' => $this->input->post('first_name'),

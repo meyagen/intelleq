@@ -205,6 +205,7 @@
       <div class="large-12 columns">
       <label>E-mail address</label>
       <input type="email" id="forgetEmail" name="email" required placeholder="Enter e-mail address here">
+      </div>
     </div>
     </fieldset>
 
@@ -213,7 +214,7 @@
       <ul class="button-group radius">
         <li><a class="small button" href="#" data-reveal-id="modalSignIn">&laquo; Back to Sign In</a></li>
         <li><input class="small button" type="submit" value="Reset Password"></input></li>
-    </ul>
+      </ul>
     </div>
   </div>
   </form>
@@ -223,47 +224,60 @@
 
 <!--Modal - Sign Up-->
 <div id="modalSignUp" class="reveal-modal small">
-  <?php echo form_open('login/create_member');?>
-  <form>
+  <form id="formSignUp">
     <h2>Start here!</h2>
     <fieldset>
       <legend>Personal Information</legend>
-    <div class="row">
-      <div class="large-12 columns">
-      <label>First Name</label>
-      <input type="text" id="first_name" name="first_name" required placeholder="Enter first name">
-    </div>
-    <div class="large-12 columns">
-      <label>Last Name</label>
-      <input type="text" id="last_name" name="last_name" required placeholder="Enter last name">
-    </div>
-    <div class="large-12 columns">
-      <label>E-mail Address</label>
-      <input type="text" id="email_address" name="email_address" required placeholder="Enter e-mail address">
-    </div>
+      <div class="row">
+        <div class="large-6 columns">
+          <label>First Name</label>
+          <input type="text" id="first_name" name="first_name" required placeholder="Enter first name">
+        </div>
+        <div class="large-6 columns">
+          <label>Last Name</label>
+          <input type="text" id="last_name" name="last_name" required placeholder="Enter last name">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label class id="signupEmailLabel">E-mail Address</label>
+          <input type="text" id="signupEmail" class name="email_address" required placeholder="Enter e-mail address">
+        </div>
+      </div>
     </fieldset>
     <fieldset>
       <legend>Account Information</legend>
-    <div class="row">
-      <div class="large-12 columns">
-      <label>Username</label>
-      <input type="text" id="username" name="username" required placeholder="Enter desired username">
-    </div>
-    <div class="large-12 columns">
-      <label>Password</label>
-      <input type="password" id="password" name="password" required placeholder="Password">
-    </div>
-    <div class="large-12 columns">
-      <label>Retype Password</label>
-      <input type="password" id="password2" name="password2" required placeholder="Retype password">
-    </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label id="signupUnameLabel">Username</label>
+          <input type="text" id="signupUname" name="username" required placeholder="Enter desired username">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label id="signupPass1Label">Password</label>
+          <input type="password" id="signupPass1" name="password" required placeholder="Password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <label id="signupPass2Label">Retype Password</label>
+          <input type="password" id="signupPass2" name="password2" required placeholder="Retype password">
+        </div>
+      </div>
     </fieldset>
-  <div class="row">
-    <div class="push-8">
-    <input type="submit" name="Create Account" class="button radius success">
-    <?php echo form_close();?>
+    <div class="row">
+      <div class="push-8">
+        <input type="submit" name="Create Account" class="button radius success">
+      </div>
+    </div>
     </form>  
-  </div>
-  </div>
+  <a class="close-reveal-modal">x</a>
+</div>
+
+<!--Modal - Confirmation-->
+<div id="modalConfirm" class="reveal-modal small">
+    <h2>Confirmation mail sent</h2>
+    <p>Check your something something.</p>
   <a class="close-reveal-modal">x</a>
 </div>
