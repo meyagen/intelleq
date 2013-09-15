@@ -4,17 +4,19 @@ class Question extends User_Controller
 
 	public function __construct () {
 		parent::__construct();
+
+		$this->load->model('ask');
 	}
 
 	public function index(){
-		// Fetch all questions
-		$this->load->model('ask');
+		// Fetch all question
 		$this->ask->set_questions();
-		$data['questions'] = $this->session->userdata('questions');
+
 		$data['qrand'] = $this->random_question();
 		$data['crand'] = $this->random_choice();
 
 		// Load view
+		$data['questions'] = $this->session->userdata('questions');
 		$data['firstname'] = $this->session->userdata('fname');
 		$data['lastname'] = $this->session->userdata('lname');
 		$data['main_content'] = 'questions';
@@ -34,15 +36,19 @@ class Question extends User_Controller
 
 			array_push($q_array,$randomize);
 					
-			
 			$q_array[$i] = $randomize;
 		}
+
+		$data = array(
+			'sequence' => $q_array,
+		);
+		$this->session->set_userdata($data);
 
 		return $q_array;
 	}
 
 	function random_choice(){
-		$total = 4;
+		$total = 4; 		//contant 4 choices
 		$c_array = array();
 
 		for($i = 0; $i < $total; $i++){
@@ -53,8 +59,7 @@ class Question extends User_Controller
 			}
 
 			array_push($c_array,$randomize);
-					
-			
+								
 			$c_array[$i] = $randomize;
 		}
 
@@ -62,7 +67,8 @@ class Question extends User_Controller
 	}
 
 	function get_input($cid = null) {
-		for($i = 1; $i < 4; $i++) {
+		$total = $this->ask->count_questions();
+		for($i = 1; $i <= $total; $i++) {
 			$answer = "answer".$i;
 			$$answer = $this->input->post($answer);
 			$input[$answer] = $$answer;
@@ -76,7 +82,7 @@ class Question extends User_Controller
 		
 		echo "Score: ";
 		echo $score;
-		echo "/3";
+		echo "/".$total;
 	}
 
 	function pause(){

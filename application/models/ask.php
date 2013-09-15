@@ -12,11 +12,11 @@ class Ask extends CI_Model
         $query = $this->db->query("select * from ask");
         $questions = $query->result_array();
 
-			$data = array(
-				'questions' => $questions,
-			);
+		$data = array(
+			'questions' => $questions,
+		);
 
-			$this->session->set_userdata($data);
+		$this->session->set_userdata($data);
 	}
 
 	function count_questions(){
@@ -29,13 +29,22 @@ class Ask extends CI_Model
     	$i = 0;
 
     	$questions = $this->session->userdata('questions');
-
-    	foreach($questions as $row){
+    	$sequence = $this->session->userdata('sequence');
+    	/*echo "<pre>";
+		print_r($this->session->userdata);
+		echo "</pre>";*/
+    	//foreach($questions as $row){
+		for($counter = 0; $counter < $this->count_questions(); $counter++){
+			$row = $questions[$sequence[$counter]];
     		$i++;
     		$id = $row['id'];
 			$ans = "answer".$i;
 			$answer = $input[$ans]."";
 			
+			/*echo "<pre>";
+			print_r($answer);
+			echo "</pre>";*/
+
 			$this->db->where('correct_answer', $answer);
 			$this->db->where('id', $id);
 			$query = $this->db->get('ask');
