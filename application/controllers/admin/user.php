@@ -10,8 +10,9 @@ class User extends Admin_Controller
 	public function index ()
 	{
 		// Fetch all users
+		$this->load->model('membership_model');
 		$this->data['admins'] = $this->user_m->get();
-		//$this->data['users'] = $this->db->query('SELECT email_address FROM membership');
+		$this->data['users'] = $this->membership_model->get();//$this->db->query('SELECT email_address FROM membership');
 
 		$this->data['subview'] = 'admin/user/index';
 		$this->load->view('admin/_layout_main', $this->data);

@@ -21,7 +21,7 @@
     </div>
   </section>
   <section class="section ">
-    <p class="title"><a href="user">User</a></p>
+    <p class="title"><a href="user">Members</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="#">Records</a></p>
