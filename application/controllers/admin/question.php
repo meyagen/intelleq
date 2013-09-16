@@ -21,7 +21,10 @@ class Question extends Admin_Controller
 	public function edit ($id = NULL)
 	{
 		// Fetch a article or set a new one
-		if ($id) {
+		if($id == 'question' || $id == 'user')
+			redirect('admin/question');
+
+		elseif ($id) {
 			$this->data['question'] = $this->question_m->get($id);
 			count($this->data['question']) || $this->data['errors'][] = 'Question could not be found';
 		}

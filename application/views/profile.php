@@ -38,7 +38,8 @@
     <p class="title"><a>Modules</a></p>
     <div class="content"> 
       <ul class="side-nav">
-        <li><a href="question">English</a></li>
+        <li><a href="question">Take the Exam</a></li>
+        <li><a href="#">English</a></li>
         <li><a href="#">Science</a></li>
         <li><a href="#">Math</a></li>
       </ul>
@@ -50,7 +51,7 @@
     <p class="title"><a href="settings">Profile</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="../support.html">Records</a></p>
+    <p class="title"><a href="track_record">Records</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="../faq.html">Statistics</a></p>
@@ -72,7 +73,16 @@
       <h1 class="white" style="text-shadow: 0px 1px 5px #888888;margin-left:25px;">Feed </h1>
       <strong class="white">Something here.</strong>
     </div></div>
-
+    
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="panel radius">
+          <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
+          <h2>Let's try your knowledge</h2>
+          <a class="button radius success" href="question">Take the Exam!</a></li>
+        </div>
+      </div>
+    </div>
     <!--Article-->
     <div class="row">
       <div class="large-12 columns">

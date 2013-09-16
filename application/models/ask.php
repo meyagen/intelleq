@@ -64,6 +64,7 @@ class Ask extends CI_Model
 				$score++;
     	}
 
+    	//delete from gen_exam
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('gen_exam');
 		$row = $query->num_rows;
@@ -71,9 +72,29 @@ class Ask extends CI_Model
 		if($row > 0)
 			$this->db->delete('gen_exam', array("username" => $this->session->userdata('username')));
 
+		$this->store_score($score);
+
 		return $score;
     }
-	
+
+    function store_score($score){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('membership');
+		$row = $query->num_rows;
+
+		if($row > 0){
+			$row = $query->row();
+			$score_array = array();
+
+			if($row->scores != null)
+				$score_array = unserialize($row->scores);
+			
+			$score_array[] = $score;
+			$this->db->where('username', $this->session->userdata('username'));
+			$this->db->update('membership', array('scores' => serialize($score_array)));
+		}
+    }
+
 	function pause($input){
     	//serialize arrays
 		$sequence = serialize($this->session->userdata('sequence'));

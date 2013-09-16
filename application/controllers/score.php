@@ -19,9 +19,7 @@ class Score extends User_Controller {
 				$finished = false;
 		}
 
-
 		if($finished) {
-			$score = $this->ask->compute($input);
 			$data['score'] = $this->ask->compute($input);
 			$data['total'] = $this->ask->count_questions();
 			$data['firstname'] = $this->session->userdata('fname');
@@ -34,6 +32,5 @@ class Score extends User_Controller {
 			$this->ask->pause($input);
 			redirect('site');
 		}
-
 	}
 }

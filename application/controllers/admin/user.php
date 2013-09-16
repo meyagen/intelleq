@@ -11,7 +11,8 @@ class User extends Admin_Controller
 	{
 		// Fetch all users
 		$this->data['admins'] = $this->user_m->get();
-		//$this->data['users'] = $this->db->query('SELECT email_address FROM membership');
+		$this->load->model('membership_model');
+		$this->data['users'] = $this->membership_model->get();//$this->db->query('SELECT email_address FROM membership');
 
 		$this->data['subview'] = 'admin/user/index';
 		$this->load->view('admin/_layout_main', $this->data);
@@ -20,7 +21,10 @@ class User extends Admin_Controller
 	public function edit ($id = NULL)
 	{
 		// Fetch a user or set a new one
-		if ($id) {
+		if($id == 'user' || $id == 'question')
+			redirect('admin/user');
+
+		elseif ($id) {
 			$this->data['user'] = $this->user_m->get($id);
 			count($this->data['user']) || $this->data['errors'][] = 'User could not be found';
 		}
@@ -55,7 +59,7 @@ class User extends Admin_Controller
 	public function login ()
 	{
 		// Redirect a user if he's already logged in
-		$dashboard = 'admin/dashboard2';
+		$dashboard = 'admin/dashboard';
 		$this->user_m->loggedin() == FALSE || redirect($dashboard);
 		
 		// Set form
