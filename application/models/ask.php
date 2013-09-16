@@ -1,3 +1,4 @@
+
 <?php
 class Ask extends CI_Model
 {

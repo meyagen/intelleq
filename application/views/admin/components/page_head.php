@@ -1,16 +1,17 @@
+
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="icon" href="../../img/favicons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../img/favicons/favicon.ico" type="image/x-icon">
   <title>intelleq - Admin</title>
-  <link rel="stylesheet" href="../../css/normalize.css">
-  <link rel="stylesheet" href="../../css/foundation.css">
-  <link rel="stylesheet" href="../../css/custom.css">
+  <link rel="stylesheet" href="<?php echo site_url('css/normalize.css'); ?>">
+  <link rel="stylesheet" href="<?php echo site_url('css/foundation.css'); ?>">
+  <link rel="stylesheet" href="<?php echo site_url('css/custom.css'); ?>">
   <!--link rel="stylesheet" href="css/app.css"-->
-  <script src="../../js/vendor/custom.modernizr.js"></script>
-  <script src="../../js/vendor/custom.jquery.js"></script>
-  <script src="../../js/vendor/custom.zepto.js"></script>
-  <script src="../../js/foundation.min.js"></script>
-  <script src="../../js/admin-validation.js"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.modernizr.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.jquery.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.zepto.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/foundation.min.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/admin-validation.js'); ?>"></script>
 </head>
