@@ -21,13 +21,6 @@
 			<div class="span9">
 <?php $this->load->view($subview); ?>
 			</div>
-			<!-- Sidebar -->
-			<div class="span3">
-				<section>
-					<?php echo mailto('merk.donotreply.com', '<i class="icon-user"></i> merk.donotreply.com'); ?><br>
-					<?php echo anchor('admin/user/logout', '<i class="icon-off"></i> logout'); ?>
-				</section>
-			</div>
 		</div>
 	</div>
 </section>
