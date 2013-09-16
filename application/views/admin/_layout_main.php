@@ -1,51 +1,10 @@
-<?php $this->load->view('admin/components/in_head'); ?>
+<?php $this->load->view('admin/components/page_head'); ?>
 <body style="padding-top:45px">
 <?php $this->load->view('admin/components/nav'); ?>
 
 <section class="main">
 <div class="row fullrow">
-  <div class="large-3 columns">
-    <div class="row fullrow">
-    <div class="large-10 push-1 columns">
-        <div class="panel">
-    <h4>Navigation</h4>
-    <div class="docs section-container accordion" data-section="accordion">
-        <section class="section active">
-    <p class="title"><a href="">Feed</a></p>
-  </section>
-  <section class="section ">
-    <p class="title"><a href="../support.html">Calendar</a></p>
-  </section>
-  <section class="section ">
-    <p class="title"><a>Modules</a></p>
-    <div class="content"> 
-      <ul class="side-nav">
-        <li><a href="question">English</a></li>
-        <li><a href="#">Science</a></li>
-        <li><a href="#">Math</a></li>
-      </ul>
-    </div>
-  </section>
-  <h4>intelleq x You</h4>
-    <div class="docs section-container accordion" data-section="accordion">
-        <section class="section ">
-    <p class="title"><a href="settings">Profile</a></p>
-  </section>
-  <section class="section ">
-    <p class="title"><a href="../support.html">Records</a></p>
-  </section>
-  <section class="section ">
-    <p class="title"><a href="../faq.html">Statistics</a></p>
-  </section>
-  <section class="section ">
-    <p class="title"><a href="../support.html">Badges</a></p>
-  </section>
-</div>
-</div>
-</div>
-</div>
-</div>
-  </div>
+<?php $this->load->view('admin/components/sidenav'); ?>
   <!--Body - Mid-->
   <div class="large-6 pull-3 columns" style="margin:0px;">
     <!--Header/Title-->
@@ -79,4 +38,4 @@
 
 
 
-<?php $this->load->view('admin/components/in_tail'); ?>
+<?php $this->load->view('admin/components/page_tail'); ?>

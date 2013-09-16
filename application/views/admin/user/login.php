@@ -1,4 +1,4 @@
-<body style="background-color:#FFC08C">
+<body class="admin-log">
 <div class="row">
 	<div class = "large-6 push-3 columns" style="background-color:#fff;box-shadow: 0px 1px 1px #888888;">
 		<div class = "large-10 push-1 columns">
