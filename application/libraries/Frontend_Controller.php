@@ -14,14 +14,5 @@ class Frontend_Controller extends MY_Controller
 		$this->data['menu'] = $this->page_m->get_nested();
 		$this->data['news_archive_link'] = $this->page_m->get_archive_link();
 		$this->data['meta_title'] = config_item('site_name');
-
-		$exception_uris = array(
-			'login/validate', 
-			'login/logout'
-		);
-		if (in_array(uri_string(), $exception_uris) == FALSE) {
-			redirect('');
-		}
-	
 	}
 }

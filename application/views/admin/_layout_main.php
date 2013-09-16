@@ -1,4 +1,3 @@
-
 <?php $this->load->view('admin/components/page_head'); ?>
 <body style="padding-top:45px">
 <?php $this->load->view('admin/components/nav'); ?>
