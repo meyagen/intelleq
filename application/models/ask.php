@@ -120,5 +120,22 @@ class Ask extends CI_Model
 		else
 			$this->db->insert('gen_exam', $data);
 	}
+
+	function get_scores(){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('membership');
+		$row = $query->num_rows;
+
+		if($row > 0){
+			$row = $query->row();
+			if($row->scores != null)
+				$score_array = unserialize($row->scores);
+			else
+				$score_array = null;
+
+			return $score_array;
+		}
+
+	}
 	
 }
