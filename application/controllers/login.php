@@ -36,7 +36,7 @@ class Login extends CI_Controller{
 
 	public function loggedin ()
 	{
-		return (bool) $this->session->userdata('loggedin');
+		return (bool) $this->session->userdata('userloggedin');
 	}
 
 	function find_email() {

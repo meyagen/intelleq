@@ -44,7 +44,7 @@ class Membership_model extends MY_Model {
 				'username' => $user->username,
 				'email' => $user->email_address,
 				'id' => $user->id,
-				'loggedin' => TRUE,
+				'userloggedin' => TRUE,
 			);
 			$this->session->set_userdata($data);
 			return true;
@@ -73,7 +73,7 @@ class Membership_model extends MY_Model {
 					'username' => $user->username,
 					'email' => $user->email_address,
 					'id' => $user->id,
-					'loggedin' => TRUE,
+					'userloggedin' => TRUE,
 				);
 
 				$this->session->set_userdata($data);

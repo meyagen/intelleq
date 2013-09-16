@@ -57,7 +57,7 @@ class User_M extends MY_Model
 				'name' => $user->name,
 				'email' => $user->email,
 				'id' => $user->id,
-				'loggedin' => TRUE,
+				'adminloggedin' => TRUE,
 			);
 			$this->session->set_userdata($data);
 			return true;
@@ -74,7 +74,7 @@ class User_M extends MY_Model
 
 	public function loggedin ()
 	{
-		return (bool) $this->session->userdata('loggedin');
+		return (bool) $this->session->userdata('adminloggedin');
 	}
 	
 	public function get_new(){
