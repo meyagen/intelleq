@@ -7,7 +7,7 @@ class Settings extends CI_Controller{
 		else {
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
-			$data['main_content'] = 'edit_user';
+			$data['main_content'] = 'user';
 			$this->load->view('_main_layout', $data);			
 		}
 	}
@@ -133,5 +133,9 @@ class Settings extends CI_Controller{
 		$this->settings_m->deactivate($username);
 		$this->session->sess_destroy();
 		redirect('home');
+	}
+
+	function back(){
+		redirect('site');
 	}
 }

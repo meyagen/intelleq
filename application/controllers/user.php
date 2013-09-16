@@ -5,15 +5,11 @@
 			parent::__construct();
 		}
 
-		public function index ()
-		{	
-			// Load view
+		public function index (){
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
-			$data['main_content'] = 'profile_area';
+			$data['main_content'] = 'settings';
 			$this->load->view('members_area', $data);
 		}
 	}
-
-
 ?>

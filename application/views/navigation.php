@@ -11,16 +11,19 @@
   <section class="section ">
     <p class="title"><a href="calendar">Calendar</a></p>
   </section>
+
   <section class="section ">
     <p class="title"><a>Modules</a></p>
     <div class="content"> 
       <ul class="side-nav">
-        <li><a href="question">English</a></li>
+        <li><a href="question">Take the Exam</a></li>
+        <li><a href="#">English</a></li>
         <li><a href="#">Science</a></li>
         <li><a href="#">Math</a></li>
       </ul>
     </div>
   </section>
+  
   <h4>intelleq x You</h4>
     <div class="docs section-container accordion" data-section="accordion">
         <section class="section ">

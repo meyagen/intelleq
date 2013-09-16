@@ -32,7 +32,7 @@
     <p class="title"><a href="">Feed</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="../support.html">Calendar</a></p>
+    <p class="title"><a href="calendar">Calendar</a></p>
   </section>
   <section class="section ">
     <p class="title"><a>Modules</a></p>
@@ -48,16 +48,16 @@
   <h4>intelleq x You</h4>
     <div class="docs section-container accordion" data-section="accordion">
         <section class="section ">
-    <p class="title"><a href="settings">Profile</a></p>
+    <p class="title"><a href="user">Profile</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="track_record">Records</a></p>
+    <p class="title"><a href="records">Records</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="../faq.html">Statistics</a></p>
+    <p class="title"><a href="statistics">Statistics</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="../support.html">Badges</a></p>
+    <p class="title"><a href="badges">Badges</a></p>
   </section>
 </div>
 </div>
