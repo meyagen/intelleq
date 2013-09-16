@@ -54,10 +54,10 @@ class User_M extends MY_Model
 		if (count($user)) {
 			// Log in user
 			$data = array(
-				'adminname' => $user->name,
-				'adminemail' => $user->email,
-				'adminid' => $user->id,
-				'adminloggedin' => TRUE,
+				'name' => $user->name,
+				'email' => $user->email,
+				'id' => $user->id,
+				'loggedin' => TRUE,
 			);
 			$this->session->set_userdata($data);
 			return true;
@@ -74,7 +74,7 @@ class User_M extends MY_Model
 
 	public function loggedin ()
 	{
-		return (bool) $this->session->userdata('adminloggedin');
+		return (bool) $this->session->userdata('loggedin');
 	}
 	
 	public function get_new(){

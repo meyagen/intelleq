@@ -57,6 +57,12 @@ h1 {
     margin-bottom: 0px;
 }
 
+h3 {
+    display: inline;
+    line-height: 100%;
+    margin-bottom: 0px;
+}
+
 h4 {
     line-height: 100%;
     margin-bottom: 20px;
@@ -169,4 +175,12 @@ span.success {
 
 span.error {
   text-align: center;
+}
+
+a.hidden {
+    display:none;
+}
+
+li.hidden {
+    display:none;
 }

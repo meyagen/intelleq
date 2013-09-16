@@ -7,7 +7,6 @@ class Dashboard2 extends Admin_Controller {
 
     public function index() {
     	// Fetch recently modified articles
-        
     	$this->load->model('article_m');
     	$this->db->order_by('modified desc');
     	$this->db->limit(10);

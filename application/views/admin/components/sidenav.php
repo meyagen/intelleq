@@ -20,8 +20,10 @@
       </ul>
     </div>
   </section>
-  <section class="section ">
-    <p class="title"><a href="user">Members</a></p>
+  <h4>intelleq x You</h4>
+    <div class="docs section-container accordion" data-section="accordion">
+        <section class="section ">
+    <p class="title"><a href="settings">Profile</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="#">Records</a></p>
@@ -32,6 +34,7 @@
   <section class="section ">
     <p class="title"><a href="#">Badges</a></p>
   </section>
+</div>
 </div>
 </div>
 </div>
