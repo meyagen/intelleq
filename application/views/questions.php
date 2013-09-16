@@ -27,6 +27,7 @@
     <div id="login_form">
       <?php echo form_open('score');?>
     <table class="table">
+    <div id="countdown"></div>
     <?php
 
     $item = 0;
