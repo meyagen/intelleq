@@ -71,12 +71,15 @@ class User extends Admin_Controller
 			else {
 				$this->session->set_flashdata('error', 'That email/password combination does not exist');
 				redirect('admin/user/login', 'refresh');
+				//echo "invalid";
 			}
 		}
 		
 		// Load view
-		$this->data['subview'] = 'admin/user/login';
-		$this->load->view('admin/_layout_modal', $this->data);
+		else {
+			$this->data['subview'] = 'admin/user/login';
+			$this->load->view('admin/_layout_modal', $this->data);
+		}
 	}
 
 	public function logout ()

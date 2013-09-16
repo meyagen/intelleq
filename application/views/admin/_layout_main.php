@@ -1,19 +1,61 @@
-<?php $this->load->view('admin/components/page_head'); ?>
-<body>
-    <div class="navbar navbar-static-top navbar-inverse">
-	    <div class="navbar-inner">
-		    <a class="brand" href="<?php echo site_url('admin/dashboard2'); ?>"><?php echo $meta_title; ?></a>
-		    <ul class="nav">
-			    <li class="active"><a href="<?php echo site_url('admin/dashboard2'); ?>">Dashboard</a></li>
-			    <li><?php echo anchor('admin/page', 'pages'); ?></li>
-			    <li><?php echo anchor('admin/page/order', 'order pages'); ?></li>
-			    <li><?php echo anchor('admin/article', 'news articles'); ?></li>
-			    <li><?php echo anchor('admin/question', 'questions'); ?></li>
-			    <li><?php echo anchor('admin/user', 'users'); ?></li>
-		    </ul>
-	    </div>
-    </div>
+<?php $this->load->view('admin/components/in_head'); ?>
+<body style="padding-top:45px">
+<?php $this->load->view('admin/components/nav'); ?>
 
+<section class="main">
+<div class="row fullrow">
+  <div class="large-3 columns">
+    <div class="row fullrow">
+    <div class="large-10 push-1 columns">
+        <div class="panel">
+    <h4>Navigation</h4>
+    <div class="docs section-container accordion" data-section="accordion">
+        <section class="section active">
+    <p class="title"><a href="">Feed</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Calendar</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a>Modules</a></p>
+    <div class="content"> 
+      <ul class="side-nav">
+        <li><a href="question">English</a></li>
+        <li><a href="#">Science</a></li>
+        <li><a href="#">Math</a></li>
+      </ul>
+    </div>
+  </section>
+  <h4>intelleq x You</h4>
+    <div class="docs section-container accordion" data-section="accordion">
+        <section class="section ">
+    <p class="title"><a href="settings">Profile</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Records</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../faq.html">Statistics</a></p>
+  </section>
+  <section class="section ">
+    <p class="title"><a href="../support.html">Badges</a></p>
+  </section>
+</div>
+</div>
+</div>
+</div>
+</div>
+  </div>
+  <!--Body - Mid-->
+  <div class="large-6 pull-3 columns" style="margin:0px;">
+    <!--Header/Title-->
+    <div class="row"style="padding-bottom:10px">
+    <div class="row headerNav" id="titleNav">
+      <h1 class="white" style="text-shadow: 0px 1px 5px #888888;margin-left:25px;">Articles </h1>
+      <strong class="white">Recently modified</strong>
+    </div></div>
+<section class="main">
+	<!--div class="row fullrow" style="padding:30px"></div-->
 	<div class="container">
 		<div class="row">
 			<!-- Main column -->
@@ -29,5 +71,12 @@
 			</div>
 		</div>
 	</div>
+</section>
 
-<?php $this->load->view('admin/components/page_tail'); ?>
+  </div>
+</div>
+</section>
+
+
+
+<?php $this->load->view('admin/components/in_tail'); ?>

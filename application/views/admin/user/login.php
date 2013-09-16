@@ -1,23 +1,31 @@
-<div class="modal-header">
-	<h3>Log in</h3>
-	<p>Please log in using your credentials</p>
+<body style="background-color:#FFC08C">
+<div class="row">
+	<div class = "large-6 push-3 columns" style="background-color:#fff;box-shadow: 0px 1px 1px #888888;">
+		<div class = "large-10 push-1 columns">
+			<div class="row">
+				<h3>Admin Log In</h3>
+			</div>
+			<div class="row">
+				<?php echo validation_errors(); ?>
+				<?php echo form_open(); ?>
+				<form id="adminSignIn">
+					<fieldset>
+						<legend>Account Information</legend>
+						<div class="large-12 columns">
+							<label>Email</label>
+							<input type = "text" required name="email" placeholder="E-mail address">
+						</div>
+						<div class="large-12 columns">
+							<label>Password</label>
+							<input type = "password" required name="password" placeholder="Password">
+						</div>
+					</fieldset>
+					<input type="submit" name="submit" value="Log In" class="button radius success">
+				</form>
+				<?php echo form_close();?>
+				<span id="adminInfo"></span>
+			</div>
+		</div>
+	</div>
 </div>
-<div class="modal-body">
-<?php echo validation_errors(); ?>
-<?php echo form_open();?>
-<table class="table">
-	<tr>
-		<td>Email</td>
-		<td><?php echo form_input('email'); ?></td>
-	</tr>
-	<tr>
-		<td>Password</td>
-		<td><?php echo form_password('password'); ?></td>
-	</tr>
-	<tr>
-		<td></td>
-		<td><?php echo form_submit('submit', 'Log in', 'class="btn btn-primary"'); ?></td>
-	</tr>
-</table>
-<?php echo form_close();?>
-</div>
+</body>
