@@ -177,10 +177,10 @@ span.error {
   text-align: center;
 }
 
-a.hidden {
+.hidden {
     display:none;
 }
 
-li.hidden {
-    display:none;
+.invisible {
+    visibility:hidden;
 }

@@ -1,5 +1,5 @@
 
-<body class="off-canvas hide-extras">
+<body onload="checkquestions()" class="off-canvas hide-extras">
 
 <!--Navigation Bar-->
 <header>
@@ -38,7 +38,8 @@
     <p class="title"><a>Modules</a></p>
     <div class="content"> 
       <ul class="side-nav">
-        <li><a href="question">English</a></li>
+        <li><a href="question">Take the Exam</a></li>
+        <li><a href="#">English</a></li>
         <li><a href="#">Science</a></li>
         <li><a href="#">Math</a></li>
       </ul>
@@ -83,7 +84,12 @@
       </ul>
       <div class="row">
         <div class="large-12 columns">
-          <div id="countdown" style="width:100%"></div>
+          <a class="button small success expand" id="toggleTimer" onclick="toggleTimer()">Show Timer</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <div id="countdown" class="invisible"style="width:100%"></div>
         </div>
       </div>
       </div>
@@ -120,7 +126,7 @@
 
       echo '<li';
       if ($i>0) echo ' class="hidden"';
-      echo '><div class="panel" style="height:450px"><div class="large-12">';
+      echo '><div class="panel" style="min-height:450px"><div class="large-12">';
       echo '<h3>';
       echo $item;
       echo '</h3> ';
@@ -210,9 +216,30 @@
 </section>
 
 <script>
-//$(document).ready(function(){
 
-  //$('#next').click(function(){
+  function checkquestions(){
+    $qlist = $("#questions li");
+    for (var i=0; i < $qlist.length; i++)
+    {
+      
+    }
+  }
+
+  function toggleTimer(){
+    if($('#toggleTimer').hasClass("success")) {
+      $('#toggleTimer').removeClass("success");
+      $('#toggleTimer').addClass("secondary");
+      $('#toggleTimer').text("Hide Timer");
+      $('#countdown').removeClass("invisible");
+    }
+    else {
+      $('#toggleTimer').removeClass("secondary");
+      $('#toggleTimer').addClass("success");
+      $('#toggleTimer').text("Show Timer");
+      $('#countdown').addClass("invisible");
+    }
+  }
+
   function nextq(){
     var earle = false;
     //$("#next").text("What?");

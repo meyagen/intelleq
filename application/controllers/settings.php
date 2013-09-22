@@ -41,7 +41,7 @@ class Settings extends CI_Controller{
 
 		$this->load->model('settings_m');
 		$this->settings_m->edit_session_data();
-		
+
 		redirect('site');
 	}
 
@@ -91,7 +91,7 @@ class Settings extends CI_Controller{
 		$this->load->model('settings_m');
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		
+
 		$this->form_validation->set_rules(
 								'new_password',
 								'new_password', 
@@ -122,7 +122,7 @@ class Settings extends CI_Controller{
 		$new_email = $email;
 
 		$email_code = trim($email_code);
-		
+
 		if($this->membership_model->validate_email($email, $email_code))
 			$this->settings_m->change_email($id, $new_email);
 	}

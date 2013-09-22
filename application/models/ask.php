@@ -1,9 +1,9 @@
 <?php
 class Ask extends CI_Model
 {
-	
+
 	protected $_table_name = 'ask';
-	
+
 	function __construct () {
 		parent::__construct();
 	}
@@ -88,7 +88,7 @@ class Ask extends CI_Model
 
 			if($row->scores != null)
 				$score_array = unserialize($row->scores);
-			
+
 			$score_array[] = $score;
 			$this->db->where('username', $this->session->userdata('username'));
 			$this->db->update('membership', array('scores' => serialize($score_array)));
@@ -99,7 +99,7 @@ class Ask extends CI_Model
     	//serialize arrays
 		$sequence = serialize($this->session->userdata('sequence'));
 		$answers = serialize($input);
-		
+
 		//store data in data[]
 		$data = array(
 			'username' => $this->session->userdata('username'),
@@ -116,7 +116,7 @@ class Ask extends CI_Model
 			$this->db->where('username', $data['username']);
 			$this->db->update('gen_exam', $data);
 		}
-	
+
 		else
 			$this->db->insert('gen_exam', $data);
 	}
@@ -137,5 +137,5 @@ class Ask extends CI_Model
 		}
 
 	}
-	
+
 }

@@ -2,7 +2,7 @@ $(function(){
 	
 		// The new year is here! Count towards something else.
 		// Notice the *1000 at the end - time must be in milliseconds
-	var ts = (new Date()).getTime() + 10*1000;
+	var ts = (new Date()).getTime() + 60*60*1000;
 		
 	$('#countdown').countdown({
 		timestamp	: ts,
