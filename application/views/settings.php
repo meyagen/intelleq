@@ -8,4 +8,4 @@
 </div>	
 
 <?php $this->load->view('includes/footer');?>
-<?php $this->load->view('components/page_tail');?>
+<?php $this->load->view('components/page_tail1');?>

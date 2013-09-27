@@ -3,8 +3,8 @@
 <div class="fixed">
 <nav class="top-bar fixed">
   <ul class="title-area">
-    <li class="name"><h1><a href="">intelleq</a></h1></li>
-    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+    <li class="name"><h1><a href="user">intelleq</a></h1></li>
+    <li class="toggle-topbar menu-icon"><a href="user"><span></span></a></li>
   </ul>
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
