@@ -38,6 +38,28 @@ div#titleNav{
     background-position: center top;
 }*/
 
+.icon{
+    padding-left:16px;
+    padding-right:16px;
+    padding-top:7px;
+    padding-bottom:5px;
+    background-image: url("../img/icon-standby.png");
+    background-position: center top;
+    background-repeat: none;
+}
+a:link.icon{
+    background-image: url("../img/icon-standby.png");
+}
+a:hover.icon{
+    background-image: url("../img/icon-hover.png");
+}
+a:visited.icon{
+    background-image: url("../img/icon-standby.png");
+}
+a:active.icon{
+    background-image: url("../img/icon-active.png");
+}
+
 h1 {
     display: inline;
     line-height: 100%;
