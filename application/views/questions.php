@@ -142,10 +142,9 @@
           //print_r($c_array);
           $answer_text = $row[$choice[$c_array[$j]]];
           if($answer_text == $answers[$item])
-            echo '<input type="radio" name='.$name.' checked="checked" value="'.$answer_text.'"> ' . $answer_text;
+            echo '<label><input type="radio" name='.$name.' id="'.$name.'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
           else
-            echo '<input type="radio" name='.$name.'  value="'.$answer_text.'"> ' . $answer_text;
-
+            echo '<label><input type="radio" name='.$name.' id="'.$name.'" value="'.$answer_text.'"><span class="custom radio"></span> ' . $answer_text.'</label>';
         echo '</td></tr>';
       }
       echo '</tbody></table>';
