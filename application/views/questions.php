@@ -100,7 +100,7 @@
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <?php echo form_open('score','class="custom"');?><ol id="questions"style="list-style-type:none">
+      <?php echo form_open('score');?><ol id="questions"style="list-style-type:none">
     <?php
 
     $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
@@ -142,9 +142,9 @@
           //print_r($c_array);
           $answer_text = $row[$choice[$c_array[$j]]];
           if($answer_text == $answers[$item])
-            echo '<label for="'.$name.'"><input type="radio" name='.$name.' id="'.$name.'" style="display:none;"><span class="custom radio"></span> ' . $answer_text.'</label>';
+            echo '<input type="radio" name='.$name.' checked="checked" value="'.$answer_text.'"> ' . $answer_text;
           else
-            echo '<label for="'.$name.'"><input type="radio" name='.$name.' id="'.$name.'" style="display:none;"><span class="custom radio"></span> ' . $answer_text.'</label>';
+            echo '<input type="radio" name='.$name.'  value="'.$answer_text.'"> ' . $answer_text;
 
         echo '</td></tr>';
       }
@@ -157,8 +157,7 @@
           <ul class="button-group" style="padding-right:0px">
             <li><a class="button small disabled" name="prev" id="prev-pseudo">Prev</a></li>
             <li><a class="button small hidden" name="prev" id="prev" onclick="prevq()">Prev</a></li>
-            <li><a class="small button" onclick="$(this).closest('form').submit()">Submit</a></li>
-            <!--li><input type="submit" name="submit" class="button small success"></li-->
+            <li><input type="submit" name="submit" class="button small success"></li>
             <li><a class="button small" name="next" id="next" onclick="nextq()">Next</a></li>
             <li><a class="button small hidden disabled" name="next" id="next-pseudo">Next</a></li>
           </ul>
