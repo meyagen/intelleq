@@ -3,7 +3,7 @@
 <div class="fixed">
 <nav class="top-bar fixed">
   <ul class="title-area">
-    <li class="name"><h1><a href="user">intelleq</a></h1></li>
+    <li class="name"><h1><a href="<?php echo base_url(); ?>">intelleq</a></h1></li>
     <li class="toggle-topbar menu-icon"><a href="user"><span></span></a></li>
   </ul>
   <section class="top-bar-section">
