@@ -7,7 +7,10 @@ class Question extends User_Controller
 	}
 
 	public function index(){
-		$subject = 'english';
+		$subject = 'reading_comprehension';
+		$data['subject'] = $subject;
+		$this->session->set_userdata($data);
+
 		$this->load->model('ask');
 		$this->ask->set_questions($subject);
 		$data['questions'] = unserialize($this->session->userdata('questions'));
