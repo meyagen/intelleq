@@ -13,7 +13,7 @@
   	if($scores != null){
 	    foreach($scores as $score){
 		  echo "<div class=".'row'.">";
-	      echo "<label>" .$score ."/4</label>";
+	      echo "<label>" .$score ."</label>";
 	      echo "</div>";
 	  	}
   	}

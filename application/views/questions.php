@@ -100,7 +100,7 @@
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <?php echo form_open('score');?><ol id="questions"style="list-style-type:none">
+    <?php echo form_open('score');?><ol id="questions"style="list-style-type:none">
     <?php
 
     $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
