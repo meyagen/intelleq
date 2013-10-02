@@ -19,19 +19,6 @@ class Membership_model extends MY_Model {
 
 	public function login ()
 	{
-		/*$this->db->where('username', $this->input->post('username'));
-		$this->db->where('password', $this->hash($this->input->post('password')));
-		$this->db->where('activate', 'true');
-		$query = $this->db->get('membership');
-		$user = $query->row();
-		echo $user->username;*/
-
-		/*$user = $this->get_by(array(
-			'username' => $this->input->post('username'),
-			'password' => $this->hash($this->input->post('password')),
-			'activate' => 'true',
-		), TRUE);*/
-
 		$sql = "SELECT * FROM membership WHERE (email_address = ? OR username = ?) AND password = ? AND activate = 'true' LIMIT 1";
 		$query = $this->db->query($sql, array($this->input->post('username'), $this->input->post('username'), $this->hash($this->input->post('password'))));
 		$user = $query->row();
@@ -51,17 +38,6 @@ class Membership_model extends MY_Model {
 		}
 
 		else {
-			/*$this->db->where('username', $this->input->post('username'));
-			$this->db->where('temp_password', $this->hash($this->input->post('password')));
-			$this->db->where('activate', 'true');
-			$query = $this->db->get('membership');*/
-
-			/*$user = $this->get_by(array(
-				'username' => $this->input->post('username'),
-				'temp_password' => $this->hash($this->input->post('password')),
-				'activate' => 'true',
-			), TRUE);*/
-
 			$sql = "SELECT * FROM membership WHERE (email_address = ? OR username = ?) AND temp_password = ? AND activate = 'true' LIMIT 1";
 			$query = $this->db->query($sql, array($this->input->post('username'), $this->input->post('username'), $this->hash($this->input->post('password'))));
 			$user = $query->row();
