@@ -8,26 +8,47 @@ class Ask extends CI_Model
 		parent::__construct();
 	}
 
-	function session_found(){
+	function is_paused(){
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('gen_exam');
 
-		if($query->num_rows > 0) {
-			$row = $query->row();
-
-			$data = array(
-				'sequence' => unserialize($row->sequence),
-				'answers' => unserialize($row->answers)
-			);
-
-			$this->session->set_userdata($data);
+		if($query->num_rows > 0)
 			return true;
-		}
 
 		return false;
 	}
 
-	function set_questions($subject) {
+	function set_current_subject(){
+		if($this->is_paused()){
+			$this->db->where('username', $this->session->userdata('username'));
+			$query = $this->db->get('gen_exam');
+			$row = $query->row();
+
+			$data = array(
+				'sequence' => unserialize($row->sequence),
+				'answers' => unserialize($row->answers),
+				'subject' => $row->current_subject
+			);
+
+			$this->session->set_userdata($data);			
+		}
+
+		else {
+			$this->db->where('username', $this->session->userdata('username'));
+			$query = $this->db->get('membership');
+			$row = $query->row();
+
+			if($row->current_subject == null)
+				$data['subject'] = 'science';
+			else
+				$data['subject'] = $row->current_subject;
+
+			$this->session->set_userdata($data);
+		}
+	}
+
+	function set_questions() {
+		$subject = $this->session->userdata('subject');
         $query = $this->db->query("select * from ask where ask.group=?", array('group' => $subject));
         $questions = $query->result_array();
 
@@ -144,11 +165,7 @@ class Ask extends CI_Model
     }
 
     function store_score($score){
-    	//$this->set_new_subject();
-		$subject = $this->session->userdata('subject');
-		$this->db->where('username', $this->session->userdata('username'));
-		$this->db->update('membership', array('current_subject' => $subject));
-		
+		$subject = $this->session->userdata('subject');		
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('membership');
 		$row = $query->row();
@@ -189,6 +206,8 @@ class Ask extends CI_Model
 			$this->db->update('membership', array('reading_comprehension' => serialize($score_array)));
 			$this->get_total();
 		}
+    	
+    	$this->set_new_subject();
     }
 
     function set_new_subject(){

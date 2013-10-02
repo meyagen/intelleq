@@ -7,23 +7,25 @@ class Question extends User_Controller
 	}
 
 	public function index(){
-		$subject = 'reading_comprehension';
+/*		$subject = 'science';
 		$data['subject'] = $subject;
-		$this->session->set_userdata($data);
+		$this->session->set_userdata($data);*/
 
 		$this->load->model('ask');
-		$this->ask->set_questions($subject);
+		$this->ask->set_current_subject();
+		$this->ask->set_questions();
+
 		$data['questions'] = unserialize($this->session->userdata('questions'));
 		$data['crand'] = $this->ask->random_choice();
 
-		if($this->ask->session_found() == FALSE){
-			$data['qrand'] = $this->ask->random_question();
-			$data['answers'] = null;
+		if($this->ask->is_paused()){
+			$data['qrand'] = $this->session->userdata('sequence');
+			$data['answers'] = $this->session->userdata('answers');
 		}
 
 		else {
-			$data['qrand'] = $this->session->userdata('sequence');
-			$data['answers'] = $this->session->userdata('answers');
+			$data['qrand'] = $this->ask->random_question();
+			$data['answers'] = null;
 		}
 
 		// Load view
