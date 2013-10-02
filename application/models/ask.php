@@ -83,6 +83,7 @@ class Ask extends CI_Model
 	}
 
 	function pause($input){
+		$subject = $this->session->userdata('subject');
 		$sequence = serialize($this->session->userdata('sequence'));
 		$answers = serialize($input);
 
@@ -91,6 +92,7 @@ class Ask extends CI_Model
 			'username' => $this->session->userdata('username'),
 			'sequence' => $sequence,
 			'answers' => $answers,
+			'subject' => $subject
 		);
 
 		//store in db gen_exam
@@ -142,21 +144,92 @@ class Ask extends CI_Model
     }
 
     function store_score($score){
+    	//$this->set_new_subject();
+		$subject = $this->session->userdata('subject');
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('membership', array('current_subject' => $subject));
+		
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('membership');
-		$row = $query->num_rows;
-
-		if($row > 0){
-			$row = $query->row();
-			$score_array = array();
-
-			if($row->scores != null)
-				$score_array = unserialize($row->scores);
-
+		$row = $query->row();
+		$score_array = array();
+		if(strcmp($subject, "science") == 0){
+			if($row->science != null)
+				$score_array = unserialize($row->science);
+	
 			$score_array[] = $score;
 			$this->db->where('username', $this->session->userdata('username'));
-			$this->db->update('membership', array('scores' => serialize($score_array)));
+			$this->db->update('membership', array('science' => serialize($score_array)));
 		}
+
+		else if(strcmp($subject, "mathematics") == 0){
+			if($row->mathematics != null)
+				$score_array = unserialize($row->mathematics);
+	
+			$score_array[] = $score;
+			$this->db->where('username', $this->session->userdata('username'));
+			$this->db->update('membership', array('mathematics' => serialize($score_array)));
+		}
+
+		else if(strcmp($subject, "english") == 0){
+			if($row->english != null)
+				$score_array = unserialize($row->english);
+	
+			$score_array[] = $score;
+			$this->db->where('username', $this->session->userdata('username'));
+			$this->db->update('membership', array('english' => serialize($score_array)));
+		}
+
+		else if(strcmp($subject, "reading_comprehension") == 0){
+			if($row->reading_comprehension != null)
+				$score_array = unserialize($row->reading_comprehension);
+	
+			$score_array[] = $score;
+			$this->db->where('username', $this->session->userdata('username'));
+			$this->db->update('membership', array('reading_comprehension' => serialize($score_array)));
+			$this->get_total();
+		}
+    }
+
+    function set_new_subject(){
+		$subject = $this->session->userdata('subject');
+
+		if(strcmp($subject, "science") == 0)
+			$subject = 'mathematics';
+		else if(strcmp($subject, "mathematics") == 0)
+			$subject = 'english';
+		else if(strcmp($subject, "english") == 0)
+			$subject = 'reading_comprehension';
+		else if(strcmp($subject, "reading_comprehension") == 0)
+			$subject = 'science';
+
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('membership', array('current_subject' => $subject));
+    }
+
+    function get_total(){
+		$total = 0;
+		$score_array = array();
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('membership');
+		$row = $query->row();
+
+		$science = unserialize($row->science);    	
+		$mathematics = unserialize($row->mathematics);
+		$english = unserialize($row->english);
+		$reading_comprehension = unserialize($row->reading_comprehension);
+
+		$total += $science[count($science)-1];
+		$total += $mathematics[count($mathematics)-1];
+		$total += $english[count($english)-1];
+		$total += $reading_comprehension[count($reading_comprehension)-1];
+
+		if($row->scores != null)
+			$score_array = unserialize($row->scores);
+
+		$score_array[] = $total;
+		$this->db->where('username', $this->session->userdata('username'));
+		$this->db->update('membership', array('scores' => serialize($score_array)));
     }
 
 	function get_scores(){
