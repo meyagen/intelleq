@@ -11,7 +11,7 @@
   </section>
   <ul class="title-area" style="display:inline">
     <!--li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li-->
-    <li class="name"><a href="#" class="icon"> </a><h1><a href="#" style="display:inline">intelleq</a></h1></li>
+    <li class="name"><a href="#" class="icon"> </a><h1><a href="<?php echo base_url(); ?>" style="display:inline">intelleq</a></h1></li>
     
   </ul>
   <section class="top-bar-section">
@@ -158,7 +158,7 @@
         <ul class="white" style="list-style:none">
           <li><a href="http://facebook.com">Facebook</a></li>
           <li><a href="http://twitter.com">Twitter</a></li>
-          <li><a href="http://plus.googlecom">Google+</a></li>
+          <li><a href="http://plus.google.com">Google+</a></li>
         </ul></center>
       </div>
     </div>
