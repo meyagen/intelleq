@@ -153,7 +153,7 @@ class Membership_model extends MY_Model {
 		$this->email->set_mailtype('html');
 		$this->email->clear();
 
-		$this->email->from($this->config->item('email_bot'), 'MERK Support');
+		$this->email->from($this->config->item('email_bot'), $this->config->item('email_name'));
 		$this->email->to($email);	
 		$this->email->subject('Email Confirmation');
 
@@ -237,7 +237,7 @@ class Membership_model extends MY_Model {
 			$this->email->set_mailtype('text');
 			$this->email->clear();
 
-			$this->email->from($this->config->item('email_bot'), 'MERK Support');
+			$this->email->from($this->config->item('email_bot'), $this->config->item('email_name'));
 			$this->email->to($email);	
 			$this->email->subject('Password Reset');
 			$this->email->message("Good day! You have recently asked for your password to be reset. Your new temporary password is "

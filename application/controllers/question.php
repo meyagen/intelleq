@@ -7,12 +7,14 @@ class Question extends User_Controller
 	}
 
 	public function index(){
+		$this->load->model('ask');
+		$this->ask->set_current_subject();
+
 /*		$subject = 'science';
 		$data['subject'] = $subject;
 		$this->session->set_userdata($data);*/
 
-		$this->load->model('ask');
-		$this->ask->set_current_subject();
+
 		$this->ask->set_questions();
 
 		$data['questions'] = unserialize($this->session->userdata('questions'));

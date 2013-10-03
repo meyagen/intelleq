@@ -27,10 +27,10 @@ class Ask extends CI_Model
 			$data = array(
 				'sequence' => unserialize($row->sequence),
 				'answers' => unserialize($row->answers),
-				'subject' => $row->current_subject
+				'subject'=> $row->subject
 			);
 
-			$this->session->set_userdata($data);			
+			$this->session->set_userdata($data);
 		}
 
 		else {
