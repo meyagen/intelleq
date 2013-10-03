@@ -43,7 +43,8 @@ $config['index_page'] = '';
 |--------------------------------------------------------------------------
 */
 
-$config['email_bot'] = 'merk.donotreply@gmail.com';
+$config['email_bot'] = 'intelleq.donotreply@gmail.com';
+$config['email_name'] = 'intelleq Support';
 
 /*
 |--------------------------------------------------------------------------
