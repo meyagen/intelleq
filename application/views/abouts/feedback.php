@@ -9,6 +9,11 @@
 	}
 ?>
 <div class="container">
+	<?php
+		if($loggedin>0){
+			$this->load->view('navigation'); 
+		}
+	?>
 	Feel free to send us your feedbacks!
 </div>	
 

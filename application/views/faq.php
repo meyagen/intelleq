@@ -9,6 +9,7 @@
 	}
 ?>
 <div class="container">
+	<?php //$this->load->view('navigation'); ?>
 	Frequently Asked Questions
 </div>	
 

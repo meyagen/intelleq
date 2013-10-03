@@ -16,8 +16,8 @@
 				$this->load->view('members_area', $data);
 			}
 			else{
-				$data['main_content'] = 'main_layout';
-				$this->load->view('abouts/feedback'	, $data);
+				$data['main_content'] = 'abouts/feedback';
+				$this->load->view('_main_layout'	, $data);
 			}
 		}
 	}

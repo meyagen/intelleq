@@ -1,7 +1,5 @@
-<?php $this->load->view('components/page_head'); ?>
-<body class="off-canvas hide-extras">
-
 <?php $this->load->view('includes/header');?>
+<body class="off-canvas hide-extras">
 <section class="main">
 	<?php $this->load->view('navigation');?>
 	<div class="container">
@@ -9,4 +7,3 @@
 	</div>	
 </section>
 <?php $this->load->view('includes/footer');?>
-<?php $this->load->view('components/page_tail1');?>

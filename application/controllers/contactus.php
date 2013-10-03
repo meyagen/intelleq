@@ -16,8 +16,8 @@
 				$this->load->view('members_area', $data);
 			}
 			else{
-				$data['main_content'] = 'main_layout';
-				$this->load->view('contactus', $data);
+				$data['main_content'] = 'contactus';
+				$this->load->view('_main_layout', $data);
 			}
 		}
 	}
