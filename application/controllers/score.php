@@ -5,6 +5,7 @@ class Score extends User_Controller {
 		parent::__construct();
 
 		$this->load->model('ask');
+		$this->load->model('score_m');
 	}
 
 	function index() {
@@ -20,10 +21,11 @@ class Score extends User_Controller {
 		}
 
 		if($finished) {
-			$data['score'] = $this->ask->compute($input);
+			$data['score'] = $this->score_m->compute($input);
 			$data['total'] = $this->ask->count_questions();
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
+			$data['subject'] = $this->session->userdata('subject');
 			$data['main_content'] = 'score';
 			$this->load->view('members_area', $data);
 		}

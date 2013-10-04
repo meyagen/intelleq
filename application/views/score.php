@@ -17,7 +17,22 @@
 ?>
   </div></div>
 </fieldset>
+
+<?php
+	if(strcmp($subject, "reading_comprehension") == 0)
+		$string = "<a class=" ."button radius success " ."href=" ."site" .">Okay, I'm done!</a></li>";
+	else
+		$string = "<a class=" ."button radius success " ."href=" ."question" .">Next Exam!</a></li>";
+
+	echo $string;
+
+	//<a class="button radius success" href="question">Next Exam!</a></li>
+?>
+
+
 </div>  
+
+
 
 <?php $this->load->view('includes/footer');?>
 <?php $this->load->view('components/page_tail1');?>

@@ -1,5 +1,3 @@
-<?php //print_r($dates); ?>
-<?php //$this->load->view('components/page_head'); ?>
 <script type="text/javascript" src="<?php echo site_url('js/jquery.min.js'); ?>"></script>
 <script type="text/javascript">
 
@@ -27,7 +25,7 @@ $(function () {
                 }]
             },
             tooltip: {
-                valueSuffix: ' Correct Answer'
+                valueSuffix: 'Correct Answer'
             },
             legend: {
                 layout: 'vertical',
@@ -37,17 +35,25 @@ $(function () {
             },
             series: [{
             	name: 'Overall Score',
-                data: []
+                data: <?php echo $hist; ?>
             },{
-            	name: 'Math',
-            	data: []
+            	name: 'Science',
+            	data: <?php echo $hist_science; ?>
+            },{
+                name: 'Mathematics',
+                data: <?php echo $hist_mathematics; ?>
+            },{
+                name: 'English',
+                data: <?php echo $hist_english; ?>
+            },{
+                name: 'Reading Comprehension',
+                data: <?php echo $hist_reading_comprehension; ?>
             }]
         });
 
         var chart = $('#container').highcharts();
         chart.xAxis[0].setCategories(<?php echo $dates; ?>);
-        chart.series[0].setData(<?php echo $hist; ?>);
-        //chart.series[1].setData(<?php echo $hist; ?>);
+        // chart.series[0].setData(<?php echo $hist; ?>);
     });
 
 </script>
