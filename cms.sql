@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.4.10.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 16, 2013 at 08:25 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.16
+-- Generation Time: Oct 05, 2013 at 12:40 AM
+-- Server version: 5.5.32
+-- PHP Version: 5.3.10-1ubuntu3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `cms`
 --
-CREATE DATABASE IF NOT EXISTS `cms` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `cms`;
 
 -- --------------------------------------------------------
 
@@ -68,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `ask` (
   `choice2` text NOT NULL,
   `choice3` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `ask`
@@ -78,7 +76,19 @@ INSERT INTO `ask` (`id`, `title`, `ask`, `group`, `difficulty`, `correct_answer`
 (5, 'Heat Transfer', 'What type of heat transfer is responsible for the formation of sea breeze and land breeze?', 'Science', 'Difficult', 'Convection', 'Radiation', 'Condensation', 'Conduction'),
 (6, '!Fuel Source', 'Which of the following is not fuel source?', 'Science', 'Easy', 'Wood', 'Crude Oil', 'Coal', 'Battery'),
 (8, 'Volume of Substances', 'Substance A is twice as dense as substance B. If we take the samples of equal mass of these substances, what can be observed about their volume?', 'Science', 'Normal', 'The volume of substance B is twice that of substance A.', 'The volume of substance A is twice that of substance B.', 'The volume of both A and B is the same since the samples have the same mass.', 'No conclusion can be provided about the volume of A and B.'),
-(9, 'Jupiter''s Great Red Spot', 'The Great Red Spot of Jupiter is a/ an ___________.', 'Science', 'Easy', 'Intense wind storm', 'Sink hole bigger than Earth', 'Sea of red water due to algae formations', 'Flaming field');
+(9, 'Jupiter''s Great Red Spot', 'The Great Red Spot of Jupiter is a/ an ___________.', 'Science', 'Easy', 'Intense wind storm', 'Sink hole bigger than Earth', 'Sea of red water due to algae formations', 'Flaming field'),
+(10, 'Parts of Speech', 'What part of speech does ''running'' belong to?', 'English', 'Easy', 'Verb', 'Noun', 'Adjective', 'Interjection'),
+(11, 'Plural Form', 'What is the plural form of child?', 'English', 'Easy', 'Children', 'Childs', 'Many childs', 'Child'),
+(12, 'Tenses', 'Everyone ___ sleeping right now.', 'English', 'Normal', 'Is', 'Are', 'Was', 'Were'),
+(13, 'Sentences', 'Part of the sentence that describes the subject.', 'English', 'Normal', 'Predicate', 'Object', 'Clause', 'Punctuation Mark'),
+(14, 'Arithmetic', 'Evaluate. (10/2+3)*2', 'Mathematics', 'Normal', '16', '4', '8', '64'),
+(15, 'Percentage', 'What is 20% of 550?', 'Mathematics', 'Normal', '110', '440', '90', '285'),
+(16, 'Discount', 'You paid 2560 for an object with 20% discount. What was the original price?', 'Mathematics', 'Normal', '3200', '1200', '4500', '3500'),
+(17, 'Addition', 'What is 1+1?', 'Mathematics', 'Easy', '2', '0', '3', '-1'),
+(18, 'Limerick', 'What is the rhyme scheme of a limerick?', 'Reading_Comprehension', 'Normal', 'AABBA', 'ABBBA', 'ABABA', 'ABBCC'),
+(19, 'Figures of Speech', 'Which of the following is a simile?', 'Reading_Comprehension', 'Normal', 'Sweet as the lips that once you pressed.', 'Your sea glass eyes captivate me.', 'It''s raining cats and dogs.', 'When it rains, it pours.'),
+(20, 'Character', 'The analysis or study of the development of a character.', 'Reading_Comprehension', 'Normal', 'Characterization', 'Exposition', 'Narration', 'Dramatization'),
+(21, 'So What?', 'It gives the significance or meaning of the story.', 'Reading_Comprehension', 'Normal', 'Theme', 'Plot', 'Narration', 'Setting');
 
 -- --------------------------------------------------------
 
@@ -101,8 +111,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('7e6631dbdb2528e33302ee7835bbbb6b', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.66 Safari/537.36', 1379362878, ''),
-('a329f902af0ae56f8253cd48de82aa3d', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.1; rv:21.0) Gecko/20100101 Firefox/21.0', 1379362773, 'a:7:{s:9:"user_data";s:0:"";s:5:"fname";s:6:"Mireya";s:5:"lname";s:6:"Andres";s:8:"username";s:7:"meyagen";s:5:"email";s:25:"mireyagenandres@gmail.com";s:2:"id";s:2:"30";s:8:"loggedin";b:1;}');
+('f9b81fd5280dffa31c13b304e8851cce', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:24.0) Gecko/20100101 Firefox/24.0', 1380903513, 'a:11:{s:9:"user_data";s:0:"";s:5:"fname";s:6:"Mireya";s:5:"lname";s:6:"Andres";s:8:"username";s:7:"meyagen";s:5:"email";s:25:"mireyagenandres@gmail.com";s:2:"id";s:2:"30";s:8:"loggedin";b:1;s:7:"subject";s:21:"reading_comprehension";s:9:"questions";s:1369:"a:4:{i:0;a:9:{s:2:"id";s:2:"18";s:5:"title";s:8:"Limerick";s:3:"ask";s:39:"What is the rhyme scheme of a limerick?";s:5:"group";s:21:"Reading_Comprehension";s:10:"difficulty";s:6:"Normal";s:14:"correct_answer";s:5:"AABBA";s:7:"choice1";s:5:"ABBBA";s:7:"choice2";s:5:"ABABA";s:7:"choice3";s:5:"ABBCC";}i:1;a:9:{s:2:"id";s:2:"19";s:5:"title";s:17:"Figures of Speech";s:3:"ask";s:35:"Which of the following is a simile?";s:5:"group";s:21:"Reading_Comprehension";s:10:"difficulty";s:6:"Normal";s:14:"correct_answer";s:40:"Sweet as the lips that once you pressed.";s:7:"choice1";s:33:"Your sea glass eyes captivate me.";s:7:"choice2";s:27:"It''s raining cats and dogs.";s:7:"choice3";s:24:"When it rains, it pours.";}i:2;a:9:{s:2:"id";s:2:"20";s:5:"title";s:9:"Character";s:3:"ask";s:56:"The analysis or study of the development of a character.";s:5:"group";s:21:"Reading_Comprehension";s:10:"difficulty";s:6:"Normal";s:14:"correct_answer";s:16:"Characterization";s:7:"choice1";s:10:"Exposition";s:7:"choice2";s:9:"Narration";s:7:"choice3";s:13:"Dramatization";}i:3;a:9:{s:2:"id";s:2:"21";s:5:"title";s:8:"So What?";s:3:"ask";s:50:"It gives the significance or meaning of the story.";s:5:"group";s:21:"Reading_Comprehension";s:10:"difficulty";s:6:"Normal";s:14:"correct_answer";s:5:"Theme";s:7:"choice1";s:4:"Plot";s:7:"choice2";s:9:"Narration";s:7:"choice3";s:7:"Setting";}}";s:8:"sequence";a:4:{i:0;i:0;i:1;i:2;i:2;i:3;i:3;i:1;}s:7:"answers";a:4:{i:1;s:55:"The volume of substance B is twice that of substance A.";i:2;s:4:"Wood";i:3;b:0;i:4;b:0;}}');
 
 -- --------------------------------------------------------
 
@@ -112,10 +121,18 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 
 CREATE TABLE IF NOT EXISTS `gen_exam` (
   `username` varchar(100) NOT NULL,
+  `subject` text NOT NULL,
   `sequence` text NOT NULL,
   `answers` text NOT NULL,
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gen_exam`
+--
+
+INSERT INTO `gen_exam` (`username`, `subject`, `sequence`, `answers`) VALUES
+('gardevior411', 'science', 'a:4:{i:0;i:1;i:1;i:0;i:2;i:3;i:3;i:2;}', 'a:4:{i:1;b:0;i:2;b:0;i:3;b:0;i:4;b:0;}');
 
 -- --------------------------------------------------------
 
@@ -131,7 +148,13 @@ CREATE TABLE IF NOT EXISTS `membership` (
   `password` varchar(128) CHARACTER SET utf8 NOT NULL,
   `temp_password` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
   `email_address` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `current_subject` text,
   `scores` text,
+  `english` text,
+  `reading_comprehension` text,
+  `mathematics` text,
+  `science` text,
+  `date` text,
   `activate` varchar(5) CHARACTER SET utf8 NOT NULL DEFAULT 'false',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
@@ -140,9 +163,9 @@ CREATE TABLE IF NOT EXISTS `membership` (
 -- Dumping data for table `membership`
 --
 
-INSERT INTO `membership` (`id`, `first_name`, `last_name`, `username`, `password`, `temp_password`, `email_address`, `scores`, `activate`) VALUES
-(1, 'Earle', 'Bunao', 'gardevior411', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', 'd7072ac632af04a2d16fe5e142c03460e018e39641e19ef512f0821156cbae0f8784f582267140ebc7253a9672f1d15b9feee439a0d693d0967220fbf93c7cdb', 'gardevior_erb411@yahoo.com', 'a:4:{i:0;i:3;i:1;i:3;i:2;i:4;i:3;i:4;}', 'true'),
-(30, 'Mireya', 'Andres', 'meyagen', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', '4dd75150ac271596346f856a877c5f008aa2af7aa6131091b4bde3524a83a95bf9762160dbbb810ae75a62e60035cc1947c7fe402888dba364688ee778ce389b', 'mireyagenandres@gmail.com', 'a:3:{i:0;i:2;i:1;i:4;i:2;i:4;}', 'true');
+INSERT INTO `membership` (`id`, `first_name`, `last_name`, `username`, `password`, `temp_password`, `email_address`, `current_subject`, `scores`, `english`, `reading_comprehension`, `mathematics`, `science`, `date`, `activate`) VALUES
+(1, 'Earle', 'Bunao', 'gardevior411', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', 'd7072ac632af04a2d16fe5e142c03460e018e39641e19ef512f0821156cbae0f8784f582267140ebc7253a9672f1d15b9feee439a0d693d0967220fbf93c7cdb', 'gardevior_erb411@yahoo.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'true'),
+(30, 'Mireya', 'Andres', 'meyagen', '467356c24f7ea20aa1aa18360cb50c68c70f58967863772b3a4e111a4162dcd4c46e3e715387926de9a59389d191cd681e0a2d339e45f37b08b63535df03aab2', '4dd75150ac271596346f856a877c5f008aa2af7aa6131091b4bde3524a83a95bf9762160dbbb810ae75a62e60035cc1947c7fe402888dba364688ee778ce389b', 'mireyagenandres@gmail.com', 'science', 'a:5:{i:0;i:5;i:1;i:3;i:2;i:13;i:3;i:16;i:4;i:7;}', 'a:5:{i:0;i:0;i:1;i:2;i:2;i:4;i:3;i:4;i:4;i:2;}', 'a:5:{i:0;i:1;i:1;i:0;i:2;i:3;i:3;i:4;i:4;i:1;}', 'a:5:{i:0;i:1;i:1;i:0;i:2;i:4;i:3;i:4;i:4;i:1;}', 'a:5:{i:0;i:3;i:1;i:1;i:2;i:2;i:3;i:4;i:4;i:3;}', 'a:5:{i:0;s:10:"5 Oct 2013";i:1;s:10:"5 Oct 2013";i:2;s:10:"5 Oct 2013";i:3;s:10:"5 Oct 2013";i:4;s:10:"5 Oct 2013";}', 'true');
 
 -- --------------------------------------------------------
 
@@ -185,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `temp_password` varchar(128) DEFAULT NULL,
   `name` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
