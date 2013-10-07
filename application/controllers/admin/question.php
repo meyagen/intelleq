@@ -2,14 +2,12 @@
 class Question extends Admin_Controller
 {
 
-	public function __construct ()
-	{
+	function __construct(){
 		parent::__construct();
 		$this->load->model('question_m');
 	}
 
-	public function index ()
-	{
+	function index(){
 		// Fetch all articles
 
 		$this->data['questions'] = $this->question_m->get();
@@ -18,10 +16,11 @@ class Question extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
-	public function edit ($id = NULL)
-	{
+	function edit($id = NULL){
 		// Fetch a article or set a new one
-		if($id == 'question' || $id == 'user')
+		if($id == 'user')
+			redirect('admin/user');
+		elseif($id == 'question')
 			redirect('admin/question');
 
 		elseif ($id) {
@@ -57,10 +56,18 @@ class Question extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
-	public function delete ($id)
-	{
+	function delete($id){
 		$this->question_m->delete($id);
-		redirect('admin/question');
+		redirect('admin/user');
+	}
+
+	function delete_m($id){
+		$this->question_m->delete($id);
+		redirect('admin/user');
+	}
+
+	function user(){
+		redirect('admin/user');
 	}
 
 }

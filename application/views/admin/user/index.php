@@ -30,16 +30,18 @@
 		<thead>
 			<tr>
 				<th>Email</th>
-				<th>Edit</th>
+				<th>Username</th>
 				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
 <?php if(count($users)): foreach($users as $user): ?>	
 		<tr>
-			<td><?php echo anchor('admin/user/edit_user/' . $user->id, $user->email_address); ?></td>
-			<td><?php echo btn_edit('admin/user/edit_user/' . $user->id); ?></td>
-			<td><?php echo btn_delete('admin/user/delete/' . $user->id); ?></td>
+			<!-- <td><?php echo anchor('admin/user/edit_user/' . $user->id, $user->email_address); ?></td> -->
+
+			<td><?php echo $user->email_address; ?></td>
+			<td><?php echo $user->username; ?></td>
+			<td><?php echo btn_delete('admin/user/delete_m/' . $user->id); ?></td>
 		</tr>
 <?php endforeach; ?>
 <?php else: ?>

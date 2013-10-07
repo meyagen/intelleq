@@ -16,6 +16,7 @@ class User_M extends MY_Model
 			'rules' => 'trim|required'
 		)
 	);
+
 	public $rules_admin = array(
 		'name' => array(
 			'field' => 'name', 
@@ -39,12 +40,11 @@ class User_M extends MY_Model
 		),
 	);
 
-	function __construct ()
-	{
+	function __construct (){
 		parent::__construct();
 	}
 
-	public function login ()
+	public function login()
 	{
 		$user = $this->get_by(array(
 			'email' => $this->input->post('email'),
@@ -52,28 +52,26 @@ class User_M extends MY_Model
 		), TRUE);
 		
 		if (count($user)) {
-			// Log in user
+			//Log in user
 			$data = array(
 				'adminname' => $user->name,
 				'adminemail' => $user->email,
 				'adminid' => $user->id,
 				'adminloggedin' => TRUE,
 			);
+
 			$this->session->set_userdata($data);
 			return true;
-		} else
-		{
-			return false;
 		}
+		else
+			return false;
 	}
 
-	public function logout ()
-	{
+	public function logout(){
 		$this->session->sess_destroy();
 	}
 
-	public function loggedin ()
-	{
+	public function loggedin(){
 		return (bool) $this->session->userdata('adminloggedin');
 	}
 	
@@ -82,11 +80,11 @@ class User_M extends MY_Model
 		$user->name = '';
 		$user->email = '';
 		$user->password = '';
+
 		return $user;
 	}
 
-	public function hash ($string)
-	{
+	public function hash($string){
 		return hash('sha512', $string . config_item('encryption_key'));
 	}
 }

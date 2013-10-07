@@ -2,13 +2,11 @@
 class User extends Admin_Controller
 {
 
-	public function __construct ()
-	{
+	public function __construct(){
 		parent::__construct();
 	}
 
-	public function index ()
-	{
+	public function index(){
 		// Fetch all users
 		$this->data['admins'] = $this->user_m->get();
 		$this->load->model('membership_model');
@@ -18,11 +16,12 @@ class User extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
-	public function edit ($id = NULL)
-	{
+	public function edit($id = NULL){
 		// Fetch a user or set a new one
-		if($id == 'user' || $id == 'question')
+		if($id == 'user')
 			redirect('admin/user');
+		elseif($id == 'question')
+			redirect('admin/question');
 
 		elseif ($id) {
 			$this->data['user'] = $this->user_m->get($id);
@@ -50,14 +49,12 @@ class User extends Admin_Controller
 		$this->load->view('admin/_layout_main', $this->data);
 	}
 
-	public function delete ($id)
-	{
+	public function delete($id){
 		$this->user_m->delete($id);
 		redirect('admin/user');
 	}
 
-	public function login ()
-	{
+	public function login(){
 		// Redirect a user if he's already logged in
 		$dashboard = 'admin/dashboard';
 		$this->user_m->loggedin() == FALSE || redirect($dashboard);
@@ -86,14 +83,12 @@ class User extends Admin_Controller
 		}
 	}
 
-	public function logout ()
-	{
+	public function logout(){
 		$this->user_m->logout();
 		redirect('admin/user/login');
 	}
 
-	public function _unique_email ($str)
-	{
+	public function _unique_email($str){
 		// Do NOT validate if email already exists
 		// UNLESS it's the email for the current user
 		
@@ -108,5 +103,9 @@ class User extends Admin_Controller
 		}
 		
 		return TRUE;
+	}
+
+	function question(){
+		redirect('/admin/question');
 	}
 }

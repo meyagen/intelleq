@@ -14,7 +14,8 @@
 <?php if(count($questions)): foreach($questions as $question): ?>	
 		<tr>
 			<td><?php echo anchor('admin/question/edit/' . $question->id, $question->title); ?></td>
-			<td><?php echo $question->group; ?></td>
+			<td><?php if(strcmp($question->group, "Reading_Comprehension") == 0) echo "Reading Comprehension";
+						else echo $question->group;?></td>
 			<td><?php echo btn_edit('admin/question/edit/' . $question->id); ?></td>
 			<td><?php echo btn_delete('admin/question/delete/' . $question->id); ?></td>
 		</tr>
