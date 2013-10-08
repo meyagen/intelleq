@@ -10,9 +10,6 @@
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
         <li style="padding-right:10;padding-left:10"><a><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></a></li>
         <li style="padding-right:10;padding-left:10"><a class="button radius" href="login/logout">Sign Out</a></li>
-        <li style="padding-right:0;padding-left:10">
-            <input type="text" placeholder="Search intelleq">
-        </li>
     </ul>
   </section>
 </div>

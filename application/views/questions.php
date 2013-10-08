@@ -10,10 +10,19 @@
     <div class="large-10 push-1 columns">
         <div class="panel">
       <h3>Questions</h3>
-      <ul class="pagination" style="margin-top: 10px">
+      <ul class="pagination" id="pagination" style="margin-top: 10px">
         <?php
-        for ($i = 0; $i < count($questions); $i++) {
-          echo '<li><a href="#">';
+        if (count($questions)>=1) {
+          echo '<li class="current"><a href="#" onclick="jumpto(';
+          echo 1;
+          echo ')">';
+          echo 1;
+          echo '</a></li>';
+        }
+        for ($i = 1; $i < count($questions); $i++) {
+          echo '<li><a href="#" onclick="jumpto(';
+          echo $i+1;
+          echo ')">';
           echo $i+1;
           echo '</a></li>';
         }
@@ -37,7 +46,7 @@
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <?php echo form_open('score');?><ol id="questions"style="list-style-type:none">
+      <?php echo form_open('score',array('id' => 'testSubmit'));?><ol id="questions"style="list-style-type:none">
     <?php
 
     $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
@@ -89,11 +98,11 @@
     }
     ?></ol>
     <div class ="row">
-      <div class="large-5 columns" style="float:right">
-          <ul class="button-group" style="padding-right:0px">
+      <div class="large-12 columns" style="float:right">
+          <ul class="button-group radius" style="padding-right:0px; display:inline">
             <li><a class="button small disabled" name="prev" id="prev-pseudo">Prev</a></li>
             <li><a class="button small hidden" name="prev" id="prev" onclick="prevq()">Prev</a></li>
-            <li><input type="submit" name="submit" class="button small success"></li>
+            <li><input type="submit" id="submit"name="submit" class="button small success" style="display:inline"></li>
             <li><a class="button small" name="next" id="next" onclick="nextq()">Next</a></li>
             <li><a class="button small hidden disabled" name="next" id="next-pseudo">Next</a></li>
           </ul>
@@ -131,16 +140,46 @@
     }
   }
 
-  function nextq(){
-    var earle = false;
-    //$("#next").text("What?");
+  function jumpto(number){
+    var num = number;
     $qlist = $("#questions li");
-    //alert($qlist.length);
     for (var i=0; i < $qlist.length; i++)
     {
-      //$("#next").text("Whet?"+i);
+      if ((i+1)==num) {
+        $('#questions li:eq(' + i + ')').removeClass("hidden");
+        $('#pagination li:eq(' + i + ')').addClass("current");
+        if(i+1==$qlist.length) {
+          $("#next").addClass("hidden");
+          $("#next-pseudo").removeClass("hidden");
+        }
+        else {
+          $("#next").removeClass("hidden");
+          $("#next-pseudo").addClass("hidden");
+        }
+        if(i==0) {
+          $("#prev").addClass("hidden");
+          $("#prev-pseudo").removeClass("hidden");
+        }
+        else {
+          $("#prev").removeClass("hidden");
+          $("#prev-pseudo").addClass("hidden");
+        }
+      }
+      else if(!($('#questions li:eq(' + i + ')').hasClass("hidden"))) {
+        $('#questions li:eq(' + i + ')').addClass("hidden");
+        $('#pagination li:eq(' + i + ')').removeClass("current");
+      };
+    }
+  }
+
+  function nextq(){
+    var earle = false;
+    $qlist = $("#questions li");
+    for (var i=0; i < $qlist.length; i++)
+    {
       if(earle) {
         $('#questions li:eq(' + i + ')').removeClass("hidden");
+        $('#pagination li:eq(' + i + ')').addClass("current");
         if(i+1==$qlist.length) {
           $("#next").addClass("hidden");
           $("#next-pseudo").removeClass("hidden");
@@ -161,6 +200,7 @@
       }
       else if(!($('#questions li:eq(' + i + ')').hasClass("hidden"))) {
         $('#questions li:eq(' + i + ')').addClass("hidden");
+        $('#pagination li:eq(' + i + ')').removeClass("current");
         earle=true;
       };
     }
@@ -176,6 +216,7 @@
       //$("#next").text("Whet?"+i);
       if(earle) {
         $('#questions li:eq(' + i + ')').removeClass("hidden");
+        $('#pagination li:eq(' + i + ')').addClass("current");
         if(i+1==$qlist.length) {
           $("#next").addClass("hidden");
           $("#next-pseudo").removeClass("hidden");
@@ -196,6 +237,7 @@
       }
       else if(!($('#questions li:eq(' + i + ')').hasClass("hidden"))) {
         $('#questions li:eq(' + i + ')').addClass("hidden");
+        $('#pagination li:eq(' + i + ')').removeClass("current");
         i=i-2;
         earle=true;
       };
