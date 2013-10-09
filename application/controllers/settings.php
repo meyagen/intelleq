@@ -3,7 +3,7 @@ class Settings extends CI_Controller{
 
 	function index() {
 		if($this->loggedin() == FALSE)
-			redirect('home');
+			redirect('site');
 		else {
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
@@ -132,7 +132,7 @@ class Settings extends CI_Controller{
 		$username = $this->session->userdata('username');
 		$this->settings_m->deactivate($username);
 		$this->session->sess_destroy();
-		redirect('home');
+		redirect('site');
 	}
 
 	function back(){

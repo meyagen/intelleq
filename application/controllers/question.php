@@ -27,7 +27,14 @@ class Question extends User_Controller
 		// Load view
 		$data['firstname'] = $this->session->userdata('fname');
 		$data['lastname'] = $this->session->userdata('lname');
+		//if (...)
+		$data['tempTime'] = 30*60; // in seconds 
+		//else
+		//$data['tempTime'] = $data['ajax_var']; // in seconds
+		//else $data['tempTime'] = 30*60;
 		$data['main_content'] = 'questions';
 		$this->load->view('members_area', $data);
 	}
+
+	
 }

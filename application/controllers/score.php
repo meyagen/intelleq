@@ -6,6 +6,7 @@ class Score extends User_Controller {
 
 		$this->load->model('ask');
 		$this->load->model('score_m');
+
 	}
 
 	function index() {
@@ -32,6 +33,7 @@ class Score extends User_Controller {
 
 		else {
 			$this->ask->pause($input);
+			$data['ajax_var'] = $this->input->post('pseudotime');
 			redirect('site');
 		}
 	}

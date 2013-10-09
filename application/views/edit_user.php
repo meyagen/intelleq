@@ -43,12 +43,12 @@
 
 <div class="row">
 <div class="push-8">
-  <input type="submit" name="Change" class="button radius success">
+  <input type="submit" value="Change" name="Change" class="button radius success">
   <?php echo form_close();?>
   </form>
   <?php echo form_open('settings/deactivate');?>
   <form>
-  <input type="submit" name="DeactivateAccount" class="button radius success">
+  <input type="submit" value="Deactivate" name="DeactivateAccount" class="button radius success">
   <?php echo form_close();?>
   </form>
 </div>

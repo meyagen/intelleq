@@ -31,7 +31,7 @@ class Login extends CI_Controller{
 	public function logout ()
 	{
 		$this->session->sess_destroy();
-		redirect('http://localhost/ci');
+		redirect(base_url());
 	}
 
 	public function loggedin ()
@@ -133,10 +133,10 @@ class Login extends CI_Controller{
 			echo "invalid";
 		}
 		else {
+
 			$this->load->model('membership_model');
 			
 			if($this->membership_model->is_unique()){
-				$data['main_content'] = 'email_confirmation';
 				$this->membership_model->create_member();
 				echo "valid";
 			}

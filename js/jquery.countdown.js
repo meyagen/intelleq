@@ -30,7 +30,8 @@
 			
 			// Time left
 			left = Math.floor((options.timestamp - (new Date())) / 1000);
-			
+			$("#time").text(left);
+			$("#pseudotime").attr('value', left);
 			if(left < 0){
 				left = 0;
 			}
@@ -81,7 +82,7 @@
 					<span class="digit static">0</span>\
 				</span>\
 				<span class="position">\
-					<span class="digit static">0</span>\
+					<span class="digit static" id="'+this+'Ones">0</span>\
 				</span>'
 			).appendTo(elem);
 			

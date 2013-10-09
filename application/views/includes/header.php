@@ -2,9 +2,10 @@
 <header>
 <div class="fixed">
 <nav class="top-bar fixed">
-  <ul class="title-area">
-    <li class="name"><h1><a href="<?php echo base_url(); ?>">intelleq</a></h1></li>
-    <li class="toggle-topbar menu-icon"><a href="user"><span></span></a></li>
+  <ul class="title-area" style="display:inline">
+    <li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li>
+    <li class="name"><a href="#" class="icon"> </a><h1><a href="<?php echo base_url(); ?>" style="display:inline">intelleq</a></h1></li>
+    
   </ul>
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">

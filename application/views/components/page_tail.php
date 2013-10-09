@@ -1,5 +1,4 @@
-
-  <script>document.write('<script src=' +
+<script>document.write('<script src=' +
   ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')</script>
   <!--script type="text/javascript" src="<?php echo site_url('js/vendor/zepto.js'); ?>"></script>

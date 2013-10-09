@@ -10,7 +10,7 @@
     </ul>
   </section>
   <ul class="title-area" style="display:inline">
-    <!--li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li-->
+    <li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li>
     <li class="name"><a href="#" class="icon"> </a><h1><a href="<?php echo base_url(); ?>" style="display:inline">intelleq</a></h1></li>
     
   </ul>
@@ -195,7 +195,8 @@
     <div class="row">
       <div class="large-12 columns">
         <ul class="button-group radius">
-          <li><a class="small button" onclick="$('#formSignIn').submit()">Submit</a></li>
+          <li><input type="submit" name="Log in" class="small button radius"> </li>
+          <!-- <li><a class="small button" onclick="$('#formSignIn').submit()">Submit</a></li> -->
           <li><a class="small button alert" href="#" data-reveal-id="modalForgot">Forgot Password</a></li>
       </ul>
       <input type="submit" style="position: absolute; height: 0px; width: 0px; border: none; padding: 0px;"
@@ -225,7 +226,7 @@
     <div class="large-12 columns">
       <ul class="button-group radius">
         <li><a class="small button" href="#" data-reveal-id="modalSignIn">&laquo; Back to Sign In</a></li>
-        <li><input class="small button" type="submit" value="Reset Password"></input></li>
+        <li><input class="small alert button" type="submit" value="Reset Password"></input></li>
       </ul>
     </div>
   </div>
@@ -280,7 +281,7 @@
     </fieldset>
     <div class="row">
       <div class="push-8">
-        <input type="submit" name="Create Account" class="button radius success">
+        <input type="submit" value="Create Account" name="Create Account" class="button radius success">
       </div>
     </div>
     </form>  

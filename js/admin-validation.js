@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var earle = false;
 
 	$("#adminSignIn").submit(function(evt){
-		//if (!earle)
+		if (!earle)
 		evt.preventDefault();
 		//$("#adminInfo").text("Yay.");
 		

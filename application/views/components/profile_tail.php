@@ -25,7 +25,6 @@
   <script>
     $(document).foundation();
 </script>
-  <script src="js/jquery-1.7.1.min.js"></script>
   <script src="js/jquery.countdown.js"></script>
   <script src="js/script.js"></script>
 

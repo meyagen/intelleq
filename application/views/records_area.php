@@ -1,7 +1,6 @@
-<?php $this->load->view('components/page_head'); ?>
+<?php $this->load->view('includes/header');?>
 <body class="off-canvas hide-extras">
 
-<?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
 <div class="container">
 <h2>Track Record</h2>
@@ -65,4 +64,3 @@
 </div>	
 
 <?php $this->load->view('includes/footer');?>
-<?php $this->load->view('components/page_tail1');?>

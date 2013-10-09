@@ -35,7 +35,9 @@
       </div>
       <div class="row">
         <div class="large-12 columns">
+          <script> var tempTimer = <?php echo $tempTime; ?> </script>
           <div id="countdown" class="invisible"style="width:100%"></div>
+          <span class="error" id="time"></span>
         </div>
       </div>
       </div>
@@ -46,7 +48,9 @@
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <?php echo form_open('score',array('id' => 'testSubmit'));?><ol id="questions"style="list-style-type:none">
+      <?php echo form_open('score',array('id' => 'testSubmit'));?>
+      <!-- <form action="score" method="post" id="testSubmit"> -->
+      <ol id="questions"style="list-style-type:none">
     <?php
 
     $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
@@ -88,7 +92,7 @@
           //print_r($c_array);
           $answer_text = $row[$choice[$c_array[$j]]];
           if($answer_text == $answers[$item])
-            echo '<label><input type="radio" name='.$name.' id="'.$name.'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
+            echo '<label onclick="checkifcomplete()"><input type="radio" name='.$name.' id="'.$name.'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
           else
             echo '<label><input type="radio" name='.$name.' id="'.$name.'" value="'.$answer_text.'"><span class="custom radio"></span> ' . $answer_text.'</label>';
         echo '</td></tr>';
@@ -97,24 +101,28 @@
       echo '</div></div></div></div></li>'; 
     }
     ?></ol>
+    <input type="text" id="pseudotime" name="pseudotime" value="9999"></input>
     <div class ="row">
       <div class="large-12 columns" style="float:right">
-          <ul class="button-group radius" style="padding-right:0px; display:inline">
+          <ul class="button-group" style="padding-right:0px; display:inline">
             <li><a class="button small disabled" name="prev" id="prev-pseudo">Prev</a></li>
             <li><a class="button small hidden" name="prev" id="prev" onclick="prevq()">Prev</a></li>
+            <li><a class="button small success" name="shet" id="shet" onclick="checkifcomplete()">Shet</a></li>
             <li><input type="submit" id="submit"name="submit" class="button small success" style="display:inline"></li>
             <li><a class="button small" name="next" id="next" onclick="nextq()">Next</a></li>
             <li><a class="button small hidden disabled" name="next" id="next-pseudo">Next</a></li>
           </ul>
       </div>
     </div>
-    <?php echo form_close();?>
+
+    </form>
     </div>
     </div>
   </div>
 
 <?php $this->load->view('includes/footer');?>
 
+<script src="js/jquery-1.7.1.min.js"> </script>
 <script>
 
   function checkquestions(){
@@ -137,6 +145,40 @@
       $('#toggleTimer').addClass("success");
       $('#toggleTimer').text("Show Timer");
       $('#countdown').addClass("invisible");
+    }
+  }
+
+  function checkifcomplete(){
+    var marker2 = true;
+    var inc = false;
+    $qlist = $("#questions li");
+    for (var i=0; i < $qlist.length; i++)
+    {
+      var noanswer = true;
+      $choices = $('#questions li:eq(' + i + ') div div div div table tbody tr');
+      for (var j=0; j<$choices.length; j++) {
+        // if (marker2) {
+        //   $('#submit').attr('value',"Checkpoint 4");
+        //   marker2 = false;
+        // }
+        if($('#questions li:eq('+i+') div div div div table tbody tr:eq('+j+') td label input').checked) {
+          noanswer = false;
+        }
+        else $('#submit').attr('value',$('#questions li:eq('+i+') div div div div table tbody tr:eq('+j+') td label input').value);
+
+      }
+      if(noanswer) {
+        inc = true;
+      }
+    }
+    //$('#submit').attr('value',inc);
+    if(inc) {
+      $('#submit').removeClass("success");
+      $('#submit').addClass("alert");
+    }
+    else {
+      $('#submit').removeClass("alert");
+      $('#submit').addClass("success");
     }
   }
 

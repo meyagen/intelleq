@@ -142,6 +142,7 @@ class Membership_model extends MY_Model {
 
 		$insert = $this->db->insert('membership', $new_member_insert_data);
 		$this->send_confirmation_email($this->input->post('email_address'));
+		
 	}
 
 	function send_confirmation_email($email){

@@ -1314,6 +1314,7 @@ blockquote p {
 button, .button {
   /*border-style: solid;
   border-width: 1px;*/
+  border: 0px;
   cursor: pointer;
   font-family: inherit;
   font-weight: bold;
