@@ -15,7 +15,7 @@
     <p class="title"><a>Modules</a></p>
     <div class="content"> 
       <ul class="side-nav">
-        <li><a href="question">Take the Exam</a></li>
+        <li><a href="transition">Take the Exam</a></li>
         <li><a href="#"><del>English</del></a></li>
         <li><a href="#"><del>Science</del></a></li>
         <li><a href="#"><del>Math</del></a></li>

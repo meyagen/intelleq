@@ -30,8 +30,8 @@
 			
 			// Time left
 			left = Math.floor((options.timestamp - (new Date())) / 1000);
-			$("#time").text(left);
 			$("#pseudotime").attr('value', left);
+			$("#spanpseudotime").text(left);
 			if(left < 0){
 				left = 0;
 			}

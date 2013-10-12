@@ -7,6 +7,11 @@
 
 		public function index ()
 		{	
+			$this->load->model('ask');
+			
+			// if(!$this->session->userdata['startExam']){
+			// 	$this->ask->delete_paused_user();
+			// }
 			// Load view
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');

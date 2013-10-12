@@ -18,6 +18,10 @@ class Ask extends CI_Model
 		return false;
 	}
 
+	function delete_paused_user(){
+		$this->db->delete('gen_exam', array('username' => ($this->session->userdata('username'))) );
+	}
+
 	function set_current_subject(){
 		if($this->is_paused()){
 			$this->db->where('username', $this->session->userdata('username'));
@@ -27,7 +31,8 @@ class Ask extends CI_Model
 			$data = array(
 				'sequence' => unserialize($row->sequence),
 				'answers' => unserialize($row->answers),
-				'subject'=> $row->subject
+				'subject'=> $row->subject,
+				'elapsed_time' => $row->elapsed_time,
 			);
 
 			$this->session->set_userdata($data);
@@ -39,7 +44,7 @@ class Ask extends CI_Model
 			$row = $query->row();
 
 			if($row->current_subject == null)
-				$data['subject'] = 'science';
+				$data['subject'] = 'Science';
 			else
 				$data['subject'] = $row->current_subject;
 
@@ -57,6 +62,31 @@ class Ask extends CI_Model
 		);
 
 		$this->session->set_userdata($data);
+	}
+
+	function get_timeLimit() {
+		$requiredTime = 0;
+		
+		if($this->is_paused()) {	// continue where it left off
+			$requiredTime = intval($this->session->userdata('elapsed_time'));
+		}
+		else { //start of exam
+			$subject = $this->session->userdata('subject');
+			if(strcmp(strtolower($subject), 'science') == 0){
+				$requiredTime = 100; //900 seconds = 15mins
+			}
+			elseif (strcmp(strtolower($subject), 'mathematics') == 0) {
+				$requiredTime = 100; //1800 seconds = 30mins
+			}
+			elseif (strcmp(strtolower($subject), 'english') == 0) {
+				$requiredTime = 100; //900 seconds = 15mins
+			}
+			elseif (strcmp(strtolower($subject), 'reading_comprehension') == 0) {
+				$requiredTime = 100; //600 seconds = 20mins
+			}
+		}
+		
+		return $requiredTime;
 	}
 
 	function count_questions(){
@@ -103,17 +133,19 @@ class Ask extends CI_Model
 		return $c_array;
 	}
 
-	function pause($input){
+	function pause($input, $elapsed_time){
 		$subject = $this->session->userdata('subject');
 		$sequence = serialize($this->session->userdata('sequence'));
 		$answers = serialize($input);
+		$time = $elapsed_time;
 
 		//store data in data[]
 		$data = array(
 			'username' => $this->session->userdata('username'),
 			'sequence' => $sequence,
 			'answers' => $answers,
-			'subject' => $subject
+			'subject' => $subject,
+			'elapsed_time' => $time,
 		);
 
 		//store in db gen_exam

@@ -18,6 +18,10 @@
 //?>
   </div></div>
 </fieldset>
+<?php 
+	$this->session->set_userdata('timeCheck', TRUE);
+	$this->session->set_userdata('startExam', FALSE);
+?>
 <a class="button radius alert" href="#"><del>Review Answers</del></a></li>
 <a class="button radius success" href="site">Back to Home</a></li>
 

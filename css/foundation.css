@@ -1354,6 +1354,7 @@ button, .button {
       color: white; }
   button.alert, .button.alert {
     background-color: #c60f13;
+    border: 0px;
     /*border-color: #970b0e;*/
     color: white; }
     button.alert:hover, button.alert:focus, .button.alert:hover, .button.alert:focus {

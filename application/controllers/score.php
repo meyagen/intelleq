@@ -32,13 +32,14 @@ class Score extends User_Controller {
 				$data['score_array'] = 
 				$data['main_content'] = 'score';
 			}
-			else
+			else{
 				$data['main_content'] = 'transition';
+			}
 			$this->load->view('members_area', $data);
 		}
 
 		else {
-			$this->ask->pause($input);
+			$this->ask->pause($input, $this->input->post('pseudotime'));
 			redirect('site');
 		}
 	}

@@ -1,7 +1,10 @@
 <body class="off-canvas hide-extras">
-
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
+<?php 
+	$this->session->set_userdata('timeCheck', TRUE);
+	$this->session->set_userdata('startExam', FALSE);
+?>
 <div class="large-6 pull-3 columns">
 	<div class="row">
 <h2>Transition</h2>

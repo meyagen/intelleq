@@ -32,6 +32,8 @@ class Membership_model extends MY_Model {
 				'email' => $user->email_address,
 				'id' => $user->id,
 				'loggedin' => TRUE,
+				'timeCheck' => TRUE,
+				'startExam' => FALSE,
 			);
 			$this->session->set_userdata($data);
 			return true;

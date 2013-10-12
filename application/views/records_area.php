@@ -9,7 +9,7 @@
   <div class="large-12 columns">  
   <?php
 
-  	if($scores != null){
+    if($scores != null){
 
       echo "<h5>Overall Scores</h5><br />";
 
@@ -50,7 +50,7 @@
         echo "<label>" .$score ."/4</label>";
         echo "</div>";
       }
-  	}
+    }
 
     else{
       echo "<div class=".'row'.">";
@@ -61,6 +61,6 @@
   ?>
   </div></div>
 </fieldset>
-</div>	
+</div>  
 
 <?php $this->load->view('includes/footer');?>

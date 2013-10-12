@@ -30,6 +30,10 @@ class Login extends CI_Controller{
 
 	public function logout ()
 	{
+		if($this->session->userdata['startExam']){
+			$this->load->model('ask');
+			//$this->ask->save_answers();
+		}
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}

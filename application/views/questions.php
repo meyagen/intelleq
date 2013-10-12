@@ -1,5 +1,20 @@
-<?php $this->load->view('includes/header'); ?>
 <body onload="checkquestions()" class="off-canvas hide-extras">
+
+<?php $this->load->view('includes/header'); ?>
+
+<div class="row hidden">
+  <div class="large-12 columns">
+    <span class="error" id="spanpseudotime"></span>
+  </div>
+</div>
+
+<script>
+    window.onbeforeunload = function(event) {
+      var someVarName = $('#spanpseudotime').text();
+      localStorage.setItem("someVar", someVarName);
+      return 'Confirm refresh';
+    };
+</script>
 
 <?php $this->load->view('navigation'); ?>
 
@@ -13,14 +28,20 @@
       <ul class="pagination" id="pagination" style="margin-top: 10px">
         <?php
         if (count($questions)>=1) {
-          echo '<li class="current"><a href="#" onclick="jumpto(';
+          echo '<li class="current"><span data-tooltip class="has-tip" title="';
+          $row = $questions[$qrand[0]];
+          echo $row['title'];
+          echo '"><a href="#" onclick="jumpto(';
           echo 1;
           echo ')">';
           echo 1;
-          echo '</a></li>';
+          echo '</a></span></li>';
         }
         for ($i = 1; $i < count($questions); $i++) {
-          echo '<li><a href="#" onclick="jumpto(';
+          echo '<li><span data-tooltip class="has-tip" title="';
+          $row = $questions[$qrand[$i]];
+          echo $row['title'];
+          echo '"><a href="#" onclick="jumpto(';
           echo $i+1;
           echo ')">';
           echo $i+1;
@@ -33,11 +54,27 @@
           <a class="button small success expand" id="toggleTimer" onclick="toggleTimer()">Show Timer</a>
         </div>
       </div>
+      
       <div class="row">
         <div class="large-12 columns">
-          <script> var tempTimer = <?php echo $tempTime; ?> </script>
+        
+          <?php
+            if($this->session->userdata['timeCheck']) { 
+              echo "<script>";
+              echo "var tempTimer = ". $tempTime . ";" ;
+              echo "</script>";
+              $this->session->set_userdata('timeCheck', FALSE);
+              $this->session->set_userdata('startExam', TRUE);
+            } 
+            else {
+              echo "<script>";
+              echo "var tempTimer = localStorage.getItem(\"someVar\");";
+              echo "</script>"; 
+            } 
+            //var_dump($this->session->userdata['startExam']);
+          ?>
+
           <div id="countdown" class="invisible"style="width:100%"></div>
-          <span class="error" id="time"></span>
         </div>
       </div>
       </div>
@@ -101,7 +138,7 @@
       echo '</div></div></div></div></li>'; 
     }
     ?></ol>
-    <input type="text" id="pseudotime" name="pseudotime" value="9999"></input>
+    
     <div class ="row">
       <div class="large-12 columns" style="float:right">
           <ul class="button-group" style="padding-right:0px; display:inline">
@@ -114,7 +151,7 @@
           </ul>
       </div>
     </div>
-
+    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
     </form>
     </div>
     </div>
@@ -124,13 +161,25 @@
 
 <script src="js/jquery-1.7.1.min.js"> </script>
 <script>
-
+  
   function checkquestions(){
     $qlist = $("#questions li");
     for (var i=0; i < $qlist.length; i++)
     {
       
     }
+  }
+
+  function savetime() {
+    alert("kupal");
+    // $.ajax({
+    //   type: "POST",
+    //   url: "score/storetime",
+    //   data: "pseudotime=1000"+$("#pseudotime").val(),
+    //   success: function(msg){
+    //     alert('shet');        
+    //   }
+    // });
   }
 
   function toggleTimer(){
