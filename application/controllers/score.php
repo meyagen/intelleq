@@ -6,7 +6,6 @@ class Score extends User_Controller {
 
 		$this->load->model('ask');
 		$this->load->model('score_m');
-
 	}
 
 	function index() {
@@ -27,13 +26,19 @@ class Score extends User_Controller {
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
 			$data['subject'] = $this->session->userdata('subject');
-			$data['main_content'] = 'score';
+
+			if(strcmp($data['subject'], "reading_comprehension") == 0) {
+				//$scorearray = $this->score_m->getscores
+				$data['score_array'] = 
+				$data['main_content'] = 'score';
+			}
+			else
+				$data['main_content'] = 'transition';
 			$this->load->view('members_area', $data);
 		}
 
 		else {
 			$this->ask->pause($input);
-			$data['ajax_var'] = $this->input->post('pseudotime');
 			redirect('site');
 		}
 	}

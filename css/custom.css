@@ -1,7 +1,6 @@
-
 nav.top-bar {
-    padding-right:10%;
-    padding-left:10%;
+	padding-right:10%;
+	padding-left:10%;
     background-color: #f9812b;
 }
 
@@ -16,7 +15,7 @@ body.admin-log {
 }
 
 header#homepage{
-    /*padding-top: 180px;*/
+	/*padding-top: 180px;*/
     padding-bottom: 50px;
     background-repeat: no-repeat;
     background-color: #FFFFFF;
@@ -142,6 +141,14 @@ h4 {
     background-position: center top;
     background-repeat: no-repeat;
 }
+
+
+.pic#signUpSuccess {
+    background-image: url("../img/icon-confirm.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
 
 .pagetitle#titleNav {
     background-image: url("../img/icon-train.png");
