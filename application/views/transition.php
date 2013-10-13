@@ -2,8 +2,8 @@
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
 <?php 
-	$this->session->set_userdata('timeCheck', TRUE);
-	$this->session->set_userdata('startExam', FALSE);
+	// $this->session->set_userdata('timeCheck', TRUE);
+	// $this->session->set_userdata('startExam', FALSE);
 ?>
 <div class="large-6 pull-3 columns">
 	<div class="row">
@@ -34,11 +34,19 @@ After the exam, you will be redirected to Review mode, wherein your answers and 
 </ol>
 </fieldset>
 <a class="button radius success" href="question">Proceed</a></li>
-
+<?php //var_dump($this->session->userdata['timeCheck']); ?>
 
 
 </div>  </div></div>
 
 
-
 <?php $this->load->view('includes/footer');?>
+<?php 
+	if($this->session->userdata['timeCheck']){
+		echo "<script>";
+		echo "for(var i = 1; i < 30; i++){";
+		echo "localStorage.removeItem('someTime');";
+		echo "localStorage.removeItem('answer'+i);}";
+		echo "</script>";
+	}
+?>

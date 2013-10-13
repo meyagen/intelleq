@@ -34,6 +34,9 @@
 			$("#spanpseudotime").text(left);
 			if(left < 0){
 				left = 0;
+				//$('#testSubmit').submit();
+				//alert("TIME'S UP!");
+				//window.location = "transition";
 			}
 			
 			// Number of days left

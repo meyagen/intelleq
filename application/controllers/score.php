@@ -27,9 +27,12 @@ class Score extends User_Controller {
 			$data['lastname'] = $this->session->userdata('lname');
 			$data['subject'] = $this->session->userdata('subject');
 
+			$this->session->set_userdata('timeCheck', TRUE);
+			$this->session->set_userdata('startExam', FALSE);
+			
 			if(strcmp($data['subject'], "reading_comprehension") == 0) {
 				//$scorearray = $this->score_m->getscores
-				$data['score_array'] = 
+				//$data['score_array'] = 
 				$data['main_content'] = 'score';
 			}
 			else{

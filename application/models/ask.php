@@ -18,10 +18,6 @@ class Ask extends CI_Model
 		return false;
 	}
 
-	function delete_paused_user(){
-		$this->db->delete('gen_exam', array('username' => ($this->session->userdata('username'))) );
-	}
-
 	function set_current_subject(){
 		if($this->is_paused()){
 			$this->db->where('username', $this->session->userdata('username'));
