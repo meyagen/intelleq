@@ -10,13 +10,14 @@ class Score extends User_Controller {
 
 	function index() {
 		$finished = true;
-
+		// echo "start na to:";
+		// var_dump($this->session->userdata['startExam']);
 		for($i = 1; $i <= $this->ask->count_questions(); $i++) {
 			$answer = "answer".$i;
 			$$answer = $this->input->post($answer);
 			$input[$i] = $$answer;
-
-			if($$answer == null)
+		
+			if($$answer == null && $this->session->userdata['startExam'])
 				$finished = false;
 		}
 
@@ -45,5 +46,9 @@ class Score extends User_Controller {
 			$this->ask->pause($input, $this->input->post('pseudotime'));
 			redirect('site');
 		}
+	}
+
+	function checkState(){
+		$this->session->set_userdata('startExam', FALSE);
 	}
 }

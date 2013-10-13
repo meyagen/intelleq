@@ -69,16 +69,16 @@ class Ask extends CI_Model
 		else { //start of exam
 			$subject = $this->session->userdata('subject');
 			if(strcmp(strtolower($subject), 'science') == 0){
-				$requiredTime = 100; //900 seconds = 15mins
+				$requiredTime = 30; //900 seconds = 15mins
 			}
 			elseif (strcmp(strtolower($subject), 'mathematics') == 0) {
-				$requiredTime = 100; //1800 seconds = 30mins
+				$requiredTime = 30; //1800 seconds = 30mins
 			}
 			elseif (strcmp(strtolower($subject), 'english') == 0) {
-				$requiredTime = 10; //900 seconds = 15mins
+				$requiredTime = 30; //900 seconds = 15mins
 			}
 			elseif (strcmp(strtolower($subject), 'reading_comprehension') == 0) {
-				$requiredTime = 100; //600 seconds = 20mins
+				$requiredTime = 30; //600 seconds = 20mins
 			}
 		}
 		

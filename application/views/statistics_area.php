@@ -25,7 +25,7 @@ $(function () {
                 }]
             },
             tooltip: {
-                valueSuffix: 'Correct Answer'
+                valueSuffix: ' Correct Answer'
             },
             legend: {
                 layout: 'vertical',

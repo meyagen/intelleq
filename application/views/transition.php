@@ -34,7 +34,7 @@ After the exam, you will be redirected to Review mode, wherein your answers and 
 </ol>
 </fieldset>
 <a class="button radius success" href="question">Proceed</a></li>
-<?php //var_dump($this->session->userdata['timeCheck']); ?>
+<?php //var_dump($this->session->userdata['startExam']); ?>
 
 
 </div>  </div></div>

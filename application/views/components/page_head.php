@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />
   <link rel="stylesheet" href="css/jquery.countdown.css" />
   <!--link rel="stylesheet" href="css/app.css"-->
-  <script src="js/vendor/custom.modernizr.js"></script>
-  <script src="js/vendor/custom.jquery.js"></script>
-  <script src="js/vendor/custom.zepto.js"></script>
-  <script src="js/foundation.min.js"></script>
-  <script src="js/guest-validation.js"></script>
+  <script src="<?php echo site_url('js/vendor/custom.modernizr.js'); ?>"></script>
+  <script src="<?php echo site_url('js/vendor/jquery.js'); ?>"></script>
+  <script src="<?php echo site_url('js/vendor/zepto.js'); ?>"></script>
+  <script src="<?php echo site_url('js/foundation.min.js'); ?>"></script>
+  <script src="<?php echo site_url('js/guest-validation.js'); ?>"></script>
 </head>

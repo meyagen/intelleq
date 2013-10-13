@@ -8,6 +8,7 @@
 		public function index ()
 		{	
 			$this->load->model('score_m');
+			$this->load->model('ask');
 			$date = $this->score_m->get_date();
 
 			$array = $this->score_m->get_scores("scores");

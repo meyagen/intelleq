@@ -8,16 +8,11 @@
   </div>
 </div>
 <script>
-  alert("timere");
-  var time = $('#spanpseudotime').text();
-  alert("time" + time);
-</script>
-<script>
-    // window.onbeforeunload = function(event) {
-    //   var time = $('#spanpseudotime').text();
-    //   localStorage.setItem("someTime", time);
-    //   return 'Confirm refresh';
-    // };
+    window.onbeforeunload = function(event) {
+      var time = $('#spanpseudotime').text();
+      localStorage.setItem("someTime", time);
+      //return 'Confirm refresh';
+    };
 </script>
 
 <?php $this->load->view('navigation'); ?>
@@ -158,21 +153,18 @@
         echo '</div></div></div></div></li>'; 
 
         if(!($this->session->userdata['timeCheck'])){
-          //var_dump($this->session->userdata['timeCheck']);
           echo "<script>";
           echo "for(var i = 1; i <= 4; i++){";
           echo "if(localStorage.getItem(\"answer\" + i) !== null)";
           echo "document.getElementById(localStorage.getItem(\"answer\" + i)).checked = true;}";
-        //  echo "if(document.getElementById(\"answer1_2\").checked){";
-        //  echo "localStorage.setItem(\"someAnswer\", 2);";
-        //  echo "alert(localStorage.getItem(\"someAnswer\"));}";
           echo "</script>";
         }
       }
     ?></ol>
-    <?php //var_dump($this->session->userdata); 
+    <?php 
         $this->session->set_userdata('timeCheck', FALSE);
         $this->session->set_userdata('startExam', TRUE);
+        //var_dump($this->session->userdata); 
     ?>
     <div class ="row">
       <div class="large-12 columns" style="float:right">
@@ -186,7 +178,7 @@
           </ul>
       </div>
     </div>
-    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="">
+    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
     </form>
     </div>
     </div>
@@ -194,8 +186,28 @@
 
 <?php $this->load->view('includes/footer');?>
 
-<script src="js/jquery-1.7.1.min.js"> </script>
+<script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
+<script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
+<script src="<?php echo site_url('js/script.js'); ?>"></script>
 <script>
+  var ct = setInterval("checkTime()", 1000);
+  
+  function checkTime(){
+      //alert("timere");
+      var time = parseInt(document.getElementById('pseudotime').value);
+      if(time <= 0){
+        //clearInterval(ct);
+        time = 0;
+        $.ajax({
+          url: 'score/checkState',
+          success: function(){
+              alert("TIME'S UP! " + time);
+              $('#submit').click();
+          }
+        })
+      }
+      //alert("time" + (parseInt(time)+100000));
+  }
 
   $(function(){
     $('input[type="radio"]').click(function(){

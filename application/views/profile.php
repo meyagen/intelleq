@@ -1,7 +1,7 @@
 <body class="off-canvas hide-extras">
 <!--Navigation Bar-->
-
- <?php $this->load->view('includes/header');?>
+<?php //var_dump($this->session->userdata['startExam']); ?>
+<?php $this->load->view('includes/header');?>
 <section class="main">
   <?php $this->load->view('navigation');?>
   <!--Body - Mid-->
