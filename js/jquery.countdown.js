@@ -34,7 +34,8 @@
 			$("#spanpseudotime").text(left);
 			if(left < 0){
 				left = 0;
-				//$('#testSubmit').submit();
+				//document.testSubmit.submitForm.click();
+				//$('#submitForm').submit();
 				//alert("TIME'S UP!");
 				//window.location = "transition";
 			}

@@ -7,22 +7,17 @@
     <span class="error" id="spanpseudotime"></span>
   </div>
 </div>
-
 <script>
-  
-//   alert($('#timershit').text() + "test");
-//   //alert("ates" + "test");
-//   if(parseInt($('#timershit').text()) >= 0){
-//    alert("time's up!");
-//   }
+  alert("timere");
+  var time = $('#spanpseudotime').text();
+  alert("time" + time);
 </script>
-
 <script>
-    window.onbeforeunload = function(event) {
-      var time = $('#spanpseudotime').text();
-      localStorage.setItem("someTime", time);
-      return 'Confirm refresh';
-    };
+    // window.onbeforeunload = function(event) {
+    //   var time = $('#spanpseudotime').text();
+    //   localStorage.setItem("someTime", time);
+    //   return 'Confirm refresh';
+    // };
 </script>
 
 <?php $this->load->view('navigation'); ?>
@@ -191,7 +186,7 @@
           </ul>
       </div>
     </div>
-    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
+    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="">
     </form>
     </div>
     </div>
