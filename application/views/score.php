@@ -10,23 +10,17 @@
   <div class="large-12 columns">  
 
 
-// <?php
-//	for ($i = 0; $i<)
-//	echo "Score: ";
-//	echo $score;
-//	echo "/".$total;
-//?>
-  </div></div>
-</fieldset>
-<?php //var_dump($this->session->userdata);
+ <?php
+	echo "Score: ";
+	echo $score;
+	echo "/16";
 ?>
+
+</div></div>
+</fieldset>
 <a class="button radius alert" href="#"><del>Review Answers</del></a></li>
 <a class="button radius success" href="site">Back to Home</a></li>
 
-
-
-</div>  </div></div>
-
-
+</div></div></div>
 
 <?php $this->load->view('includes/footer');?>

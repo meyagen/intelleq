@@ -26,13 +26,14 @@ class Score extends User_Controller {
 			$this->session->set_userdata('startExam', FALSE);
 			
 			if(strcmp($data['subject'], "reading_comprehension") == 0) {
-				//$scorearray = $this->score_m->getscores
-				//$data['score_array'] = 
+			    $score_array = $this->score_m->get_scores("scores");
+			    $data['score'] = $score_array[count($score_array)-1];
+			    $data['total'] = $this->ask->count_questions();
 				$data['main_content'] = 'score';
 			}
-			else{
+			else
 				$data['main_content'] = 'transition';
-			}
+
 			$this->load->view('members_area', $data);
 		}
 

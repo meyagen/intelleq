@@ -21,14 +21,8 @@ class Score_M extends CI_Model
     	$questions = unserialize($this->session->userdata('questions'));
 
     	$sequence = $this->session->userdata('sequence');
-    	//$to_review['seq_'.$subject] = $this->session->userdata('saveSequence');
     	$to_review['seq_'.$subject] = serialize($this->session->userdata('saveSequence'));
-    	// put sequence to table 'review'
-    	// use $subject
-
     	$to_review['ans_'.$subject] = serialize($input);
-    	// put answers to table 'review'
-    	// use $subject
 
     	//check username in table
 		$this->db->where('username', $to_review['username']);
@@ -44,8 +38,6 @@ class Score_M extends CI_Model
 		    $this->db->insert('review', $to_review);
 
     	$this->session->set_userdata($this->session->userdata['subject'], $input);
-
-		//var_dump($to_review);
 
 		for($counter = 0; $counter < $this->ask->count_questions(); $counter++){
 			$row = $questions[$sequence[$counter]];
@@ -180,7 +172,6 @@ class Score_M extends CI_Model
 		$this->db->update('membership', array('date' => serialize($date_array)));
     }
 
-
     function month_shortcut($month){
     	if(strcmp($month, "January") == 0)
     		$month = "Jan";
@@ -215,7 +206,7 @@ class Score_M extends CI_Model
 
 		return unserialize($row->date);
 	}
-
+	
 	function get_scores($subject){
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('membership');
