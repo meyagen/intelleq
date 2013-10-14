@@ -18,6 +18,25 @@ class Ask extends CI_Model
 		return false;
 	}
 
+	function check_last_fin(){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('review');
+		//$query['username'];
+		if($query->num_rows == 0)
+			return false;
+			//return 'noprev';
+		else {
+			$row = $query->row();
+			if($row->last_fin=='reading_comprehension')
+				return true;
+			else return false;
+		}
+	}
+
+	function delete_paused_user(){
+		$this->db->delete('gen_exam', array('username' => ($this->session->userdata('username'))) );
+	}
+
 	function set_current_subject(){
 		if($this->is_paused()){
 			$this->db->where('username', $this->session->userdata('username'));
@@ -60,6 +79,15 @@ class Ask extends CI_Model
 		$this->session->set_userdata($data);
 	}
 
+	function get_questions($input) {
+		$query = $this->db->query("select * from ask where ask.group=?", array('group' => $input));
+        $questions = $query->result_array();
+
+		$data = serialize($questions);
+
+		return $data;
+	}
+
 	function get_timeLimit() {
 		$requiredTime = 0;
 		
@@ -69,16 +97,16 @@ class Ask extends CI_Model
 		else { //start of exam
 			$subject = $this->session->userdata('subject');
 			if(strcmp(strtolower($subject), 'science') == 0){
-				$requiredTime = 30; //900 seconds = 15mins
+				$requiredTime = 100; //900 seconds = 15mins
 			}
 			elseif (strcmp(strtolower($subject), 'mathematics') == 0) {
-				$requiredTime = 30; //1800 seconds = 30mins
+				$requiredTime = 100; //1800 seconds = 30mins
 			}
 			elseif (strcmp(strtolower($subject), 'english') == 0) {
-				$requiredTime = 30; //900 seconds = 15mins
+				$requiredTime = 100; //900 seconds = 15mins
 			}
 			elseif (strcmp(strtolower($subject), 'reading_comprehension') == 0) {
-				$requiredTime = 30; //600 seconds = 20mins
+				$requiredTime = 100; //600 seconds = 20mins
 			}
 		}
 		

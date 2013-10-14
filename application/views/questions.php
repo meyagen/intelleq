@@ -2,21 +2,22 @@
 
 <?php $this->load->view('includes/header'); ?>
 
-<div class="row hidden invisible">
+<div class="row hidden">
   <div class="large-12 columns">
     <span class="error" id="spanpseudotime"></span>
   </div>
 </div>
+
 <script>
     window.onbeforeunload = function(event) {
-      var time = $('#spanpseudotime').text();
-      localStorage.setItem("someTime", time);
-      //return 'Confirm refresh';
+      var someVarName = $('#spanpseudotime').text();
+      localStorage.setItem("someVar", someVarName);
+      return 'Confirm refresh';
     };
 </script>
 
 <?php $this->load->view('navigation'); ?>
-<?php //var_dump($this->session->userdata); ?>
+
 <div class="large-3 columns push-6">
   <div class="row">
     <div class="large-12 columns">
@@ -25,38 +26,20 @@
         <div class="panel">
       <h3>Questions</h3>
       <ul class="pagination" id="pagination" style="margin-top: 10px">
-      <?php
-        
-        if($this->session->userdata['timeCheck']) { 
-          $this->session->set_userdata('saveSequence', $qrand);
-          $this->session->set_userdata('saveChoice', $qrand);
-          //var_dump($this->session->userdata);
-        }  
-        else{
-          $qrand = $this->session->userdata['saveSequence'];
-          //var_dump($this->session->userdata);
-        }
-        if (count($questions)>=1) {
-          echo '<li class="current"><span data-tooltip class="has-tip" title="';
-          $row = $questions[$qrand[0]];
-          echo $row['title'];
-          echo '"><a href="#" onclick="jumpto(';
-          echo 1;
-          echo ')">';
-          echo 1;
-          echo '</a></span></li>';
-        }
-        for ($i = 1; $i < count($questions); $i++) {
-          echo '<li><span data-tooltip class="has-tip" title="';
+        <?php
+        for ($i = 0; $i < count($questions); $i++) {
+          echo '<li';
+          if ($i==0) echo ' class="current"';
+          echo '><span data-tooltip class="has-tip" title="';
           $row = $questions[$qrand[$i]];
           echo $row['title'];
-          echo '"><a href="#" onclick="jumpto(';
+          echo '"><a href="#" id="numbah" onclick="jumpto(';
           echo $i+1;
           echo ')">';
           echo $i+1;
           echo '</a></li>';
         }
-      ?>
+        ?>
       </ul>
       <div class="row">
         <div class="large-12 columns">
@@ -72,15 +55,17 @@
               echo "<script>";
               echo "var tempTimer = ". $tempTime . ";" ;
               echo "</script>";
+              $this->session->set_userdata('timeCheck', FALSE);
+              $this->session->set_userdata('startExam', TRUE);
             } 
             else {
               echo "<script>";
-              echo "var tempTimer = localStorage.getItem(\"someTime\");";
+              echo "var tempTimer = localStorage.getItem(\"someVar\");";
               echo "</script>"; 
             } 
-            //var_dump($this->session->userdata);
+            //var_dump($this->session->userdata['startExam']);
           ?>
-          
+
           <div id="countdown" class="invisible"style="width:100%"></div>
         </div>
       </div>
@@ -97,75 +82,55 @@
       <ol id="questions"style="list-style-type:none">
     <?php
 
-      $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+    $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
 
-      $item=0;
-      for($i = 0, $item=1; $i < count($questions); $i++, $item++)
-      {
-        $row = $questions[$qrand[$i]];
-        $name = "answer" .$item;
-        $c_array = array();
+    $item=0;
+    for($i = 0, $item=1; $i < count($questions); $i++, $item++)
+    {
+      $row = $questions[$qrand[$i]];
+      $name = "answer" .$item;
 
-        if($this->session->userdata['timeCheck']) {
-          for($counter = 0; $counter < 4; $counter++){
-            $randomize = rand(0,3);
-            
-            while(in_array($randomize,$c_array)){
-              $randomize = rand(0,3);
-            }
-
-            array_push($c_array,$randomize);
-                        
-            $c_array[$counter] = $randomize;
-          }
-          $this->session->set_userdata('saveChoice', $c_array);
-        }
-        else{
-          $c_array = $this->session->userdata['saveChoice'];
+      $c_array = array();
+      for($counter = 0; $counter < 4; $counter++){
+        $randomize = rand(0,3);
+        
+        while(in_array($randomize,$c_array)){
+          $randomize = rand(0,3);
         }
 
-        echo '<li';
-        if ($i>0) echo ' class="hidden"';
-        echo '><div class="panel" style="min-height:450px"><div class="large-12">';
-        echo '<h3>';
-        echo $item;
-        echo '</h3> ';
-
-          echo '<strong>';
-            echo $row['ask'];
-          echo '</strong><div class="row"><div class="large-12 columns">';
-          echo '<table width="100%" style="margin-top:1.25em;margin-bottom:0em"><tbody>';
-
-        for($j = 0; $j < 4; $j++){
-          echo '<tr><td>';
-
-            //print_r($c_array);
-            $answer_text = $row[$choice[$c_array[$j]]];
-            if($answer_text == $answers[$item]){
-              echo '<label onclick="checkifcomplete()"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
-
-            }else{
-              echo '<label><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span> ' . $answer_text.'</label>';
-            }
-          echo '</td></tr>';
-        }
-        echo '</tbody></table>';
-        echo '</div></div></div></div></li>'; 
-
-        if(!($this->session->userdata['timeCheck'])){
-          echo "<script>";
-          echo "for(var i = 1; i <= 4; i++){";
-          echo "if(localStorage.getItem(\"answer\" + i) !== null)";
-          echo "document.getElementById(localStorage.getItem(\"answer\" + i)).checked = true;}";
-          echo "</script>";
-        }
+        array_push($c_array,$randomize);
+                    
+        $c_array[$counter] = $randomize;
       }
+
+      echo '<li';
+      if ($i>0) echo ' class="hidden"';
+      echo '><div class="panel" style="min-height:450px"><div class="large-12">';
+      echo '<h3>';
+      echo $item;
+      echo '</h3> ';
+
+        echo '<strong>';
+          echo $row['ask'];
+        echo '</strong><div class="row"><div class="large-12 columns">';
+        echo '<table width="100%" style="margin-top:1.25em;margin-bottom:0em"><tbody>';
+
+      for($j = 0; $j < 4; $j++){
+        echo '<tr><td>';
+
+          //print_r($c_array);
+          $answer_text = $row[$choice[$c_array[$j]]];
+          if($answer_text == $answers[$item])
+            echo '<label onclick="checkifcomplete()"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
+          else
+            echo '<label><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span> ' . $answer_text.'</label>';
+        echo '</td></tr>';
+      }
+      echo '</tbody></table>';
+      echo '</div></div></div></div></li>'; 
+    }
     ?></ol>
-    <?php 
-        $this->session->set_userdata('timeCheck', FALSE);
-        $this->session->set_userdata('startExam', TRUE);
-        //var_dump($this->session->userdata); 
-    ?>
+    
     <div class ="row">
       <div class="large-12 columns" style="float:right">
           <ul class="button-group" style="padding-right:0px; display:inline">
@@ -186,48 +151,27 @@
 
 <?php $this->load->view('includes/footer');?>
 
-<script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
-<script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
-<script src="<?php echo site_url('js/script.js'); ?>"></script>
+<script src="js/jquery-1.7.1.min.js"> </script>
 <script>
-  var ct = setInterval("checkTime()", 1000);
   
-  function checkTime(){
-      //alert("timere");
-      var time = parseInt(document.getElementById('pseudotime').value);
-      if(time <= 0){
-        //clearInterval(ct);
-        time = 0;
-        $.ajax({
-          url: 'score/checkState',
-          success: function(){
-              alert("TIME'S UP! " + time);
-              $('#submit').click();
-          }
-        })
-      }
-      //alert("time" + (parseInt(time)+100000));
-  }
-
-  $(function(){
-    $('input[type="radio"]').click(function(){
-      if ($(this).is(':checked'))
-      {
-        localStorage.removeItem($(this).attr('name'));
-        localStorage.setItem($(this).attr('name'), $(this).attr('id'));
-        
-        //alert(localStorage.getItem("answer" + 1));
-        //alert(localStorage.getItem($(this).attr('name')));
-      }
-    });
-  });
-
   function checkquestions(){
     $qlist = $("#questions li");
     for (var i=0; i < $qlist.length; i++)
     {
       
     }
+  }
+
+  function savetime() {
+    alert("kupal");
+    // $.ajax({
+    //   type: "POST",
+    //   url: "score/storetime",
+    //   data: "pseudotime=1000"+$("#pseudotime").val(),
+    //   success: function(msg){
+    //     alert('shet');        
+    //   }
+    // });
   }
 
   function toggleTimer(){

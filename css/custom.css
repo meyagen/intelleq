@@ -79,6 +79,17 @@ h4 {
     margin-bottom: 0px;
 }
 
+tr .correct, label .correct, ul.pagination li a.correct {
+
+    background:#27ae60 !important;
+    color:#fff !important;
+}
+
+tr .wrong, label .wrong, ul.pagination li a.wrong {
+    background-color:#e74c3c !important;
+    color:#fff !important;
+}
+
 .footer a:link    {color:white;}
 .footer a:visited {color:white;}
 .footer a:hover   {color:red;}
@@ -209,6 +220,10 @@ ul.pagination li.answered a{
 }
 
 .hidden {
+    display:none;
+}
+
+ul.hidden {
     display:none;
 }
 
