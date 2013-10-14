@@ -205,7 +205,7 @@
 	</div>
 </div>
 <?php $this->load->view('includes/footer');?>
-
+<script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
 <script>
 
   function changesubj(subj) {

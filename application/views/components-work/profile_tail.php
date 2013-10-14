@@ -3,7 +3,7 @@
 
     <script>
   document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/custom.zepto' : 'js/vendor/custom.jquery') +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
   '.js><\/script>')
   </script>
    
@@ -25,6 +25,8 @@
   <script>
     $(document).foundation();
 </script>
+  <script src="js/jquery.countdown.js"></script>
+  <script src="js/script.js"></script>
 
 </body>
 </html>
