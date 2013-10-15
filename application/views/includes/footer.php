@@ -1,5 +1,5 @@
 <!--Footer - Site Map-->
-<section role="footmap" style="box-shadow:0px 0px 1px #000000">
+<section role="footmap">
   <footer id="universal" class="footer">
   <div class="row fullrow">
     <div class="large-7 columns">

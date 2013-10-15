@@ -14,7 +14,7 @@ body {
   color: #222222;
   padding: 0;
   margin: 0;
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-family: /*"Gotham", */"Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -1061,7 +1061,7 @@ p {
 
 /* Default header styles */
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-family: "Gotham", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: bold;
   font-style: normal;
   color: #222222;
@@ -1076,27 +1076,27 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: 2.125em;
-  text-shadow:0px 0px 2px #FFFFFF;}
+/*  text-shadow:0px 0px 2px #FFFFFF;*/}
 
 h2 {
   font-size: 1.6875em;
-  text-shadow:0px 0px 2px #FFFFFF;}
+/*  text-shadow:0px 0px 2px #FFFFFF;*/}
 
 h3 {
   font-size: 1.375em;
-  text-shadow:0px 0px 2px #FFFFFF;}
+/*  text-shadow:0px 0px 2px #FFFFFF;*/}
 
 h4 {
   font-size: 1.125em;
-  text-shadow:0px 0px 1px #FFFFFF;}
+/*  text-shadow:0px 0px 1px #FFFFFF;*/}
 
 h5 {
   font-size: 1.125em;
-  text-shadow:0px 0px 1px #FFFFFF;}
+/*  text-shadow:0px 0px 1px #FFFFFF;*/}
 
 h6 {
   font-size: 1em;
-  text-shadow:0px 0px 1px #FFFFFF;}
+/*  text-shadow:0px 0px 1px #FFFFFF;*/}
 
 hr {
   border: solid #dddddd;
@@ -2295,7 +2295,7 @@ label.error {
 .section-container.vertical-nav,
 .section-container.horizontal-nav,
 .section-container.accordion {
-  border-top: 1px solid #cccccc; }
+  /*border-top: 1px solid #cccccc;*/ }
   .section-container.auto > section > .title, .section-container.auto > .section > .title,
   .section-container.vertical-tabs > section > .title,
   .section-container.vertical-tabs > .section > .title,
@@ -2307,7 +2307,7 @@ label.error {
   .section-container.accordion > .section > .title {
     background-color: #efefef;
     cursor: pointer;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .section-container.auto > section > .title a, .section-container.auto > .section > .title a,
     .section-container.vertical-tabs > section > .title a,
     .section-container.vertical-tabs > .section > .title a,
@@ -2342,7 +2342,7 @@ label.error {
   .section-container.accordion > .section > .content {
     padding: 0.9375em;
     background-color: white;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .section-container.auto > section > .content > *:last-child, .section-container.auto > .section > .content > *:last-child,
     .section-container.vertical-tabs > section > .content > *:last-child,
     .section-container.vertical-tabs > .section > .content > *:last-child,
@@ -2444,7 +2444,7 @@ label.error {
   .section-container.tabs > section > .title, .section-container.tabs > .section > .title {
     background-color: #efefef;
     cursor: pointer;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .section-container.tabs > section > .title a, .section-container.tabs > .section > .title a {
       padding: 0.9375em;
       color: #333333;
@@ -2455,7 +2455,7 @@ label.error {
   .section-container.tabs > section > .content, .section-container.tabs > .section > .content {
     padding: 0.9375em;
     background-color: white;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .section-container.tabs > section > .content > *:last-child, .section-container.tabs > .section > .content > *:last-child {
       margin-bottom: 0; }
     .section-container.tabs > section > .content > *:first-child, .section-container.tabs > .section > .content > *:first-child {
@@ -2502,7 +2502,7 @@ label.error {
     .section-container.auto > section > .title, .section-container.auto > .section > .title {
       background-color: #efefef;
       cursor: pointer;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.auto > section > .title a, .section-container.auto > .section > .title a {
         padding: 0.9375em;
         color: #333333;
@@ -2513,7 +2513,7 @@ label.error {
     .section-container.auto > section > .content, .section-container.auto > .section > .content {
       padding: 0.9375em;
       background-color: white;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.auto > section > .content > *:last-child, .section-container.auto > .section > .content > *:last-child {
         margin-bottom: 0; }
       .section-container.auto > section > .content > *:first-child, .section-container.auto > .section > .content > *:first-child {
@@ -2570,7 +2570,7 @@ label.error {
     .section-container.vertical-tabs > section > .title, .section-container.vertical-tabs > .section > .title {
       background-color: #efefef;
       cursor: pointer;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.vertical-tabs > section > .title a, .section-container.vertical-tabs > .section > .title a {
         padding: 0.9375em;
         color: #333333;
@@ -2581,7 +2581,7 @@ label.error {
     .section-container.vertical-tabs > section > .content, .section-container.vertical-tabs > .section > .content {
       padding: 0.9375em;
       background-color: white;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.vertical-tabs > section > .content > *:last-child, .section-container.vertical-tabs > .section > .content > *:last-child {
         margin-bottom: 0; }
       .section-container.vertical-tabs > section > .content > *:first-child, .section-container.vertical-tabs > .section > .content > *:first-child {
@@ -2645,7 +2645,7 @@ label.error {
     .section-container.vertical-nav > section > .title, .section-container.vertical-nav > .section > .title {
       background-color: #efefef;
       cursor: pointer;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.vertical-nav > section > .title a, .section-container.vertical-nav > .section > .title a {
         padding: 0.9375em;
         color: #333333;
@@ -2656,7 +2656,7 @@ label.error {
     .section-container.vertical-nav > section > .content, .section-container.vertical-nav > .section > .content {
       padding: 0.9375em;
       background-color: white;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.vertical-nav > section > .content > *:last-child, .section-container.vertical-nav > .section > .content > *:last-child {
         margin-bottom: 0; }
       .section-container.vertical-nav > section > .content > *:first-child, .section-container.vertical-nav > .section > .content > *:first-child {
@@ -2714,11 +2714,11 @@ label.error {
 
   .section-container.horizontal-nav {
     background: #efefef;
-    border: 1px solid #cccccc; }
+    /*border: 1px solid #cccccc;*/ }
     .section-container.horizontal-nav > section > .title, .section-container.horizontal-nav > .section > .title {
       background-color: #efefef;
       cursor: pointer;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.horizontal-nav > section > .title a, .section-container.horizontal-nav > .section > .title a {
         padding: 0.9375em;
         color: #333333;
@@ -2729,7 +2729,7 @@ label.error {
     .section-container.horizontal-nav > section > .content, .section-container.horizontal-nav > .section > .content {
       padding: 0.9375em;
       background-color: white;
-      border: solid 1px #cccccc; }
+      /*border: solid 1px #cccccc;*/ }
       .section-container.horizontal-nav > section > .content > *:last-child, .section-container.horizontal-nav > .section > .content > *:last-child {
         margin-bottom: 0; }
       .section-container.horizontal-nav > section > .content > *:first-child, .section-container.horizontal-nav > .section > .content > *:first-child {
@@ -2771,11 +2771,11 @@ label.error {
     .no-js [data-section] > section > [data-section-title], .no-js [data-section] > section > .title, .no-js [data-section] > .section > [data-section-title], .no-js [data-section] > .section > .title, .no-js [data-section] > [data-section-region] > [data-section-title], .no-js [data-section] > [data-section-region] > .title, .no-js .section-container > section > [data-section-title], .no-js .section-container > section > .title, .no-js .section-container > .section > [data-section-title], .no-js .section-container > .section > .title, .no-js .section-container > [data-section-region] > [data-section-title], .no-js .section-container > [data-section-region] > .title {
       width: 100%; }
 .no-js .section-container {
-  border-top: 1px solid #cccccc; }
+  /*border-top: 1px solid #cccccc;*/ }
   .no-js .section-container > section > .title, .no-js .section-container > .section > .title {
     background-color: #efefef;
     cursor: pointer;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .no-js .section-container > section > .title a, .no-js .section-container > .section > .title a {
       padding: 0.9375em;
       color: #333333;
@@ -2786,7 +2786,7 @@ label.error {
   .no-js .section-container > section > .content, .no-js .section-container > .section > .content {
     padding: 0.9375em;
     background-color: white;
-    border: solid 1px #cccccc; }
+    /*border: solid 1px #cccccc;*/ }
     .no-js .section-container > section > .content > *:last-child, .no-js .section-container > .section > .content > *:last-child {
       margin-bottom: 0; }
     .no-js .section-container > section > .content > *:first-child, .no-js .section-container > .section > .content > *:first-child {
@@ -4130,11 +4130,12 @@ ul.pagination {
 /* Panels */
 .panel {
   border-style: solid;
-  border-width: 1px;
-  border-color: #d9d9d9;
+  border-width: 0px;
+  /*border-color: #d9d9d9;*/
   margin-bottom: 1.25em;
   padding: 1.25em;
-  background: #f2f2f2; }
+  background: #ee4435;
+  /*background-color:rgba(64,64,64,0.6)*/ }
   .panel > :first-child {
     margin-top: 0; }
   .panel > :last-child {
@@ -4143,6 +4144,7 @@ ul.pagination {
     color: #333333; }
   .panel h1, .panel h2, .panel h3, .panel h4, .panel h5, .panel h6 {
     line-height: 1;
+    color:#ffffff;
     margin-bottom: 0.625em; }
     .panel h1.subheader, .panel h2.subheader, .panel h3.subheader, .panel h4.subheader, .panel h5.subheader, .panel h6.subheader {
       line-height: 1.4; }

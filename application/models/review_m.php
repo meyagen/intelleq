@@ -28,10 +28,18 @@ class Review_M extends CI_Model
 			    'ans_reading_comprehension' => unserialize($row->ans_reading_comprehension)
 		    );
 		    //$this->session->set_userdata('revs',$rev_vals);
-		    //var_dump($rev_vals);
+		    var_dump($this->session->userdata);
 		    return $rev_vals;
 		}
-		else return NULL; // not gonna happen lololol
+		else {
+			$shet = 'shet';
+			var_dump($shet);
+			return NULL;
+		} // not gonna happen lololol
 		
+    }
+
+    function get_last_subj() {
+    	
     }
 }

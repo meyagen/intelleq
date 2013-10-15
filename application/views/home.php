@@ -35,7 +35,7 @@
       </div>
       <div class="large-5 pull-3 columns" id="jumboOverlay">
         <div class="row hide-for-small"style="padding-top:75px;padding-bottom:75px;"></div>
-        <h1 class="white">Knowledge made <br class="hide-for-small"/>accessible.</h1>
+        <h1 class="white">Knowledge made accessible.</h1>
         <h4 class="white">Something about the site <br class="hide-for-small"/>must be placed here.</h4><br/>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
       </div>
@@ -120,7 +120,7 @@
     <div class="row">
     <div class="large-10 large-centered columns">
       <div>
-        <center><h1>Something encouraging the person to <br class="hide-for-small"/>proceed should be placed here.</h1>
+        <center><h1>Something encouraging the person to proceed should be placed here.</h1>
         <p>It's probably because we're awesome and all. Go, click that button below. You know you want to.</p>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
         </center>

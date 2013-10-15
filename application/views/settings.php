@@ -1,8 +1,10 @@
 <body class="off-canvas hide-extras">
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
-
-	<div class="large-6 pull-3 columns">
+<script>
+    $('#nav_settings').addClass('active');
+  </script>
+	<div class="large-6 columns">
 		<h2>Settings</h2>
 		<fieldset>
 		    <legend>Edit User Info</legend>
