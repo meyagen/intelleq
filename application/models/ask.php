@@ -23,13 +23,27 @@ class Ask extends CI_Model
 		$query = $this->db->get('review');
 		//$query['username'];
 		if($query->num_rows == 0)
-			return false;
+			return true;
 			//return 'noprev';
 		else {
 			$row = $query->row();
 			if($row->last_fin=='reading_comprehension')
 				return true;
 			else return false;
+		}
+	}
+
+	function get_last_fin(){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('review');
+
+		if($query->num_rows == 0)
+			return null;
+			//return 'noprev';
+		else {
+			$row = $query->row();
+			return $row->last_fin;
+			
 		}
 	}
 

@@ -32,8 +32,10 @@ class Score extends User_Controller {
 				$data['main_content'] = 'score';
 			}
 			else{
-				redirect('question');
-				//$data['main_content'] = 'transition';
+				//redirect('question');
+				$data['start'] = $this->ask->check_last_fin();
+				$data['last_fin'] = $this->ask->get_last_fin();
+				$data['main_content'] = 'transition';
 			}
 			$this->load->view('members_area', $data);
 		}

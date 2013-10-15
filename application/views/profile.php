@@ -4,60 +4,77 @@
 <script type="text/javascript">
 
 $(function () {
-        $('#container').highcharts({
-            title: {
+    // create the chart
+    $('#container').highcharts({
+        chart: {
+            events: {
+                selection: function(event) {
+                   
+                }
+            },
+            zoomType: 'x'
+        },
+        title: {
                 text: 'Track Progress',
-                x: -20 //center
+                x: -20, //center
+                style:{
+                    fontSize: '25px'
+                },
             },
             subtitle: {
-                text: 'Enhance your knowledge',
-                x: -20
+                text: 'Click the legends on the right to select/deselect a graph',
+                x: -20,
+                style:{
+                    fontSize: '15px'
+                }
             },
-            xAxis: {
-                categories: []
+        xAxis: {
+            categories: []
+        },
+        yAxis: {
+            title: {
+                text: 'Total Exam Score(120)'
             },
-            yAxis: {
-                title: {
-                    text: 'Total Exam Score(120)'
-                },
-                plotLines: [{
-                    value: 0,
-                    width: 1,
-                    color: '#808080'
-                }]
-            },
-            tooltip: {
-                valueSuffix: ' Correct Answer'
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'middle',
-                borderWidth: 0
-            },
-            series: [{
-              name: 'Overall Score',
-                data: <?php echo $hist; ?>
-            },{
-              name: 'Science',
-              data: <?php echo $hist_science; ?>
-            },{
-                name: 'Mathematics',
-                data: <?php echo $hist_mathematics; ?>
-            },{
-                name: 'English',
-                data: <?php echo $hist_english; ?>
-            },{
-                name: 'Reading Comprehension',
-                data: <?php echo $hist_reading_comprehension; ?>
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
             }]
-        });
+        },
+        tooltip: {
+            valueSuffix: ' Correct Answer'
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Overall Score',
+            data: <?php echo $hist; ?>
+        },{
+            name: 'Science',
+            data: <?php echo $hist_science; ?>
+        },{ 
+            name: 'Mathematics',
+            data: <?php echo $hist_mathematics; ?>
+        },{
+            name: 'English',
+            data: <?php echo $hist_english; ?>
+        },{
+            name: 'Reading Comprehension',
+            data: <?php echo $hist_reading_comprehension; ?>
+        }]
+    });
 
         var chart = $('#container').highcharts();
         chart.xAxis[0].setCategories(<?php echo $dates; ?>);
+        for(var i = 1; i <= 4; i++){
+            chart.series[i].hide();
+        }
         // chart.series[0].setData(<?php echo $hist; ?>);
-    });
-
+});
 </script>
 
 <!--Navigation Bar-->
@@ -134,7 +151,7 @@ $(function () {
         <div class="panel radius" style="background-color:#34495e">
           <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
           <h2 class="white">Let's twerk your knowledge.</h2>
-          <h4><a class="button radius success expand large" href="transition" style="margin-bottom:0px">Twerk the exam!</a></h4></li>
+          <h4><a class="button radius success expand large" href="<?php if($state == 'Resume Exam') {if($is_paused || $this->session->userdata['startExam']) echo 'question'; else echo 'transition';} else echo 'guideline'; ?>" style="margin-bottom:0px"><?php echo $state; ?></a></h4></li>
         </div>
       </div>
     </div>

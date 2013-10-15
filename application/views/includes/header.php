@@ -10,7 +10,7 @@
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
         <li style="padding-right:10;padding-left:10"><a href="<?php echo base_url(); ?>" class="white"><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></a></li>
-        <li style="padding-right:10;padding-left:10"><a class="button radius" href="login/logout">Sign Out</a></li>
+        <li style="padding-right:10;padding-left:10"><a href="login/logout" style="font-family:'Gotham';font-size:100%"><p class="button radius" style="height:28px;width:90px;border-color:rgba(256,256,256,0.5); !important;border-width:2px !important;line-height:25px">Sign Out</p></a></li>
     </ul>
   </section>
 </div>

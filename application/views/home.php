@@ -16,7 +16,7 @@
   </ul>
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
-      <li style="padding-right:10;padding-left:10"><p class="button radius" style="width:80px;" href="#" data-reveal-id="modalSignIn">Sign In</p></li>
+      <li style="padding-right:10;padding-left:10"><p class="button radius" style="width:80px;border-color:rgba(256,256,256,0.5); !important;border-width:2px !important;line-height:25px" href="#" data-reveal-id="modalSignIn">Sign In</p></li>
       <li style="padding-right:10;padding-left:10"><p class="button radius success" style="width:80px;" href="#" data-reveal-id="modalSignUp">Sign Up</p></li>
     </ul>
   </section>

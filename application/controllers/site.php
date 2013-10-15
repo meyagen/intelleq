@@ -30,6 +30,15 @@ class Site extends User_Controller {
 		$data['hist_english'] = json_encode($english, JSON_NUMERIC_CHECK);
 		$data['hist_reading_comprehension'] = json_encode($reading_comprehension, JSON_NUMERIC_CHECK);
 
+		$data['is_paused'] = $this->ask->is_paused();
+		$data['last_fin'] = $this->ask->get_last_fin();
+		if($this->ask->is_paused() || $this->session->userdata['startExam'] || $this->ask->get_last_fin() != 'reading_comprehension'){
+			$data['state'] = "Resume Exam";
+		} 
+		else{
+			$data['state'] = "Take the Exam!";
+		}
+		
 		$data['main_content'] = 'profile';
 		$this->load->view('members_area', $data);
 	}
