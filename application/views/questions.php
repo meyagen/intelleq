@@ -1,6 +1,4 @@
-<body onload="checkquestions()" class="off-canvas hide-extras">
-
-<?php $this->load->view('includes/header'); ?>
+<body class="off-canvas hide-extras">
 
 <div class="row hidden invisible">
   <div class="large-12 columns">
@@ -9,13 +7,13 @@
 </div>
 
 <script>
-    window.onbeforeunload = function(event) {
+    window.onbeforeunload = function() {
       var time = $('#spanpseudotime').text();
       localStorage.setItem("someTime", time);
-      //return 'Confirm refresh';
+      return 'Please Pause the Exam or all your answers will be lost!';
     };
 </script>
-
+<?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
 <?php //var_dump($this->session->userdata); ?>
 <div class="large-3 columns push-6">
@@ -67,7 +65,6 @@
       
       <div class="row">
         <div class="large-12 columns">
-        
           <?php
             if($this->session->userdata['timeCheck']) { 
               echo "<script>";
@@ -76,7 +73,9 @@
             } 
             else {
               echo "<script>";
+              echo "if(localStorage.getItem(\"someTime\") != null)";
               echo "var tempTimer = localStorage.getItem(\"someTime\");";
+              echo "else var tempTimer = ". $tempTime . ";" ;
               echo "</script>"; 
             } 
             //var_dump($this->session->userdata);
@@ -179,8 +178,8 @@
           <ul class="button-group" style="padding-right:0px; display:inline">
             <li><a class="button small disabled" name="prev" id="prev-pseudo">Prev</a></li>
             <li><a class="button small hidden" name="prev" id="prev" onclick="prevq()">Prev</a></li>
-            <li><input type="submit" id="pause" name="pause" class="button small success" style="display:inline" value = "Submit Query"></li>
-            <li><input type="submit" id="submit" name="submit" class="button small success" style="display:inline" value = "Submit Query"></li>
+            <li><input type="submit" id="pause" name="pause" class="button small success" style="display:inline" value = "Pause"></li>
+            <li><input type="submit" id="submit" name="submit" class="button small success" style="display:inline" value = "Finished All the Question"></li>
             <li><a class="button small" name="next" id="next" onclick="nextq()">Next</a></li>
             <li><a class="button small hidden disabled" name="next" id="next-pseudo">Next</a></li>
           </ul>
@@ -198,8 +197,19 @@
 <script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
 <script src="<?php echo site_url('js/script.js'); ?>"></script>
 <script>
-  //var ct = setInterval("checkTime()", 1000);
-  
+  var ct = setInterval("checkTime()", 1000);
+
+  $('#submit').live('click', function(){
+        window.onbeforeunload = function(){
+          return "Submitting ALL of your answers";
+        };
+  });
+  $('#pause').live('click', function(){
+        window.onbeforeunload = function(){
+          return "Save";
+        };
+  });
+
   function checkTime(){
       //alert("timere");
       var time = parseInt(document.getElementById('pseudotime').value);
@@ -216,6 +226,8 @@
       }
       //alert("time" + (parseInt(time)+100000));
   }
+
+ 
 
   $(function(){
     $('input[type="radio"]').click(function(){
@@ -236,14 +248,6 @@
       }
     });
   });
-
-  function checkquestions(){
-    $qlist = $("#questions li");
-    for (var i=0; i < $qlist.length; i++)
-    {
-      
-    }
-  }
 
   function toggleTimer(){
     if($('#toggleTimer').hasClass("success")) {

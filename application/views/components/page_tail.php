@@ -1,8 +1,8 @@
 <script>document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  ('__proto__' in {} ? 'js/vendor/custom.zepto' : 'js/vendor/custom.jquery') +
   '.js><\/script>')</script>
-  <!--script type="text/javascript" src="<?php echo site_url('js/vendor/zepto.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo site_url('js/vendor/jquery.js'); ?>"></script-->
+  <!--script type="text/javascript" src="<?php echo site_url('js/vendor/custom.zepto.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.jquery.js'); ?>"></script-->
   <script type="text/javascript" src="<?php echo site_url('js/guest-validation.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('js/foundation/foundation.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('js/foundation/foundation.alerts.js'); ?>"></script>

@@ -18,7 +18,7 @@
         <div class="panel radius">
           <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
           <h2>Let's try your knowledge</h2>
-          <a class="button radius success" href="transition">Take the Exam!</a></li>
+          <a class="button radius success" href="transition"><?php echo $state; ?></a></li>
         </div>
       </div>
     </div>

@@ -8,19 +8,17 @@
 <fieldset>
   <legend>Your Score</legend>
   <div class="large-12 columns">  
-
-
- <?php
-	echo "Score: ";
-	echo $score;
-	echo "/16";
-?>
-
+	<?php
+		echo "Score: ";
+		echo $score;
+		echo "/16";
+	?>
 </div></div>
 </fieldset>
-<a class="button radius alert" href="#"><del>Review Answers</del></a></li>
+<a class="button radius alert" href="review">Review Answers</a></li>
 <a class="button radius success" href="site">Back to Home</a></li>
-
 </div></div></div>
+
+
 
 <?php $this->load->view('includes/footer');?>

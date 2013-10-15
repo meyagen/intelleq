@@ -1,5 +1,4 @@
 <!-- Reveal Modals end -->
-    
 
     <script>
   document.write('<script src=' +

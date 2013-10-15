@@ -42,11 +42,11 @@ After the exam, you will be redirected to Review mode, wherein your answers and 
 
 <?php $this->load->view('includes/footer');?>
 <?php 
-	if($this->session->userdata['timeCheck']){
+	//if($this->session->userdata['timeCheck']){
 		echo "<script>";
 		echo "for(var i = 1; i < 30; i++){";
 		echo "localStorage.removeItem('someTime');";
 		echo "localStorage.removeItem('answer'+i);}";
 		echo "</script>";
-	}
+	//}
 ?>

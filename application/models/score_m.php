@@ -22,6 +22,7 @@ class Score_M extends CI_Model
 
     	$sequence = $this->session->userdata('sequence');
     	$to_review['seq_'.$subject] = serialize($this->session->userdata('saveSequence'));
+
     	$to_review['ans_'.$subject] = serialize($input);
 
     	//check username in table
@@ -172,6 +173,7 @@ class Score_M extends CI_Model
 		$this->db->update('membership', array('date' => serialize($date_array)));
     }
 
+
     function month_shortcut($month){
     	if(strcmp($month, "January") == 0)
     		$month = "Jan";
@@ -206,7 +208,7 @@ class Score_M extends CI_Model
 
 		return unserialize($row->date);
 	}
-	
+
 	function get_scores($subject){
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('membership');

@@ -103,8 +103,15 @@
   		  		echo $subj;
   		  		echo '" onclick="changesubj(\''.$subj.'\')">';
 
-  		  		echo 'Section ';
-  		  		echo $i;
+            if($i == 0){
+              echo 'Science';
+            }elseif($i == 1){
+              echo 'Mathematics';
+            }elseif($i == 2){
+              echo 'English';
+            }elseif($i == 3){
+              echo 'Reading Comprehension';
+            }
   		  		echo '</a></p>';
 
   		  		echo '<div class="content" data-slug="panel_';

@@ -9,13 +9,16 @@
 		{	
 			$this->load->model('ask');
 			
-			// if(!$this->session->userdata['startExam']){
-			// 	$this->ask->delete_paused_user();
-			// }
+			
 			// Load view
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
-			$data['main_content'] = 'transition';
+			if($this->ask->is_paused()){
+				redirect('question');
+			}
+			else{
+				$data['main_content'] = 'transition';
+			}
 			$this->load->view('members_area', $data);
 		}
 	}

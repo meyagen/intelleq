@@ -18,29 +18,29 @@
 			$reading_comprehension = $this->score_m->get_scores("reading_comprehension");
 
 			if(count($scores) < count($science)){
-				while(count($scores) != count($science))
-					unset($science[count($science)-1]);
-			}
-
-			if(count($scores) < count($mathematics)){
-				while(count($scores) != count($mathematics))
-					unset($mathematics[count($mathematics)-1]);
-			}
-
-			if(count($scores) < count($english)){
-				while(count($scores) != count($english))
-					unset($english[count($english)-1]);
-			}
-
-			if(count($scores) < count($reading_comprehension)){
-				while(count($scores) != count($reading_comprehension))
-					unset($reading_comprehension[count($reading_comprehension)-1]);
-			}
-
-			if(count($scores) < count($date)){
-				while(count($scores) != count($date))
-					unset($date[count($date)-1]);
-			}
+	       		while(count($scores) != count($science))
+	          		unset($science[count($science)-1]);
+	      	}
+	
+	      	if(count($scores) < count($mathematics)){
+	        	while(count($scores) != count($mathematics))
+	          		unset($mathematics[count($mathematics)-1]);
+	      	}
+	
+	      	if(count($scores) < count($english)){
+	        	while(count($scores) != count($english))
+	          		unset($english[count($english)-1]);
+	      	}
+	
+	      	if(count($scores) < count($reading_comprehension)){
+	        	while(count($scores) != count($reading_comprehension))
+	          		unset($reading_comprehension[count($reading_comprehension)-1]);
+	      	}
+	
+	      	if(count($scores) < count($date)){
+	        	while(count($scores) != count($date))
+	          		unset($date[count($date)-1]);
+	      	}
 
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
