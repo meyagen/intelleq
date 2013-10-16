@@ -1,22 +1,24 @@
 <header>
 <div class="fixed">
 <nav class="top-bar fixed">
-  <ul class="title-area">
-    <li class="name"><h1><a href="<?php echo base_url(); ?>">intelleq</a></h1></li>
-    <li class="toggle-topbar menu-icon"><a href=""><span></span></a></li>
+  <section class="top-bar-section">
+    <ul class="left">
+
+    </ul>
+  </section>
+  <ul class="title-area" style="display:inline">
+    <!--li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li-->
+    <li class="name"><a href="#" class="icon"> </a><h1><a href="<?php echo base_url(); ?>" style="display:inline">intelleq</a></h1></li>
+    
   </ul>
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
-      <li style="padding-right:10;padding-left:10"><a class="button radius" href="#" data-reveal-id="modalSignIn">Sign In</a></li>
-      <li style="padding-right:10;padding-left:10"><a class="button radius success" href="#" data-reveal-id="modalSignUp">Sign Up</a></li>
-      <li style="padding-right:0;padding-left:10">
-        <input type="text" placeholder="Search intelleq">
-      </li>
+      <li style="padding-right:10;padding-left:10"><p class="button radius" style="width:80px;border-color:rgba(256,256,256,0.5); !important;border-width:2px !important;line-height:25px" href="#" data-reveal-id="modalSignIn">Sign In</p></li>
+      <li style="padding-right:10;padding-left:10"><p class="button radius success" style="width:80px;" href="#" data-reveal-id="modalSignUp">Sign Up</p></li>
     </ul>
   </section>
 </div>
 </header>
-
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
   <?php echo form_open('login/validate');?>

@@ -104,19 +104,6 @@ div#titleNav{
     background-image: url("../img/jumbo-bg.png");
     background-position: center top;
 }*/
-.sub {
-    font-size: 22px;   
-}
-.description {
-    font-size: 20px;
-}
-.answer {
-    font-size: 22px;
-    text-align: justify;
-}
-.justify {
-    text-align: justify;
-}
 
 .icon{
     padding-left:16px;
@@ -138,6 +125,20 @@ a:visited.icon{
 }
 a:active.icon{
     background-image: url("../img/icon-active.png");
+}
+
+.sub {
+    font-size: 22px;   
+}
+.description {
+    font-size: 20px;
+}
+.answer {
+    font-size: 22px;
+    text-align: justify;
+}
+.justify {
+    text-align: justify;
 }
 
 h1 {
@@ -252,10 +253,12 @@ tr .wrong, label .wrong, ul.pagination li a.wrong {
     background-position: center top;
     background-repeat: no-repeat;
 }
+
 .pagetitle#titleNav {
     background-image: url("../img/icon-train.png");
     background-position: center top;
 }
+
 .pagetitle#titleUser {
     background-image: url("../img/icon-test.png");
     background-position: center top;

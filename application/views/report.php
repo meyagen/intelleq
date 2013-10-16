@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label class="white">Message</label>
-				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="Report message"></textarea>
+				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="report message"></textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -58,7 +58,7 @@
 
 <!--Modal - Confirmation-->
 <div id="modalConfirm" class="reveal-modal small">
-    <h2>Your report is sent!</h2>
+    <h2>Your report is sent successfully!</h2>
     <p>Thank you for your help.</p>
   <a class="close-reveal-modal">x</a>
 </div>

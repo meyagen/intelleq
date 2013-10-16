@@ -189,6 +189,28 @@ $(document).ready(function(){
 			$('#modalConfirm').foundation('reveal', 'open', '');
 		}
 	});
+	email_valid = false;
+	$("#reportEmail").keyup(function() {
+		//$("#signupEmail").addClass("error");
+		$.ajax({
+			type: "POST",
+			url: "report/valid_email",
+			data: "email_address="+$("#reportEmail").val(),
+			success: function(msg) {
+				//$("#signupInfo").text(msg)
+				if(msg=="invalid") {
+					$("#reportEmail").addClass("error");
+					$("#reportEmailLabel").addClass("error");
+					email_valid = false;
+				}
+				else {
+					$("#reportEmail").removeClass("error");
+					$("#reportEmailLabel").removeClass("error");
+					email_valid = true;
+				}
+			}
+		});
+	});
 	$("#formReport").submit(function(evt){
 		evt.preventDefault();
 		$.ajax({
@@ -216,6 +238,4 @@ $(document).ready(function(){
 			}
 		});
 	});
-
-
 });

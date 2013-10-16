@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label class="white">Comment</label>
-				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="Feedback message"></textarea>
+				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="feedback message"></textarea>
 			</div>
 		</div>
 		<div class="row">
