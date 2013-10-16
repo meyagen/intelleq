@@ -15,13 +15,17 @@
 </script>
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
-<?php //var_dump($this->session->userdata); ?>
+
+<script>
+    $('#nav_modules').addClass('active');
+</script>
+
 <div class="large-3 columns push-6">
   <div class="row">
     <div class="large-12 columns">
       <div class="row fullrow">
     <div class="large-10 push-1 columns">
-        <div class="panel">
+        <div class="panel radius">
       <h3>Questions</h3>
       <ul class="pagination" id="pagination" style="margin-top: 10px">
       <?php
@@ -92,7 +96,7 @@
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <form action="score" method="post" id="testSubmit" name="testSubmit">
+      <form action="score" class="custom" method="post" id="testSubmit" name="testSubmit">
       <ol id="questions"style="list-style-type:none">
     <?php
 
@@ -125,7 +129,7 @@
 
         echo '<li';
         if ($i>0) echo ' class="hidden"';
-        echo '><div class="panel" style="min-height:450px"><div class="large-12">';
+        echo '><div class="panel radius" style="min-height:400px"><div class="large-12">';
         echo '<h3>';
         echo $item;
         echo '</h3> ';
@@ -133,7 +137,7 @@
           echo '<strong>';
             echo $row['ask'];
           echo '</strong><div class="row"><div class="large-12 columns">';
-          echo '<table width="100%" style="margin-top:1.25em;margin-bottom:0em"><tbody>';
+          echo '<table class="answers" width="100%" style="margin-top:1.25em;margin-bottom:0em"><tbody>';
 
         for($j = 0; $j < 4; $j++){
           echo '<tr><td>';
@@ -141,10 +145,10 @@
             //print_r($c_array);
             $answer_text = $row[$choice[$c_array[$j]]];
             if($answer_text == $answers[$item]){
-              echo '<label onclick="checkifcomplete()"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span> ' . $answer_text.'</label>';
+              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
 
             }else{
-              echo '<label><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span> ' . $answer_text.'</label>';
+              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
             }
           echo '</td></tr>';
         }

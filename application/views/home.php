@@ -1,7 +1,7 @@
 <body class="off-canvas hide-extras">
 
 <!--Navigation Bar-->
-<?php $this->load->view("includes/header2");?>
+<?php $this->load->view("includes/guest-header");?>
 
 <!--Jumbotron-->
 <section role="main">
@@ -15,7 +15,7 @@
       </div>
       <div class="large-5 pull-3 columns" id="jumboOverlay">
         <div class="row hide-for-small"style="padding-top:75px;padding-bottom:75px;"></div>
-        <h1 class="white">Master the<br class="hide-for-small"/>knowledge in you</h1>
+        <h1 class="white">Master the knowledge <br class="hide-for-small"/>in you</h1>
         <h4 class="white">An online practice
           <br class="hide-for-small"/>standardized examination</h4><br/>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
@@ -123,8 +123,6 @@
     <div class="row hide-medium-up"><div class="large-12 columns padding-small"></div></div>
   </div>  
 </section>
-
-
 
 <!--Footer - Site Map-->
 <?php $this->load->view("includes/footer");?>
@@ -244,6 +242,6 @@
 <!--Modal - Confirmation-->
 <div id="modalConfirm" class="reveal-modal small">
     <h2>Confirmation mail sent</h2>
-    <p>Check your email address to know your password.</p>
+    <p>Check your something something.</p>
   <a class="close-reveal-modal">x</a>
 </div>

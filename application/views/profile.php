@@ -98,7 +98,10 @@ $(function () {
         <div class = "panel radius">
           <div class="row" style="padding-top:50px">
             <div class="large-3 columns">
-              <div class="panel radius" style="width:120px;height:120px;margin-bottom:0px;background-color:#c0392b">
+              <div class="panel radius" style="width:120px;height:120px;margin-bottom:0px;background-image: url('img/avatars/<?php echo $username;?>.jpg');
+    background-position: center center;
+    background-size:cover;
+    background-repeat: no-repeat;">
                 <p>&nbsp;</p>
               </div>
             </div>
@@ -111,7 +114,7 @@ $(function () {
         </div>
       </div>
       <div class="large-4 columns">
-        <div class="panel radius" style="height:170px;background-color:#f2a70d;margin-bottom:0px;margin-top:20px;padding:8px">
+        <div class="panel radius" style="height:170px;background-color:rgba(244,166,16,0.6);margin-bottom:0px;margin-top:20px;padding:8px">
           <div class="row" style="margin-bottom:8px">
             <div class="large-4 medium-4 small-4 columns" style="padding-right:4px">
               <div class="panel" style="background-color: #f6b841;height:46px;margin-bottom:0px">
@@ -148,7 +151,7 @@ $(function () {
     
     <div class="row">
       <div class="large-10 push-1 columns">
-        <div class="panel radius" style="background-color:#34495e">
+        <div class="panel radius" style="background-color:rgba(52,73,94,0.6)">
           <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
           <h2 class="white">Let's twerk your knowledge.</h2>
           <h4><a class="button radius success expand large" href="<?php if($state == 'Resume Exam') {if($is_paused || $this->session->userdata['startExam']) echo 'question'; else echo 'transition';} else echo 'guideline'; ?>" style="margin-bottom:0px"><?php echo $state; ?></a></h4></li>
@@ -178,7 +181,7 @@ $(function () {
     <!--Article-->
     <div class="row">
       <div class="large-12 columns">
-        <div class="panel radius" style="padding-bottom:0px;background-color:#34495e">
+        <div class="panel radius" style="padding-bottom:0px;background-color:rgba(52,73,94,0.6)">
           <div class="row" style="margin-bottom:20px;margin-left:0px">
             <h3>Recent Activity</h3>
           </div>

@@ -1,16 +1,16 @@
 <body class="off-canvas hide-extras">
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
-<?php 
-	// $this->session->set_userdata('timeCheck', TRUE);
-	// $this->session->set_userdata('startExam', FALSE);
-?>
-<div class="large-6 pull-3 columns">
+
+<script>
+    $('#nav_modules').addClass('active');
+</script>
+
+<div class="large-6 columns">
 	<div class="row">
 		<div class="large-12 columns">
-			<div class="panel">
+			<div class="panel radius">
 <h2>Before the exam...</h2>
-<fieldset>
 <p>
 Read the questions carefully. For your convenience, we provided a timer at the right side of the exam window. Once the time indicated runs out, your answers will automatically be submitted.
 </p>
@@ -34,7 +34,6 @@ After the exam, you will be redirected to Review mode, wherein your answers and 
 <li>Click “Finish quiz” once you’ve answered all the questions. Remember, you will be unable to finish the quiz if you haven’t answered all the questions. Make sure that all the numbered boxes are colored green.</li>
 <li>Once you finish all of the exams for every subject, your scores will be displayed. From here, you can choose to check the correct andwers and review the exam or go back to the homepage.</li>
 </ol>
-</fieldset>
 <a class="button radius success" href="transition">Proceed</a></li>
 <?php //var_dump($this->session->userdata['startExam']); ?>
 

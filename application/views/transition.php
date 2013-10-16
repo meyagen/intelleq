@@ -1,11 +1,10 @@
 <body class="off-canvas hide-extras">
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
-<?php 
-	// $this->session->set_userdata('timeCheck', TRUE);
-	// $this->session->set_userdata('startExam', FALSE);
-?>
-<div class="large-6 pull-3 columns">
+<script>
+    $('#nav_modules').addClass('active');
+</script>
+<div class="large-6 pull columns">
 	<div class="row">
 		<div class="large-12 columns">
 			<div class="panel">

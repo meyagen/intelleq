@@ -7,15 +7,17 @@
 	    <div class="large-12 columns">
 	      <div class="row fullrow">
 		    <div class="large-10 push-1 columns">
-		        <div class="panel">
-			      <h3>Questions</h3>
+		        <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15 0px">
+			      <h4 style="padding-left:15px">Questions</h4>
 			      <!-- <ul class="pagination" id="pagination" style="margin-top: 10px"> -->
 			        <?php
 			        for ($j=0;$j<4;$j++) {
-			        	echo '<ul class="pagination';
+                echo '<div class="panel';
                 if ($j>0) echo ' hidden';
-                echo '" id="pagination_';
-			        	if ($j==0) {
+                echo '" style="background-color:#fff';
+                echo ';margin-top:10px;margin-bottom:0px';
+                echo '" id="panelpagination_';
+                if ($j==0) {
                   $subj='science';
                   $curr_subj = $q_science;
                 }
@@ -32,11 +34,19 @@
                   $curr_subj = $q_reading_comprehension;
                 }
                 else $subj='';
+                echo $subj;
+                echo '">';
+			        	echo '<ul class="pagination';
+                
+                echo '" id="pagination_';
+			        	
 			        	echo $subj;
 			        	echo '" style="margin-top:10px';
                 $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
-                if ($j==3) echo ';margin-bottom:20px';
-                echo'"><strong>';
+                // if ($j==3) 
+                echo ';margin-bottom:0px';
+                echo '">';
+                echo '<strong>';
 
                 $item=0;
                 for ($i = 0,$item=1; $i < count($curr_subj); $i++, $item++) {
@@ -61,7 +71,10 @@
 				          echo $i+1;
 				          echo '</a></span></li>';
 				        }
-				        echo '</strong></ul>';
+				        echo '</strong>';
+                // echo '<br/>Subject:';
+                echo '</ul>';
+                echo '</div>';
 			        }
 			        
 			        ?>
@@ -73,7 +86,7 @@
 	</div>
 
 	<div class="large-6 pull-3 columns">
-		<div class="section-container auto" data-section="" data-options="deep_linking: true;" data-section-resized="true" style="min-height: 50px;margin-top:15px">
+		<div class="section-container auto" data-section="" data-options="deep_linking: true;" data-section-resized="true" style="min-height: 50px;">
   		  <?php 
   		  	for ($i=0;$i<4;$i++) {
   		  		if ($i==0) {
@@ -95,30 +108,36 @@
 	        	else $subj='';
   		  		echo '<section';
   		  		if ($i==0) echo ' class="active"';
-  		  		echo ' style="padding-top: 49px;">';
+  		  		echo ' style="padding-top: 50px;">';
 
-  		  		echo '<p class="title" data-section-title="" style="left: ';
-  		  		echo $i*87;
-  		  		echo 'px; height: 50px;"><a id="panel_';
+  		  		echo '<p class="title" data-section-title="" style="left:';
+  		  		echo $i*100;
+  		  		echo 'px;height:50px;">';
+            echo '<a style="width:100px;padding:13px 0px 0px 0px;text-align:center;vertical-align:middle;font-family:\'Gotham\'" id="panel_';
   		  		echo $subj;
   		  		echo '" onclick="changesubj(\''.$subj.'\')">';
+            
+            echo $i;
+            // if($i == 0){
+            //   echo 'Science';
+            // }elseif($i == 1){
+            //   echo 'Mathematics';
+            // }elseif($i == 2){
+            //   echo 'English';
+            // }elseif($i == 3){
+            //   echo 'Reading Comprehension';
+            // }
+            
+  		  		echo '</a>';
+            echo '</p>';
 
-            if($i == 0){
-              echo 'Science';
-            }elseif($i == 1){
-              echo 'Mathematics';
-            }elseif($i == 2){
-              echo 'English';
-            }elseif($i == 3){
-              echo 'Reading Comprehension';
-            }
-  		  		echo '</a></p>';
-
-  		  		echo '<div class="content" data-slug="panel_';
+  		  		echo '<div class="content panel radius';
+            if ($i==0) echo ' first';
+            echo '" data-slug="panel_';
   		  		echo $subj;
-  		  		echo '" data-section-content="">';
+  		  		echo '" data-section-content="" style="background-color:rgba(238,68,53,0.6);margin-bottom:0px">';
 
-  		  		echo '<div><h3>';
+  		  		echo '<div class="panel" style="background-color:rgba(238,68,53,0);margin-bottom:0px"><h3>';
   		  		if ($i==0) {
               echo 'Science';
             }
@@ -160,8 +179,8 @@
 
               echo '<li';
               if ($k>0) echo ' class="hidden"';
-              echo '><div class="panel" style="min-height:450px"><div class="large-12">';
-              echo '<h3>';
+              echo '><div class="panel radius" style="min-height:400px;background-color:#fff;margin-bottom:0px"><div class="large-12">';
+              echo '<h3 style="color:rgba(90,153,207,0.6);">';
               echo $item;
               echo '</h3> ';
 
@@ -198,10 +217,10 @@
             '<div class ="row">
                 <div class="large-12 columns" style="float:right">
                   <div class="row">
-                    <div class="large-6 columns" id="prev-pseudo_'.$subj.'-div"><a class="button small disabled expand" id="prev-pseudo_'.$subj.'">Prev</a></div>
-                    <div class="large-6 columns hidden" id="prev_'.$subj.'-div"><a class="button small expand" name="prev_'.$subj.'" id="prev_'.$subj.'" onclick="prevq(\''.$subj.'\')">Prev</a></div>
-                    <div class="large-6 columns" id="next_'.$subj.'-div"><a class="button small expand" name="next_'.$subj.'" id="next_'.$subj.'" onclick="nextq(\''.$subj.'\')">Next</a></div>
-                    <div class="large-6 columns hidden" id="next-pseudo_'.$subj.'-div"><a class="button small disabled expand" id="next-pseudo_'.$subj.'">Next</a></div>
+                    <div class="large-6 medium-6 small-6 columns" id="prev-pseudo_'.$subj.'-div"><a style="margin-bottom:0px" class="button disabled expand radius" id="prev-pseudo_'.$subj.'">Prev</a></div>
+                    <div class="large-6 medium-6 small-6 columns hidden" id="prev_'.$subj.'-div"><a style="margin-bottom:0px" class="button expand radius" name="prev_'.$subj.'" id="prev_'.$subj.'" onclick="prevq(\''.$subj.'\')">Prev</a></div>
+                    <div class="large-6 medium-6 small-6 columns" id="next_'.$subj.'-div"><a style="margin-bottom:0px" class="button expand radius" name="next_'.$subj.'" id="next_'.$subj.'" onclick="nextq(\''.$subj.'\')">Next</a></div>
+                    <div class="large-6 medium-6 small-6 columns hidden" id="next-pseudo_'.$subj.'-div"><a style="margin-bottom:0px" class="button disabled expand radius" id="next-pseudo_'.$subj.'">Next</a></div>
                   </div>
                 </div>
               </div>';
@@ -218,11 +237,11 @@
   function changesubj(subj) {
     //alert(subj);
     
-    if(subj!='science') $('#pagination_science').addClass('hidden');
-    if(subj!='mathematics') $('#pagination_mathematics').addClass('hidden');
-    if(subj!='english') $('#pagination_english').addClass('hidden');
-    if(subj!='reading_comprehension') $('#pagination_reading_comprehension').addClass('hidden');
-    $('#pagination_'+subj).removeClass('hidden');
+    if(subj!='science') $('#panelpagination_science').addClass('hidden');
+    if(subj!='mathematics') $('#panelpagination_mathematics').addClass('hidden');
+    if(subj!='english') $('#panelpagination_english').addClass('hidden');
+    if(subj!='reading_comprehension') $('#panelpagination_reading_comprehension').addClass('hidden');
+    $('#panelpagination_'+subj).removeClass('hidden');
   }
 
   function jumpto(subj, number){
