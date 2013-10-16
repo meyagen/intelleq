@@ -98,7 +98,7 @@ $(function () {
         <div class = "panel radius">
           <div class="row" style="padding-top:50px">
             <div class="large-3 columns">
-              <div class="panel radius" style="width:120px;height:120px;margin-bottom:0px;background-image: url('img/avatars/<?php echo $username;?>.jpg');
+              <div class="panel radius" style="width:120px;height:120px;margin-bottom:0px;background-image: url('img/avatars/<?php echo $this->session->userdata('username');?>.jpg');
     background-position: center center;
     background-size:cover;
     background-repeat: no-repeat;">
@@ -107,7 +107,7 @@ $(function () {
             </div>
             <div class="large-9 columns" style="margin-top:20px">
               <h2 style="margin-bottom:0px" class="white"><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></h2>
-              <h4 class="white" style="margin-bottom:0px">@<?php echo ($username); ?></h4>
+              <h4 class="white" style="margin-bottom:0px">@<?php echo $this->session->userdata('username'); ?></h4>
               <h6 class="white">member since the beginning of time</h6>
             </div>
           </div>
