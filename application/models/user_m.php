@@ -134,7 +134,7 @@ class User_M extends MY_Model
 
 		return null;
 	}
-
+	
 	function activate($id){
 		$this->db->where('id', $id);
 		$this->db->update('membership', array('activate' => 'true'));
@@ -144,5 +144,4 @@ class User_M extends MY_Model
 		$this->db->where('id', $id);
 		$this->db->update('membership', array('activate' => 'false'));
 	}
-
 }

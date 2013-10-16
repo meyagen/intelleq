@@ -14,6 +14,9 @@
             <section class="section" id="nav_calendar">
               <p class="title"><a href="calendar"><del>Calendar</del></a></p>
             </section>
+            <section class="section" id="nav_calendar">
+              <p class="title"><a href="links">Reviewer</a></p>
+            </section>
             <section class="section" id="nav_modules">
               <p class="title"><a>Modules</a></p>
               <div class="content radius"> 

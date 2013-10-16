@@ -22,7 +22,9 @@ class Question extends Admin_Controller
 			redirect('admin/user');
 		elseif($id == 'question')
 			redirect('admin/question');
-
+		elseif($id == 'reviewer')
+			redirect('admin/reviewer');
+		
 		elseif ($id) {
 			$this->data['question'] = $this->question_m->get($id);
 			count($this->data['question']) || $this->data['errors'][] = 'Question could not be found';
@@ -68,6 +70,10 @@ class Question extends Admin_Controller
 
 	function user(){
 		redirect('admin/user');
+	}
+
+	function reviewer(){
+		redirect('admin/reviewer');
 	}
 
 }

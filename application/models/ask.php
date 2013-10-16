@@ -199,4 +199,10 @@ class Ask extends CI_Model
 		else
 			$this->db->insert('gen_exam', $data);
 	}
+
+	function get_links($category){
+        $query = $this->db->query("select * from reviewer where reviewer.category=?", array('category' => $category));
+        $links = $query->result_array();
+		return $links;
+	}
 }

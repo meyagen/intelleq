@@ -173,7 +173,6 @@ class Score_M extends CI_Model
 		$this->db->update('membership', array('date' => serialize($date_array)));
     }
 
-
     function month_shortcut($month){
     	if(strcmp($month, "January") == 0)
     		$month = "Jan";
@@ -231,6 +230,29 @@ class Score_M extends CI_Model
 
 			return $score_array;
 		}
+	}
+
+	function update_array($scores, $subject){
+		if(count($scores) < count($subject)){
+       		while(count($scores) < count($subject))
+          		unset($subject[count($subject)-1]);
+      	}
+
+      	return $subject;
+	}
+
+	function percentage($subject, $total){
+		$subject_sum = $this->sum($subject);
+		$percent = ($subject_sum/$total)*100;
+		return round($percent, 0, PHP_ROUND_HALF_UP);
+	}
+
+	function sum($array){
+		$total = 0;
+		foreach($array as $score)
+			$total += $score;
+
+		return $total;
 	}
 
 }

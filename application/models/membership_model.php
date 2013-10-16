@@ -44,7 +44,7 @@ class Membership_model extends MY_Model {
 			$query = $this->db->query($sql, array($this->input->post('username'), $this->input->post('username'), $this->hash($this->input->post('password'))));
 			$user = $query->row();
 
-			if (count($user)) {
+			if(count($user)) {
 				$data = array( 
 					'fname' => $user->first_name,
 					'lname' => $user->last_name,
