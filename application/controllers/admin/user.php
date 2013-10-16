@@ -10,7 +10,7 @@ class User extends Admin_Controller
 		// Fetch all users
 		$this->data['admins'] = $this->user_m->get();
 		$this->load->model('membership_model');
-		$this->data['users'] = $this->membership_model->get();//$this->db->query('SELECT email_address FROM membership');
+		$this->data['users'] = $this->membership_model->get();
 
 		$this->data['subview'] = 'admin/user/index';
 		$this->load->view('admin/_layout_main', $this->data);
@@ -122,6 +122,18 @@ class User extends Admin_Controller
 		$this->data['user'] = $this->user_m->search_member($name);
 		$this->data['subview'] = 'admin/user/search_member';
 		$this->load->view('admin/_layout_main', $this->data);		
+	}
+
+	function activate($id){
+		$this->load->model('user_m');
+		$this->user_m->activate($id);
+		$this->index();
+	}
+
+	function deactivate($id){
+		$this->load->model('user_m');
+		$this->user_m->deactivate($id);
+		$this->index();
 	}
 
 	function question(){

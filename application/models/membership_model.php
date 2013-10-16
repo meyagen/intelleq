@@ -182,11 +182,6 @@ class Membership_model extends MY_Model {
 
 	function activate_user($email){
 		$this->db->where('email_address', $email);
-		$query = $this->db->get('membership');
-		if($query->num_rows == 1){
-			$user = $query->row();	
-		}
-
 		$this->db->update('membership', array('activate' => 'true'));
 	}
 
