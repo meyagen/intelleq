@@ -44,8 +44,7 @@ class User_M extends MY_Model
 		parent::__construct();
 	}
 
-	public function login()
-	{
+	public function login(){
 		$user = $this->get_by(array(
 			'email' => $this->input->post('email'),
 			'password' => $this->hash($this->input->post('password')),
@@ -86,5 +85,53 @@ class User_M extends MY_Model
 
 	public function hash($string){
 		return hash('sha512', $string . config_item('encryption_key'));
+	}
+
+	function search_admin($name){
+		$this->db->where('email', $name);
+		$query = $this->db->get('users');
+
+		if($query->num_rows > 0)
+			return $query->row();
+
+		else{
+			$this->db->where('name', $name);
+			$query = $this->db->get('users');
+			if($query->num_rows > 0)
+				return $query->row();
+		}
+
+		return null;
+	}
+
+	function search_member($name){
+		$this->db->where('username', $name);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0)
+			return $query->row();
+		
+		$this->db->where('email_address', $name);
+		$query = $this->db->get('membership');
+		if($query->num_rows > 0)
+			return $query->row();
+
+		$string = explode(" ", $name);
+		$this->db->where('last_name', $string[count($string)-1]);
+		$query = $this->db->get('membership');
+		if($query->num_rows > 0)
+			return $query->row();
+
+		$this->db->where('first_name', $string[0]);
+		$query = $this->db->get('membership');
+		if($query->num_rows > 0)
+			return $query->row();
+
+		$this->db->where('first_name', $string[0] ." " .$string[1]);
+		$query = $this->db->get('membership');
+		if($query->num_rows > 0)
+			return $query->row();
+
+		return null;
 	}
 }

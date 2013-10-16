@@ -15,8 +15,8 @@
     <div class="content"> 
       <ul class="side-nav">
         <li><a href="question">Edit questions</a></li>
-        <li><a href="#">Edit reviewers</a></li>
-        <li><a href="#">Edit links</a></li>
+        <li><a href="reviewer">Edit reviewers</a></li>
+        <li><a href="#"><strike>Edit links</strike></a></li>
       </ul>
     </div>
   </section>

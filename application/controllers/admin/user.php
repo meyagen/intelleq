@@ -17,34 +17,37 @@ class User extends Admin_Controller
 	}
 
 	public function edit($id = NULL){
-		// Fetch a user or set a new one
+		//Fetch a user or set a new one
 		if($id == 'user')
 			redirect('admin/user');
 		elseif($id == 'question')
 			redirect('admin/question');
-
+		elseif($id == 'reviewer')
+			redirect('admin/reviewer');
+		
 		elseif ($id) {
 			$this->data['user'] = $this->user_m->get($id);
 			count($this->data['user']) || $this->data['errors'][] = 'User could not be found';
 		}
-		else {
+
+		else 
 			$this->data['user'] = $this->user_m->get_new();
-		}
 		
-		// Set up the form
+		
+		//Set up the form
 		$rules = $this->user_m->rules_admin;
 		$id || $rules['password']['rules'] .= '|required';
 		$this->form_validation->set_rules($rules);
 		
-		// Process the form
-		if ($this->form_validation->run() == TRUE) {
+		//Process the form
+		if($this->form_validation->run() == TRUE) {
 			$data = $this->user_m->array_from_post(array('name', 'email', 'password'));
 			$data['password'] = $this->user_m->hash($data['password']);
 			$this->user_m->save($data, $id);
 			redirect('admin/user');
 		}
 		
-		// Load the view
+		//Load the view
 		$this->data['subview'] = 'admin/user/edit';
 		$this->load->view('admin/_layout_main', $this->data);
 	}
@@ -105,7 +108,27 @@ class User extends Admin_Controller
 		return TRUE;
 	}
 
+	function search_admin(){
+		$this->load->model('user_m');
+		$name = $this->input->post('name');
+		$this->data['admin'] = $this->user_m->search_admin($name);
+		$this->data['subview'] = 'admin/user/search';
+		$this->load->view('admin/_layout_main', $this->data);		
+	}
+
+	function search_member(){
+		$this->load->model('user_m');
+		$name = $this->input->post('name');
+		$this->data['user'] = $this->user_m->search_member($name);
+		$this->data['subview'] = 'admin/user/search_member';
+		$this->load->view('admin/_layout_main', $this->data);		
+	}
+
 	function question(){
-		redirect('/admin/question');
+		redirect('admin/question');
+	}
+
+	function reviewer(){
+		redirect('admin/reviewer');
 	}
 }
