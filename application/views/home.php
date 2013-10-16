@@ -1,27 +1,7 @@
 <body class="off-canvas hide-extras">
 
 <!--Navigation Bar-->
-<header>
-<div class="fixed">
-<nav class="top-bar fixed">
-  <section class="top-bar-section">
-    <ul class="left">
-
-    </ul>
-  </section>
-  <ul class="title-area" style="display:inline">
-    <!--li class="toggle-topbar menu-icon right" style="padding-top:22px"><a href="#"><span></span></a></li-->
-    <li class="name"><a href="#" class="icon"> </a><h1><a href="<?php echo base_url(); ?>" style="display:inline">intelleq</a></h1></li>
-    
-  </ul>
-  <section class="top-bar-section">
-    <ul class="right"style="background:rgba(105, 34, 34, 0)">
-      <li style="padding-right:10;padding-left:10"><p class="button radius" style="width:80px;border-color:rgba(256,256,256,0.5); !important;border-width:2px !important;line-height:25px" href="#" data-reveal-id="modalSignIn">Sign In</p></li>
-      <li style="padding-right:10;padding-left:10"><p class="button radius success" style="width:80px;" href="#" data-reveal-id="modalSignUp">Sign Up</p></li>
-    </ul>
-  </section>
-</div>
-</header>
+<?php $this->load->view("includes/header2");?>
 
 <!--Jumbotron-->
 <section role="main">
@@ -35,8 +15,9 @@
       </div>
       <div class="large-5 pull-3 columns" id="jumboOverlay">
         <div class="row hide-for-small"style="padding-top:75px;padding-bottom:75px;"></div>
-        <h1 class="white">Knowledge made accessible.</h1>
-        <h4 class="white">Something about the site <br class="hide-for-small"/>must be placed here.</h4><br/>
+        <h1 class="white">Master the<br class="hide-for-small"/>knowledge in you</h1>
+        <h4 class="white">An online practice
+          <br class="hide-for-small"/>standardized examination</h4><br/>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
       </div>
     </div>
@@ -55,8 +36,11 @@
     <div class="large-4 pull-1 columns">
       <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
       <div>
-        <h1>train.</h1>
-        <p>The site is loaded with tons of reference materials, all indexed per subject for your convenience and ease of access.</p>
+        <h1><center>Train</center></h1>
+        <p class="justify"> 
+          The site is loaded with tons of reference materials that will help you train,  
+          all indexed per subject for your convenience and ease of access.
+        </p>
       </div>
       <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
     </div>
@@ -78,8 +62,11 @@
     <div class="large-4 pull-7 columns">
       <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
       <div>
-        <h1>test.</h1>
-        <p>We also provide a huge selection of exercise materials, ranging from short quizzes to full-length exam simulations.</p>
+        <h1><center>Test</center></h1>
+        <p class="justify">
+          We provide a practice exam which covers 4 subject areas: Mathematics, Science, Language and Reading Comprehension.
+          Each subject consists of questions with varying difficulty from easy to hard. 
+        </p>
       </div>
       <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
     </div>
@@ -101,8 +88,11 @@
     <div class="large-4 pull-1 columns">
       <div>
         <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
-        <h1>track.</h1>
-        <p>Gain access to a specialized score-tracking system that records your results and informs you of areas for improvement.</p>
+        <h1><center>Track</center></h1>
+        <p class="justify">
+          Gain access to a specialized score-tracking system
+          that records your results on each subject and informs you of areas for improvement.
+        </p>
       </div>
       <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
     </div>
@@ -120,8 +110,10 @@
     <div class="row">
     <div class="large-10 large-centered columns">
       <div>
-        <center><h1>Something encouraging the person to proceed should be placed here.</h1>
-        <p>It's probably because we're awesome and all. Go, click that button below. You know you want to.</p>
+        <center><h1>Preparing you to be better<br class="hide-for-small"/>and training you to be greater</h1>
+        <p>   
+          Be one step closer to your dream. Sign up now by clicking the button below.
+        </p>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
         </center>
       </div>
@@ -129,51 +121,13 @@
   </div>
   <div class="row hide-for-small"><div class="large-12 columns padding-large"></div></div>
     <div class="row hide-medium-up"><div class="large-12 columns padding-small"></div></div>
-  </div>
+  </div>  
 </section>
 
+
+
 <!--Footer - Site Map-->
-<section role="footmap" style="box-shadow:0px 0px 1px #000000">
-  <footer id="universal" class="footer">
-  <div class="row fullrow">
-    <div class="large-7 columns">
-      <div class="large-4 columns">
-        <center><h3 class="white">ABOUT</h3>
-        <ul class="white" style="list-style:none">
-          <li><a href="about">Who We Are</a></li>
-          <li><a href="mission">Our Mission</a></li>
-          <li><a href="feedback">Feedback</a></li>
-        </ul></center>
-      </div>
-      <div class="large-4 columns">
-        <center><h3 class="white">HELP</h3>
-        <ul class="white" style="list-style:none">
-          <li><a href="faq">FAQ</a></li>
-          <li><a href="contactus">Contact Us</a></li>
-          <li><a href="report">Report a Bug</a> </li>
-        </ul></center>
-      </div>
-      <div class="large-4 columns">
-        <center><h3 class="white">SOCIAL</h3>
-        <ul class="white" style="list-style:none">
-          <li><a href="http://facebook.com">Facebook</a></li>
-          <li><a href="http://twitter.com">Twitter</a></li>
-          <li><a href="http://plus.google.com">Google+</a></li>
-        </ul></center>
-      </div>
-    </div>
-  </div>
-  <div class=" row fullrow">
-    <div class="large-4 push-8 columns">
-      <div>
-        <center><h1 class="white">logo</h1>
-        <p class="white">Andres x Bunao x Mendoza x Ventura<br/>2013 | All rights reserved</p>
-        </center>
-      </div>
-    </div>
-  </div>
-  </footer>
-</section>
+<?php $this->load->view("includes/footer");?>
 
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
@@ -290,6 +244,6 @@
 <!--Modal - Confirmation-->
 <div id="modalConfirm" class="reveal-modal small">
     <h2>Confirmation mail sent</h2>
-    <p>Check your something something.</p>
+    <p>Check your email address to know your password.</p>
   <a class="close-reveal-modal">x</a>
 </div>

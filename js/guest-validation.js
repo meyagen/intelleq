@@ -189,6 +189,33 @@ $(document).ready(function(){
 			$('#modalConfirm').foundation('reveal', 'open', '');
 		}
 	});
+	$("#formReport").submit(function(evt){
+		evt.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: "report/sent",
+			data: $("#formReport").serialize(),
+			success: function(msg) {
+				if(msg=="successful") {
+					$('#modalConfirm').foundation('reveal', 'open', '');
+				}
+			}
+		});
+	});
+
+	$("#formFeedback").submit(function(evt){
+		evt.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: "feedback/sent",
+			data: $("#formFeedback").serialize(),
+			success: function(msg) {
+				if(msg=="successful") {
+					$('#modalConfirm').foundation('reveal', 'open', '');
+				}
+			}
+		});
+	});
 
 
 });

@@ -20,8 +20,5 @@
 				$this->load->view('_main_layout', $data);
 			}
 		}
-		/*function index() {
-			$data['main_content'] = 'home';
-			$this->load->view('faq', $data);
-		}*/
 	}
+?>

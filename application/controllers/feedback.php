@@ -20,6 +20,37 @@
 				$this->load->view('_main_layout'	, $data);
 			}
 		}
+		function sent() {
+			$config = Array(
+			    'protocol' => 'smtp',
+			    'smtp_host' => 'ssl://smtp.googlemail.com',
+			    'smtp_port' => 465,
+			    'smtp_user' => 'user',
+			    'smtp_pass' => 'pass',
+			    'mailtype'  => 'html', 
+			    'charset'   => 'iso-8859-1'
+			);
+			$this->load->library('email', $config);
+			$this->email->set_newline("\r\n");
+			$this->email->clear();
+
+			$this->email->from('intelleq@gmail.com'); 
+			$this->email->to('venturaaard@gmail.com'); 
+			$this->email->subject($this->input->post('subject'));
+
+			$name = $this->input->post('user');
+			$email = $this->input->post('email');
+			$message = $this->input->post('message');
+			
+			$message = 'From: '.$name.' <'.$email.'> '."\r\n\r\n".'Message: '."\r\n".$message;
+			$this->email->message($message);
+			if(!$this->email->send()) {
+				echo "unsuccessful";
+			}
+			else {
+				echo "successful";
+			}
+		}
 	}
 
 ?>
