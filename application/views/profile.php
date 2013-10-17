@@ -4,6 +4,7 @@
 <script type="text/javascript">
 
 $(function () {
+
     // create the chart
     $('#container').highcharts({
         chart: {
@@ -29,17 +30,26 @@ $(function () {
                 }
             },
         xAxis: {
-            categories: []
+            minPadding: 0.05,
+            maxPadding: 0.05
+            //categories: []
         },
         yAxis: {
             title: {
                 text: 'Total Exam Score(120)'
             },
+            alternateGridColor: '#ECF0F1',
+            min: 0,
             plotLines: [{
                 value: 0,
                 width: 1,
                 color: '#808080'
             }]
+        },
+        plotOptions:{
+            line: {
+                pointStart: 1
+            }
         },
         tooltip: {
             valueSuffix: ' Correct Answer'
@@ -52,7 +62,8 @@ $(function () {
         },
         series: [{
             name: 'Overall Score',
-            data: <?php echo $hist; ?>
+            data: <?php echo $hist;?>,
+            
         },{
             name: 'Science',
             data: <?php echo $hist_science; ?>
@@ -69,7 +80,7 @@ $(function () {
     });
 
         var chart = $('#container').highcharts();
-        chart.xAxis[0].setCategories(<?php echo $dates; ?>);
+        
         for(var i = 1; i <= 4; i++){
             chart.series[i].hide();
         }
@@ -163,9 +174,17 @@ $(function () {
           else echo 'transition';
           echo '" style="margin-bottom:0px"><i class="fi-puzzle"style="margin-right:20px"></i>';
           echo $state.': ';
-          if($is_paused || $this->session->userdata['startExam']) echo $subject;
+          //var_dump($this->session->userdata('subject'));
+          //var_dump($is_paused);
+          //var_dump($this->session->userdata);
+          if (($last_fin)=='science')
+            echo 'Mathematics';
+          elseif (($last_fin)=='mathematics')
+            echo 'English';
+          elseif (($last_fin)=='english')
+            echo 'Reading Comprehension';
           else {
-            echo ': wait lang...';
+            // not gonna happen
           }
           echo '</a></h4>';
           echo '</div></div>';

@@ -2,7 +2,7 @@
   <div class="large-3 columns">
     <div class="row fullrow">
       <div class="large-10 push-1 columns" style="background-color:rgba(0,0,0,0)">
-        <div class="panel radius" style="background-color:#2ad175;padding:15px 0px 15px 0px">
+        <div class="panel radius" style="background-color:rgba(42,209,117,0.6);padding:15px 0px 15px 0px">
           <h4 class="white" style="padding-left:15px">Navigation</h4>
           <div class="docs section-container accordion" data-section="accordion" id="panel-nav">
             <section class="section">
@@ -35,7 +35,7 @@
             </section>
           </div>
         </div>
-        <div class="panel radius" style="background-color:#f2a70d;padding:15px 0px 15px 0px">
+        <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15px 0px">
           <h4 class="white" style="padding-left:15px">intelleq x You</h4>
           <div class="docs section-container accordion" data-section="accordion" id="panel-user">
             <section class="section">

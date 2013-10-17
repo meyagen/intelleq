@@ -39,7 +39,9 @@ $(document).ready(function(){
 	$("#formSignIn").submit(function(evt){
 		if (!earle)
 		evt.preventDefault();
-		//$("#forgetInfo").text("Yay.");
+		$("#signinInfo").addClass("error");
+		$("#signinInfo").addClass("process");
+		$("#signinInfo").text("Processing, please wait...");
 		$.ajax({
 			type: "POST",
 			url: "login/validate",
@@ -49,12 +51,16 @@ $(document).ready(function(){
 				if(msg=="invalid") {
 					$("#signinUentry").addClass("error");
 					$("#signinPass").addClass("error");
+					$("#signinInfo").removeClass("process");
 					$("#signinInfo").addClass("error");
 					$("#signinInfo").text("Invalid username and password combination! Please try again.");
 				}
 				else {
 					if (!earle) {
 						earle = true;
+						$("#signinInfo").removeClass("process");
+						$("#signinInfo").addClass("success");
+						$("#signinInfo").text("Redirecting...");
 						$("#formSignIn").submit();
 					}
 				}

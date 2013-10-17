@@ -24,6 +24,7 @@
 					<?php
 						$score_total = 0;
 						$omit_total = 0;
+						$hardcode = array(30,30,25,15);
 						for ($i=0;$i<4;$i++) {
 							$score_total+=$score[$i];
 							$omit_total+=$omits[$i];
@@ -34,15 +35,24 @@
 							elseif ($i==2) echo 'English';
 							elseif ($i==3) echo 'Reading Comprehension';
 							echo '</strong></td>';
-							echo '<td>4</td>'; // LE HARDCODE
+							// START HARDCODE
+							echo '<td>';
+							echo $hardcode[$i];
+							echo '</td>';
+							// END HARDCODE
 							echo '<td>'.$score[$i].'</td>';
-							echo '<td>'.(4-($score[$i]+$omits[$i])).'</td>'; // LE HARDCODE
+
+							// START HARDCODE
+							echo '<td>';
+							echo (($hardcode[$i])-($score[$i]+$omits[$i]));
+							echo '</td>';
+							// END HARDCODE
 							echo '<td>'.$omits[$i].'</td>';
 							echo '</tr>';
 						}
 						echo '<tr>';
 						echo '<td><strong>TOTAL</strong></td>';
-						echo '<td>16</td>';// LE HARDCODE
+						echo '<td>100</td>';// LE HARDCODE
 						echo '<td>'.$score_total.'</td>';
 						echo '<td>'.(16-($score_total+$omit_total)).'</td>'; // LE HARDCODE
 						echo '<td>'.$omit_total.'</td>';

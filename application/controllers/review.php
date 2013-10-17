@@ -5,6 +5,7 @@ class Review extends User_Controller {
 		parent::__construct();
 		$this->load->model('ask');
 		$this->load->model('review_m');
+		$this->load->model('score_m');
 	}
 
 	function index(){
@@ -21,9 +22,14 @@ class Review extends User_Controller {
 			$data['q_english'] = unserialize($this->ask->get_questions('english'));
 			$data['q_reading_comprehension'] = unserialize($this->ask->get_questions('reading_comprehension'));
 
-			//var_dump($data);
-			//$rev_vals = $this->review_m;
-			//var_dump($rev_vals);
+			$score_array[0] = $this->score_m->get_scores("science")[count($this->score_m->get_scores("science"))-1];
+			$score_array[1] = $this->score_m->get_scores("mathematics")[count($this->score_m->get_scores("mathematics"))-1];
+			$score_array[2] = $this->score_m->get_scores("english")[count($this->score_m->get_scores("english"))-1];
+			$score_array[3] = $this->score_m->get_scores("reading_comprehension")[count($this->score_m->get_scores("reading_comprehension"))-1];
+			$score_array[4] = $score_array[0]+$score_array[1]+$score_array[2]+$score_array[3];
+     		$data['score'] = $score_array;
+	        $data['total'] = $this->ask->count_questions();
+	        $data['omits'] = $this->review_m->get_omits();
 		}
 		// else load another value to main_content
 		else $data['main_content'] = 'settings';

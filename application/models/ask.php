@@ -73,7 +73,7 @@ class Ask extends CI_Model
 			$row = $query->row();
 
 			if($row->current_subject == null)
-				$data['subject'] = 'Science';
+				$data['subject'] = 'science';
 			else
 				$data['subject'] = $row->current_subject;
 

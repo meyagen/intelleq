@@ -2,131 +2,31 @@
 
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
-	<div class="large-3 columns push-6">
-	  <div class="row">
-	    <div class="large-12 columns">
-	      <div class="row fullrow">
-		    <div class="large-10 push-1 columns">
-		        <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15 0px">
-			      <h4 style="padding-left:15px">Questions</h4>
-			      <!-- <ul class="pagination" id="pagination" style="margin-top: 10px"> -->
-			        <?php
-			        for ($j=0;$j<4;$j++) {
-                echo '<div class="panel';
-                if ($j>0) echo ' hidden';
-                echo '" style="background-color:#fff';
-                echo ';margin-top:10px;margin-bottom:0px';
-                echo '" id="panelpagination_';
-                if ($j==0) {
-                  $subj='science';
-                  $curr_subj = $q_science;
-                }
-                else if ($j==1) {
-                  $subj='mathematics';
-                  $curr_subj = $q_mathematics;
-                }
-                else if ($j==2) {
-                  $subj='english';
-                  $curr_subj = $q_english;
-                }
-                else if ($j==3) {
-                  $subj='reading_comprehension';
-                  $curr_subj = $q_reading_comprehension;
-                }
-                else $subj='';
-                echo $subj;
-                echo '">';
-			        	echo '<ul class="pagination';
-                
-                echo '" id="pagination_';
-			        	
-			        	echo $subj;
-			        	echo '" style="margin-top:10px';
-                $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
-                // if ($j==3) 
-                echo ';margin-bottom:0px';
-                echo '">';
-                echo '<strong>';
 
-                $item=0;
-                for ($i = 0,$item=1; $i < count($curr_subj); $i++, $item++) {
-				        //for ($i = 0; $i < 4; $i++) {
-
-                  $row = $curr_subj[$rev_vals['seq_'.$subj][$i]];
-				          echo '<li';
-				          if ($i==0) echo ' class="current"';
-				          echo '><span data-tooltip class="has-tip" title="';
-                  echo $row['title'];
-				          echo '"><a href="#" onclick="jumpto(\'';
-				          echo $subj;
-				          echo '\',';
-				          echo $i+1;
-				          echo ')"';
-                  
-                  if ($rev_vals['ans_'.$subj][$item] == $row['correct_answer'])
-                    echo ' class="correct"';
-                  else
-                    echo ' class="wrong"';
-                  echo '>';
-				          echo $i+1;
-				          echo '</a></span></li>';
-				        }
-				        echo '</strong>';
-                // echo '<br/>Subject:';
-                echo '</ul>';
-                echo '</div>';
-			        }
-			        
-			        ?>
-		      	</div>
-		    </div>
-		  </div>
-	    </div>
-	  </div>
-	</div>
-
-	<div class="large-6 pull-3 columns">
+	<div class="large-6 columns">
 		<div class="section-container auto" data-section="" data-options="deep_linking: true;" data-section-resized="true" style="min-height: 50px;">
   		  <?php 
   		  	for ($i=0;$i<4;$i++) {
-  		  		if ($i==0) {
-              $subj='science';
-              $curr_subj = $q_science;
-            }
-	        	else if ($i==1) {
-              $subj='mathematics';
-              $curr_subj = $q_mathematics;
-            }
-	        	else if ($i==2) {
-              $subj='english';
-              $curr_subj = $q_english;
-            }
-	        	else if ($i==3) {
-              $subj='reading_comprehension';
-              $curr_subj = $q_reading_comprehension;
-            }
-	        	else $subj='';
+            $subj_array=array('science','mathematics','english','reading_comprehension');
+            $q_array=array($q_science,$q_mathematics,$q_english,$q_reading_comprehension);
+            $curr_subj = $q_array[$i];
+            $subj = $subj_array[$i];
   		  		echo '<section';
   		  		if ($i==0) echo ' class="active"';
   		  		echo ' style="padding-top: 50px;">';
 
   		  		echo '<p class="title" data-section-title="" style="left:';
   		  		echo $i*100;
-  		  		echo 'px;height:50px;">';
-            echo '<a style="width:100px;padding:13px 0px 0px 0px;text-align:center;vertical-align:middle;font-family:\'Gotham\'" id="panel_';
+  		  		echo 'px;height:50px;" onclick="changesubj(\''.$subj.'\')">';
+            echo '<a class="white" style="width:100px;padding:10px 0px 0px 0px;font-size:30px;text-align:center;vertical-align:middle;" id="panel_';
   		  		echo $subj;
   		  		echo '" onclick="changesubj(\''.$subj.'\')">';
             
-            echo $i;
-            // if($i == 0){
-            //   echo 'Science';
-            // }elseif($i == 1){
-            //   echo 'Mathematics';
-            // }elseif($i == 2){
-            //   echo 'English';
-            // }elseif($i == 3){
-            //   echo 'Reading Comprehension';
-            // }
+            $icon_array=array('beaker','plus','comments','book');
+
+            echo '<i class="icon-';
+            echo $icon_array[$i];
+            echo '"></i>';
             
   		  		echo '</a>';
             echo '</p>';
@@ -229,6 +129,138 @@
   		  ?>
         </div>
 	</div>
+
+  <div class="large-3 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="row fullrow">
+          <div class="large-10 push-1 columns">
+            <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15 0px">
+              <h4 style="padding-left:15px">Questions</h4>
+                <?php
+                $subj_array=array('science','mathematics','english','reading_comprehension');
+                $subj_echo_array=array('Science','Mathematics','English','Reading Comprehension');
+                $q_array=array($q_science,$q_mathematics,$q_english,$q_reading_comprehension);
+                for ($j=0;$j<4;$j++) {
+                  echo '<div class="panel';
+                  if ($j>0) echo ' hidden';
+                  echo '" style="background-color:#fff';
+                  echo ';margin-top:10px;margin-bottom:0px';
+                  echo '" id="panelpagination_';
+                  $subj = $subj_array[$j];
+                  $curr_subj = $q_array[$j];
+                  echo $subj;
+                  echo '">';
+
+                  echo '<ul class="pagination';
+                  
+                  echo '" id="pagination_';
+                  
+                  echo $subj;
+                  echo '" style="margin-top:10px';
+                  $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+                  // if ($j==3) 
+                  echo ';margin-bottom:0px';
+                  echo '">';
+                  echo '<strong>';
+
+                  $item=0;
+                  for ($i = 0,$item=1; $i < count($curr_subj); $i++, $item++) {
+                  //for ($i = 0; $i < 4; $i++) {
+
+                    $row = $curr_subj[$rev_vals['seq_'.$subj][$i]];
+                    echo '<li';
+                    if ($i==0) echo ' class="current"';
+                    echo '><span data-tooltip class="has-tip" title="';
+                    echo $row['title'];
+                    echo '"><a href="#" onclick="jumpto(\'';
+                    echo $subj_array[$j];
+                    echo '\',';
+                    echo $i+1;
+                    echo ')"';
+                    
+                    if ($rev_vals['ans_'.$subj][$item] == $row['correct_answer'])
+                      echo ' class="correct"';
+                    else
+                      echo ' class="wrong"';
+                    echo '>';
+                    echo $i+1;
+                    echo '</a></span></li>';
+                  }
+                  echo '</strong>';
+                  // echo '<br/>Subject:';
+                  echo '</ul>';
+                  echo '</div>';
+                }
+                
+               ?>
+            </div>
+
+            <!-- Overview -->
+
+            <div class="panel radius" style="background-color:rgba(42,209,117,0.6);padding:15px 0px 15 0px">
+              <h4 style="padding-left:15px">Overview</h4>
+                <?php
+                $items_array=array(30,30,25,15);
+                $subj_array=array('science','mathematics','english','reading_comprehension');
+                $subj_echo_array=array('Science','Mathematics','English','Reading Comprehension');
+                $q_array=array($q_science,$q_mathematics,$q_english,$q_reading_comprehension);
+                echo '<table style="width:100%;margin-bottom:0px"><thead><tr><th style="width:50%;text-align:center">';
+                echo 'SCORE';
+                echo '</th><th style="width:50%;text-align:center">';
+                echo 'ITEMS';
+                echo '</th></tr></thead><tbody><tr><td style="text-align:center">';
+                echo $score[4];
+                echo '</td><td style="text-align:center">';
+                echo '100';
+                echo '</td></tr></tbody></table>';
+                for ($j=0;$j<4;$j++) {
+                  echo '<div class="panel';
+                  if ($j>0) echo ' hidden';
+                  echo '" style="background-color:#fff';
+                  echo ';margin:0px;padding:0px';
+                  echo '" id="paneloverview_';
+                  $subj = $subj_array[$j];
+                  $curr_subj = $q_array[$j];
+                  echo $subj;
+                  echo '">';
+                  // echo '<h6 style="color: #222222;"><small style="color: #6f6f6f;">Breakdown:</small>&nbsp;';
+                  // echo $subj_echo_array[$j];
+                  // echo '</h6>';
+
+                  echo '<table style="width:100%;margin-bottom:0px"><thead><tr><th style="width:25%;text-align:center">';
+                  echo '<i class="fi-star" title="Items"></i>';
+                  echo '</th><th style="width:25%;text-align:center">';
+                  echo '<i class="fi-check" title="Correct"></i>';
+                  echo '</th><th style="width:25%;text-align:center">';
+                  echo '<i class="fi-x" title="Wrong"></i>';
+                  echo '</th><th style="width:25%;text-align:center">';
+                  echo '<i class="fi-minus" title="Omit"></i>';
+                  echo '</th></tr></thead><tbody><tr><td style="text-align:center">';
+                  echo $items_array[$j];
+                  echo '</td><td style="text-align:center">';
+                  echo $score[$j];
+                  echo '</td><td style="text-align:center">';
+                  echo $items_array[$j]-($score[$j]+$omits[$j]);
+                  echo '</td><td style="text-align:center">';
+                  echo $omits[$j];
+                  echo '</td></tr></tbody></table>';
+
+                  // echo '<br/>Subject:';
+                  echo '</div>';
+                }
+                
+               ?>
+            </div>
+
+            <a class = "button radius large expand" href = "site">Okay, I'm done!</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <?php $this->load->view('includes/footer');?>
 <script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
@@ -237,11 +269,24 @@
   function changesubj(subj) {
     //alert(subj);
     
-    if(subj!='science') $('#panelpagination_science').addClass('hidden');
-    if(subj!='mathematics') $('#panelpagination_mathematics').addClass('hidden');
-    if(subj!='english') $('#panelpagination_english').addClass('hidden');
-    if(subj!='reading_comprehension') $('#panelpagination_reading_comprehension').addClass('hidden');
+    if(subj!='science') {
+      $('#panelpagination_science').addClass('hidden');
+      $('#paneloverview_science').addClass('hidden');
+    }
+    if(subj!='mathematics') {
+      $('#panelpagination_mathematics').addClass('hidden');
+      $('#paneloverview_mathematics').addClass('hidden');
+    }
+    if(subj!='english') {
+      $('#panelpagination_english').addClass('hidden');
+      $('#paneloverview_english').addClass('hidden');
+    }
+    if(subj!='reading_comprehension') {
+      $('#panelpagination_reading_comprehension').addClass('hidden');
+      $('#paneloverview_reading_comprehension').addClass('hidden');
+    }
     $('#panelpagination_'+subj).removeClass('hidden');
+    $('#paneloverview_'+subj).removeClass('hidden');
   }
 
   function jumpto(subj, number){

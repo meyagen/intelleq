@@ -26,6 +26,7 @@ class Score extends User_Controller {
 			$this->session->set_userdata('timeCheck', TRUE);
 			$this->session->set_userdata('startExam', FALSE);
 			
+			// START TOFF NOTES: get latest scores for display
 			if(strcmp($data['subject'], "reading_comprehension") == 0) {
 				$score_array[0] = $this->score_m->get_scores("science")[count($this->score_m->get_scores("science"))-1];
 				$score_array[1] = $this->score_m->get_scores("mathematics")[count($this->score_m->get_scores("mathematics"))-1];
@@ -36,6 +37,8 @@ class Score extends User_Controller {
 		        $data['omits'] = $this->review_m->get_omits();
 				$data['main_content'] = 'score';
 			}
+			// END TOFF NOTES
+			
 			else{
 				//redirect('question');
 				$data['start'] = $this->ask->check_last_fin();

@@ -14,15 +14,13 @@
         <div class="panel radius" style="background-color:#34495e">
           <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
           <h2 class="white"><?php 
-
-
-          	if($start){
+           	if($start){
           		echo 'Science'; 
           	}
-          	elseif($last_fin == 'science'){
+          	elseif(strtolower($last_fin) == 'science'){
           		echo 'Mathematics'; 
           	}
-          	elseif($last_fin == 'mathematics'){
+          	elseif(strtolower($last_fin) == 'mathematics'){
           		echo 'English'; 
           	}
           	else{
