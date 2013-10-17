@@ -14,10 +14,16 @@
     font-weight: bold;
 }
 
+i.sidenav {
+    margin-right: 10px;
+    margin-top: 5px;
+    font-size:20px;
+}
+
 body {
     /*background-color:#2c3e50;*/
 /*background: linear-gradient(45deg, #eed9a6 0%, #eca048 100%);*/
-    background-image: url("../img/ios_bg.jpg");
+    background-image: url("../img/ios_bg-large.jpg");
     background-position: center top;
     background-size:cover;
 }
@@ -397,6 +403,10 @@ span#forgetInfo {
 
 span.success {
   background: #29ad61;
+}
+
+span.process {
+  background: #f39c12;
 }
 
 span.error {

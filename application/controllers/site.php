@@ -34,7 +34,8 @@ class Site extends User_Controller {
 
 		$data['is_paused'] = $this->ask->is_paused();
 		$data['last_fin'] = $this->ask->get_last_fin();
-		if($this->ask->is_paused() || $this->session->userdata['startExam'] || $this->ask->get_last_fin() != 'reading_comprehension'){
+		
+		if($this->ask->is_paused() || $this->session->userdata['startExam'] || (($this->ask->get_last_fin()!='reading_comprehension')&&($this->ask->get_last_fin()!=NULL))){
 			$data['state'] = "Resume Exam";
 		} 
 		else{

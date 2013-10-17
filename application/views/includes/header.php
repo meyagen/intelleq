@@ -9,8 +9,8 @@
   </ul>
   <section class="top-bar-section">
     <ul class="right"style="background:rgba(105, 34, 34, 0)">
-        <li style="padding-right:10;padding-left:10"><a href="<?php echo base_url(); ?>" class="white"><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></a></li>
-        <li style="padding-right:10;padding-left:10"><a class="button radius trans" href="login/logout">Sign Out</a></li>
+      <li style="padding-right:10;padding-left:10"><a href="<?php echo base_url(); ?>" class="white"><i class="fi-torso" style="margin-right:15px;font-size:20px"></i><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></a></li>
+      <li style="padding-right:10;padding-left:10"><a class="button radius trans" href="login/logout">Sign Out</a></li>
     </ul>
   </section>
 </div>

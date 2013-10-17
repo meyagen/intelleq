@@ -42,17 +42,6 @@ class Score extends User_Controller {
 				$data['last_fin'] = $this->ask->get_last_fin();
 				$data['main_content'] = 'transition';
 			}
-
-			$data['is_paused'] = $this->ask->is_paused();
-			$data['last_fin'] = $this->ask->get_last_fin();
-			if($this->ask->is_paused() || $this->session->userdata['startExam'] || $this->ask->get_last_fin() != 'reading_comprehension'){
-				$data['state'] = "Resume Exam";
-			} 
-			else{
-				$data['state'] = "Take the Exam!";
-			}
-
-			$this->load->view('_main_layout', $data);
 			$this->load->view('members_area', $data);
 		}
 

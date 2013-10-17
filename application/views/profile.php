@@ -149,14 +149,67 @@ $(function () {
       </div>
     </div>
     
+
     <div class="row">
-      <div class="large-10 push-1 columns">
-        <div class="panel radius" style="background-color:rgba(52,73,94,0.6)">
-          <div class="row"><div class="large-8 push-3" style="text-align:right"></div></div>
-          <h2 class="white">Let's twerk your knowledge.</h2>
-          <h4><a class="button radius success expand large" href="<?php if($state == 'Resume Exam') {if($is_paused || $this->session->userdata['startExam']) echo 'question'; else echo 'transition';} else echo 'guideline'; ?>" style="margin-bottom:0px"><?php echo $state; ?></a></h4></li>
-        </div>
-      </div>
+      <?php
+        // var_dump($last_fin);
+        if($state == 'Resume Exam') { // paused or in transition, close review
+          echo '<div class="large-10 push-1 columns">';
+          echo '<div class="panel radius" style="background-color:rgba(52,73,94,0.6)">';
+          echo '<div class="row"><div class="large-12" style="text-align:center">';
+          echo '<h2 class="white">Continue from where you left off.</h2></div></div>';
+          echo '<h4><a class="button radius success expand large" href="';
+          if($is_paused || $this->session->userdata['startExam']) echo 'question';
+          else echo 'transition';
+          echo '" style="margin-bottom:0px"><i class="fi-puzzle"style="margin-right:20px"></i>';
+          echo $state.': ';
+          if($is_paused || $this->session->userdata['startExam']) echo $subject;
+          else {
+            echo ': wait lang...';
+          }
+          echo '</a></h4>';
+          echo '</div></div>';
+        }
+        else {
+          if(strcmp($last_fin,'reading_comprehension')==0) {// finished, open review
+            echo '<div class="large-4 columns">';
+            echo '<div class="panel radius" style="background-color:rgba(52,73,94,0.6);margin-top:9px;margin-bottom:10px;">';
+            echo '<div class="row"><div class="large-10 push-1">';
+            echo '<a style="font-size:200%;margin-bottom:10px;padding-top:25px;padding-bottom:25px;" class="button radius success expand large" href="';
+            echo 'review';
+            echo '">';
+            echo '<i class="fi-check"style="margin-right:10px"></i>';
+            echo 'REVIEW';
+            echo '</a></div></div>';
+            echo '<div class="row"><div class="large-10 push-1" style="text-align:center">';
+            echo '<h6 class="subheader white" style="margin:0px !important">your most recently finished exam</h6></div></div>';
+            echo '</div></div>';
+
+            echo '<div class="large-8 columns">';
+            echo '<div class="panel radius" style="background-color:rgba(52,73,94,0.6)">';
+            echo '<div class="row"><div class="large-12" style="text-align:center">';
+            echo '<h2 class="white">Let\'s test your knowledge</h2></div></div>';
+            echo '<h4><a class="button radius success expand large" href="';
+            echo 'guideline';
+            echo '" style="margin-bottom:0px"><i class="fi-puzzle"style="margin-right:20px"></i>';
+            echo 'Take the exam';
+            echo '</a></h4>';
+            echo '</div></div>';
+          }
+          else { // first time, close review
+            echo '<div class="large-10 push-1 columns">';
+            echo '<div class="panel radius" style="background-color:rgba(52,73,94,0.6)">';
+            echo '<div class="row"><div class="large-8 push-3" style="text-align:right">';
+            echo '<h2 class="white">Welcome to Intelleq, newbie!</h2></div></div>';
+            echo '<h4><a class="button radius success expand large" href="';
+            echo 'guideline';
+            echo '" style="margin-bottom:0px"><i class="fi-puzzle"style="margin-right:20px"></i>';
+            echo 'Take your first exam now';
+            echo '</a></h4>';
+            echo '</div></div>';
+          }
+        }
+      ?>
     </div>
 
     <!--Panel - Statistics-->

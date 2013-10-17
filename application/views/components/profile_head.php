@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="icon" href="img/favicon.ico" type="image/x-icon">
   <title>intelleq</title>
+  <link rel="stylesheet" href="css/foundation-icons.css" />
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/custom.css">

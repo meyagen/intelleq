@@ -1,4 +1,4 @@
-<body class="off-canvas hide-extras">
+<body class="off-canvas hide-extras" style="padding-top:0px !important">
 
 <!--Navigation Bar-->
 <?php $this->load->view("includes/guest-header");?>
@@ -129,7 +129,7 @@
 
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
-  <form id="formSignIn">
+  <form id="formSignIn" method="post">
     <h2>Welcome back, user!</h2>
     <fieldset>
       <legend>Sign In to intelleq</legend>
@@ -147,7 +147,7 @@
     <div class="row">
       <div class="large-12 columns">
         <ul class="button-group radius">
-          <li><a class="small button" onclick="$('#formSignIn').submit()">Submit</a></li>
+          <li><input type="submit" class="small button" value="Sign In"></li>
           <li><a class="small button alert" href="#" data-reveal-id="modalForgot">Forgot Password</a></li>
       </ul>
       <input type="submit" style="position: absolute; height: 0px; width: 0px; border: none; padding: 0px;"
