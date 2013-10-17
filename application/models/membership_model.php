@@ -62,6 +62,27 @@ class Membership_model extends MY_Model {
 		return false;
 	}
 
+	public function checkFacebook($info){
+		$this->db->where('username', $info['username']);
+		$query = $this->db->get('membership');
+
+		if($query->num_rows > 0) {
+			return false;
+		}
+		return true;
+	}
+
+	public function signupFacebook($array){
+		$data = array(
+			'first_name' => $array['first_name'],
+			'last_name' =>	$array['last_name'],
+			'username' =>	$array['username'],
+			'email_address' =>	$array['email'],
+			'activate' => 'true',
+		);
+		$this->db->insert('membership', $data);
+	}
+	
 	public function hash ($string)
 	{
 		return hash('sha512', $string . config_item('encryption_key'));

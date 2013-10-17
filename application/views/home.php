@@ -13,12 +13,13 @@
         <div class="pic hide-for-small" id="bigLogo" style="padding-top:183px;padding-bottom:183px;"></div>
         <div class="pic hide-for-medium-up" id="bigLogo" style="padding-top:147px;padding-bottom:147px;background-size:213px 294px;"></div>
       </div>
-      <div class="large-5 pull-3 columns" id="jumboOverlay">
+      <div class="large-6 pull-2 columns" id="jumboOverlay">
         <div class="row hide-for-small"style="padding-top:75px;padding-bottom:75px;"></div>
         <h1 class="white">Master the knowledge <br class="hide-for-small"/>in you</h1>
         <h4 class="white">An online practice
           <br class="hide-for-small"/>standardized examination</h4><br/>
         <a class="button radius success large" href="#" data-reveal-id="modalSignUp"><h4 class="white">Let's get started!</h4></a>
+		<a class="button radius" href="facebook"><h4 class="white"><i class="fi-social-facebook"></i> Sign Up using Facebook</h4></a>
       </div>
     </div>
   </header>
