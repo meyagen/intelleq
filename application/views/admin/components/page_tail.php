@@ -1,9 +1,4 @@
-<script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  <script src="<?php echo site_url('js/admin-validation.js'); ?>"></script>
+  <script type="text/javascript" src="<?php echo site_url('js/admin-validation.js'); ?>"></script>
   <script src="<?php echo site_url('js/foundation/foundation.js'); ?>"></script>
   <script src="<?php echo site_url('js/foundation/foundation.alerts.js'); ?>"></script>
   <script src="<?php echo site_url('js/foundation/foundation.clearing.js'); ?>"></script>

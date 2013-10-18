@@ -4,12 +4,12 @@
         <div class="panel">
     <h4>Navigation</h4>
     <div class="docs section-container accordion" data-section="accordion">
-        <section class="section">
+        <!-- <section class="section">
     <p class="title"><a href="">Feed</a></p>
   </section>
   <section class="section ">
     <p class="title"><a href="#">Calendar</a></p>
-  </section>
+  </section> 
   <section class="section active" style="background:#efefef">
     <p class="title" style="background:#efefef"><a>Modules</a></p>
     <div class="content"> 
@@ -19,11 +19,17 @@
         <li><a href="#"><del>Edit links</del></a></li>
       </ul>
     </div>
+  </section>-->
+  <section class="section">
+    <p class="title"><a href="question">Questions</a></p>
+  </section>
+  <section class="section">
+    <p class="title"><a href="reviewer">Reviewers</a></p>
   </section>
   <section class="section ">
-    <p class="title"><a href="user">Members</a></p>
+    <p class="title"><a href="user">Users</a></p>
   </section>
-  <section class="section ">
+  <!-- <section class="section ">
     <p class="title"><a href="#">Records</a></p>
   </section>
   <section class="section ">
@@ -31,7 +37,7 @@
   </section>
   <section class="section ">
     <p class="title"><a href="#">Badges</a></p>
-  </section>
+  </section> -->
 </div>
 </div>
 </div>

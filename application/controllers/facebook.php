@@ -72,14 +72,18 @@ class Facebook extends CI_Controller {
             if($this->membership_model->checkFacebook($info)){
                 $this->membership_model->signupFacebook($info);
             }
+            $now = $this->membership_model->save_date();
             $data = array(
                 'fname' => $info['first_name'],
                 'lname' =>  $info['last_name'],
                 'username' =>   $info['username'],
                 'email' =>  $info['email'],
-                'loggedin'=> 'true',
-                'startExam' => 'false',
+                'loggedin'=> TRUE,
+                'since' => $now,
+                'timeCheck' => TRUE,
+                'startExam' => FALSE,
             );
+            $this->membership_model->login_log();
             $this->session->set_userdata($data);
             redirect('login');
           

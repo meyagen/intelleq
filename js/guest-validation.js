@@ -56,13 +56,14 @@ $(document).ready(function(){
 					$("#signinInfo").text("Invalid username and password combination! Please try again.");
 				}
 				else {
-					if (!earle) {
+					window.location.replace(window.location.href);
+					/*if (!earle) {
 						earle = true;
 						$("#signinInfo").removeClass("process");
 						$("#signinInfo").addClass("success");
 						$("#signinInfo").text("Redirecting...");
 						$("#formSignIn").submit();
-					}
+					}*/
 				}
 			}
 		});

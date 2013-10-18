@@ -76,4 +76,10 @@ class Question extends Admin_Controller
 		redirect('admin/reviewer');
 	}
 
+	function search_question(){
+		$name = $this->input->post('name');
+		$this->data['question'] = $this->question_m->search_question($name);
+		$this->data['subview'] = 'admin/question/search';
+		$this->load->view('admin/_layout_main', $this->data);		
+	}
 }

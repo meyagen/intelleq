@@ -9,9 +9,8 @@
   <div class="large-6 pull-3 columns" style="margin:0px;">
     <!--Header/Title-->
     <div class="row"style="padding-bottom:10px">
-    <div class="row headerNav" id="titleNav">
-      <h1 class="white" style="text-shadow: 0px 1px 5px #888888;margin-left:25px;">Articles </h1>
-      <strong class="white">Recently modified</strong>
+    <div class="row" id="titleNav">
+      <h1 class="white" style="text-shadow: 0px 1px 5px #888888;margin-left:25px;">Intelleq Admin</h1>
     </div></div>
 <section class="main">
 	<!--div class="row fullrow" style="padding:30px"></div-->

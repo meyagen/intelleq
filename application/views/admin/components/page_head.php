@@ -12,5 +12,4 @@
   <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.jquery.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('js/vendor/custom.zepto.js'); ?>"></script>
   <script type="text/javascript" src="<?php echo site_url('js/foundation.min.js'); ?>"></script>
-  <script type="text/javascript" src="<?php echo site_url('js/admin-validation.js'); ?>"></script>
 </head>

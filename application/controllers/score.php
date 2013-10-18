@@ -7,6 +7,7 @@ class Score extends User_Controller {
 		$this->load->model('ask');
 		$this->load->model('score_m');
 		$this->load->model('review_m');
+		$this->load->model('membership_model');
 	}
 
 	function index() {
@@ -36,6 +37,8 @@ class Score extends User_Controller {
 		        $data['total'] = $this->ask->count_questions();
 		        $data['omits'] = $this->review_m->get_omits();
 				$data['main_content'] = 'score';
+
+				$this->membership_model->exam_log();
 			}
 			// END TOFF NOTES
 			

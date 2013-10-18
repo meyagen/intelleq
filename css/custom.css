@@ -335,16 +335,19 @@ tr .wrong, label .wrong, ul.pagination li a.wrong {
     background-image: url("../img/mail.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 .pic#contactImgFb {
     background-image: url("../img/fb.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 .pic#contactImgTwitter {
     background-image: url("../img/twitter.png");
     background-position: center top;
     background-repeat: no-repeat;
+    background-size: contain;
 }
 .pic#contactImgMobile {
     background-image: url("../img/mobile.png");

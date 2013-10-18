@@ -31,10 +31,14 @@ class Membership_model extends MY_Model {
 				'username' => $user->username,
 				'email' => $user->email_address,
 				'id' => $user->id,
+				'since' => $user->signup_date,
 				'loggedin' => TRUE,
 				'timeCheck' => TRUE,
 				'startExam' => FALSE,
 			);
+			if(!$this->session->userdata['id']){
+				$this->login_log();
+			}
 			$this->session->set_userdata($data);
 			return true;
 		}
@@ -51,9 +55,14 @@ class Membership_model extends MY_Model {
 					'username' => $user->username,
 					'email' => $user->email_address,
 					'id' => $user->id,
+					'since' => $user->signup_date,
 					'loggedin' => TRUE,
+					'timeCheck' => TRUE,
+					'startExam' => FALSE,
 				);
-
+				if(!$this->session->userdata['id']){
+					$this->login_log();
+				}
 				$this->session->set_userdata($data);
 				return true;
 			}
@@ -73,12 +82,14 @@ class Membership_model extends MY_Model {
 	}
 
 	public function signupFacebook($array){
+		$now = $this->save_date();
 		$data = array(
 			'first_name' => $array['first_name'],
 			'last_name' =>	$array['last_name'],
 			'username' =>	$array['username'],
 			'email_address' =>	$array['email'],
 			'activate' => 'true',
+			'signup_date' => $now,
 		);
 		$this->db->insert('membership', $data);
 	}
@@ -153,20 +164,70 @@ class Membership_model extends MY_Model {
 		else return true;
 	}
 
+	function get_date(){
+		$month = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		$total = array();
+		for($i = 0; $i < 12; $i++){
+			$this->db->like('signup_date', $month[$i]);
+			$query = $this->db->get('membership');
+			$row = $query->num_rows;
+			array_push($total, $row);
+		}
+
+		return $total;
+	}
+
 	function create_member() {
+		$now = $this->save_date();
+
 		$new_member_insert_data = array(
 			'first_name' => $this->input->post('first_name'),
 			'last_name' => $this->input->post('last_name'),
 			'email_address' => $this->input->post('email_address'),
 			'username' =>$this->input->post('username'),
 			'password' => $this->hash($this->input->post('password')),
-			'activate' => 'false'
+			'activate' => FALSE,
+			'signup_date' => $now,
 		);
 
 		$insert = $this->db->insert('membership', $new_member_insert_data);
 		$this->send_confirmation_email($this->input->post('email_address'));
 		
 	}
+
+	function save_date(){
+    	$today = getdate();
+    	$month = $this->month_shortcut($today['month']);
+    	$date = "" .$today['mday'] ." " .$month ." " .$today['year'];
+		return $date;
+    }
+
+    function month_shortcut($month){
+    	if(strcmp($month, "January") == 0)
+    		$month = "Jan";
+    	else if(strcmp($month, "February") == 0)
+    		$month = "Feb";
+    	else if(strcmp($month, "March") == 0)
+    		$month = "Mar";
+    	else if(strcmp($month, "April") == 0)
+    		$month = "Apr";
+    	else if(strcmp($month, "June") == 0)
+    		$month = "Jun";
+    	else if(strcmp($month, "July") == 0)
+    		$month = "Jul";
+    	else if(strcmp($month, "August") == 0)
+    		$month = "Aug";
+    	else if(strcmp($month, "September") == 0)
+    		$month = "Sept";
+    	else if(strcmp($month, "October") == 0)
+    		$month = "Oct";
+    	else if(strcmp($month, "November") == 0)
+    		$month = "Nov";
+    	else if(strcmp($month, "December") == 0)
+    		$month = "Dec";
+
+    	return $month;
+    }
 
 	function send_confirmation_email($email){
 		$email_code = md5((string)$email);
@@ -301,4 +362,59 @@ class Membership_model extends MY_Model {
 		return $newPassword;
 	}
 
+	function login_log(){
+		$today = getdate();
+    	$month = $this->month_shortcut($today['month']);
+    	$year = $today['year'];
+
+    	$data = array(
+    		'month' => $month,
+    		'year' => $year,
+    		'login' => TRUE,
+    	);
+
+    	$this->db->insert('log', $data);
+	}
+
+	function exam_log(){
+		$today = getdate();
+    	$month = $this->month_shortcut($today['month']);
+    	$year = $today['year'];
+
+    	$data = array(
+    		'month' => $month,
+    		'year' => $year,
+    		'exam' => TRUE,
+    	);
+
+    	$this->db->insert('log', $data);
+	}
+
+	function get_login_log(){
+		$month = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		$total = array();
+		for($i = 0; $i < 12; $i++){
+			$this->db->where('month', $month[$i]);
+			$this->db->where('login', true);
+			$query = $this->db->get('log');
+			$row = $query->num_rows;
+			array_push($total, $row);
+		}
+
+		return $total;
+	}
+
+	function get_exam_log(){
+		$month = array('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec');
+		$total = array();
+		for($i = 0; $i < 12; $i++){
+			$this->db->where('month', $month[$i]);
+			$this->db->where('exam', true);
+			$query = $this->db->get('log');
+			$row = $query->num_rows;
+			array_push($total, $row);
+		}
+
+		return $total;
+	}
 }

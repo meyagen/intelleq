@@ -22,9 +22,9 @@
       <div class="large-4 columns">
         <center><h3 class="white">SOCIAL</h3>
         <ul class="white" style="list-style:none">
-          <li><a href="http://facebook.com">Facebook</a></li>
-          <li><a href="http://twitter.com">Twitter</a></li>
-          <li><a href="http://plus.google.com">Google+</a></li>
+          <li><a href="https://www.facebook.com/intelleq.team">Facebook</a></li>
+          <li><a href="https://twitter.com/intelleqteam">Twitter</a></li>
+          <li><a href="https://plus.google.com/110821769554798140317">Google+</a></li>
         </ul></center>
       </div>
     </div>

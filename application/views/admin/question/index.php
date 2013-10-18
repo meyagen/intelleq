@@ -1,6 +1,15 @@
 <section>
 	<h2>Questions</h2>
-	<?php echo anchor('admin/question/edit', '<i class="icon-plus"></i> Add a Question'); ?>
+	<?php echo anchor('admin/question/edit', 'Add a Question'); ?>
+</br></br>
+	<p></p>
+	<?php
+		echo form_open('admin/question/search_question');
+		echo form_input('name');
+		echo form_submit('submit', 'Search Question', 'class="btn btn-primary"');
+		echo form_close();
+	?>
+	<p></p>
 	<table class="table table-striped">
 		<thead>
 			<tr>

@@ -19,18 +19,19 @@
 		</thead>
 		<tbody>
 
-		<?php if($admin != null):?>	
+		<?php if(count($admin)): foreach($admin as $admins): ?>
 				<tr>
-					<td><?php echo anchor('admin/user/edit/' . $admin->id, $admin->name); ?></td>
-					<td><?php echo $admin->email; ?></td>
-					<td><?php echo btn_edit('admin/user/edit/' . $admin->id); ?></td>
-					<td><?php echo btn_delete('admin/user/delete/' . $admin->id); ?></td>
+					<td><?php echo anchor('admin/user/edit/' . $admins->id, $admins->name); ?></td>
+					<td><?php echo $admins->email; ?></td>
+					<td><?php echo btn_edit('admin/user/edit/' . $admins->id); ?></td>
+					<td><?php echo btn_delete('admin/user/delete/' . $admins->id); ?></td>
 				</tr>
+			<?php endforeach; ?>
 		<?php else: ?>
 		<tr>
 			<td colspan="3">We could not find the specified user.</td>
 		</tr>
-<?php endif; ?>	
+		<?php endif; ?>	
 		</tbody>
 	</table>
 

@@ -1,11 +1,13 @@
 <section>
 	<h2>Users</h2>
-	<?php echo anchor('admin/user/edit', '<i class="icon-plus"></i> Add a user'); ?>
+	<h3>Admin</h3>
+	</br>
+	
 	<p></p>
 	<?php
 		echo form_open('admin/user/search_admin');
 		echo form_input('name');
-		echo form_submit('submit', 'Search', 'class="btn btn-primary"');
+		echo form_submit('submit', 'Search Admin', 'class="btn btn-primary"');
 		echo form_close();
 	?>
 	<p></p>
@@ -36,13 +38,15 @@
 <?php endif; ?>	
 		</tbody>
 	</table>
-
+<?php echo anchor('admin/user/edit', '<h3>Add an admin</h3>'); ?>
 <p></p>
-
+</br></br></br>
+<h3>Members</h3>
+</br></br>
 <?php
 	echo form_open('admin/user/search_member');
 	echo form_input('name');
-	echo form_submit('submit', 'Search', 'class="btn btn-primary"');
+	echo form_submit('submit', 'Search Members', 'class="btn btn-primary"');
 	echo form_close();
 ?>
 	<p></p>
@@ -64,8 +68,8 @@
 			<td><?php echo $user->first_name ." " .$user->last_name; ?></td>
 			<td><?php echo $user->username; ?></td>
 			<td><?php echo $user->email_address; ?></td>
-			<td><?php if (strcmp($user->activate, "true") == 0) echo Yes;
-					else echo No; ?>
+			<td><?php if (strcmp($user->activate, "true") == 0) echo 'Yes';
+					else echo 'No'; ?>
 			</td>
 			<td><?php echo btn_delete('admin/user/activate/' . $user->id); ?></td>
 			<td><?php echo btn_delete('admin/user/deactivate/' . $user->id); ?></td>

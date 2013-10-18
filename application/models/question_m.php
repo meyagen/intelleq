@@ -61,4 +61,23 @@ class Question_m extends MY_Model
 
 		return $question;
 	}
+
+	function search_question($name){
+		$this->db->like('title', $name);
+		$this->db->or_like('group', $name);
+		$query = $this->db->get('ask');
+
+		if($query->num_rows > 0)
+			return $query->result();
+
+		else{
+			$this->db->like('ask', $name);
+			$this->db->or_like('difficulty', $name);
+			$query = $this->db->get('ask');
+			if($query->num_rows > 0)
+				return $query->result();
+		}
+
+		return null;
+	}
 }

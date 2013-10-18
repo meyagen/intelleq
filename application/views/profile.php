@@ -117,9 +117,10 @@ $(function () {
               </div>
             </div>
             <div class="large-9 columns" style="margin-top:20px">
+              <?php //var_dump($this->session->userdata);?>
               <h2 style="margin-bottom:0px" class="white"><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></h2>
               <h4 class="white" style="margin-bottom:0px">@<?php echo $this->session->userdata('username'); ?></h4>
-              <h6 class="white">member since the beginning of time</h6>
+              <h6 class="white"><?php echo "member since " . $this->session->userdata['since'];?></h6>
             </div>
           </div>
         </div>

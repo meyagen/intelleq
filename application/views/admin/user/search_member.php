@@ -27,8 +27,8 @@
 				<td><?php echo $user->first_name ." " .$user->last_name; ?></td>
 				<td><?php echo $user->username; ?></td>
 				<td><?php echo $user->email_address; ?></td>
-				<td><?php if (strcmp($user->activate, "true") == 0) echo Yes;
-						else echo No; ?>
+				<td><?php if (strcmp($user->activate, "true") == 0) echo 'Yes';
+						else echo 'No'; ?>
 				</td>
 				<td><?php echo btn_delete('admin/user/activate/' . $user->id); ?></td>
 				<td><?php echo btn_delete('admin/user/deactivate/' . $user->id); ?></td>

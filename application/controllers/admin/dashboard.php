@@ -3,16 +3,17 @@ class Dashboard extends Admin_Controller {
 
     public function __construct(){
         parent::__construct();
+        $this->load->model('membership_model');
     }
 
     public function index() {
     	// Fetch recently modified articles
-        
-    	$this->load->model('article_m');
-    	$this->db->order_by('modified desc');
-    	$this->db->limit(10);
-    	$this->data['recent_articles'] = $this->article_m->get();
-    	
+        $date = $this->membership_model->get_date();
+        $count = $this->membership_model->get_login_log();
+        $exam = $this->membership_model->get_exam_log();
+        $this->data['login'] = json_encode($count);
+    	$this->data['monthly'] = json_encode($date);
+        $this->data['exams'] = json_encode($exam);
     	$this->data['subview'] = 'admin/dashboard/index';
         
     	$this->load->view('admin/_layout_main', $this->data);
