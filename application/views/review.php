@@ -3,24 +3,24 @@
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
 
-	<div class="large-6 columns">
-		<div class="section-container auto" data-section="" data-options="deep_linking: true;" data-section-resized="true" style="min-height: 50px;">
-  		  <?php 
-  		  	for ($i=0;$i<4;$i++) {
+        <div class="large-6 columns">
+                <div class="section-container auto" data-section="" data-options="deep_linking: true;" data-section-resized="true" style="min-height: 50px;">
+                    <?php 
+                            for ($i=0;$i<4;$i++) {
             $subj_array=array('science','mathematics','english','reading_comprehension');
             $q_array=array($q_science,$q_mathematics,$q_english,$q_reading_comprehension);
             $curr_subj = $q_array[$i];
             $subj = $subj_array[$i];
-  		  		echo '<section';
-  		  		if ($i==0) echo ' class="active"';
-  		  		echo ' style="padding-top: 50px;">';
+                                    echo '<section';
+                                    if ($i==0) echo ' class="active"';
+                                    echo ' style="padding-top: 50px;">';
 
-  		  		echo '<p class="title" data-section-title="" style="left:';
-  		  		echo $i*100;
-  		  		echo 'px;height:50px;" onclick="changesubj(\''.$subj.'\')">';
+                                    echo '<p class="title" data-section-title="" style="left:';
+                                    echo $i*100;
+                                    echo 'px;height:50px;" onclick="changesubj(\''.$subj.'\')">';
             echo '<a class="white" style="width:100px;padding:10px 0px 0px 0px;font-size:30px;text-align:center;vertical-align:middle;" id="panel_';
-  		  		echo $subj;
-  		  		echo '" onclick="changesubj(\''.$subj.'\')">';
+                                    echo $subj;
+                                    echo '" onclick="changesubj(\''.$subj.'\')">';
             
             $icon_array=array('beaker','plus','comments','book');
 
@@ -28,17 +28,17 @@
             echo $icon_array[$i];
             echo '"></i>';
             
-  		  		echo '</a>';
+                                    echo '</a>';
             echo '</p>';
 
-  		  		echo '<div class="content panel radius';
+                                    echo '<div class="content panel radius';
             if ($i==0) echo ' first';
             echo '" data-slug="panel_';
-  		  		echo $subj;
-  		  		echo '" data-section-content="" style="background-color:rgba(238,68,53,0.6);margin-bottom:0px">';
+                                    echo $subj;
+                                    echo '" data-section-content="" style="background-color:rgba(238,68,53,0.6);margin-bottom:0px">';
 
-  		  		echo '<div class="panel" style="background-color:rgba(238,68,53,0);margin-bottom:0px"><h3>';
-  		  		if ($i==0) {
+                                    echo '<div class="panel" style="background-color:rgba(238,68,53,0);margin-bottom:0px"><h3>';
+                                    if ($i==0) {
               echo 'Science';
             }
             else if ($i==1) {
@@ -50,9 +50,9 @@
             else if ($i==3) {
               echo 'Reading Comprehension';
             }
-  		  		echo '</h3><ol id="questions_';
-  		  		echo $subj;
-  		  		echo'" style="list-style-type:none;margin-bottom:0px;margin-top:10px;">';
+                                    echo '</h3><ol id="questions_';
+                                    echo $subj;
+                                    echo'" style="list-style-type:none;margin-bottom:0px;margin-top:10px;">';
 
             $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
 
@@ -112,7 +112,7 @@
               echo '</div></div></div></div></li>'; 
             }
             
-  		  		echo '</ol></div>';
+                                    echo '</ol></div>';
             echo
             '<div class ="row">
                 <div class="large-12 columns" style="float:right">
@@ -124,11 +124,11 @@
                   </div>
                 </div>
               </div>';
-  		  		echo '</div></section>';
-  		  	}
-  		  ?>
+                                    echo '</div></section>';
+                            }
+                    ?>
         </div>
-	</div>
+        </div>
 
   <div class="large-3 columns">
     <div class="row">

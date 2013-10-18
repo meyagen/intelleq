@@ -39,7 +39,8 @@ class Score extends User_Controller {
 					$score_array[2] = $this->score_m->get_scores("english")[count($this->score_m->get_scores("english"))-1];
 					$score_array[3] = $this->score_m->get_scores("reading_comprehension")[count($this->score_m->get_scores("reading_comprehension"))-1];
 	         		$data['score'] = $score_array;
-			        $data['total'] = $this->ask->count_questions();
+	         		$data['correct'] = array_sum($score_array);
+			        // $data['total'] = $this->ask->count_questions();
 			        $data['omits'] = $this->review_m->get_omits();
 					$data['main_content'] = 'score';
 				}
@@ -61,7 +62,8 @@ class Score extends User_Controller {
 					$score_array[2] = $this->score_m->get_scores("english")[count($this->score_m->get_scores("english"))-1];
 					$score_array[3] = $this->score_m->get_scores("reading_comprehension")[count($this->score_m->get_scores("reading_comprehension"))-1];
 	         		$data['score'] = $score_array;
-			        $data['total'] = $this->ask->count_questions();
+	         		$data['correct'] = array_sum($score_array);
+			        // $data['total'] = $this->ask->count_questions();
 			        $data['omits'] = $this->review_m->get_omits();
 			        $data['main_content'] = 'score';
 				}

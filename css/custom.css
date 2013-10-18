@@ -120,7 +120,23 @@ table.answers tr:hover {
     background: #fff;
 }
 
+input[type="radio"] {
+    display:none;
+}
 
+input[type="radio"] + label span {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url('../img/check_radio_sheet.png') -39px top no-repeat;
+    cursor:pointer;
+}
+
+input[type="radio"]:checked + label span {
+    background:url('../img/check_radio_sheet.png') -58px top no-repeat;
+}
 
 .section-container.auto > section.active > .title {
     transition:.5s;
@@ -292,29 +308,51 @@ h4 {
     margin-bottom: 0px;
 }
 
-tr .answered, label .answered, ul.pagination li a.answered {
+tr .answered, label .answered, ul.pagination li:not(.current) a.answered {
+    transition:0.5s;
     background-color:#f1c40f !important;
     color:#fff !important;
 }
 
 tr .correct, label .correct, ul.pagination li a.correct {
+    transition:0.5s;
     background:#27ae60 !important;
     color:#fff !important;
 }
 
 tr .wrong, label .wrong, ul.pagination li a.wrong {
+    transition:0.5s;
     background-color:#e74c3c !important;
     color:#fff !important;
 }
 
-tr .omit, label .omit, ul.pagination li a.omit {
+label .omit, ul.pagination li a.omit {
+    transition:0.5s;
     background-color:#c0392b !important;
     color:#fff !important;
 }
 
-/*.reveal-modal .close-reveal-modal.button {
-    
-}*/
+/* current CSS */
+
+tr .answered, label .answered, ul.pagination li.current a {
+    transition:0.5s;
+    box-shadow: 0px 0px 3px 1px #3498db;
+}
+
+tr .correct, label .correct, ul.pagination li.current a.correct {
+    transition:0.5s;
+    box-shadow: 0px 0px 3px 1px #27ae60;
+}
+
+tr .wrong, label .wrong, ul.pagination li.current a.wrong {
+    transition:0.5s;
+    box-shadow: 0px 0px 3px 1px #e74c3c;
+}
+
+label .omit, ul.pagination li.current a.omit {
+    transition:0.5s;
+    box-shadow: 0px 0px 3px 1px #c0392b;
+}
 
 .footer a:link    {color:#fff;}
 .footer a:visited {color:#fff;}
@@ -383,25 +421,21 @@ tr .omit, label .omit, ul.pagination li a.omit {
     background-image: url("../img/mail.png");
     background-position: center top;
     background-repeat: no-repeat;
-	background-size: contain;
 }
 .pic#contactImgFb {
     background-image: url("../img/fb.png");
     background-position: center top;
     background-repeat: no-repeat;
-	background-size: contain;
 }
 .pic#contactImgTwitter {
     background-image: url("../img/twitter.png");
     background-position: center top;
     background-repeat: no-repeat;
-	background-size: contain;
 }
 .pic#contactImgMobile {
     background-image: url("../img/mobile.png");
     background-position: center top;
     background-repeat: no-repeat;
-	background-size: contain;
 }
 
 .pagetitle#titleNav {

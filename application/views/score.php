@@ -79,6 +79,73 @@
 		</div>
 	</div>
 	</div>
+
+	<script type="text/javascript" src="<?php echo site_url('js/jquery.min.js'); ?>"></script>
+	<script type="text/javascript">
+	$(function () {
+	$('#container').highcharts({
+	        chart: {
+	            plotBackgroundColor: null,
+	            plotBorderWidth: null,
+	            plotShadow: false,
+	            backgroundColor:'rgba(255, 255, 255, 0)'
+	        },
+	        title: {
+	            text: 'Performance Chart',
+	             style:{
+	                fontSize: '25px'
+	            },
+	        },
+	        subtitle: {
+	            text: 'Hover to the Pie to know more',
+	            style:{
+	                fontSize: '15px'
+	            }
+	        },
+	        tooltip: {
+	          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	        },
+	        plotOptions: {
+	            pie: {
+	                allowPointSelect: true,
+	                cursor: 'pointer',
+	                dataLabels: {
+	                    enabled: true,
+	                    color: '#000000',
+	                    connectorColor: '#000000',
+	                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+	                }
+	            }
+	        },
+	        series: [{
+	            type: 'pie',
+	            name: 'Performance Breakdown',
+	            data: [
+	                {
+	                    name: 'Science',
+	                    y: <?php echo ($score[0]/($correct > 0 ? $correct : 1))*100; ?>,
+	                },
+	                {
+	                    name: 'Mathematics', 
+	                    y: <?php echo ($score[1]/($correct > 0 ? $correct : 1))*100; ?>,
+	                },
+	                {
+	                    name: 'English',
+	                    y: <?php echo ($score[2]/($correct > 0 ? $correct : 1))*100; ?>,
+	                },
+	                {
+	                    name: 'Reading Comprehension', 
+	                    y: <?php echo ($score[3]/($correct > 0 ? $correct : 1))*100; ?>,
+	                }
+	            ]
+	        }]
+	    });
+	});
+	</script>
+	<script type="text/javascript" src="<?php echo site_url('js/highcharts.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo site_url('js/modules/exporting.js'); ?>"></script>
+	<div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
+	
 </div>
 </div>
 

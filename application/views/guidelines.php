@@ -23,8 +23,8 @@ Read the questions carefully. For your convenience, a timer is provided at the r
 <ul style="list-style:none">
 <li><ul class="pagination" style="display:inline"><li><a style="background-color:#F2F2F2"><strong>1</strong></a></li></ul>&nbsp;&nbsp;&nbsp;Unanswered questions</li>
 <li><ul class="pagination" style="display:inline"><li><a style="background-color:#3498db;color:#fff"><strong>2</strong></a></li></ul>&nbsp;&nbsp;&nbsp;Currently displayed question</li>
-<!-- <li><ul class="pagination" style="display:inline"><li><a style="background-color:#f39c12;color:#fff"><strong>3</strong></a></li></ul>&nbsp;&nbsp;&nbsp;Answered questions</li>
- --></ul>
+<li><ul class="pagination" style="display:inline"><li><a style="background-color:#f1c40f;color:#fff"><strong>3</strong></a></li></ul>&nbsp;&nbsp;&nbsp;Answered questions</li>
+</ul>
 After the exam, you will be redirected to Review mode, wherein your answers and the correct answers will be displayed.
 <ul style="list-style:none">
 <li><ul class="pagination" style="display:inline"><li><a style="background-color:#2ecc71;color:#fff"><strong>4</strong></a></li></ul>&nbsp;&nbsp;&nbsp;Correctly answered questions</li>

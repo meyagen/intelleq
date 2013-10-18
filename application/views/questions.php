@@ -10,24 +10,21 @@
     window.onbeforeunload = function() {
       var time = $('#spanpseudotime').text();
       localStorage.setItem("someTime", time);
-      return 'Going somewhere? Pause the exam to preserve your answers or submit to continue.';
+      return 'Please Pause the Exam or all your answers will be lost!';
     };
 </script>
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
-
-<script>
-    $('#nav_modules').addClass('active');
-</script>
-
-<div class="large-3 columns push-6">
-  <div class="row">
-    <div class="large-12 columns">
-      <div class="row fullrow">
-    <div class="large-10 push-1 columns">
-        <div class="panel radius">
-      <h3>Questions</h3>
-      <ul class="pagination" id="pagination" style="margin-top: 10px">
+<?php //var_dump($this->session->userdata); ?>
+<div class="large-3 push-6 columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <div class="row fullrow">
+          <div class="large-10 push-1 columns">
+            <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15 0px">
+              <h4 style="padding-left:15px">Questions</h4>
+              <div class="panel" style="background-color:#fff;margin-top:10px;margin-bottom:0px">
+      <ul class="pagination" id="pagination">
       <?php
         
         if($this->session->userdata['timeCheck']) { 
@@ -39,30 +36,34 @@
           $qrand = $this->session->userdata['saveSequence'];
           //var_dump($this->session->userdata);
         }
-
-        $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
-
-        for ($i = 0; $i < count($questions); $i++) {
+        // for ($i = 0; $i < count($questions); $i++) {
+        for ($i = 0; $i < 4; $i++) {
+          echo '<li ';
+          if ($i==0) echo ' class="current"';
+          echo '><span data-tooltip class="has-tip" title="';
           $row = $questions[$qrand[$i]];
-          echo '<li class="';
-          if($i==0) echo 'current ';
-          // $answer_text = $row[$choice[$c_array[$i]]];
-          // for ($item=1;$item<=4; $item++) {
-          //   if($answer_text == $answers[$item]){
-          //       echo 'omit';
-          //   }
-          // }
-          
-          echo '"><span data-tooltip class="has-tip" title="';
           echo $row['title'];
-          echo '"><a href="#" onclick="jumpto(';
+          echo '"><a href="#" id="pagi_'.($i+1).'" onclick="jumpto(';
           echo $i+1;
           echo ')">';
           echo $i+1;
           echo '</a></li>';
         }
+
+        if(!($this->session->userdata['timeCheck'])){
+          echo "<script>";
+          // echo "for(var i = 1; i <= ".count($questions)."; i++){";
+          echo "for(var i = 1; i <= 4; i++){";
+            echo "if(localStorage.getItem(\"answer\" + i) !== null){";
+              echo "var d = document.getElementById(\"pagi_\" + i);";
+              echo "d.className = d.className + 'answered';";
+            echo "}";
+          echo "}";    
+          echo "</script>";
+        }
       ?>
       </ul>
+    </div>
       <div class="row">
         <div class="large-12 columns">
           <a class="button small secondary expand" id="toggleTimer" onclick="toggleTimer()">Hide Timer</a>
@@ -113,18 +114,20 @@
 
     </div>
   </div>
+
 </div>
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <form action="score" class="custom" method="post" id="testSubmit" name="testSubmit">
+      <form action="score" method="post" id="testSubmit" name="testSubmit">
       <ol id="questions"style="list-style-type:none">
     <?php
 
       $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
 
       $item=0;
-      for($i = 0, $item=1; $i < count($questions); $i++, $item++)
+      // for($i = 0, $item=1; $i < count($questions); $i++, $item++)
+      for($i = 0, $item=1; $i < 4; $i++, $item++)
       {
         $row = $questions[$qrand[$i]];
         $name = "answer" .$item;
@@ -150,7 +153,7 @@
 
         echo '<li';
         if ($i>0) echo ' class="hidden"';
-        echo '><div class="panel radius" style="min-height:400px"><div class="large-12">';
+        echo '><div class="panel" style="min-height:450px"><div class="large-12">';
         echo '<h3>';
         echo $item;
         echo '</h3> ';
@@ -165,11 +168,11 @@
 
             //print_r($c_array);
             $answer_text = $row[$choice[$c_array[$j]]];
-            if($answer_text == $answers[$item]){
-              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
 
+            if($answer_text == $answers[$item]){
+              echo '<input type="radio" name="'.$name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
             }else{
-              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
+              echo '<input type="radio" name="'.$name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
             }
           echo '</td></tr>';
         }
@@ -196,11 +199,9 @@
     <?php 
         $this->session->set_userdata('timeCheck', FALSE);
         $this->session->set_userdata('startExam', TRUE);
-        //var_dump($this->session->userdata); 
+        //($this->session->userdata); 
     ?>
-
-    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
-
+    
     <!--Modal - Pause-->
     <div id="modalPause" class="reveal-modal large">
         <h2 style="text-align:center">PSEUDO-PAUSED</h2>
@@ -224,31 +225,30 @@
       <a class="close-reveal-modal x">x</a>
     </div>
 
+    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
     </form>
     </div>
+    </div>
   </div>
-</div>
 
 <?php $this->load->view('includes/footer');?>
-
-
 
 <script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
 <script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
 <script src="<?php echo site_url('js/script.js'); ?>"></script>
 <script>
-  var ct = setInterval("checkTime()", 1000);
+  //var ct = setInterval("checkTime()", 1000);
 
-  // $('#submit').live('click', function(){
-  //       window.onbeforeunload = function(){
-  //         return "Submitting ALL of your answers";
-  //       };
-  // });
-  // $('#pause').live('click', function(){
-  //       window.onbeforeunload = function(){
-  //         return "Save";
-  //       };
-  // });
+  $('#submit').live('click', function(){
+        window.onbeforeunload = function(){
+          return "Submitting ALL of your answers";
+        };
+  });
+  $('#pause').live('click', function(){
+        window.onbeforeunload = function(){
+          return "Save";
+        };
+  });
 
   function checkTime(){
       //alert("timere");
@@ -273,9 +273,11 @@
     $('input[type="radio"]').click(function(){
       if ($(this).is(':checked'))
       {
-        
         localStorage.removeItem($(this).attr('value'));
         localStorage.setItem($(this).attr('name'), $(this).attr('value'));
+        var itemno = $(this).attr('name').slice(-1);
+        var d = document.getElementById("pagi_" + itemno);
+        d.className = d.className + ' answered';  
 
         //localStorage.removeItem($(this).attr('name'));
         //localStorage.setItem($(this).attr('name'), $(this).attr('id'));
