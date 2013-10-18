@@ -3391,7 +3391,7 @@ label.error {
     margin-top: 0; }
   .reveal-modal > :last-child {
     margin-bottom: 0; }
-  .reveal-modal .close-reveal-modal {
+  .reveal-modal .close-reveal-modal.x {
     font-size: 1.375em;
     line-height: 1;
     position: absolute;
@@ -4100,6 +4100,7 @@ ul.pagination {
     ul.pagination li a {
       display: block;
       padding: 0.0625em 0.4375em 0.0625em;
+      background-color:#F2F2F2;
       color: #999999; }
     ul.pagination li:hover a,
     ul.pagination li a:focus {
@@ -4529,12 +4530,12 @@ a.th {
 
 /* Tooltips */
 .has-tip {
-  border-bottom: dotted 1px #cccccc;
+  /*border-bottom: dotted 1px #cccccc;*/
   cursor: help;
   font-weight: bold;
   color: #333333; }
   .has-tip:hover, .has-tip:focus {
-    border-bottom: dotted 1px #196177;
+    /*border-bottom: dotted 1px #196177;*/
     color: #5a99cc; }
   .has-tip.tip-left, .has-tip.tip-right {
     float: none !important; }
@@ -4565,7 +4566,7 @@ a.th {
     top: -10px; }
   .tooltip.opened {
     color: #5a99cc !important;
-    border-bottom: dotted 1px #196177 !important; }
+    /*border-bottom: dotted 1px #196177 !important;*/ }
 
 .tap-to-close {
   display: block;

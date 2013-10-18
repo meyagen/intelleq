@@ -10,7 +10,7 @@
     window.onbeforeunload = function() {
       var time = $('#spanpseudotime').text();
       localStorage.setItem("someTime", time);
-      return 'Please Pause the Exam or all your answers will be lost!';
+      return 'Going somewhere? Pause the exam to preserve your answers or submit to continue.';
     };
 </script>
 <?php $this->load->view('includes/header'); ?>
@@ -39,19 +39,21 @@
           $qrand = $this->session->userdata['saveSequence'];
           //var_dump($this->session->userdata);
         }
-        if (count($questions)>=1) {
-          echo '<li class="current"><span data-tooltip class="has-tip" title="';
-          $row = $questions[$qrand[0]];
-          echo $row['title'];
-          echo '"><a href="#" onclick="jumpto(';
-          echo 1;
-          echo ')">';
-          echo 1;
-          echo '</a></span></li>';
-        }
-        for ($i = 1; $i < count($questions); $i++) {
-          echo '<li><span data-tooltip class="has-tip" title="';
+
+        $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+
+        for ($i = 0; $i < count($questions); $i++) {
           $row = $questions[$qrand[$i]];
+          echo '<li class="';
+          if($i==0) echo 'current ';
+          // $answer_text = $row[$choice[$c_array[$i]]];
+          // for ($item=1;$item<=4; $item++) {
+          //   if($answer_text == $answers[$item]){
+          //       echo 'omit';
+          //   }
+          // }
+          
+          echo '"><span data-tooltip class="has-tip" title="';
           echo $row['title'];
           echo '"><a href="#" onclick="jumpto(';
           echo $i+1;
@@ -90,6 +92,25 @@
       </div>
       </div>
     </div></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row">
+        <div class="large-6 columns">
+          <a class="button radius expand disabled" name="prev" id="prev-pseudo">Prev</a>
+          <a class="button radius expand hidden" name="prev" id="prev" onclick="prevq()">Prev</a>
+        </div>
+        <div class="large-6 columns">
+          <a class="button radius expand" name="next" id="next" onclick="nextq()">Next</a>
+          <a class="button radius expand hidden disabled" name="next" id="next-pseudo">Next</a>
+        </div>
+      </div>
+      <a class="button radius expand success" href="#" data-reveal-id="modalPause">Pause</a>
+      <a class="button radius expand success" href="#" data-reveal-id="modalSubmit">Submit</a>
+
+
     </div>
   </div>
 </div>
@@ -177,25 +198,40 @@
         $this->session->set_userdata('startExam', TRUE);
         //var_dump($this->session->userdata); 
     ?>
-    <div class ="row">
-      <div class="large-12 columns" style="float:right">
-          <ul class="button-group" style="padding-right:0px; display:inline">
-            <li><a class="button small disabled" name="prev" id="prev-pseudo">Prev</a></li>
-            <li><a class="button small hidden" name="prev" id="prev" onclick="prevq()">Prev</a></li>
-            <li><input type="submit" id="pause" name="pause" class="button small success" style="display:inline" value = "Pause"></li>
-            <li><input type="submit" id="submit" name="submit" class="button small success" style="display:inline" value = "Finished All the Question"></li>
-            <li><a class="button small" name="next" id="next" onclick="nextq()">Next</a></li>
-            <li><a class="button small hidden disabled" name="next" id="next-pseudo">Next</a></li>
-          </ul>
-      </div>
-    </div>
+
     <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
+
+    <!--Modal - Pause-->
+    <div id="modalPause" class="reveal-modal large">
+        <h2 style="text-align:center">PSEUDO-PAUSED</h2>
+        <input type="submit" id="pause" name="pause" class="button radius expand success" value = "Save and Exit">
+        <a class="button radius expand close-reveal-modal">Back to Exam</a>
+      <a class="close-reveal-modal x">x</a>
+    </div>
+
+    <!--Modal - Submit-->
+    <div id="modalSubmit" class="reveal-modal large">
+        <h2 style="text-align:center">SUBMIT NOW?<br/>
+        <small>There is no turning back.</small></h2>
+        <div class="row">
+          <div class="large-6 columns">
+            <input type="submit" id="submit" name="submit" class="button radius expand alert" value = "Yes"></li>
+          </div>
+          <div class="large-6 columns">
+            <a class="button radius expand close-reveal-modal">No</a>
+          </div>
+        </div>
+      <a class="close-reveal-modal x">x</a>
+    </div>
+
     </form>
     </div>
-    </div>
   </div>
+</div>
 
 <?php $this->load->view('includes/footer');?>
+
+
 
 <script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
 <script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
@@ -203,16 +239,16 @@
 <script>
   var ct = setInterval("checkTime()", 1000);
 
-  $('#submit').live('click', function(){
-        window.onbeforeunload = function(){
-          return "Submitting ALL of your answers";
-        };
-  });
-  $('#pause').live('click', function(){
-        window.onbeforeunload = function(){
-          return "Save";
-        };
-  });
+  // $('#submit').live('click', function(){
+  //       window.onbeforeunload = function(){
+  //         return "Submitting ALL of your answers";
+  //       };
+  // });
+  // $('#pause').live('click', function(){
+  //       window.onbeforeunload = function(){
+  //         return "Save";
+  //       };
+  // });
 
   function checkTime(){
       //alert("timere");

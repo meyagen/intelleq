@@ -117,7 +117,6 @@ $(function () {
               </div>
             </div>
             <div class="large-9 columns" style="margin-top:20px">
-              <?php //var_dump($this->session->userdata);?>
               <h2 style="margin-bottom:0px" class="white"><?php echo ucfirst($firstname) . " " . ucfirst($lastname); ?></h2>
               <h4 class="white" style="margin-bottom:0px">@<?php echo $this->session->userdata('username'); ?></h4>
               <h6 class="white"><?php echo "member since " . $this->session->userdata['since'];?></h6>
@@ -185,7 +184,7 @@ $(function () {
           elseif (($last_fin)=='english')
             echo 'Reading Comprehension';
           else {
-            // not gonna happen
+            echo 'Science';
           }
           echo '</a></h4>';
           echo '</div></div>';

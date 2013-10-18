@@ -19,7 +19,7 @@
         <h4 class="white">An online practice
           <br class="hide-for-small"/>standardized examination</h4><br/>
         <a class="button radius success large expand" href="#" data-reveal-id="modalSignUp" style="margin-bottom:10px"><h4 class="white">Let's get started!</h4></a>
-		<a class="button radius expand" href="facebook"><h4 class="white"><i class="fi-social-facebook"></i> Sign Up using Facebook</h4></a>
+		<a class="button radius expand" href="facebook"><h4 class="white"><i class="fi-social-facebook" style="margin-right:20px"></i>Sign Up using Facebook</h4></a>
       </div>
     </div>
   </header>
@@ -157,7 +157,7 @@
     </div>
   </form>
   <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
@@ -184,7 +184,7 @@
   </div>
   </form>
   <span id="forgetInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Sign Up-->
@@ -233,16 +233,17 @@
     </fieldset>
     <div class="row">
       <div class="push-8">
-        <input type="submit" name="Create Account" class="button radius success">
+        <input type="submit" name="Create Account" class="button radius success" value="Create Account">
       </div>
     </div>
-    </form>  
-  <a class="close-reveal-modal">x</a>
+    </form>
+  <span id="signupInfo"></span>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Confirmation-->
 <div id="modalConfirm" class="reveal-modal small">
     <h2>Confirmation mail sent</h2>
-    <p>Check your something something.</p>
-  <a class="close-reveal-modal">x</a>
+    <p>Check your mail and click on the given link .</p>
+  <a class="close-reveal-modal x">x</a>
 </div>

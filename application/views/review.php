@@ -181,6 +181,8 @@
                     
                     if ($rev_vals['ans_'.$subj][$item] == $row['correct_answer'])
                       echo ' class="correct"';
+                    elseif ($rev_vals['ans_'.$subj][$item]==FALSE)
+                      echo ' class="omit"';
                     else
                       echo ' class="wrong"';
                     echo '>';

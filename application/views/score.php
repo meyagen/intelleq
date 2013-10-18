@@ -6,6 +6,19 @@
 	$('#nav_modules').addClass("active");
 </script>
 <div class="large-6 columns">
+
+	<?php if ($error_exist) {
+      echo '<div class="row">';
+        echo '<div class="large-12 columns">';
+          echo '<div class="panel radius">';
+            echo '<h2>ERROR</h2>';
+            echo '<h4>You have already submitted your answers for that subject!</h4>';
+          echo '</div>';
+        echo '</div>';
+      echo '</div>';
+    }
+    ?>
+
 	<div class="row">
 	  <div class="large-12 columns">
 	  	<div class="panel radius">

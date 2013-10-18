@@ -21,15 +21,14 @@ class Ask extends CI_Model
 	function check_last_fin(){
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('review');
-		//$query['username'];
 		if($query->num_rows == 0)
 			return true;
-			//return 'noprev';
 		else {
 			$row = $query->row();
 			if($row->last_fin=='reading_comprehension')
 				return true;
-			else return false;
+			else
+				return false;
 		}
 	}
 
@@ -85,12 +84,7 @@ class Ask extends CI_Model
 		$subject = $this->session->userdata('subject');
         $query = $this->db->query("select * from ask where ask.group=?", array('group' => $subject));
         $questions = $query->result_array();
-
-		$data = array(
-			'questions' => serialize($questions),
-		);
-
-		$this->session->set_userdata($data);
+        return $questions;
 	}
 
 	function get_questions($input) {
@@ -128,8 +122,10 @@ class Ask extends CI_Model
 	}
 
 	function count_questions(){
-		$questions = unserialize($this->session->userdata('questions'));
+/*		$questions = unserialize($this->session->userdata('questions'));
 		return count($questions);
+*/
+		return 4;
 	}
 
 	function random_question(){

@@ -20,6 +20,41 @@ i.sidenav {
     font-size:20px;
 }
 
+div.panel.score {
+    width:8px;
+    height:8px;
+    margin:2px;
+    padding:6px;
+    display:inline-block;
+    background-color:#fff;
+    border-radius: 2px;
+    box-shadow: 0px 0px 2px 0px #3498db;
+}
+
+div.panel.score.level1 {
+    background-color:#ecf0f1;
+}
+div.panel.score.level2 {
+    background-color:#c9dfed;
+}
+div.panel.score.level3 {
+    background-color:#92c5e6;
+}
+div.panel.score.level4 {
+    background-color:#5babe0;
+}
+div.panel.score.level5 {
+    background-color:#3498db;
+}
+
+.normalize {
+    color: #333333 !important;
+}
+
+div.panel.score.round{
+    border-radius: 1000px;
+}
+
 body {
     /*background-color:#2c3e50;*/
 /*background: linear-gradient(45deg, #eed9a6 0%, #eca048 100%);*/
@@ -257,8 +292,12 @@ h4 {
     margin-bottom: 0px;
 }
 
-tr .correct, label .correct, ul.pagination li a.correct {
+tr .answered, label .answered, ul.pagination li a.answered {
+    background-color:#f1c40f !important;
+    color:#fff !important;
+}
 
+tr .correct, label .correct, ul.pagination li a.correct {
     background:#27ae60 !important;
     color:#fff !important;
 }
@@ -267,6 +306,15 @@ tr .wrong, label .wrong, ul.pagination li a.wrong {
     background-color:#e74c3c !important;
     color:#fff !important;
 }
+
+tr .omit, label .omit, ul.pagination li a.omit {
+    background-color:#c0392b !important;
+    color:#fff !important;
+}
+
+/*.reveal-modal .close-reveal-modal.button {
+    
+}*/
 
 .footer a:link    {color:#fff;}
 .footer a:visited {color:#fff;}
@@ -335,19 +383,16 @@ tr .wrong, label .wrong, ul.pagination li a.wrong {
     background-image: url("../img/mail.png");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: contain;
 }
 .pic#contactImgFb {
     background-image: url("../img/fb.png");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: contain;
 }
 .pic#contactImgTwitter {
     background-image: url("../img/twitter.png");
     background-position: center top;
     background-repeat: no-repeat;
-    background-size: contain;
 }
 .pic#contactImgMobile {
     background-image: url("../img/mobile.png");

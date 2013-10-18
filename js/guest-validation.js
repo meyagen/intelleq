@@ -57,13 +57,13 @@ $(document).ready(function(){
 				}
 				else {
 					window.location.replace(window.location.href);
-					/*if (!earle) {
-						earle = true;
-						$("#signinInfo").removeClass("process");
-						$("#signinInfo").addClass("success");
-						$("#signinInfo").text("Redirecting...");
-						$("#formSignIn").submit();
-					}*/
+					// if (!earle) {
+					// 	earle = true;
+					// 	$("#signinInfo").removeClass("process");
+					// 	$("#signinInfo").addClass("success");
+					// 	$("#signinInfo").text("Redirecting...");
+					// 	$("#formSignIn").submit();
+					// }
 				}
 			}
 		});
@@ -190,10 +190,11 @@ $(document).ready(function(){
 				url: "login/create_member",
 				data: $("#formSignUp").serialize(),
 				success: function(msg) {
-
+					$('#modalConfirm').foundation('reveal', 'open', '');
 				}
+				
 			});
-			$('#modalConfirm').foundation('reveal', 'open', '');
+			// $('#modalConfirm').foundation('reveal', 'open', '');
 		}
 	});
 	email_valid = false;
@@ -242,6 +243,7 @@ $(document).ready(function(){
 				if(msg=="successful") {
 					$('#modalConfirm').foundation('reveal', 'open', '');
 				}
+				
 			}
 		});
 	});

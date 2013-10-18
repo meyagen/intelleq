@@ -2,68 +2,183 @@
 
 <?php $this->load->view('includes/header');?>
 <?php $this->load->view('navigation');?>
-<script>
+  <script>
     $('#nav_records').addClass('active');
   </script>
   <div class="large-6 columns">
-  <h2>Track Record</h2>
-  <fieldset>
-    <legend>Your Past Scores</legend>
-    <div class="large-12 columns">  
-    <?php
+    <div class="panel radius">
+      <h2>Track Record</h2>
+      <div class="row">
+        <div class="large-12 columns"> 
+          <div class="panel radius" style="background-color:#fff">
+            <h4 class="normalize">Overall Scores</h4>
+            <?php
+              if($scores != null){
+                foreach($scores as $score){
+                  // echo '<div class="panel score" title="';
+                  // echo $score;
+                  // echo '/100">';
+                  // echo "</div>";
+                  echo '<span data-tooltip class="has-tip" title="';
+                  echo $score;
+                  echo '/100';
+                  echo '">';
 
-      if($scores != null){
+                  echo '<div class="panel score level';
+                  $percentage=$score/100;
+                  if ($percentage<0.20) echo '1';
+                  elseif ($percentage<0.40) echo '2';
+                  elseif ($percentage<0.60) echo '3';
+                  elseif ($percentage<0.80) echo '4';
+                  else echo '5';
+                  echo '"></div>';
 
-        echo "<h5>Overall Scores</h5><br />";
+                  echo '</span>';
+                }
+              }
+              else echo '<h5>No results to display.</h5>';
+            ?> 
+          </div>
+        </div>
+      </div>
 
-        foreach($scores as $score){
-          echo "<div class=".'row'.">";
-          echo "<label>" .$score ."/16</label>";
-          echo "</div>";
-        }
+      <div class="row">
+        <div class="large-12 columns"> 
+          <div class="panel radius" style="background-color:#fff">
+            <h4 class="normalize">Science</h4>
+            <?php
+              if($scores != null){
+                foreach($science as $score){
+                  // echo '<div class="panel score" title="';
+                  // echo $score;
+                  // echo '/100">';
+                  // echo "</div>";
+                  echo '<span data-tooltip class="has-tip" title="';
+                  echo $score;
+                  echo '/30';
+                  echo '">';
 
-        echo "<br /><h5>Science</h5><br />";
+                  echo '<div class="panel score level';
+                  $percentage=$score/30;
+                  if ($percentage<0.20) echo '1';
+                  elseif ($percentage<0.40) echo '2';
+                  elseif ($percentage<0.60) echo '3';
+                  elseif ($percentage<0.80) echo '4';
+                  else echo '5';
+                  echo '"></div>';
+                  
+                  echo '</span>';
+                }
+              }
+              else echo '<h5>No results to display.</h5>';
+            ?> 
+          </div>
+        </div>
+      </div> 
 
-        foreach($science as $score){
-          echo "<div class=".'row'.">";
-          echo "<label>" .$score ."/4</label>";
-          echo "</div>";
-        }
+      <div class="row">
+        <div class="large-12 columns"> 
+          <div class="panel radius" style="background-color:#fff">
+            <h4 class="normalize">Mathematics</h4>
+            <?php
+              if($scores != null){
+                foreach($mathematics as $score){
+                  // echo '<div class="panel score" title="';
+                  // echo $score;
+                  // echo '/100">';
+                  // echo "</div>";
+                  echo '<span data-tooltip class="has-tip" title="';
+                  echo $score;
+                  echo '/30';
+                  echo '">';
 
-        echo "<br /><h5>Math</h5><br />";
+                  echo '<div class="panel score level';
+                  $percentage=$score/100;
+                  if ($percentage<0.20) echo '1';
+                  elseif ($percentage<0.40) echo '2';
+                  elseif ($percentage<0.60) echo '3';
+                  elseif ($percentage<0.80) echo '4';
+                  else echo '5';
+                  echo '"></div>';
+                  
+                  echo '</span>';
+                }
+              }
+              else echo '<h5>No results to display.</h5>';
+            ?> 
+          </div>
+        </div>
+      </div> 
 
-        foreach($mathematics as $score){
-          echo "<div class=".'row'.">";
-          echo "<label>" .$score ."/4</label>";
-          echo "</div>";
-        }
+      <div class="row">
+        <div class="large-12 columns"> 
+          <div class="panel radius" style="background-color:#fff">
+            <h4 class="normalize">English</h4>
+            <?php
+              if($scores != null){
+                foreach($english as $score){
+                  // echo '<div class="panel score" title="';
+                  // echo $score;
+                  // echo '/100">';
+                  // echo "</div>";
+                  echo '<span data-tooltip class="has-tip" title="';
+                  echo $score;
+                  echo '/25';
+                  echo '">';
 
-        echo "<br /><h5>English</h5><br />";
+                  echo '<div class="panel score level';
+                  $percentage=$score/100;
+                  if ($percentage<0.20) echo '1';
+                  elseif ($percentage<0.40) echo '2';
+                  elseif ($percentage<0.60) echo '3';
+                  elseif ($percentage<0.80) echo '4';
+                  else echo '5';
+                  echo '"></div>';
+                  
+                  echo '</span>';
+                }
+              }
+              else echo '<h5>No results to display.</h5>';
+            ?> 
+          </div>
+        </div>
+      </div> 
 
-        foreach($english as $score){
-          echo "<div class=".'row'.">";
-          echo "<label>" .$score ."/4</label>";
-          echo "</div>";
-        }
+      <div class="row">
+        <div class="large-12 columns"> 
+          <div class="panel radius" style="background-color:#fff">
+            <h4 class="normalize">Reading Comprehension</h4>
+            <?php
+              if($scores != null){
+                foreach($reading_comprehension as $score){
+                  // echo '<div class="panel score" title="';
+                  // echo $score;
+                  // echo '/100">';
+                  // echo "</div>";
+                  echo '<span data-tooltip class="has-tip" title="';
+                  echo $score;
+                  echo '/15';
+                  echo '">';
 
-        echo "<br /><h5>Reading Comprehension</h5><br />";
+                  echo '<div class="panel score level';
+                  $percentage=$score/100;
+                  if ($percentage<0.20) echo '1';
+                  elseif ($percentage<0.40) echo '2';
+                  elseif ($percentage<0.60) echo '3';
+                  elseif ($percentage<0.80) echo '4';
+                  else echo '5';
+                  echo '"></div>';
+                  
+                  echo '</span>';
+                }
+              }
+              else echo '<h5>No results to display.</h5>';
+            ?> 
+          </div>
+        </div>
+      </div> 
 
-        foreach($reading_comprehension as $score){
-          echo "<div class=".'row'.">";
-          echo "<label>" .$score ."/4</label>";
-          echo "</div>";
-        }
-      }
-
-      else{
-        echo "<div class=".'row'.">";
-        echo "<label>You have no exam results to display.</label>";
-        echo "</div>";      
-      }
-
-    ?>
-    </div></div>
-  </fieldset>
+    </div>
   </div>
 </div> 
 

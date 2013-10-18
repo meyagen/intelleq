@@ -14,7 +14,9 @@
 			// Load view
 			$data['firstname'] = $this->session->userdata('fname');
 			$data['lastname'] = $this->session->userdata('lname');
+
 			$data['main_content'] = 'transition';
+			$data['error_exist'] = FALSE;
 			
 			$this->load->view('members_area', $data);
 		}

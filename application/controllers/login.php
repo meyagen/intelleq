@@ -156,7 +156,7 @@ class Login extends CI_Controller{
 			$data['main_content'] = 'invalid_email';
 		}
 		
-		$this->load->view('includes/template', $data);
+		$this->load->view('_main_layout', $data);
 	}
 
 	function forget() {
