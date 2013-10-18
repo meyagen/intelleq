@@ -5,7 +5,7 @@
 		$this->load->view('includes/header');
 	}
 	else {
-		$this->load->view('includes/header2');
+		$this->load->view('includes/guest-header');
 	}
 ?>
   <div class="row">
@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label class="white">E-mail Address</label>
-				<input type="email" name="email" class="text" placeholder="Enter valid mail" required>
+				<input type="email" name="email" class="text" placeholder="Enter Valid E-mail" required>
 			</div>
 		</div>
 		<div class="row">
@@ -43,7 +43,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label class="white">Comment</label>
-				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="Feedback message"></textarea>
+				<textarea name="message" cols="50" rows="50" tabindex="101" data-min-length="" required placeholder="Feedback Message"></textarea>
 			</div>
 		</div>
 		<div class="row">
@@ -92,7 +92,7 @@
     </div>
   </form>
   <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
@@ -119,7 +119,7 @@
   </div>
   </form>
   <span id="forgetInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Sign Up-->
@@ -172,7 +172,7 @@
       </div>
     </div>
     </form>  
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Confirmation-->

@@ -181,5 +181,75 @@
     </div>
   </div>
 </div> 
+<script type="text/javascript" src="<?php echo site_url('js/jquery.min.js'); ?>"></script>
+<script type="text/javascript">
+$(function () {
+$('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            backgroundColor:'rgba(255, 255, 255, 0)'
+        },
+        title: {
+            text: 'Performance Chart',
+             style:{
+                fontSize: '25px'
+            },
+        },
+        subtitle: {
+            text: 'Currently Selected: Subject You\'re Best At',
+            style:{
+                fontSize: '15px'
+            }
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                {
+                    name: 'Science',
+                    y: <?php echo $sci; ?>,
+                    sliced: <?php echo $sci_select;?>,
+                },
+                {
+                    name: 'Mathematics', 
+                    y: <?php echo $math; ?>,
+                    sliced: <?php echo $math_select;?>,
+                },
+                {
+                    name: 'English',
+                    y: <?php echo $eng; ?>,
+                    sliced: <?php echo $eng_select;?>,
+                },
+                {
+                    name: 'Reading Comprehension', 
+                    y: <?php echo $compre; ?>,
+                    sliced: <?php echo $compre_select;?>,
+                }    
+            ]
+        }]
+    });
+});
+</script>
+<script type="text/javascript" src="<?php echo site_url('js/highcharts.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo site_url('js/modules/exporting.js'); ?>"></script>
+<div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
+
 
 <?php $this->load->view('includes/footer');?>

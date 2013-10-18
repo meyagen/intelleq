@@ -38,6 +38,16 @@ class Review_M extends CI_Model
 		
     }
 
+	function check_availability(){
+		$this->db->where('username', $this->session->userdata('username'));
+		$query = $this->db->get('review');
+		$count = $query->num_rows;
+		if($count > 0){
+			return true;
+		}
+		return false;
+	}
+	
     function get_omits() {
     	$username = $this->session->userdata('username');
 

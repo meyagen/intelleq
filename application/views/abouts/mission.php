@@ -5,7 +5,7 @@
 		$this->load->view('includes/header');
 	}
 	else {
-		$this->load->view('includes/header2');
+		$this->load->view('includes/guest-header');
 	}
 ?>
     <div class="row hide-for-small"><div class="large-12 columns padding-large"></div></div>
@@ -56,7 +56,7 @@
     </div>
   </form>
   <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
@@ -83,7 +83,7 @@
   </div>
   </form>
   <span id="forgetInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Sign Up-->
@@ -136,7 +136,7 @@
       </div>
     </div>
     </form>  
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Confirmation-->

@@ -2,11 +2,11 @@
 class Question_m extends MY_Model
 {
 	protected $_table_name = 'ask';
-	protected $_order_by = 'group desc, id desc';
+	protected $_order_by = 'subject desc, id desc';
 	
 	public $rules = array(
-		'group' => array(
-			'field' => 'group', 
+		'subject' => array(
+			'field' => 'subject', 
 			'label' => 'Subject Area', 
 			'rules' => 'trim|required|url_title|xss_clean'
 		), 
@@ -50,7 +50,7 @@ class Question_m extends MY_Model
 	public function get_new ()
 	{
 		$question = new stdClass();
-		$question->group = '';
+		$question->subject = '';
 		$question->title = '';
 		$question->ask = '';
 		$question->difficulty = '';
@@ -62,17 +62,23 @@ class Question_m extends MY_Model
 		return $question;
 	}
 
-	function search_question($name){
+	function search_question($name, $diff){
 		$this->db->like('title', $name);
-		$this->db->or_like('group', $name);
+		$this->db->or_like('subject', $name);
+		
+		if($diff != null || $diff != false){
+			$this->db->like('difficulty', $diff);
+		}
+		else{
+			$this->db->or_like('difficulty', $name);
+		}
 		$query = $this->db->get('ask');
 
-		if($query->num_rows > 0)
+		if($query->num_rows > 0){
 			return $query->result();
-
+		}
 		else{
 			$this->db->like('ask', $name);
-			$this->db->or_like('difficulty', $name);
 			$query = $this->db->get('ask');
 			if($query->num_rows > 0)
 				return $query->result();

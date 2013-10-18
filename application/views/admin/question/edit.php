@@ -5,14 +5,14 @@
 	<tr>
 		<td>Subject Area</td>
 		<td><?php 	//echo form_dropdown('group', 
-					echo form_dropdown('group', 
+					echo form_dropdown('subject', 
 					array( 'Subject Area' => 'Subject Area',
 					'English' => 'English',
 					'General_Knowledge' => 'General Knowledge',
 					'Mathematics' => 'Mathematics',
 					'Reading_Comprehension' => 'Reading Comprehension',
 					'Science' => 'Science' ),
-					$this->input->post('group') ? $this->input->post('group') : $question->group); 
+					$this->input->post('subject') ? $this->input->post('subject') : $question->subject); 
 		?></td>
 	</tr>
 	<tr>

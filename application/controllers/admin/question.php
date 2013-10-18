@@ -40,7 +40,7 @@ class Question extends Admin_Controller
 		// Process the form
 		if ($this->form_validation->run() == TRUE) {
 			$data = $this->question_m->array_from_post(array(
-				'group', 
+				'subject', 
 				'title', 
 				'ask', 
 				'difficulty',
@@ -78,7 +78,8 @@ class Question extends Admin_Controller
 
 	function search_question(){
 		$name = $this->input->post('name');
-		$this->data['question'] = $this->question_m->search_question($name);
+		$diff = $this->input->post('difficulty');
+		$this->data['question'] = $this->question_m->search_question($name, $diff);
 		$this->data['subview'] = 'admin/question/search';
 		$this->load->view('admin/_layout_main', $this->data);		
 	}

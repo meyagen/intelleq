@@ -24,20 +24,20 @@
 
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice1'].'">' . $row['choice1'];
+				echo '<input type="radio" name="'.$row['subject'].'" value="'.$row['choice1'].'">' . $row['choice1'];
 				echo '</td>';
 
 			echo '</tr>';
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice2'].'">' . $row['choice2'];
+				echo '<input type="radio" name="'.$row['subject'].'" value="'.$row['choice2'].'">' . $row['choice2'];
 				echo '</td>';
 
 			echo '</tr>';
 
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['choice3'].'">' . $row['choice3'];
+				echo '<input type="radio" name="'.$row['subject'].'" value="'.$row['choice3'].'">' . $row['choice3'];
 				
 				echo '</td>';
 
@@ -45,7 +45,7 @@
 			
 			echo '<tr>';
 				echo '<td>';
-				echo '<input type="radio" name="'.$row['group'].'" value="'.$row['correct_answer'].'">' . $row['correct_answer'];
+				echo '<input type="radio" name="'.$row['subject'].'" value="'.$row['correct_answer'].'">' . $row['correct_answer'];
 				
 				echo '</td>';
 

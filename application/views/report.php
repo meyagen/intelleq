@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="large-12 columns">
 				<label id="reportEmailLabel" class="white">E-mail Address</label>
-				<input type="email" id="reportEmail"name="email_address" class="text" required placeholder="Enter valid mail" >
+				<input type="email" id="reportEmail"name="email_address" class="text" required placeholder="Enter Valid E-mail" >
 			</div>
 		</div>
 		<div class="row">
@@ -62,6 +62,7 @@
     <p>Thank you for your help.</p>
   <a class="close-reveal-modal">x</a>
 </div>
+
 <!--Modal - Sign In-->
 <div id="modalSignIn" class="reveal-modal small">
   <form id="formSignIn" method="post">
@@ -91,7 +92,7 @@
     </div>
   </form>
   <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
@@ -118,7 +119,7 @@
   </div>
   </form>
   <span id="forgetInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Sign Up-->
@@ -171,7 +172,7 @@
       </div>
     </div>
     </form>  
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Confirmation-->

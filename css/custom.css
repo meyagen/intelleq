@@ -383,21 +383,25 @@ tr .omit, label .omit, ul.pagination li a.omit {
     background-image: url("../img/mail.png");
     background-position: center top;
     background-repeat: no-repeat;
+	background-size: contain;
 }
 .pic#contactImgFb {
     background-image: url("../img/fb.png");
     background-position: center top;
     background-repeat: no-repeat;
+	background-size: contain;
 }
 .pic#contactImgTwitter {
     background-image: url("../img/twitter.png");
     background-position: center top;
     background-repeat: no-repeat;
+	background-size: contain;
 }
 .pic#contactImgMobile {
     background-image: url("../img/mobile.png");
     background-position: center top;
     background-repeat: no-repeat;
+	background-size: contain;
 }
 
 .pagetitle#titleNav {

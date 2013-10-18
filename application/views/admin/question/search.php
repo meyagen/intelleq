@@ -5,10 +5,17 @@
 	<?php
 		echo form_open('admin/question/search_question');
 		echo form_input('name');
+		echo "<input type=\"radio\" value=\"easy\" name=\"difficulty\"><label style=\"display: inline\">Easy</label>";
+		echo "<input type=\"radio\" value=\"normal\" name=\"difficulty\"><label style=\"display: inline\">Normal</label>";
+		echo "<input type=\"radio\" value=\"difficult\" name=\"difficulty\"><label style=\"display: inline\">Difficult</label>";
+		echo "<br>";
 		echo form_submit('submit', 'Search Question', 'class="btn btn-primary"');
+		echo form_close();
 	?>
 	<p></p>
-
+	
+	<?php echo "<h3>Total number of searches: </h3>" . "<h3>".count($question)."</h3>"; ?>
+	</br></br>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -19,12 +26,11 @@
 			</tr>
 		</thead>
 		<tbody>
-
 		<?php if(count($question)): foreach($question as $questions): ?>
 				<tr>
 					<td><?php echo anchor('admin/question/edit/' . $questions->id, $questions->title); ?></td>
 					<td><?php echo $questions->ask; ?></td>
-					<td><?php echo $questions->group; ?></td>
+					<td><?php echo $questions->subject; ?></td>
 					<td><?php echo $questions->difficulty; ?></td>
 					<td><?php echo btn_edit('admin/question/edit/' . $questions->id); ?></td>
 					<td><?php echo btn_delete('admin/question/delete/' . $questions->id); ?></td>

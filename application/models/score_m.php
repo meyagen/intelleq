@@ -242,16 +242,20 @@ class Score_M extends CI_Model
 	}
 
 	function percentage($subject, $total){
-		$subject_sum = $this->sum($subject);
-		$percent = ($subject_sum/$total)*100;
-		return round($percent, 0, PHP_ROUND_HALF_UP);
+		if($total != 0){
+			$subject_sum = $this->sum($subject);
+			$percent = ($subject_sum/$total)*100;
+			return round($percent, 0, PHP_ROUND_HALF_UP);
+		}
+		return 0;
 	}
 
 	function sum($array){
 		$total = 0;
-		foreach($array as $score)
-			$total += $score;
-
+		if(isset($array)){
+			foreach($array as $score)
+				$total += $score;
+		}
 		return $total;
 	}
 

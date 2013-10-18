@@ -5,7 +5,7 @@
 		$this->load->view('includes/header');
 	}
 	else {
-		$this->load->view('includes/header2');
+		$this->load->view('includes/guest-header');
 	}
 ?>
   <section>
@@ -85,8 +85,7 @@
         <h3 class="white">What subjects does the exam cover?</h3>
         <div class="row hide-for-small"><div class="large-12 columns padding-text"></div></div>
         <p class="answer">
-        	Our practice exam covers 4 subjects: Mathematics, Science, Reading Comprehension and Language. We focus on these four subjects just like the University of the Philippines
-        	College Admission Test (UPCAT).
+        	Our practice exam covers 4 subjects: Mathematics, Science, Reading Comprehension and Language.
         </p>
       </div>
   </div>
@@ -191,7 +190,7 @@
     </div>
   </form>
   <span id="signinInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Forgot Password-->
@@ -218,7 +217,7 @@
   </div>
   </form>
   <span id="forgetInfo"></span>
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Sign Up-->
@@ -271,7 +270,7 @@
       </div>
     </div>
     </form>  
-  <a class="close-reveal-modal">x</a>
+  <a class="close-reveal-modal x">x</a>
 </div>
 
 <!--Modal - Confirmation-->
