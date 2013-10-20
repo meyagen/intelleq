@@ -130,12 +130,12 @@ input[type="radio"] + label span {
     height:19px;
     margin:-1px 4px 0 0;
     vertical-align:middle;
-    background:url('../img/check_radio_sheet.png') -39px top no-repeat;
+    background:url('../img/check_radio_sheet.png') 0px top no-repeat;
     cursor:pointer;
 }
 
 input[type="radio"]:checked + label span {
-    background:url('../img/check_radio_sheet.png') -58px top no-repeat;
+    background:url('../img/check_radio_sheet.png') -19px top no-repeat;
 }
 
 .section-container.auto > section.active > .title {
@@ -234,12 +234,72 @@ header#homepage{
     /*padding-top: 180px;*/
     padding-bottom: 15px;
     background-repeat: no-repeat;
-    background-color: #FFFFFF;
 }
 
 header#homepage.homeslide {
     background-image: url("../img/jumbo-bg.png");
+    background-size:cover;
     background-position: center top;
+}
+
+header#homepage.homeslide {
+    background-image: url("../img/jumbo-bg.png");
+    background-size:cover;
+    background-position: center top;
+}
+
+.panel#zurb {
+    background-image: url("../img/credit_zurb.png");
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display:inline-block;
+    margin-bottom:0px;
+    padding-left:31.6px;
+    padding-right: 31.6px; 
+    background-color:rgba(256,256,256,0);
+}
+
+.panel#ellis {
+    background-image: url("../img/credit_ellislab.png");
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display:inline-block;
+    margin-bottom:0px;
+    padding-left:31.6px;
+    padding-right: 31.6px;  
+    background-color:rgba(256,256,256,0);
+}
+
+.panel#tutor {
+    background-image: url("../img/credit_tutorialzine.png");
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display:inline-block;
+    margin-bottom:0px;
+    background-color:rgba(256,256,256,0);
+}
+
+.panel#fontawe {
+    background-image: url("../img/credit_fontawesome.png");
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display:inline-block;
+    margin-bottom:0px;
+    background-color:rgba(256,256,256,0);
+}
+
+.panel#highch {
+    background-image: url("../img/credit_highcharts.png");
+    background-size:contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display:inline-block;
+    margin-bottom:0px;
+    background-color:rgba(256,256,256,0);
 }
 
 div#titleNav{
@@ -254,6 +314,146 @@ div#titleNav{
     background-position: center top;
 }*/
 
+input[type="text"].go-flat,
+input[type="password"].go-flat,
+input[type="email"].go-flat {
+    font-size: 20px;
+    border-width:0px;
+    background-color: #eee !important;
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+input[type="text"].go-flat.rsz,
+input[type="password"].go-flat.rsz,
+input[type="email"].go-flat {
+    font-size: 14px;
+    border-width:0px;
+    background-color: #eee !important;
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0);
+}
+
+input[type="email"].go-flat#forgetEmail {
+    height:46px;
+    padding-top:18.5px;
+    padding-bottom:18.5px;
+    margin-bottom: 0px;
+    font-size: 15px;
+}
+
+.go-radius{
+    border-radius: 10px;
+}
+
+div.ftwp {
+    padding:0px !important;
+    margin:0px !important;
+}
+
+div.ftwp div {
+    transition:0.5s;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 3px;
+    width:100%;
+    height:46.250px;
+    margin-right:0px;
+    margin-bottom: 0px;
+    background-color: #e67e22;
+}
+
+div.ftwp div.invalid {
+    transition:0.5s;
+    background-color: #e74c3c !important;
+}
+
+div.ftwp div.taken {
+    transition:0.5s;
+    background-color: #f1c40f !important;
+}
+
+div.ftwp div.valid {
+    transition:0.5s;
+    background-color: #2ecc71 !important;
+}
+
+input[type="text"].invalid,
+input[type="password"].invalid,
+input[type="email"].invalid {
+    color:#e74c3c !important;
+}
+
+input[type="text"].taken,
+input[type="password"].taken,
+input[type="email"].taken {
+    color:#f39c12 !important;
+}
+
+input[type="text"].valid,
+input[type="password"].valid,
+input[type="email"].valid {
+    color:#2ecc71;
+}
+
+div.ftwp div.panel.rsz{
+    border-top-left-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 3px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    width:100%;
+    height:32px;
+    margin-right:0px;
+    margin-bottom: 0px;
+    background-color: #e67e22;
+}
+
+div.ftwp input[type="text"], div.ftwp input[type="password"] {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 0px;
+    margin-left: 0px;
+    margin-bottom:0px;
+}
+
+div.reveal-modal.go-flat#modalSignIn, div.reveal-modal.go-flat#modalSignUp {
+    background-color: rgba(230, 126, 34,0.7);
+}
+
+/*div.reveal-modal.go-flat.go-radius div.panel.tbs {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background-color: rgba(256,256,256,1) !important;
+}*/
+
+div.reveal-modal.go-flat.go-radius div.panel.topdecor {
+    width:100%;
+    height:180px;
+    margin:18px 0px 18px 0px;
+    padding: 65px 0px 65px 0px;
+    background-image: url("../img/biglogo.png");
+    background-size:contain;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: rgba(256,256,256,0);
+}
+
+div.reveal-modal.go-flat.go-radius div.panel.main {
+    padding-top:5px;
+    margin-bottom: 0px;
+    width:100%;
+    min-height:330px;
+    background-color: rgba(256,256,256,1);
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
 .icon{
     padding-left:16px;
     padding-right:16px;
@@ -261,7 +461,8 @@ div#titleNav{
     padding-bottom:5px;
     background-image: url("../img/icon-standby.png");
     background-position: center top;
-    background-repeat: none;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 a:link.icon{
     background-image: url("../img/icon-standby.png");
@@ -488,14 +689,17 @@ span#forgetInfo {
 }
 
 span.success {
-  background: #29ad61;
+    transition:0.5s;
+  background: rgba(46, 204, 113,0.75) !important;
 }
 
 span.process {
-  background: #f39c12;
+    transition:0.5s;
+  background: rgba(241, 196, 15,0.75) !important;
 }
 
 span.error {
+
   text-align: center;
 }
 

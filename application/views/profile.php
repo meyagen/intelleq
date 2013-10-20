@@ -251,7 +251,7 @@ $(function () {
     <!--end of Article-->
 
     <!--Article-->
-    <div class="row">
+    <!-- <div class="row">
       <div class="large-12 columns">
         <div class="panel radius" style="padding-bottom:0px;background-color:rgba(52,73,94,0.6)">
           <div class="row" style="margin-bottom:20px;margin-left:0px">
@@ -280,7 +280,7 @@ $(function () {
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
     <!--end of Article-->
   </div>
     </section>

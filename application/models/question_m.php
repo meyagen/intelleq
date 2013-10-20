@@ -62,10 +62,15 @@ class Question_m extends MY_Model
 		return $question;
 	}
 
-	function search_question($name, $diff){
-		$this->db->like('title', $name);
-		$this->db->or_like('subject', $name);
-		
+	function search_question($name, $diff){	
+		if($name != null || $name != false){
+			$this->db->like('title', $name);
+			$this->db->or_like('subject', $name);
+		}
+		else{
+			$this->db->like('difficulty', $diff);
+		}
+
 		if($diff != null || $diff != false){
 			$this->db->like('difficulty', $diff);
 		}

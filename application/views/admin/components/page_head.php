@@ -2,7 +2,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <link rel="icon" href="../img/favicons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="<?php echo site_url('/img/favicon.ico');?>" type="image/x-icon">
   <title>intelleq - Admin</title>
   <link rel="stylesheet" href="<?php echo site_url('css/normalize.css'); ?>">
   <link rel="stylesheet" href="<?php echo site_url('css/foundation.css'); ?>">

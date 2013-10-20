@@ -19,6 +19,7 @@ class Records extends User_Controller {
 	    $data['english'] = $this->score_m->get_scores("english");
 	    $data['reading_comprehension'] = $this->score_m->get_scores("reading_comprehension");
 		
+		//performance
 	    $scores = $this->score_m->get_scores("scores");
 		$science = $this->score_m->get_scores("science");
 		$mathematics = $this->score_m->get_scores("mathematics");
@@ -58,6 +59,14 @@ class Records extends User_Controller {
 		$data['math_select'] = $s_math;
 		$data['eng_select'] = $s_eng;
 		$data['compre_select'] = $s_compre;
+
+
+		//percentile
+		$data['percentile_overall'] = $this->score_m->get_totalscore();
+		$data['percentile_sci'] = $this->score_m->get_sciscore();
+		$data['percentile_math'] = $this->score_m->get_mathscore();
+		$data['percentile_eng'] = $this->score_m->get_engscore();
+		$data['percentile_compre'] = $this->score_m->get_comprescore();
 
 		$data['main_content'] = 'records_area';
 		$this->load->view('members_area', $data);

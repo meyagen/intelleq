@@ -5,9 +5,9 @@
 	<?php
 		echo form_open('admin/question/search_question');
 		echo form_input('name');
-		echo "<input type=\"radio\" value=\"easy\" name=\"difficulty\"><label style=\"display: inline\">Easy</label>";
-		echo "<input type=\"radio\" value=\"normal\" name=\"difficulty\"><label style=\"display: inline\">Normal</label>";
-		echo "<input type=\"radio\" value=\"difficult\" name=\"difficulty\"><label style=\"display: inline\">Difficult</label>";
+		echo "<input type=\"radio\" id=\"easy\" value=\"easy\" name=\"difficulty\"><label for=\"easy\" style=\"display: inline\"><span></span>Easy</label>";
+		echo "<input type=\"radio\" id=\"normal\" value=\"normal\" name=\"difficulty\"><label for=\"normal\" style=\"display: inline\"><span></span>Normal</label>";
+		echo "<input type=\"radio\" id=\"difficult\" value=\"difficult\" name=\"difficulty\"><label for=\"difficult\" style=\"display: inline\"><span></span>Difficult</label>";
 		echo "<br>";
 		echo form_submit('submit', 'Search Question', 'class="btn btn-primary"');
 		echo form_close();

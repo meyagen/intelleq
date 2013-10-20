@@ -1,4 +1,3 @@
-
 <?php
 class Score extends User_Controller {
 
@@ -27,7 +26,11 @@ class Score extends User_Controller {
 
 			if (strcmp($this->session->userdata('subject'),$this->ask->get_last_fin())!=0) {
 				$data['score'] = $this->score_m->compute($input);
-				// var_dump($this->ask->get_last_fin());
+				$this->score_m->store_totalscore();
+				$this->score_m->store_sciscore();
+				$this->score_m->store_mathscore();
+				$this->score_m->store_engscore();
+				$this->score_m->store_comprescore();
 				$data['total'] = $this->ask->count_questions();
 
 				$this->session->set_userdata('timeCheck', TRUE);

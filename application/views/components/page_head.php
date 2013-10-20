@@ -6,7 +6,7 @@
   <title>intelleq</title>
   <link rel="stylesheet" href="<?php echo site_url('css/foundation-icons.css'); ?>" />
   <link rel="stylesheet" href="<?php echo site_url('css/font-awesome.min.css'); ?>" />
-  <link rel="stylesheet" href="<?php echo site_url('css/css/normalize.css'); ?>">
+  <link rel="stylesheet" href="<?php echo site_url('css/normalize.css'); ?>">
   <link rel="stylesheet" href="<?php echo site_url('css/foundation.css'); ?>">
   <link rel="stylesheet" href="<?php echo site_url('css/custom.css'); ?>">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" />

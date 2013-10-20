@@ -1779,13 +1779,14 @@ fieldset {
   display: none; }
 
 span.error, small.error {
+  transition:0.5s;
   display: block;
   padding: 0.375em 0.25em;
   margin-top: -1.3125em;
   margin-bottom: 1em;
   font-size: 0.75em;
   font-weight: bold;
-  background: #c60f13;
+  background: rgba(231, 76, 60,0.75);
   color: white; }
 
 .error input,
@@ -3397,7 +3398,7 @@ label.error {
     position: absolute;
     top: 0.5em;
     right: 0.6875em;
-    color: #aaaaaa;
+    color: #fff;
     font-weight: bold;
     cursor: pointer; }
 

@@ -1,7 +1,7 @@
 <body class="off-canvas hide-extras">
 
 <div class="row hidden invisible">
-  <div class="large-22 columns">
+  <div class="large-12 columns">
     <span class="error" id="spanpseudotime"></span>
   </div>
 </div>
@@ -10,21 +10,24 @@
     window.onbeforeunload = function() {
       var time = $('#spanpseudotime').text();
       localStorage.setItem("someTime", time);
-      return 'Please Pause the Exam or all your answers will be lost!';
+      return 'Going somewhere? Pause the exam to preserve your answers or submit to continue.';
     };
 </script>
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>
-<?php //var_dump($this->session->userdata); ?>
-<div class="large-3 push-6 columns">
-    <div class="row">
-      <div class="large-12 columns">
-        <div class="row fullrow">
-          <div class="large-10 push-1 columns">
-            <div class="panel radius" style="background-color:rgba(244,166,16,0.6);padding:15px 0px 15 0px">
-              <h4 style="padding-left:15px">Questions</h4>
-              <div class="panel radius" style="background-color:#fff;margin-top:10px;margin-bottom:0px;min-height:250px">
-      <ul class="pagination" id="pagination">
+
+<script>
+    $('#nav_modules').addClass('active');
+</script>
+
+<div class="large-3 columns push-6">
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row fullrow">
+    <div class="large-10 push-1 columns">
+        <div class="panel radius">
+      <h3>Questions</h3>
+      <ul class="pagination" id="pagination" style="margin-top: 10px">
       <?php
         
         if($this->session->userdata['timeCheck']) { 
@@ -36,47 +39,38 @@
           $qrand = $this->session->userdata['saveSequence'];
           //var_dump($this->session->userdata);
         }
-        for ($i = 0; $i < count($qrand); $i++) {
-        // for ($i = 0; $i < 4; $i++) {
-          echo '<li style="margin:4px;" ';
-          if ($i==0) echo ' class="current"';
-          echo '><span data-tooltip class="has-tip" title="';
+
+        $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
+
+        for ($i = 0; $i < 4; $i++) {
           $row = $questions[$qrand[$i]];
+          echo '<li class="';
+          if($i==0) echo 'current ';
+          // $answer_text = $row[$choice[$c_array[$i]]];
+          // for ($item=1;$item<=4; $item++) {
+          //   if($answer_text == $answers[$item]){
+          //       echo 'omit';
+          //   }
+          // }
+          
+          echo '"><span data-tooltip class="has-tip" title="';
           echo $row['title'];
-          echo '"><a style="margin:4px;" href="#" id="pagi_';
-          if (($i+1)<10) echo '0';
-          echo ($i+1).'" onclick="jumpto(';
+          echo '"><a href="#" onclick="jumpto(';
           echo $i+1;
           echo ')">';
           echo $i+1;
           echo '</a></li>';
         }
-
-        if(!($this->session->userdata['timeCheck'])){
-          echo "<script>";
-		  
-          echo "for(var j = 1; j <= ".count($qrand)."; j++){";
-		  echo "if (i<10) var paginum = 'answer';";
-		  echo "else var paginum = 'answer0';";
-            echo "if(localStorage.getItem(paginum + j) !== null){";
-              echo "if (i<10) var d = document.getElementById(\"pagi_0\" + i);";
-              echo "else var d = document.getElementById(\"pagi_\" + i);";
-              echo "d.className = d.className + 'answered';";
-            echo "}";
-          echo "}";    
-          echo "</script>";
-        }
       ?>
       </ul>
-    </div>
       <div class="row">
-        <div class="large-22 columns">
+        <div class="large-12 columns">
           <a class="button small secondary expand" id="toggleTimer" onclick="toggleTimer()">Hide Timer</a>
         </div>
       </div>
       
       <div class="row">
-        <div class="large-22 columns">
+        <div class="large-12 columns">
           <?php
             if($this->session->userdata['timeCheck']) { 
               echo "<script>";
@@ -102,42 +96,38 @@
   </div>
 
   <div class="row">
-    <div class="large-22 columns">
+    <div class="large-12 columns">
       <div class="row">
-        <div class="large-6 medium-6 small-6 columns">
+        <div class="large-6 columns">
           <a class="button radius expand disabled" name="prev" id="prev-pseudo">Prev</a>
           <a class="button radius expand hidden" name="prev" id="prev" onclick="prevq()">Prev</a>
         </div>
-        <div class="large-6 medium-6 small-6 columns">
+        <div class="large-6 columns">
           <a class="button radius expand" name="next" id="next" onclick="nextq()">Next</a>
           <a class="button radius expand hidden disabled" name="next" id="next-pseudo">Next</a>
         </div>
       </div>
-      <a class="button radius expand success" href="site" id="pause">Pause</a>
- <!--      <a class="button radius expand success" href="#" id="pause">Pause</a> -->
+      <a class="button radius expand success" href="#" data-reveal-id="modalPause">Pause</a>
       <a class="button radius expand success" href="#" data-reveal-id="modalSubmit">Submit</a>
 
 
     </div>
   </div>
-
 </div>
 
     <div class="large-6 pull-3 columns">
     <div id="login_form">
-      <form action="score" method="post" id="testSubmit" name="testSubmit">
+      <form action="score" class="custom" method="post" id="testSubmit" name="testSubmit">
       <ol id="questions"style="list-style-type:none">
     <?php
 
       $choice = array('choice1', 'choice2', 'choice3', 'correct_answer');
 
       $item=0;
-      for($i = 0, $item=1; $i < count($qrand); $i++, $item++)
-      // for($i = 0, $item=1; $i < 4; $i++, $item++)
+      for($i = 0, $item=1; $i < 4; $i++, $item++)
       {
         $row = $questions[$qrand[$i]];
-        if ($item<10) $name = "answer0".$item;
-		else $name = "answer".$item;
+        $name = "answer" .$item;
         $c_array = array();
 
         //if($this->session->userdata['timeCheck']) {
@@ -160,14 +150,14 @@
 
         echo '<li';
         if ($i>0) echo ' class="hidden"';
-        echo '><div class="panel radius" style="min-height:450px"><div class="large-22">';
+        echo '><div class="panel radius" style="min-height:400px"><div class="large-12">';
         echo '<h3>';
         echo $item;
         echo '</h3> ';
 
           echo '<strong>';
             echo $row['ask'];
-          echo '</strong><div class="row"><div class="large-22 columns">';
+          echo '</strong><div class="row"><div class="large-12 columns">';
           echo '<table class="answers" width="100%" style="margin-top:1.25em;margin-bottom:0em"><tbody>';
 
         for($j = 0; $j < 4; $j++){
@@ -175,12 +165,11 @@
 
             //print_r($c_array);
             $answer_text = $row[$choice[$c_array[$j]]];
-
             if($answer_text == $answers[$item]){
-              echo '<input type="radio" name="';
-			  echo $name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
+              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><span class="custom radio checked"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
+
             }else{
-              echo '<input type="radio" name="'.$name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
+              echo '<label for="'.$name.'_'.($j+1).'"><input type="radio" name='.$name.' id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><span class="custom radio"></span>&nbsp;&nbsp;' . $answer_text.'</label>';
             }
           echo '</td></tr>';
         }
@@ -189,7 +178,7 @@
 
         if(!($this->session->userdata['timeCheck'])){
           echo "<script>";
-          echo "for(var i = 1; i <= ".count($qrand)."; i++){";
+          echo "for(var i = 1; i <= 4; i++){";
             echo "if(localStorage.getItem(\"answer\" + i) !== null){";
               echo "for(var j = 1; j <= 4; j++){";
 
@@ -207,9 +196,11 @@
     <?php 
         $this->session->set_userdata('timeCheck', FALSE);
         $this->session->set_userdata('startExam', TRUE);
-        //($this->session->userdata); 
+        //var_dump($this->session->userdata); 
     ?>
-    
+
+    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
+
     <!--Modal - Pause-->
     <div id="modalPause" class="reveal-modal large">
         <h2 style="text-align:center">PSEUDO-PAUSED</h2>
@@ -233,13 +224,14 @@
       <a class="close-reveal-modal x">x</a>
     </div>
 
-    <input type="text" id="pseudotime" name="pseudotime" value="9999" class="hidden invisible">
     </form>
     </div>
-    </div>
   </div>
+</div>
 
 <?php $this->load->view('includes/footer');?>
+
+
 
 <script src="<?php echo site_url('js/jquery-1.7.1.min.js'); ?>"> </script>
 <script src="<?php echo site_url('js/jquery.countdown.js'); ?>"></script>
@@ -247,16 +239,16 @@
 <script>
   var ct = setInterval("checkTime()", 1000);
 
-  $('#submit').live('click', function(){
-        window.onbeforeunload = function(){
-          return "Submitting ALL of your answers";
-        };
-  });
-  $('#pause').live('click', function(){
-        window.onbeforeunload = function(){
-          //return "Saving all answers. PAUSE!";
-        };
-  });
+  // $('#submit').live('click', function(){
+  //       window.onbeforeunload = function(){
+  //         return "Submitting ALL of your answers";
+  //       };
+  // });
+  // $('#pause').live('click', function(){
+  //       window.onbeforeunload = function(){
+  //         return "Save";
+  //       };
+  // });
 
   function checkTime(){
       //alert("timere");
@@ -281,15 +273,9 @@
     $('input[type="radio"]').click(function(){
       if ($(this).is(':checked'))
       {
+        
         localStorage.removeItem($(this).attr('value'));
         localStorage.setItem($(this).attr('name'), $(this).attr('value'));
-        var itemno = $(this).attr('name').slice(-2);
-        var parse = parseInt(itemno, 10);
-        if (parse<10) 
-          d = document.getElementById("pagi_0" + itemno);
-        else
-          d = document.getElementById("pagi_" + itemno);
-        d.className = d.className + ' answered';  
 
         //localStorage.removeItem($(this).attr('name'));
         //localStorage.setItem($(this).attr('name'), $(this).attr('id'));
@@ -318,6 +304,39 @@
     }
   }
 
+  function checkifcomplete(){
+    var marker2 = true;
+    var inc = false;
+    $qlist = $("#questions li");
+    for (var i=0; i < $qlist.length; i++)
+    {
+      var noanswer = true;
+      $choices = $('#questions li:eq(' + i + ') div div div div table tbody tr');
+      for (var j=0; j<$choices.length; j++) {
+        // if (marker2) {
+        //   $('#submit').attr('value',"Checkpoint 4");
+        //   marker2 = false;
+        // }
+        if($('#questions li:eq('+i+') div div div div table tbody tr:eq('+j+') td label input').checked) {
+          noanswer = false;
+        }
+        else $('#submit').attr('value',$('#questions li:eq('+i+') div div div div table tbody tr:eq('+j+') td label input').value);
+
+      }
+      if(noanswer) {
+        inc = true;
+      }
+    }
+    //$('#submit').attr('value',inc);
+    if(inc) {
+      $('#submit').removeClass("success");
+      $('#submit').addClass("alert");
+    }
+    else {
+      $('#submit').removeClass("alert");
+      $('#submit').addClass("success");
+    }
+  }
 
   function jumpto(number){
     var num = number;

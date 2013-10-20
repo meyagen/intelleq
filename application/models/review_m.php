@@ -62,6 +62,7 @@ class Review_M extends CI_Model
 		    	if ($i==0) {
 		    		$subj='science';
 		    		$answers=unserialize($row->ans_science);
+		    		//$this->session->set_userdata('omit', $answers);
 		    	}
 		    	elseif ($i==1) {
 		    		$subj='mathematics';

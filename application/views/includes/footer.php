@@ -37,6 +37,17 @@
         </center>
       </div>
     </div>
+    <div class="large-4 pull-8 columns">
+      <div>
+        <div class="panel" style="margin-top:40px;background-color:rgba(256,256,256,0);">
+          <a href="http://foundation.zurb.com"><div hreftitle="Foundation & Foundation Icons: front-end CSS/JavaScript framework and icons by Zurb" class="panel" id="zurb"></div></a>
+          <a href="http://ellislab.com/codeigniter"><div title="CodeIgniter: back-end PHP framework by EllisLab" class="panel" id="ellis"></div></a>
+          <a href="http://tutorialzine.com/2011/12/countdown-jquery/"><div title="jQuery Countdown Plugin by Martin Angelov via Tutorialzine" class="panel" id="tutor"></div></a>
+          <a href="http://highcharts.com/"><div title="Interactive JavaScript charts by Highcharts" class="panel" id="highch"></div></a>
+          <a href="http://fortawesome.github.io/Font-Awesome/"><div title="Font Awesome: icon fonts by Dave Gandy" class="panel" id="fontawe"></div></a>
+        </div>
+      </div>
+    </div>
   </div>
   </footer>
 </section>

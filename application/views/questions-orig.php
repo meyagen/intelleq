@@ -54,11 +54,9 @@
 
         if(!($this->session->userdata['timeCheck'])){
           echo "<script>";
-		  
-          echo "for(var j = 1; j <= ".count($qrand)."; j++){";
-		  echo "if (i<10) var paginum = 'answer';";
-		  echo "else var paginum = 'answer0';";
-            echo "if(localStorage.getItem(paginum + j) !== null){";
+          echo "for(var i = 1; i <= ".count($qrand)."; i++){";
+          // echo "for(var i = 1; i <= 4; i++){";
+            echo "if(localStorage.getItem(\"answer\" + i) !== null){";
               echo "if (i<10) var d = document.getElementById(\"pagi_0\" + i);";
               echo "else var d = document.getElementById(\"pagi_\" + i);";
               echo "d.className = d.className + 'answered';";
@@ -136,8 +134,7 @@
       // for($i = 0, $item=1; $i < 4; $i++, $item++)
       {
         $row = $questions[$qrand[$i]];
-        if ($item<10) $name = "answer0".$item;
-		else $name = "answer".$item;
+        $name = "answer" .$item;
         $c_array = array();
 
         //if($this->session->userdata['timeCheck']) {
@@ -177,8 +174,7 @@
             $answer_text = $row[$choice[$c_array[$j]]];
 
             if($answer_text == $answers[$item]){
-              echo '<input type="radio" name="';
-			  echo $name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
+              echo '<input type="radio" name="'.$name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'" checked="checked"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
             }else{
               echo '<input type="radio" name="'.$name.'" id="'.$name.'_'.($j+1).'" value="'.$answer_text.'"><label for="'.$name.'_'.($j+1).'"><span></span>' . $answer_text.'</label>';
             }

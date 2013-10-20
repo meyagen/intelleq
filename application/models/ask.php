@@ -1,3 +1,4 @@
+
 <?php
 class Ask extends CI_Model
 {
@@ -83,7 +84,7 @@ class Ask extends CI_Model
 
         function set_questions() {
                 $subject = $this->session->userdata('subject');
-        $query = $this->db->query("select * from ask where ask.group=?", array('group' => $subject));
+        $query = $this->db->query("select * from ask where ask.subject=?", array('subject' => $subject));
         $questions = $query->result_array();
 
                 $data = array(
@@ -94,7 +95,7 @@ class Ask extends CI_Model
         }
 
         function get_questions($input) {
-                $query = $this->db->query("select * from ask where ask.group=?", array('group' => $input));
+                $query = $this->db->query("select * from ask where ask.subject=?", array('subject' => $input));
         $questions = $query->result_array();
 
                 $data = serialize($questions);
@@ -111,16 +112,16 @@ class Ask extends CI_Model
                 else { //start of exam
                         $subject = $this->session->userdata('subject');
                         if(strcmp(strtolower($subject), 'science') == 0){
-                                $requiredTime = 100; //900 seconds = 15mins
+                                $requiredTime = 900; //15 mins
                         }
                         elseif (strcmp(strtolower($subject), 'mathematics') == 0) {
-                                $requiredTime = 100; //1800 seconds = 30mins
+                                $requiredTime = 1800; //30 mins
                         }
                         elseif (strcmp(strtolower($subject), 'english') == 0) {
-                                $requiredTime = 100; //900 seconds = 15mins
+                                $requiredTime = 1500; //25 mins
                         }
                         elseif (strcmp(strtolower($subject), 'reading_comprehension') == 0) {
-                                $requiredTime = 100; //600 seconds = 20mins
+                                $requiredTime = 900; //15 mins
                         }
                 }
                 
@@ -128,12 +129,24 @@ class Ask extends CI_Model
         }
 
         function count_questions(){
-                $questions = unserialize($this->session->userdata('questions'));
-                return count($questions);
+                /*$questions = unserialize($this->session->userdata('questions'));
+                return count($questions);*/
+                $subj = $this->session->userdata('subject');
+                $total = 0;
+                if($subj == 'science'){
+                        $total = 30;
+                }elseif($subj == 'mathematics'){
+                        $total =30;
+                }elseif($subj == 'english'){
+                        $total = 25;
+                }else{
+                        $total = 15;
+                }
+                return $total;
         }
 
         function random_question(){
-                $total = $this->ask->count_questions();
+                $total = $this->count_questions();
                 $q_array = array();
 
                 for($i = 0; $i < $total; $i++){

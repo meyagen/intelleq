@@ -5,7 +5,7 @@
 		$this->load->view('includes/header');
 	}
 	else {
-		$this->load->view('includes/header2');
+		$this->load->view('includes/guest-header');
 	}
 ?>
  <div class="row">

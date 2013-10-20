@@ -176,83 +176,159 @@
             ?> 
           </div>
         </div>
-      </div> 
-
+      </div>    
     </div>
-
-    <!-- PIE -->
-
-    <script type="text/javascript" src="<?php echo site_url('js/jquery.min.js'); ?>"></script>
-    <script type="text/javascript">
-    $(function () {
-    $('#container').highcharts({
+  </div>
+</div> 
+<script type="text/javascript" src="<?php echo site_url('js/jquery.min.js'); ?>"></script>
+<script type="text/javascript">
+$(function () {
+$('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            backgroundColor:'rgba(255, 255, 255, 0)'
+        },
+        title: {
+            text: 'Performance Chart',
+             style:{
+                fontSize: '25px'
+            },
+        },
+        subtitle: {
+            text: 'Currently Selected: Subject You\'re Best At',
+            style:{
+                fontSize: '15px',
+                color: 'black'
+            }
+        },
+        tooltip: {
+          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Performance Breakdown',
+            data: [
+                {
+                    name: 'Science',
+                    y: <?php echo $sci; ?>,
+                    sliced: <?php echo $sci_select;?>,
+                },
+                {
+                    name: 'Mathematics', 
+                    y: <?php echo $math; ?>,
+                    sliced: <?php echo $math_select;?>,
+                },
+                {
+                    name: 'English',
+                    y: <?php echo $eng; ?>,
+                    sliced: <?php echo $eng_select;?>,
+                },
+                {
+                    name: 'Reading Comprehension', 
+                    y: <?php echo $compre; ?>,
+                    sliced: <?php echo $compre_select;?>,
+                }    
+            ]
+        }]
+    });
+});
+$(function () {
+        $('#container1').highcharts({
             chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
+                type: 'bar',
                 backgroundColor:'rgba(255, 255, 255, 0)'
             },
             title: {
-                text: 'Performance Chart',
-                 style:{
+                text: 'Performance Percentile',
+                style:{
                     fontSize: '25px'
                 },
             },
             subtitle: {
-                text: 'Currently Selected: Subject You\'re Best At',
+                text: 'You scored better than the (%) of the takers',
                 style:{
-                    fontSize: '15px'
+                    fontSize: '15px',
+                    color: 'black'
                 }
             },
+            xAxis: {
+                categories: ['Area Selected'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Percentile',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                },
+                max: 100
+            },
             tooltip: {
-              pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                valueSuffix: '% Percentile'
             },
             plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
+                bar: {
                     dataLabels: {
-                        enabled: true,
-                        color: '#000000',
-                        connectorColor: '#000000',
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                        enabled: true
                     }
                 }
             },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 100,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
             series: [{
-                type: 'pie',
-                name: 'Performance Breakdown',
-                data: [
-                    {
-                        name: 'Science',
-                        y: <?php echo $sci; ?>,
-                        sliced: <?php echo $sci_select;?>,
-                    },
-                    {
-                        name: 'Mathematics', 
-                        y: <?php echo $math; ?>,
-                        sliced: <?php echo $math_select;?>,
-                    },
-                    {
-                        name: 'English',
-                        y: <?php echo $eng; ?>,
-                        sliced: <?php echo $eng_select;?>,
-                    },
-                    {
-                        name: 'Reading Comprehension', 
-                        y: <?php echo $compre; ?>,
-                        sliced: <?php echo $compre_select;?>,
-                    }    
-                ]
+                name: 'Overall',
+                data: [<?php echo $percentile_overall; ?>]
+            }, {
+                name: 'Science',
+                data: [<?php echo $percentile_sci; ?>]
+            }, {
+                name: 'Mathematics',
+                data: <?php echo $percentile_math; ?>
+            }, {
+                name: 'Language',
+                data: <?php echo $percentile_eng; ?>
+            }, {
+                name: 'Reading Comprehension',
+                data: <?php echo $percentile_compre; ?>
             }]
         });
     });
-    </script>
-    <script type="text/javascript" src="<?php echo site_url('js/highcharts.js'); ?>"></script>
-    <script type="text/javascript" src="<?php echo site_url('js/modules/exporting.js'); ?>"></script>
-    <div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
-
-  </div>
-</div> 
+</script>
+<script type="text/javascript" src="<?php echo site_url('js/highcharts.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo site_url('js/modules/exporting.js'); ?>"></script>
+<div id="container" style="width: 600px; height: 400px; margin: 0 auto"></div>
+</br></br></br>
+<div id="container1" style="width: 600px; height: 400px; margin: 0 auto"></div>
 
 <?php $this->load->view('includes/footer');?>
