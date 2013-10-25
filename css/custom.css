@@ -124,7 +124,7 @@ input[type="radio"] {
     display:none;
 }
 
-input[type="radio"] + label span {
+input[type="radio"] + label span:first-child {
     display:inline-block;
     width:19px;
     height:19px;
@@ -134,7 +134,7 @@ input[type="radio"] + label span {
     cursor:pointer;
 }
 
-input[type="radio"]:checked + label span {
+input[type="radio"]:checked + label span:first-child {
     background:url('../img/check_radio_sheet.png') -19px top no-repeat;
 }
 

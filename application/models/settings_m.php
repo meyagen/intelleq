@@ -106,7 +106,8 @@ class Settings_M extends CI_Model {
 		}		
 	}
 
-	function deactivate($username) {
+	function deactivate($username){
+		$this->send_deactivation_email();
 		$this->db->where('username', $username);
 		$query = $this->db->get('membership');
 
@@ -116,6 +117,38 @@ class Settings_M extends CI_Model {
 			$this->db->where('username', $username);
 			$this->db->update('membership', array('activate' => $user->activate));
 		}
+	}
+
+	function send_deactivation_email(){
+		$email = $this->session->userdata('email');
+		$email_code = md5((string)$email);
+		$intelleq = "http://192.161.54.104/intelleq/";
+		$url = "" .base_url() .'login/confirm_email/' .$email ."/" .$email_code;
+
+		//send email
+		$this->email->set_newline("\r\n");
+		$this->email->set_mailtype('html');
+		$this->email->clear();
+
+		$this->email->from($this->config->item('email_bot'), $this->config->item('email_name'));
+		$this->email->to($email);	
+		$this->email->subject('Account Deactivation');
+
+		$message = '<!DOCTYPE html><html><head></head><body>';
+		$message .= '<p>You have recently deactivated your account at ';
+		$message .= '<strong><a href = "' .$intelleq .'">intelleq</a></strong>. ';
+		$message .= 'We hope our site has been helpful in your educational endeavors.</p>';
+
+		$message .= '<p>If you wish to reactivate your account again at any time, please click ';
+		$message .= '<strong><a href = "' .$url .'">here</a></strong>';
+		$message .= '. Thank you for visiting our website.</p>';
+		$message .= '<p><small>If this is not you, please ignore this email.</small></p>';
+		$message .= '</body></html>';
+
+
+		$this->email->message($message);
+		if(!$this->email->send())
+			echo $this->email->print_debugger();	
 	}
 
 	function edit_session_data() {

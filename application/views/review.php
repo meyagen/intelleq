@@ -1,4 +1,5 @@
 <body class="off-canvas hide-extras">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 
 <?php $this->load->view('includes/header'); ?>
 <?php $this->load->view('navigation'); ?>

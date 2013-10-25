@@ -1,4 +1,3 @@
-
 <?php
 class Ask extends CI_Model
 {
@@ -84,23 +83,15 @@ class Ask extends CI_Model
 
         function set_questions() {
                 $subject = $this->session->userdata('subject');
-        $query = $this->db->query("select * from ask where ask.subject=?", array('subject' => $subject));
-        $questions = $query->result_array();
-
-                $data = array(
-                        'questions' => serialize($questions),
-                );
-
-                $this->session->set_userdata($data);
+                $query = $this->db->query("select * from ask where ask.subject=?", array('subject' => $subject));
+                $questions = $query->result_array();
+                return $questions;
         }
 
         function get_questions($input) {
                 $query = $this->db->query("select * from ask where ask.subject=?", array('subject' => $input));
-        $questions = $query->result_array();
-
-                $data = serialize($questions);
-
-                return $data;
+                $questions = $query->result_array();
+                return $questions;
         }
 
         function get_timeLimit() {
@@ -129,19 +120,15 @@ class Ask extends CI_Model
         }
 
         function count_questions(){
-                /*$questions = unserialize($this->session->userdata('questions'));
-                return count($questions);*/
                 $subj = $this->session->userdata('subject');
                 $total = 0;
-                if($subj == 'science'){
-                        $total = 30;
-                }elseif($subj == 'mathematics'){
-                        $total =30;
-                }elseif($subj == 'english'){
-                        $total = 25;
-                }else{
+                if($subj == 'reading_comprehension')
                         $total = 15;
-                }
+                elseif($subj == 'english')
+                        $total = 25;
+                else
+                        $total = 30;
+                
                 return $total;
         }
 

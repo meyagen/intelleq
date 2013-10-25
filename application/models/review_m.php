@@ -26,25 +26,18 @@ class Review_M extends CI_Model
 			    'ans_english' => unserialize($row->ans_english),
 			    'ans_reading_comprehension' => unserialize($row->ans_reading_comprehension)
 		    );
-		    //$this->session->set_userdata('revs',$rev_vals);
-		    // var_dump($this->session->userdata);
+
 		    return $rev_vals;
-		}
-		else {
-			$shet = 'shet';
-			// var_dump($shet);
-			return NULL;
-		} // not gonna happen lololol
-		
+		}		
     }
 
 	function check_availability(){
 		$this->db->where('username', $this->session->userdata('username'));
 		$query = $this->db->get('review');
 		$count = $query->num_rows;
-		if($count > 0){
+		if($count > 0)
 			return true;
-		}
+
 		return false;
 	}
 	
@@ -86,10 +79,5 @@ class Review_M extends CI_Model
 
 		    return $omits;
 		}
-		else {
-			$shet = 'shet';
-			// var_dump($shet);
-			return NULL;
-		} // not gonna happen lololol
     }
 }

@@ -51,11 +51,13 @@
 
 <?php $this->load->view('includes/footer');?>
 <?php 
-	//if($this->session->userdata['timeCheck']){
-		echo "<script>";
-		echo "for(var i = 1; i < 30; i++){";
-		echo "localStorage.removeItem('someTime');";
-		echo "localStorage.removeItem('answer'+i);}";
-		echo "</script>";
-	//}
+  echo "<script>";
+  echo "for(var i = 1; i <= 30; i++){";
+  // DEYM DIS HARDCODE BUNAO
+  echo "localStorage.removeItem('someTime');";
+  echo "if (i<10) var qnum = 'answer0'+i;";
+  echo "else var qnum = 'answer'+i;";
+  echo "localStorage.removeItem(qnum);}";
+  echo "</script>";
+  //}
 ?>

@@ -19,41 +19,40 @@ class Score_M extends CI_Model
             $subject = $this->session->userdata('subject');
             $to_review['last_fin'] = $subject;
 
-            $questions = unserialize($this->session->userdata('questions'));
+            $questions = $this->ask->set_questions();
 
             $sequence = $this->session->userdata('sequence');
             $to_review['seq_'.$subject] = serialize($this->session->userdata('saveSequence'));
-
             $to_review['ans_'.$subject] = serialize($input);
 
             //check username in table
+            $this->db->where('username', $to_review['username']);
+            $query = $this->db->get('review');
+            $row = $query->num_rows;
+
+            if($row > 0) { //if nasa database na
                 $this->db->where('username', $to_review['username']);
-                $query = $this->db->get('review');
-                $row = $query->num_rows;
+                $this->db->update('review', $to_review);
+            }
 
-                if($row > 0) { //if nasa database na
-                    $this->db->where('username', $to_review['username']);
-                    $this->db->update('review', $to_review);
-                }
-
-                else //wala pa sa database
-                    $this->db->insert('review', $to_review);
+            else //wala pa sa database
+                $this->db->insert('review', $to_review);
 
             $this->session->set_userdata($this->session->userdata['subject'], $input);
 
-                for($counter = 0; $counter < $this->ask->count_questions(); $counter++){
-                        $row = $questions[$sequence[$counter]];
-                    $i++;
-                    $id = $row['id'];
-                        $answer = $input[$i]."";
+            for($counter = 0; $counter < $this->ask->count_questions(); $counter++){
+                    $row = $questions[$sequence[$counter]];
+                $i++;
+                $id = $row['id'];
+                    $answer = $input[$i]."";
 
-                        $this->db->where('correct_answer', $answer);
-                        $this->db->where('id', $id);
-                        $query = $this->db->get('ask');
-                        $correct = $query->row();
-                        if(count($correct))
-                                $score++;
-            }
+                    $this->db->where('correct_answer', $answer);
+                    $this->db->where('id', $id);
+                    $query = $this->db->get('ask');
+                    $correct = $query->row();
+                    if(count($correct))
+                            $score++;
+        }
 
             //delete from gen_exam
                 $this->db->where('username', $this->session->userdata('username'));

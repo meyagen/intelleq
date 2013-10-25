@@ -1,4 +1,5 @@
 <body class="off-canvas hide-extras">
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 
 <div class="row hidden invisible">
   <div class="large-22 columns">
@@ -30,12 +31,11 @@
         if($this->session->userdata['timeCheck']) { 
           $this->session->set_userdata('saveSequence', $qrand);
           $this->session->set_userdata('saveChoice', $qrand);
-          //var_dump($this->session->userdata);
         }  
-        else{
+
+        else
           $qrand = $this->session->userdata['saveSequence'];
-          //var_dump($this->session->userdata);
-        }
+
         for ($i = 0; $i < count($qrand); $i++) {
         // for ($i = 0; $i < 4; $i++) {
           echo '<li style="margin:4px;" ';
@@ -56,11 +56,14 @@
           echo "<script>";
 		  
           echo "for(var j = 1; j <= ".count($qrand)."; j++){";
-		  echo "if (i<10) var paginum = 'answer';";
-		  echo "else var paginum = 'answer0';";
-            echo "if(localStorage.getItem(paginum + j) !== null){";
-              echo "if (i<10) var d = document.getElementById(\"pagi_0\" + i);";
-              echo "else var d = document.getElementById(\"pagi_\" + i);";
+		  echo "if (j<10) {var paginum = 'pagi_0'+j;";
+      echo "var qnum = 'answer0'+j;}";
+		  echo "else {var paginum = 'pagi_'+j;";
+      echo "var qnum = 'answer'+j}";
+            echo "if(localStorage.getItem(qnum) !== null){";
+              // echo "if (j<10) var d = document.getElementById(paginum);";
+              // echo "else var d = document.getElementById(paginum);";
+              echo "var d = document.getElementById(paginum);";
               echo "d.className = d.className + 'answered';";
             echo "}";
           echo "}";    
@@ -113,8 +116,8 @@
           <a class="button radius expand hidden disabled" name="next" id="next-pseudo">Next</a>
         </div>
       </div>
-      <a class="button radius expand success" href="site" id="pause">Pause</a>
- <!--      <a class="button radius expand success" href="#" id="pause">Pause</a> -->
+<input type="submit" id="pause" name="pause" data-reveal-id="modalPause" class="button radius expand success" value = "Save and Exit"> 
+<!--      <a class="button radius expand success" href="#" id="pause">Pause</a> -->
       <a class="button radius expand success" href="#" data-reveal-id="modalSubmit">Submit</a>
 
 
@@ -190,11 +193,13 @@
         if(!($this->session->userdata['timeCheck'])){
           echo "<script>";
           echo "for(var i = 1; i <= ".count($qrand)."; i++){";
-            echo "if(localStorage.getItem(\"answer\" + i) !== null){";
+          echo "if (i<10) var ans_name = 'answer0'+i;";
+          echo "else var ans_name = 'answer'+i;";
+            echo "if(localStorage.getItem(ans_name) !== null){";
               echo "for(var j = 1; j <= 4; j++){";
 
-              echo "if(localStorage.getItem(\"answer\" + i) == $(\"#answer\" + i + \"_\" + j).val()){";
-                echo "document.getElementById($(\"#answer\" + i + \"_\" + j).attr('id')).checked = true;}";
+              echo "if(localStorage.getItem(ans_name) == $(\"#\" + ans_name + \"_\" + j).val()){";
+                echo "document.getElementById($(\"#\" + ans_name + \"_\" + j).attr('id')).checked = true;}";
 
 
               echo "}";
@@ -212,7 +217,7 @@
     
     <!--Modal - Pause-->
     <div id="modalPause" class="reveal-modal large">
-        <h2 style="text-align:center">PSEUDO-PAUSED</h2>
+        <h2 style="text-align:center">PAUSED</h2>
         <input type="submit" id="pause" name="pause" class="button radius expand success" value = "Save and Exit">
         <a class="button radius expand close-reveal-modal">Back to Exam</a>
       <a class="close-reveal-modal x">x</a>
@@ -278,16 +283,17 @@
  
 
   $(function(){
+    // FIXED!
     $('input[type="radio"]').click(function(){
       if ($(this).is(':checked'))
       {
         localStorage.removeItem($(this).attr('value'));
         localStorage.setItem($(this).attr('name'), $(this).attr('value'));
         var itemno = $(this).attr('name').slice(-2);
-        var parse = parseInt(itemno, 10);
-        if (parse<10) 
-          d = document.getElementById("pagi_0" + itemno);
-        else
+        // var parse = parseInt(itemno, 10);
+        // if (parse<10) 
+        //   d = document.getElementById("pagi_0" + itemno);
+        // else
           d = document.getElementById("pagi_" + itemno);
         d.className = d.className + ' answered';  
 
